@@ -44,27 +44,17 @@ body{margin:0px; padding:0px;}/*상위 스타일에 대한 원점 처리를 해 
 
 .tbb li li a:hover{background-color:black;width:110px; height:30px; margin:0px; border-radius:0.2em; display:block;}
 
-.tcb1{background-color:none;width:996px; height:455px; padding-top:10px; layout:fixed; margin-bottom:20px; text-align:justify;}
+.myPwdChange_tcb1{background-color:none;width:996px; height:455px; padding-top:10px; layout:fixed; margin-bottom:20px; text-align:justify;}
 
-.tcb1a{width:946px; height:420px; padding-top:0px; layout:fixed; border:1px solid gray; text-align:justify;layout:fixed;position:relative; left : 23px; top:0px;}
+.myPwdChange_tcb1a{width:946px; height:420px; padding-top:0px; layout:fixed; border:1px solid gray; text-align:justify;layout:fixed;position:relative; left : 23px; top:0px;}
 
-.tcb1a1a{width:946px; height:100px; padding-top:0px; layout:fixed; border:1px solid gray; text-align:center;layout:fixed;position:relative; left : 0px; top:0px; vertical-align: middle;}
+.myPwdChange_tcb1a1a{width:946px; height:100px; padding-top:0px; layout:fixed; border:1px solid gray; text-align:center;layout:fixed;position:relative; left : 0px; top:0px; vertical-align: middle;}
 
-.tcb1a1b{background-color:#e6e6e6; width:946px; height:200px; padding-top:1px; layout:fixed; border:1px solid gray; text-align:justify;layout:fixed;position:relative; left : 0px; top:0px;}
+.myPwdChange_tcb1a1b{background-color:#e6e6e6; width:946px; height:200px; padding-top:1px; layout:fixed; border:1px solid gray; text-align:justify;layout:fixed;position:relative; left : 0px; top:0px;}
 
-.tcb1a1c{width:946px; height:75px; padding-top:0px; layout:fixed; border:1px solid gray; text-align:justify;layout:fixed;position:relative; left : 0px; top:0px;vertical-align: middle;text-align:center; top:30px;}
+.myPwdChange_tcb1a1c{width:946px; height:75px; padding-top:0px; layout:fixed; border:1px solid gray; text-align:justify;layout:fixed;position:relative; left : 0px; top:0px;vertical-align: middle;text-align:center; top:30px;}
 
-.tcb2{background-color:none;width:996px; height:75px; padding-top:0px; layout:fixed; margin-bottom:20px;}
 
-.tcb2a{width:946px; height:49px; padding-top:0px; layout:fixed; border:1px solid gray; text-align:center;layout:fixed;position:relative; left : 23px; top:13px;}
-
-.tcb3{background-color:none;width:996px; height:230px; padding-top:10px; layout:fixed; margin-bottom:20px;}
-
-.tcb4{background-color:none;width:996px; height:155px; padding-top:0px; layout:fixed; margin-bottom:20px;}
-
-.tcb4a{width:946px; height:125px; padding-top:0px; layout:fixed; border:1px solid gray; text-align:justify;layout:fixed;position:relative; left : 23px; top:15px;}
-
-.tcb5{background-color:none;width:996px; height:230px; padding-top:10px; layout:fixed; margin-bottom:0px;}
 
 </style>
 </head>
@@ -101,10 +91,10 @@ body{margin:0px; padding:0px;}/*상위 스타일에 대한 원점 처리를 해 
 				</ul>
 			</div>
 			<div class="tbc">
-				<div class="tcb1"><font size=5 style="line-height:40px;">&nbsp &nbsp <b><u>비밀번호 변경</u></b></font></table>
-					<div class="tcb1a">
-						<div class="tcb1a1">
-							<div class="tcb1a1a">
+				<div class="myPwdChange_tcb1"><font size=5 style="line-height:40px;">&nbsp &nbsp <b><u>비밀번호 변경</u></b></font></table>
+					<div class="myPwdChange_tcb1a">
+						<div class="myPwdChange_tcb1a1">
+							<div class="myPwdChange_tcb1a1a">
 								<table width=100% height=100% style="text-align:left">
 									<tr>
 										<td  width=30% >&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp·기존 사용 비밀번호
@@ -115,7 +105,7 @@ body{margin:0px; padding:0px;}/*상위 스타일에 대한 원점 처리를 해 
 								</table>
 	 						</div>
 	 					</div>
-						<div class="tcb1a1b">
+						<div class="myPwdChange_tcb1a1b">
 							<table width=100% height=100% style="text-align:left">
 								<tr height=30%>
 									<td  width=30% >&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp·새 비밀번호
@@ -143,7 +133,7 @@ body{margin:0px; padding:0px;}/*상위 스타일에 대한 원점 처리를 해 
 								</tr>
 							</table>
 						</div>
-						<div class="tcb1a1c">
+						<div class="myPwdChange_tcb1a1c">
 							<input type="button" value="비밀번호 변경" onclick="" style="width:120px;height:40px;">
 						</div>
 					</div> 
