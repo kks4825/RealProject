@@ -14,7 +14,7 @@ body{margin:0px; padding:0px;}/*상위 스타일에 대한 원점 처리를 해 
 
 .tu{width:1200px; height:1200px; margin:auto; border:1px solid red; position:relative;}/*가상의 바디*/
 
-.tba,.tbb,.tbc,.tbd,.tca,.tcb1,.tcb2,.tcb3,.tcb4,.tcb5{border:1px solid red; text-align:center;layout:fixed;}
+.tba,.tbb,.myPageInputPwd_tbc,.tbd,.tca,.myPageInputPwd_tcb1,.tcb2,.tcb3,.tcb4,.tcb5{border:1px solid red; text-align:center;layout:fixed;}
 
 .tbb li a{text-decoration:none;}
 
@@ -24,7 +24,7 @@ body{margin:0px; padding:0px;}/*상위 스타일에 대한 원점 처리를 해 
 
 .tbb{background-color:none;width:200px; height:1000px; float:left; }
 
-.tbc{background-color:none;width:996px; height:1000px; display:inline-block;}
+.myPageInputPwd_tbc{background-color:none;width:996px; height:1000px; display:inline-block;}
 
 .tbd{background-color:none;width:1198px; height:200px; float:left; clear:both;margin-top:0px; }/*가로폭이 340픽셀 이상인 기기에서는 바디부의 우측으로 배열이 될수 있기 때문에  clear:both;속성을 줍니다.*/
 
@@ -44,32 +44,20 @@ body{margin:0px; padding:0px;}/*상위 스타일에 대한 원점 처리를 해 
 
 .tbb li li a:hover{background-color:black;width:110px; height:30px; margin:0px; border-radius:0.2em; display:block;}
 
-.tcb1{background-color:none;width:996px; height:455px; padding-top:10px; layout:fixed; margin-bottom:20px; text-align:justify;}
+.myPageInputPwd_tcb1{background-color:none;width:996px; height:455px; padding-top:10px; layout:fixed; margin-bottom:20px; text-align:justify;}
 
-.tcb1a{width:946px; height:420px; padding-top:0px; layout:fixed; border:1px solid gray; text-align:justify;layout:fixed;position:relative; left : 23px; top:0px;}
+.myPageInputPwd_tcb1a{width:946px; height:420px; padding-top:0px; layout:fixed; border:1px solid gray; text-align:justify;layout:fixed;position:relative; left : 23px; top:0px;}
 
-.tcb1a1{width:450px; height:300px; padding-top:0px; layout:fixed; border:0px solid gray; text-align:justify;layout:fixed;position:relative; left : 250px; top:60px;}
+.myPageInputPwd_tcb1a1{width:450px; height:300px; padding-top:0px; layout:fixed; border:0px solid gray; text-align:justify;layout:fixed;position:relative; left : 250px; top:60px;}
 
-.tcb1a1a{width:500px; height:100px; padding-top:0px; layout:fixed; border:0px solid gray; text-align:center;layout:fixed;position:relative; left : -25px; top:0px; vertical-align: middle;}
+.myPageInputPwd_tcb1a1a{width:500px; height:100px; padding-top:0px; layout:fixed; border:0px solid gray; text-align:center;layout:fixed;position:relative; left : -25px; top:0px; vertical-align: middle;}
 
-.tcb1a1b{background-color:#e6e6e6; width:450px; height:100px; padding-top:0px; layout:fixed; border:1px solid gray; text-align:justify;layout:fixed;position:relative; left : 0px; top:0px;}
+.myPageInputPwd_tcb1a1b{background-color:#e6e6e6; width:450px; height:100px; padding-top:0px; layout:fixed; border:1px solid gray; text-align:justify;layout:fixed;position:relative; left : 0px; top:0px;}
 
-.tcb1a1c{width:450px; height:100px; padding-top:0px; layout:fixed; border:0px solid gray; text-align:justify;layout:fixed;position:relative; left : 0px; top:0px;}
+.myPageInputPwd_tcb1a1c{width:450px; height:100px; padding-top:0px; layout:fixed; border:0px solid gray; text-align:justify;layout:fixed;position:relative; left : 0px; top:0px;}
 
-.tcb1a1c1{width:150px; height:50px; padding-top:0px; layout:fixed; border:0px solid gray; text-align:justify;layout:fixed;position:relative; left : 170px; top:40px;}
+.myPageInputPwd_tcb1a1c1{width:150px; height:50px; padding-top:0px; layout:fixed; border:0px solid gray; text-align:justify;layout:fixed;position:relative; left : 170px; top:40px;}
 
-
-.tcb2{background-color:none;width:996px; height:75px; padding-top:0px; layout:fixed; margin-bottom:20px;}
-
-.tcb2a{width:946px; height:49px; padding-top:0px; layout:fixed; border:1px solid gray; text-align:center;layout:fixed;position:relative; left : 23px; top:13px;}
-
-.tcb3{background-color:none;width:996px; height:230px; padding-top:10px; layout:fixed; margin-bottom:20px;}
-
-.tcb4{background-color:none;width:996px; height:155px; padding-top:0px; layout:fixed; margin-bottom:20px;}
-
-.tcb4a{width:946px; height:125px; padding-top:0px; layout:fixed; border:1px solid gray; text-align:justify;layout:fixed;position:relative; left : 23px; top:15px;}
-
-.tcb5{background-color:none;width:996px; height:230px; padding-top:10px; layout:fixed; margin-bottom:0px;}
 
 </style>
 </head>
@@ -105,14 +93,14 @@ body{margin:0px; padding:0px;}/*상위 스타일에 대한 원점 처리를 해 
 					</li></br>
 				</ul>
 			</div>
-			<div class="tbc">
-				<div class="tcb1"><font size=5 style="line-height:40px;">&nbsp &nbsp <b><u>비밀번호 재확인</u></b></font>
-					<div class="tcb1a">
-						<div class="tcb1a1">
-							<div class="tcb1a1a"><font size=3 style="line-height:40px;">&nbsp &nbsp <b>--------------회원님의 정보를 안전하게 보호하기 위하여<br>
+			<div class="myPageInputPwd_tbc">
+				<div class="myPageInputPwd_tcb1"><font size=5 style="line-height:40px;">&nbsp &nbsp <b><u>비밀번호 재확인</u></b></font>
+					<div class="myPageInputPwd_tcb1a">
+						<div class="myPageInputPwd_tcb1a1">
+							<div class="myPageInputPwd_tcb1a1a"><font size=3 style="line-height:40px;">&nbsp &nbsp <b>--------------회원님의 정보를 안전하게 보호하기 위하여<br>
  								  비밀번호를 다시 한번 확인합니다.</b></font>
  							</div>
-	 						<div class="tcb1a1b">
+	 						<div class="myPageInputPwd_tcb1a1b">
 								<table width=100% height=100% style="text-align:left">
 									<tr>
 										<td  width=30% >&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp·아이디
@@ -128,8 +116,8 @@ body{margin:0px; padding:0px;}/*상위 스타일에 대한 원점 처리를 해 
 									</tr>
 								</table>
 							</div>
-							<div class="tcb1a1c">
-								<div class="tcb1a1c1">
+							<div class="myPageInputPwd_tcb1a1c">
+								<div class="myPageInputPwd_tcb1a1c1">
 									<input type="submit" value="확인">&nbsp&nbsp
 									<input type="reset" value="취소">
 								</div>

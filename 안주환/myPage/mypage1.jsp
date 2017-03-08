@@ -14,7 +14,7 @@ body{margin:0px; padding:0px;}/*상위 스타일에 대한 원점 처리를 해 
 
 .tu{width:1200px; height:1200px; margin:auto; border:1px solid red; position:relative;}/*가상의 바디*/
 
-.tba,.tbb,.tbc,.tbd,.tca,.tcb1,.tcb2,.tcb3,.tcb4,.tcb5{border:1px solid red; text-align:center;layout:fixed;}
+.tba,.tbb,.myPage1_tbc,.tbd,.tca,.tcb1,.tcb2,.tcb3,.tcb4,.tcb5{border:1px solid red; text-align:center;layout:fixed;}
 
 .tbb li a{text-decoration:none;}
 
@@ -24,7 +24,7 @@ body{margin:0px; padding:0px;}/*상위 스타일에 대한 원점 처리를 해 
 
 .tbb{background-color:none;width:200px; height:1000px; float:left; }
 
-.tbc{background-color:none;width:996px; height:1000px; display:inline-block;}
+.myPage1_tbc{background-color:none;width:996px; height:1000px; display:inline-block;}
 
 .tbd{background-color:none;width:1198px; height:200px; float:left; clear:both;margin-top:0px; }/*가로폭이 340픽셀 이상인 기기에서는 바디부의 우측으로 배열이 될수 있기 때문에  clear:both;속성을 줍니다.*/
 
@@ -44,21 +44,21 @@ body{margin:0px; padding:0px;}/*상위 스타일에 대한 원점 처리를 해 
 
 .tbb li li a:hover{background-color:black;width:110px; height:30px; margin:0px; border-radius:0.2em; display:block;}
 
-.tcb1{background-color:none;width:996px; height:189px; padding-top:10px; layout:fixed; margin-bottom:20px; text-align:justify;}
+.myPage1_tcb1{background-color:none;width:996px; height:189px; padding-top:10px; layout:fixed; margin-bottom:20px; text-align:justify;}
 
-.tcb1a{width:946px; height:130px; padding-top:0px; layout:fixed; border:1px solid gray; text-align:justify;layout:fixed;position:relative; left : 23px; top:0px;}
+.myPage1_tcb1a{width:946px; height:130px; padding-top:0px; layout:fixed; border:1px solid gray; text-align:justify;layout:fixed;position:relative; left : 23px; top:0px;}
 
-.tcb2{background-color:none;width:996px; height:75px; padding-top:0px; layout:fixed; margin-bottom:20px;}
+.myPage1_tcb2{background-color:none;width:996px; height:75px; padding-top:0px; layout:fixed; margin-bottom:20px;}
 
-.tcb2a{width:946px; height:49px; padding-top:0px; layout:fixed; border:1px solid gray; text-align:center;layout:fixed;position:relative; left : 23px; top:13px;}
+.myPage1_tcb2a{width:946px; height:49px; padding-top:0px; layout:fixed; border:1px solid gray; text-align:center;layout:fixed;position:relative; left : 23px; top:13px;}
 
-.tcb3{background-color:none;width:996px; height:230px; padding-top:10px; layout:fixed; margin-bottom:20px;}
+.myPage1_tcb3{background-color:none;width:996px; height:230px; padding-top:10px; layout:fixed; margin-bottom:20px;}
 
-.tcb4{background-color:none;width:996px; height:155px; padding-top:0px; layout:fixed; margin-bottom:20px;}
+.myPage1_tcb4{background-color:none;width:996px; height:155px; padding-top:0px; layout:fixed; margin-bottom:20px;}
 
-.tcb4a{width:946px; height:125px; padding-top:0px; layout:fixed; border:1px solid gray; text-align:justify;layout:fixed;position:relative; left : 23px; top:15px;}
+.myPage1_tcb4a{width:946px; height:125px; padding-top:0px; layout:fixed; border:1px solid gray; text-align:justify;layout:fixed;position:relative; left : 23px; top:15px;}
 
-.tcb5{background-color:none;width:996px; height:230px; padding-top:10px; layout:fixed; margin-bottom:0px;}
+.myPage1_tcb5{background-color:none;width:996px; height:230px; padding-top:10px; layout:fixed; margin-bottom:0px;}
 
 </style>
 </head>
@@ -94,9 +94,9 @@ body{margin:0px; padding:0px;}/*상위 스타일에 대한 원점 처리를 해 
 					</li></br>
 				</ul>
 			</div>
-			<div class="tbc">
-				<div class="tcb1"><font size=5 style="line-height:40px;">&nbsp &nbsp <b><u>예약 확인</u></b></font>
-					<div class="tcb1a">
+			<div class="myPage1_tbc">
+				<div class="myPage1_tcb1"><font size=5 style="line-height:40px;">&nbsp &nbsp <b><u>예약 확인</u></b></font>
+					<div class="myPage1_tcb1a">
 <pre>
   [안내]
   
@@ -108,8 +108,8 @@ body{margin:0px; padding:0px;}/*상위 스타일에 대한 원점 처리를 해 
 					</div>
 				</div>
 
-				<div class="tcb2">
-					<div class="tcb2a">
+				<div class="myPage1_tcb2">
+					<div class="myPage1_tcb2a">
 					<table>
 						<tr><td width="944px" height="47px" style="border: 1px solid red;">
 						출발일 &nbsp
@@ -226,7 +226,7 @@ body{margin:0px; padding:0px;}/*상위 스타일에 대한 원점 처리를 해 
 					   </table>
 					</div>
 				</div>
-				<div class="tcb3"><font style="line-height:40px;"><b>예약 내역</b></font>
+				<div class="myPage1_tcb3"><font style="line-height:40px;"><b>예약 내역</b></font>
 					<table>
 					<tr><td colspan="7" bgcolor="#607d8b"></td></tr>
 					<tr>
@@ -245,7 +245,7 @@ body{margin:0px; padding:0px;}/*상위 스타일에 대한 원점 처리를 해 
 					<tr><td colspan="7" bgcolor="#607d8b"></td></tr>
 					</table>
 				</div>
-				<div class="tcb4"><div class="tcb4a">
+				<div class="myPage1_tcb4"><div class="tcb4a">
 					<table><tr style="border: 1px solid red;">
 					<td width="130" style="border: 1px solid red;"></td>
 					<td width="736">
@@ -260,7 +260,7 @@ body{margin:0px; padding:0px;}/*상위 스타일에 대한 원점 처리를 해 
 					</table>
 				</div>
 			</div>
-			<div class="tcb5"><font style="line-height:40px;"><b>취소 내역</b></font>
+			<div class="myPage1_tcb5"><font style="line-height:40px;"><b>취소 내역</b></font>
 				<table>
 				<tr><td colspan="6" bgcolor="#607d8b"></td></tr>
 				<tr>

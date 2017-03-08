@@ -24,7 +24,7 @@ body{margin:0px; padding:0px;}/*상위 스타일에 대한 원점 처리를 해 
 
 .tbb{background-color:none;width:200px; height:1000px; float:left; }
 
-.tbc{background-color:none;width:996px; height:1000px; display:inline-block;}
+.myReview_tbc{background-color:none;width:996px; height:1000px; display:inline-block;}
 
 .tbd{background-color:none;width:1198px; height:200px; float:left; clear:both;margin-top:0px; }/*가로폭이 340픽셀 이상인 기기에서는 바디부의 우측으로 배열이 될수 있기 때문에  clear:both;속성을 줍니다.*/
 
@@ -80,7 +80,7 @@ body{margin:0px; padding:0px;}/*상위 스타일에 대한 원점 처리를 해 
 					</li></br>
 				</ul>
 			</div>
-			<div class="tbc">
+			<div class="myReview_tbc">
 				<div class="tcb5"><font style="line-height:40px;"><b>나의 여행후기</b></font>
 					<table>
 						<tr><td colspan="3" bgcolor="#607d8b"></td></tr>
