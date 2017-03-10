@@ -8,8 +8,6 @@
             
     <!-- 컨트롤러 설정 -->
 	<context:component-scan base-package="main.controller"/>
-	<context:component-scan base-package="product.controller"/>
-	<context:component-scan base-package="member.controller"/>
 	
 	<mvc:annotation-driven />
 	<mvc:default-servlet-handler/>
