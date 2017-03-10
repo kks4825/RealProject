@@ -10,14 +10,16 @@
 	<context:component-scan base-package="main.controller"/>
 	
 	<mvc:annotation-driven />
+	<mvc:default-servlet-handler/>
+
+	<mvc:resources mapping="/resources/**" location="/resources/css_main/" />
+	<mvc:resources mapping="/resources/**" location="/resources/images_main/" />
+	<mvc:resources mapping="/resources/**" location="/resources/js_bt/" />
+	<mvc:resources mapping="/resources/**" location="/resources/js_kendo/" />
+	<mvc:resources mapping="/resources/**" location="/resources/js_main/" />
 	
-	<mvc:resources mapping="/image/**" location="/image/" />
-	<mvc:resources mapping="/css/**" location="/css/" />
-	<mvc:resources mapping="/js/**" location="/js/" />
 	
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-	        <!-- Example: a logical view name of 'showMessage' is mapped to '/WEB-INF/jsp/showMessage.jsp' -->
-	        <property name="prefix" value="/WEB-INF/"/>
 	        <property name="suffix" value=".jsp"/>
 	</bean>
 	

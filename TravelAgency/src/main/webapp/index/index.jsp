@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE HTML>
 <!--
 	Linear by TEMPLATED
@@ -10,18 +13,18 @@
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
+		<script src="../main/js/jquery.min.js"></script>
 		<link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,700,500,900' rel='stylesheet' type='text/css'>
-		<script src="js/skel.min.js"></script>
-		<script src="js/skel-panels.min.js"></script>
-		<script src="js/init.js"></script>
+		<script src="../main/js/skel.min.js"/></script>
+		<script src="../main/js/skel-panels.min.js"></script>
+		<script src="../main/js/init.js"></script>
 		<noscript>
-			<link rel="stylesheet" href="css/skel-noscript.css" />
-			<link rel="stylesheet" href="css/style.css" />
-			<link rel="stylesheet" href="css/style-desktop.css" />
+			<link href="<c:url value="../main/css/skel-noscript.css" />" rel="stylesheet">
+			<link href="<c:url value="../main/css/style.css" />" rel="stylesheet">
+			<link href="<c:url value="../main/css/style-desktop.css" />" rel="stylesheet">
 		</noscript>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="../js/jquery.min.js"></script>
-    <script src="../js_bt/bootstrap.min.js"></script>
+	   	<script src="../main/js_bt/bootstrap.min.js"></script>
 		<style>
 
 		img{
@@ -55,43 +58,7 @@
 
 		<!-- Main -->
 		<div id="main">
-			<div id="content" class="container">
-
-				<div class="row">
-					<section class="6u">
-						<a href="#" class="image full"><img src="images/pic01.jpg" alt=""></a>
-						<header>
-							<h2>Mauris vulputate dolor</h2>
-						</header>
-						<p>In posuere eleifend odio. Quisque semper augue mattis wisi. Maecenas ligula. Pellentesque viverra vulputate enim. Aliquam erat volutpat. Donec leo, vivamus fermentum nibh in augue praesent a lacus at urna congue rutrum.</p>
-					</section>
-					<section class="6u">
-						<a href="#" class="image full"><img src="images/pic02.jpg" alt=""></a>
-						<header>
-							<h2>Mauris vulputate dolor</h2>
-						</header>
-						<p>In posuere eleifend odio. Quisque semper augue mattis wisi. Maecenas ligula. Pellentesque viverra vulputate enim. Aliquam erat volutpat. Donec leo, vivamus fermentum nibh in augue praesent a lacus at urna congue rutrum.</p>
-					</section>
-				</div>
-
-				<div class="row">
-					<section class="6u">
-						<a href="#" class="image full"><img src="images/pic03.jpg" alt=""></a>
-						<header>
-							<h2>Mauris vulputate dolor</h2>
-						</header>
-						<p>In posuere eleifend odio. Quisque semper augue mattis wisi. Maecenas ligula. Pellentesque viverra vulputate enim. Aliquam erat volutpat. Donec leo, vivamus fermentum nibh in augue praesent a lacus at urna congue rutrum.</p>
-					</section>
-					<section class="6u">
-						<a href="#" class="image full"><img src="images/pic04.jpg" alt=""></a>
-						<header>
-							<h2>Mauris vulputate dolor</h2>
-						</header>
-						<p>In posuere eleifend odio. Quisque semper augue mattis wisi. Maecenas ligula. Pellentesque viverra vulputate enim. Aliquam erat volutpat. Donec leo, vivamus fermentum nibh in augue praesent a lacus at urna congue rutrum.</p>
-					</section>
-				</div>
-
-			</div>
+			<jsp:include page="${display }" />
 		</div>
 
 	<!-- Tweet -->
