@@ -12,7 +12,7 @@ public class ProductController {
 	public ModelAndView packageView() {
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("display", "/product/packageView.jsp");
-		mav.setViewName("/main/index");
+		mav.setViewName("/index/index");
 		
 		return mav;
 	}
@@ -21,7 +21,25 @@ public class ProductController {
 	public ModelAndView detailView() {
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("display", "/product/detailView.jsp");
-		mav.setViewName("/main/index");
+		mav.setViewName("/index/index");
+		
+		return mav;
+	}
+	
+	@RequestMapping(value="/reservation.do")
+	public ModelAndView reservation() {
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("display", "/product/3_1/reservation_ex.jsp");
+		mav.setViewName("/index/index");
+		
+		return mav;
+	}
+	
+	@RequestMapping(value="/payment.do")
+	public ModelAndView payment() {
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("display", "/product/3_1/payment.jsp");
+		mav.setViewName("/index/index");
 		
 		return mav;
 	}

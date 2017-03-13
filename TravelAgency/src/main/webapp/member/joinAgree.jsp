@@ -1,8 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<section id="content" class="contentSub">
-	<!--[[ content Start ]]-->
+<script src="../js/jquery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){	
+	$('#yes').click(function(){
+		if($('#info').prop("checked") && $('#info2').prop("checked"))
+			$(location).attr('href',"/TravelAgency/memberJoin.do");
+		else if($('#info').prop("checked"))
+			alert("투어회원 약관에 동의하셔야 가입이 진행됩니다");
+		else if($('#info2').prop("checked"))
+			alert("개인정보 수집 및 이용에 동의하셔야 가입이 진행됩니다");
+		else
+			alert("필수 동의사항에 동의하셔야 가입이 진행됩니다");
+	});
+});
+</script>
+
+
+<div style="margin:0 auto; margin-top: -80px; width: 60%;">
 	<p class="member_info">
 	<h2>&nbsp;회원약관</h2>
 
@@ -18,23 +34,28 @@
 		<h3 style="background-color: #B2EBF4;">&nbsp;*필수(선택) 동의사항</h3>
 		<table>
 			<tr>
-				<td><p class="in_check" style="font-weight: bold">
-						&nbsp;<input type="checkbox" name="info" value="Y">&nbsp;
-						개인정보 수집 및 이용에 대한 안내 &nbsp;<a href="#share1" class="member_step1"
+				<td>
+					<p class="in_check" style="font-weight: bold">
+						&nbsp; <input type="checkbox" id="info" value="Y">&nbsp;
+						개인정보 수집 및 이용에 대한 안내 &nbsp;&nbsp; <a href="#share1"
+							class="member_step1" style="font-weight: bold">내용보기</a>
+					</p>
+				</td>
+			<tr>
+				<td>
+					<p class="in_check" style="font-weight: bold">
+						&nbsp; <input type="checkbox" id="info2" value="Y">&nbsp;
+						투어회원 약관 안내 &nbsp; <a href="#share2" class="member_step2"
 							style="font-weight: bold">내용보기</a>
-					</p></td>
-				<td><p class="in_check" style="font-weight: bold">
-						&nbsp;<input type="checkbox" name="info2" value="Y">&nbsp;
-						투어회원 약관 안내 &nbsp;<a href="#share2" class="member_step2"
-							style="font-weight: bold">내용보기</a>
-					</p></td>
+					</p>
+				</td>
 			</tr>
 		</table>
 	</div>
 	<br>
 
 	<div class="member_step1" id="share1"
-		style="height: 400px; overflow: scroll; border: 1px solid blue;">
+		style="margin: 0; padding: 0; height: 400px; overflow: scroll; border: 1px solid blue;">
 		<h3 style="background-color: #B2EBF4;">&nbsp;*약관동의</h3>
 		<h3>&nbsp;개인정보 수집 및 이용안내(필수)</h3>
 		<h5>
@@ -46,20 +67,19 @@
 			연령확인, 만14세 미만 아동 개인정보 수집 시 법정 대리인 동의여부 확인, 분쟁조정을 위한 기록보존, 불만처리 등
 			민원처리, 고지사항 전달 등<br> 다. 이용자 편의 증진 및 신규상품, 서비스 개발을 위한 통계 / 분석 서비스
 			이용 통계기록과 접속/빈도/구매패턴 등의 분석을 통해 신규서비스 및 맞춤형 특화상품 개발, 고객마케팅 기획등 이용자
-			혜택/편의증진 서비스 개선/고도화에 활용<br>
-			<br> 2. 개인정보 수집 항목 및 보유 및 이용기간<br> 가. 회사는 적법한 절차와 법적 기준에
-			의거하여 고객의 개인정보를 수집하고 있으며, 고객의 서비스이용에 필요한 최소한의 정보만을 수집하고 있습니다. 정보통신망법과
-			개인정보보호법에 의거하여 수집, 이용을 제한하고 있습니다.<br> 나. 회사는 고객의 인권을 침해할 우려가 있는
-			민감한 개인정보항목(인종, 종교, 사상, 정치적 성향, 건강상태, 성생활정보 등)은 수집하지 않습니다. <br>
-			<br> 구분<br>개인정보 내역<br>용도<br>보유 및 이용기간<br>
-			<br> 필수정보 아이디(E-Mail), 비밀번호, 이름(실명), 암호화된 동일인 식별정보(CI), 생년월일,
-			성별, 주소(집/직장 선택), 휴대전화번호, 통신사명 회원 서비스 제공 및 본인 인증 서비스 해지 시 까지 단, 해지 시
-			상법 등 법령의 규정에 의하여 거래 관련 권리의무관계의 확인 등을 이유로 일정기간 보유해야 할 필요가 있을 경우에는
-			관련법령이 정한 기간 법정대리인의 성명, 관계, 연락처, 가족관계 증빙서류 만14세 미만 회원 서비스 가입 시 확인정보
-			성명, 연락처, 하나투어 마일리지클럽® 회원번호, 마일리지 비밀번호 마일리지 서비스 제공 선택정보 결혼여부, 결혼기념일,
-			배우자생일, 추천인 아이디 부가서비스, 맞춤서비스 제공 <br>
-			<br> 3. 동의를 거부할 권리 및 동의를 거부할 경우의 불이익 개인정보 주체자는 개인정보 수집, 이용에 대한
-			동의를 거부할 권리가 있습니다. 동의를 거부할 경우 회원가입이 불가함을 알려드립니다.
+			혜택/편의증진 서비스 개선/고도화에 활용<br> <br> 2. 개인정보 수집 항목 및 보유 및 이용기간<br>
+			가. 회사는 적법한 절차와 법적 기준에 의거하여 고객의 개인정보를 수집하고 있으며, 고객의 서비스이용에 필요한 최소한의
+			정보만을 수집하고 있습니다. 정보통신망법과 개인정보보호법에 의거하여 수집, 이용을 제한하고 있습니다.<br> 나.
+			회사는 고객의 인권을 침해할 우려가 있는 민감한 개인정보항목(인종, 종교, 사상, 정치적 성향, 건강상태, 성생활정보 등)은
+			수집하지 않습니다. <br> <br> 구분<br>개인정보 내역<br>용도<br>보유
+			및 이용기간<br> <br> 필수정보 아이디(E-Mail), 비밀번호, 이름(실명), 암호화된 동일인
+			식별정보(CI), 생년월일, 성별, 주소(집/직장 선택), 휴대전화번호, 통신사명 회원 서비스 제공 및 본인 인증 서비스
+			해지 시 까지 단, 해지 시 상법 등 법령의 규정에 의하여 거래 관련 권리의무관계의 확인 등을 이유로 일정기간 보유해야 할
+			필요가 있을 경우에는 관련법령이 정한 기간 법정대리인의 성명, 관계, 연락처, 가족관계 증빙서류 만14세 미만 회원 서비스
+			가입 시 확인정보 성명, 연락처, 하나투어 마일리지클럽® 회원번호, 마일리지 비밀번호 마일리지 서비스 제공 선택정보
+			결혼여부, 결혼기념일, 배우자생일, 추천인 아이디 부가서비스, 맞춤서비스 제공 <br> <br> 3.
+			동의를 거부할 권리 및 동의를 거부할 경우의 불이익 개인정보 주체자는 개인정보 수집, 이용에 대한 동의를 거부할 권리가
+			있습니다. 동의를 거부할 경우 회원가입이 불가함을 알려드립니다.
 		</h5>
 		<h5>
 			제1조(개인정보보호)<br> ① "회사"는 "정보통신망법" 등 관계 법령이 정하는 바에 따라 "회원"의 개인정보를
@@ -182,14 +202,10 @@
 	<br>
 
 	<div class="join_btn" style="text-align: center;">
-		<input type="button"
+		<input type="button" id="yes"
 			style="border: none; width: 80pt; height: 25pt; background-color: #36589C; color: #FFFFFF;"
-			value="네,동의합니다"
-			onclick="location.href='/TravelAgency/member/memberJoin.do'">&nbsp;&nbsp;
-		<input type="reset"
+			value="네, 동의합니다">&nbsp;&nbsp; <input type="reset"
 			style="border: none; width: 135pt; height: 25pt; background-color: #36589C; color: #FFFFFF;"
-			value="아니오,동의하지않습니다"
-			onclick="location.href='/TravelAgency/main/index.do'">
+			value="아니오, 동의하지 않습니다" onclick="location.href='/TravelAgency/index.do'">
 	</div>
-
-</section>
+</div>

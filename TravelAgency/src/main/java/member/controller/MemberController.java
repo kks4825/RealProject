@@ -27,4 +27,13 @@ public class MemberController {
 		
 		return mav;
 	}
+	
+	@RequestMapping(value="/joinConfirm.do")
+	public ModelAndView joinSuccess() {
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("display", "/member/joinConfirm.jsp");
+		mav.setViewName("/index/index");
+		
+		return mav;
+	}
 }

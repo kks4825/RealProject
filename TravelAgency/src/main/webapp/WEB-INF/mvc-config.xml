@@ -20,6 +20,10 @@
 	<mvc:resources mapping="/resources/**" location="/resources/js_kendo/" />
 	<mvc:resources mapping="/resources/**" location="/resources/js_main/" />
 	
+	<mvc:resources mapping="/image/**" location="/image/"/>
+	<mvc:resources mapping="/js/**" location="/image/"/>
+	<mvc:resources mapping="/css/**" location="/image/"/>
+	
 	
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 	        <property name="suffix" value=".jsp"/>
