@@ -4,7 +4,27 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>마이페이지-예약 확인</title>
+<title>마이페이지-기본정보변경</title>
+
+<script type="text/javascript">
+function zipcodeSearch(){
+	window.open("/TravelAgency/checkPost.do","","width=450 height=400 scrollbars=yes");
+}
+window.onload=function(){
+		
+	document.myBasicInfo.memGender['${memberDTO.getMemGender()}'].checked = true;
+	
+	document.myBasicInfo.memEmail0['${memberDTO.getMemEmail0()}'].checked = true;
+	
+	document.myBasicInfo.memMobile01.value="${memberDTO.getMemMobile01()}";
+	
+	document.myBasicInfo.contry['${memberDTO.getContry()}'].checked = true;
+}
+
+function checkModify(){
+		document.myBasicInfo.submit();
+}
+</script>
 <style type="text/css">
 body{margin:0px; padding:0px;}/*상위 스타일에 대한 원점 처리를 해 줍니다.*/
 h3{margin-bottom:10px; height:13px; padding-left:12px; font-size:14px; background:url('http://image1.hanatour.com/2010/images/mypage/ico_leave.gif') no-repeat 0 4px; color:#424242; letter-spacing:-1px;}
@@ -56,8 +76,10 @@ h3{margin-bottom:10px; height:13px; padding-left:12px; font-size:14px; backgroun
 .member_infomation_save{width:680px; height:30px; layout:fixed; text-align:center; border:1px solid gray; layout:fixed;position:relative; left : 23px; top:15px;}
 
 </style>
+
 </head>
 <body>
+<form name="myBasicInfo" method="post" action="/TravelAgency/myBasicInfoConfirm.do">
 <div class="t-wrap">
 <div class="tu">
 <div class="tbb">
@@ -93,133 +115,113 @@ h3{margin-bottom:10px; height:13px; padding-left:12px; font-size:14px; backgroun
 <div class="member_infomation_basis">
 	<h3>기본 정보 입력</h3>
 	<table cellspadding="0" cellspacing="0"> 
-		<tr><td colspan="5" width="700" bgcolor="cccccc"></td></tr>
-		<tr>
+		<tr><td colspan="5" width="700" height="2px" bgcolor="cccccc"></td></tr>
+		<tr height="30px">
 			<td align="center" width="100px" bgcolor="#EAEAEA">아 이 디&nbsp;<font color="red">*</font></td>
 	  		<td width="600">
-	  			&nbsp;&nbsp;power9994@naver.com
-	   			<input type="button" value="아이디 변경하기" onClick="idCheck()"><br>
-	  			&nbsp;&nbsp;-&nbsp;아이디를 변경 하기 위해서는 아이디와 e-mail이 동일 해야 합니다.  
-	   		</td> <!-- 중복검사 -->
+	  			&nbsp;&nbsp;${memberDTO.getMemId()}
+	  			<Input type="hidden" name="memId" value="${memberDTO.getMemId()}">
+	  		</td> 
 		</tr> 
-		<tr><td colspan="5" bgcolor="cccccc"></td></tr>
-		<tr height="45">
+		<tr><td colspan="5" height="1px" bgcolor="cccccc"></td></tr>
+		<tr height="30">
 	  		<td align="center" bgcolor="#EAEAEA">회 원 번 호&nbsp;<font color="red">*</font></td>
 	  		<td>
-	   			&nbsp;&nbsp;회원(12345)
-	   		</td> <!-- 비밀번호 문자와 숫자 혼합사용 체크 -->
+	   			&nbsp;&nbsp;${memberDTO.getMemSeq()}
+	   		</td>
 		</tr>
-	 	<tr><td colspan="5" bgcolor="cccccc"></td></tr>
+	 	<tr><td colspan="5" height="1px" bgcolor="cccccc"></td></tr>
 	 	<tr height="30">
 	 		<td align="center" bgcolor="#EAEAEA">이  름&nbsp;<font color="red">*</font></td>
 	 		<td>
-	 			&nbsp;&nbsp;전문근&nbsp;<input type="button" value="이름변경">
-	 		</td>
-	 	</tr>
-			<tr><td colspan="5" bgcolor="cccccc"></td></tr>
-		<tr height="30">
-			<td align="center" bgcolor="#EAEAEA">생 년 월 일&nbsp;<font color="red">*</font></td>
-			<td>
-				&nbsp;&nbsp;19930701/남성
+	 			&nbsp;&nbsp;${memberDTO.getMemName()}
 	 		</td>
 		</tr> 
-		<tr><td colspan="5" bgcolor="cccccc"></td></tr>
+		<tr><td colspan="5" height="1px" bgcolor="cccccc"></td></tr>
+		<tr height="30">
+			<td align="center" bgcolor="#EAEAEA">생년월일&nbsp;<font color="red">*</font></td>
+			<td>
+				&nbsp;&nbsp;<input type="text" name="memBirth01" value="${memberDTO.getMemBirth01()}" size="4" maxlength="4">
+				년 <input type="text" name="memBirth02" size="3" value="${memberDTO.getMemBirth02()}" maxlength="2">
+				월 <input type="text" name="memBirth03" size="3" value="${memberDTO.getMemBirth03()}" maxlength="2">
+				일</td>
+	  		</td>
+		</tr>
+		<tr><td colspan="5" height="1px" bgcolor="cccccc"></td></tr>
+		<tr height="30">
+			<td align="center" bgcolor="#EAEAEA">성  별&nbsp;<font color="red">*</font></td>
+			<td>
+				<input type="radio"	name="memGender" value="0">&nbsp;남자&nbsp; 
+				<input type="radio" name="memGender" value="1">&nbsp;여자
+	  		</td>
+		</tr>
+		
+		<tr><td colspan="5" height="1px" bgcolor="cccccc"></td></tr>
 		<tr height="30">
 			<td align="center" bgcolor="#EAEAEA">E - mail&nbsp;<font color="red">*</font></td>
 			<td>
-				&nbsp;&nbsp;<input type="text" name="memEmail" value="power9994@naver.com"><br/>
-				&nbsp;&nbsp;-&nbsp;아아디와 e-mail은 같아야 합니다.
+				&nbsp;&nbsp;<input type="text" name="memEmail" value="${memberDTO.getMemEmail()}">
 	  		</td>
 		</tr>
-		<tr><td colspan="5" bgcolor="cccccc"></td></tr>
+		<tr><td colspan="5" height="1px" bgcolor="cccccc"></td></tr>
 		<tr height="30">
 			<td align="center" bgcolor="#EAEAEA">메 일 수 신&nbsp;<font color="red">*</font></td>
 	  		<td>
-	   			&nbsp;&nbsp;<input type="radio" name="memEmail" value="mailYes" checked>수신동의&nbsp;
-	   			<input type="radio" name="memEmail" value="mailNo">수신거부
+	   			&nbsp;&nbsp;<input type="radio" name="memEmail0" value="0" checked>수신동의&nbsp;
+	   			<input type="radio" name="memEmail0" value="1">수신거부
 	  		</td> <!-- 이메일 검사 -->
 		</tr>
-		<tr><td colspan="5" bgcolor="cccccc"></td></tr>
+		<tr><td colspan="5" height="1px" bgcolor="cccccc"></td></tr>
 		<tr height="30">
 	 		<td align="center" bgcolor="#EAEAEA">우 편 번 호&nbsp;<font color="red">*</font></td>
 	  		<td>
-	  			&nbsp;&nbsp;<input type="text" name="memZipCode01" size="4" maxlength="3">-
-	  			<input type="text" name="memZipCode02" size="4" maxlength="3">
-	  			<input type="button" value="검색" onClick="zipcodeSearch()">
+	  			&nbsp;&nbsp;<input type="text" name="memZipCode" id="zip" value="${memberDTO.memZipCode}" size="7" readonly>
+				<input type="button" value="우편번호검색" onclick="javascript:zipcodeSearch()">
 	  		</td> <!-- 우편번호 검색  -->
 		</tr>
-		<tr><td colspan="5" bgcolor="cccccc"></td></tr>
+		<tr><td colspan="5" height="1px" bgcolor="cccccc"></td></tr>
 		<tr>
 			<td align="center" bgcolor="#EAEAEA">주 &nbsp;소&nbsp;<font color="red">*</font></td>
 	  		<td>
-	   			&nbsp;&nbsp;<input type="text" name="memAddr1" size="50"><br>
-	   			&nbsp;&nbsp;<input type="text" name="memAddr2" size="30">
+	   			&nbsp;&nbsp;<input type="text" name="memAddr1" id="address1" value="${memberDTO.memAddr1}" size="50" readonly><br>
+				&nbsp;&nbsp;<input type="text" name="memAddr2" id="address2" value="${memberDTO.memAddr2}" size="30">
 	  		</td>
 		</tr>
-		<tr><td colspan="5" bgcolor="cccccc"></td></tr>
+		<tr><td colspan="5" height="1px" bgcolor="cccccc"></td></tr>
 		<tr height="30">
 			<td align="center" bgcolor="#EAEAEA">핸 드 폰&nbsp;<font color="red">*</font></td>
 	  		<td>&nbsp;&nbsp;
-				LGT/010-5417-5012&nbsp;&nbsp;<input type="button" value="수정">
+				<select name="memMobile01">
+				<option value="010">010</option>
+				<option value="011">011</option>
+				<option value="017">017</option>
+				<option value="018">018</option>
+				</select>- <input type="text" name="memMobile02" value="${memberDTO.memMobile02}" size="5" maxlength="4">
+				- <input type="text" name="memMobile03" value="${memberDTO.memMobile03}" size="5" maxlength="4">&nbsp;&nbsp;
 	 		</td> <!-- 숫자만 입력가능 -->
 		</tr>
-		<tr><td colspan="5" bgcolor="cccccc"></td></tr>
+		<tr><td colspan="5" height="1px" bgcolor="cccccc"></td></tr>
 		<tr height="30">
 			<td align="center" bgcolor="#EAEAEA">관 심 나 라&nbsp;</td>
 	 		<td>&nbsp;
-	 			<input type="radio" name="contry" value="Europe">유럽&nbsp;
-	  			<input type="radio" name="contry" value="Southeast Asia">동남아&nbsp;
-	  			<input type="radio" name="contry" value="Asia">아시아&nbsp;
-	  			<input type="radio" name="contry" value="America">미주&nbsp;
-	  			<input type="radio" name="contry" value="China">중국/홍콩&nbsp;
-	 			<input type="radio" name="contry" value="Indo">인도&nbsp;
+	 			<input type="radio" name="contry" value="0">유럽&nbsp;
+	  			<input type="radio" name="contry" value="1">동남아&nbsp;
+	  			<input type="radio" name="contry" value="2">아시아&nbsp;
+	  			<input type="radio" name="contry" value="3">미주&nbsp;
+	  			<input type="radio" name="contry" value="4">중국/홍콩&nbsp;
+	 			<input type="radio" name="contry" value="5">인도&nbsp;
 	 		</td> <!-- 나라 2개 이상 선택 하도록  -->
 	 	</tr> 
-	 	<tr><td colspan="5" bgcolor="cccccc"></td></tr>
+	 	<tr><td colspan="5" height="2px" bgcolor="cccccc"></td></tr>
 	</table> 
 </div>
-
-<div class="additional_information">
-	<h3>부가 정보</h3>
-	<table cellspadding="0" cellspacing="0"> 
-		<tr><td colspan="5" width="700" bgcolor="cccccc"></td></tr>
-		<tr height="30">
-			<td align="center" width="100px" bgcolor="#EAEAEA">생 년 월 일</font></td>
-	  		<td width="600">
-	  			&nbsp;&nbsp;<input type="text" size="4">&nbsp년&nbsp
-				<input type="text" size="2">&nbsp월&nbsp
-				<input type="text" size="2">&nbsp일 
-				<input type="radio" name="birthday" value="양력">양력&nbsp;
-	  			<input type="radio" name="birthday" value="음력">음력&nbsp;
-	   		</td>
-		</tr> 
-		<tr><td colspan="5" bgcolor="cccccc"></td></tr>
-		<tr height="30">
-	  		<td align="center" bgcolor="#EAEAEA">결 혼 여 부</td>
-	  		<td>
-	   			&nbsp;&nbsp;<input type="radio" name="marriage" value="yes">예&nbsp;
-	  			<input type="radio" name="marriage" value="no">아니오&nbsp;
-	   		</td> 
-		</tr>
-	 	<tr><td colspan="5" bgcolor="cccccc"></td></tr>
-	 	<tr height="30">
-	 		<td align="center" bgcolor="#EAEAEA">결혼기념일</td>
-	 		<td>
-	  			&nbsp;&nbsp;<input type="text" size="4">&nbsp년&nbsp
-				<input type="text" size="2">&nbsp월&nbsp
-				<input type="text" size="2">&nbsp일 
-	 		</td>
-	 	</tr>
-		<tr><td colspan="5" bgcolor="cccccc"></td></tr>
-	</table>	
-	<div class="member_infomation_save">
-		<input type="button" value="저장하기" style="width:80px; height:30px;">
-		<input type="reset" value="다시하기" style="width:80px; height:30px;">
-	</div>
-</div>
-
+<div class="tcb1a1c">
+	<input type="button" value="기본정보 변경" onclick="javascript:checkModify()" style="width:120px;height:40px;" >
+	<input type="reset" value="다시작성" style="width:120px;height:40px;">
 </div>
 </div>
 </div>
+</div>
+</form>
 </body>
 </html>

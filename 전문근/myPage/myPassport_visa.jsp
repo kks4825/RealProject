@@ -58,6 +58,23 @@ h3{margin-bottom:10px; height:13px; padding-left:12px; font-size:14px; backgroun
 .visa_infomation_save{width:680px; height:30px; layout:fixed; text-align:right; border:1px solid gray; layout:fixed;position:relative; left : 23px; top:15px;}
 
 </style>
+
+<script type="text/javascript">
+	function mySubmit(index){
+		if(index==1){
+			document.passport_visa.action='/TravelAgency/passport_information.do';
+		}
+		if(index==2){
+			document.passport_visa.action='/TravelAgency/visa_information.do';
+		}
+		document.passport_visa.submit();
+	}
+	
+	window.onload=function(){
+		document.passport_visa.visaContry.value = '${memberDTO.visaContry}';
+
+	}
+</script>
 </head>
 <body>
 <div class="t-wrap">
@@ -91,46 +108,47 @@ h3{margin-bottom:10px; height:13px; padding-left:12px; font-size:14px; backgroun
 </li></br>
 </ul>
 </div>
+<form name="passport_visa" method="post">
 <div class="passport_visa">
 <div class="passport_infomation">
 	<h3>여권 정보</h3>
 	<table>
 		<tr><td colspan="5" width="700" bgcolor="cccccc"></td></tr>
 		<tr height="30">
-			<th width="120">&nbsp영문이름</th>
+			<th width="120">&nbsp;영문이름</th>
 			<td bgcolor="cccccc"></td>
-			<td>&nbsp&nbsp<input type="text">(성)
-				<input type="text">(이름)
+			<td>&nbsp;&nbsp;<input type="text" name="lastName" value="${memberDTO.lastName }">(성)
+				<input type="text" name="firstName" value="${memberDTO.firstName }">(이름)
 			</td>
 		</tr>
 		<tr><td colspan="5" bgcolor="cccccc"></td></tr>
 		<tr height="30">
-			<th width="120">&nbsp여권번호</th>
+			<th width="120">&nbsp;여권번호</th>
 			<td bgcolor="cccccc"></td>
-			<td>&nbsp&nbsp<input type="text"></td>
+			<td>&nbsp;&nbsp;<input type="text" name="passportNumber" value="${memberDTO.passportNumber }"></td>
 		</tr>
 		<tr><td colspan="5" bgcolor="cccccc"></td></tr>
 		<tr height="30">
-			<th width="120">&nbsp여권발급일</th>
+			<th width="120">&nbsp;여권발급일</th>
 			<td bgcolor="cccccc"></td>
-			<td>&nbsp&nbsp<input type="text" size="4">&nbsp년&nbsp
-				<input type="text" size="2">&nbsp월&nbsp
-				<input type="text" size="2">&nbsp일
+			<td>&nbsp;&nbsp;<input type="text" size="4" name="passportStartYear" value="${memberDTO.passportStartYear }">&nbsp;년&nbsp;
+				<input type="text" size="2" name="passportStartMonth" value="${memberDTO.passportStartMonth }">&nbsp;월&nbsp;
+				<input type="text" size="2" name="passportStartDay" value="${memberDTO.passportStartDay }">&nbsp;일
 			</td>
 		</tr>
 		<tr><td colspan="5" bgcolor="cccccc"></td></tr>
 		<tr height="30">
-			<th width="120">&nbsp여권만료일</th>
+			<th width="120">&nbsp;여권만료일</th>
 			<td bgcolor="cccccc"></td>
-			<td>&nbsp&nbsp<input type="text" size="4">&nbsp년&nbsp
-				<input type="text" size="2">&nbsp월&nbsp
-				<input type="text" size="2">&nbsp일
+			<td>&nbsp;&nbsp;<input type="text" size="4" name="passportEndYear" value="${memberDTO.passportEndYear }">&nbsp;년&nbsp;
+				<input type="text" size="2" name="passportEndMonth" value="${memberDTO.passportEndMonth }">&nbsp;월&nbsp;
+				<input type="text" size="2" name="passportEndDay" value="${memberDTO.passportEndDay }">&nbsp;일
 			</td>
 		</tr>
 		<tr><td colspan="5" bgcolor="cccccc"></td></tr>			
 	</table>
 	<div class="passport_infomation_save">
-		<input type="button" value="저장" style="width:80px; height:30px;">
+		<input type="button" value="저장" onclick="javascript:mySubmit(1)" style="width:80px; height:30px;">
 	</div>
 </div>
 
@@ -139,17 +157,17 @@ h3{margin-bottom:10px; height:13px; padding-left:12px; font-size:14px; backgroun
 		<table>
 		<tr><td colspan="5" width="700" bgcolor="cccccc"></td></tr>
 		<tr height="30">
-			<th width="120">&nbsp영문이름</th>
+			<th width="120">&nbsp;영문이름</th>
 			<td bgcolor="cccccc"/>
-			<td>&nbsp&nbsp<input type="hidden" value=" " style="width:60px;">
-				<input type="hidden" value=" " style="width:90px;"></td>
+			<td>&nbsp;&nbsp;
+			
 		</tr>
 		<tr><td colspan="5" bgcolor="cccccc"></td></tr>
 		<tr height="30">
-			<th width="120">&nbsp비자국가</th>
+			<th width="120">&nbsp;비자국가</th>
 			<td bgcolor="cccccc"/>
-			<td>&nbsp
-				<select>
+			<td>&nbsp;
+				<select name="visaContry">
 					<option value="">국가선택</option>
 					<option value="가나">가나</option>
 					<option value="가봉">가봉</option>
@@ -163,25 +181,27 @@ h3{margin-bottom:10px; height:13px; padding-left:12px; font-size:14px; backgroun
 		</tr>
 		<tr><td colspan="5" bgcolor="cccccc"></td></tr>
 		<tr height="30">
-			<th width="120">&nbsp유효기간</th>
+			<th width="120">&nbsp;유효기간</th>
 			<td bgcolor="cccccc"/>
-			<td>&nbsp&nbsp<input type="text" size="4">&nbsp년&nbsp
-				<input type="text" size="2">&nbsp월&nbsp
-				<input type="text" size="2">&nbsp일~
-				<input type="text" size="4">&nbsp년&nbsp
-				<input type="text" size="2">&nbsp월&nbsp
-				<input type="text" size="2">&nbsp일
+			<td>&nbsp;&nbsp;<input type="text" size="4" name="visaStartYear" value="${memberDTO.visaStartYear }">&nbsp;년&nbsp;
+				<input type="text" size="2" name="visaStartMonth" value="${memberDTO.visaStartMonth }">&nbsp;월&nbsp;
+				<input type="text" size="2" name="visaStartDay" value="${memberDTO.visaStartDay }">&nbsp;일~
+				<input type="text" size="4" name="visaEndYear" value="${memberDTO.visaEndYear }">&nbsp;년&nbsp;
+				<input type="text" size="2" name="visaEndMonth" value="${memberDTO.visaEndMonth }">&nbsp;월&nbsp;
+				<input type="text" size="2" name="visaEndDay" value="${memberDTO.visaEndDay }">&nbsp;일
 				</td>
 		</tr>
 		<tr><td colspan="5" bgcolor="cccccc"></td></tr>			
 	</table>
 	<div class="visa_infomation_save">
-		<input type="button" value="저장" style="width:80px; height:30px;">
+		<input type="button" value="저장" onclick="javascript:mySubmit(2)" style="width:80px; height:30px;">
 	</div>
 </div>
+</div>
+</form>
 
 </div>
 </div>
-</div>
+
 </body>
 </html>
