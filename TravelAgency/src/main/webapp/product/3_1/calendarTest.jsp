@@ -1,29 +1,29 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <style>html { font-size: 14px; font-family: Arial, Helvetica, sans-serif; }</style>
-    <title></title>
-    <link rel="stylesheet" href="../styles_kendo/kendo.common-material.min.css" />
-    <link rel="stylesheet" href="../styles_kendo/kendo.material.min.css" />
-    <link rel="stylesheet" href="../styles_kendo/kendo.material.mobile.min.css" />
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 
-    <script src="../js_kendo/jquery.min.js"></script>
-    <script src="../js_kendo/kendo.all.min.js"></script>
-</head>
-<body>
+<style>
+html {
+	font-size: 14px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+</style>
 
-        <div id="example">
-				<div class="demo-section k-content" style="text-align: center;">
-             <div id="calendar" style="width:450px;"></div>
-        </div>
-            <script>
-                $(document).ready(function() {
-                    // create Calendar from div HTML element
-                    $("#calendar").kendoCalendar();
-                });
-            </script>
-        </div>
+<link rel="stylesheet" href="/TravelAgency/styles_kendo/kendo.common-material.min.css" type="text/css" />
+<link rel="stylesheet" href="/TravelAgency/styles_kendo/kendo.material.min.css" type="text/css" />
+<link rel="stylesheet"
+	href="/TravelAgency/styles_kendo/kendo.material.mobile.min.css" type="text/css" />
 
+<script src="/TravelAgency/js_kendo/jquery.min.js" type="text/javascript"></script>
+<script src="/TravelAgency/js_kendo/kendo.all.min.js" type="text/javascript"></script>
 
-</body>
-</html>
+<div id="example">
+	<div class="demo-section k-content" style="text-align: center;">
+		<div id="calendar" style="width: 450px;"></div>
+	</div>
+	<script>
+         $(document).ready(function() {
+	         // create Calendar from div HTML element
+             $("#calendar").kendoCalendar();
+         });
+    </script>
+</div>

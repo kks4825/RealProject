@@ -96,12 +96,12 @@
 		font-style: italic;
 	}
 	
-	p, ul, ol, dl, table
+	p, ul, ol, dl
 	{
 		margin-bottom: 1em;
 	}
 
-	header
+	`
 	{
 		margin-bottom: 1.6em;
 	}
@@ -771,7 +771,7 @@
 	#header
 	{
 		position: relative;
-		background: url(../images/header.jpg) no-repeat bottom center;
+		background: url(../image/main/header.jpg) no-repeat bottom center;
 		background-attachment: fixed;
 		background-size: cover;
 		text-align: center;
@@ -986,7 +986,7 @@
 	{
 		position: relative;
 		text-align: center;
-		background: url(../images/header.jpg) no-repeat center center;
+		background: url(../image/main/header.jpg) no-repeat center center;
 		background-attachment: fixed;
 		background-size: cover;
 	}

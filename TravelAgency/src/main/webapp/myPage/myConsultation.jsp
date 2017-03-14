@@ -14,7 +14,7 @@ body{margin:0px; padding:0px;}/*상위 스타일에 대한 원점 처리를 해 
 
 .tu{width:1200px; height:1200px; margin:auto; border:1px solid red; position:relative;}/*가상의 바디*/
 
-.tba,.tbb,.tbc,.tbd,.tca,.tcb1,.tcb2,.tcb3,.tcb4,.tcb5{border:1px solid red; text-align:center;layout:fixed;}
+.tba,.tbb,.myConsultation_tbc,.tbd,.tca,.myConsultation_tcb1,.myConsultation_tcb2,.myConsultation_tcb3,.myConsultation_tcb4,.myConsultation_tcb5{border:1px solid red; text-align:center;layout:fixed;}
 
 .tbb li a{text-decoration:none;}
 
@@ -24,7 +24,7 @@ body{margin:0px; padding:0px;}/*상위 스타일에 대한 원점 처리를 해 
 
 .tbb{background-color:none;width:200px; height:1000px; float:left; }
 
-.tbc{background-color:none;width:996px; height:1000px; display:inline-block;}
+.myConsultation_tbc{background-color:none;width:996px; height:1000px; display:inline-block;}
 
 .tbd{background-color:none;width:1198px; height:200px; float:left; clear:both;margin-top:0px; }/*가로폭이 340픽셀 이상인 기기에서는 바디부의 우측으로 배열이 될수 있기 때문에  clear:both;속성을 줍니다.*/
 
@@ -44,7 +44,7 @@ body{margin:0px; padding:0px;}/*상위 스타일에 대한 원점 처리를 해 
 
 .tbb li li a:hover{background-color:black;width:110px; height:30px; margin:0px; border-radius:0.2em; display:block;}
 
-.tcb5{background-color:none;width:996px; height:230px; padding-top:10px; layout:fixed; margin-bottom:0px;}
+.myConsultation_tcb5{background-color:none;width:996px; height:230px; padding-top:10px; layout:fixed; margin-bottom:0px;}
 
 </style>
 </head>
@@ -80,8 +80,8 @@ body{margin:0px; padding:0px;}/*상위 스타일에 대한 원점 처리를 해 
 					</li></br>
 				</ul>
 			</div>
-			<div class="tbc">
-				<div class="tcb5"><font style="line-height:40px;"><b>나의 상담문의</b></font>
+			<div class="myConsultation_tbc">
+				<div class="myConsultation_tcb5"><font style="line-height:40px;"><b>나의 상담문의</b></font>
 					<table>
 						<tr>
 							<td colspan="3" bgcolor="#607d8b"></td>

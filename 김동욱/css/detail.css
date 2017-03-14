@@ -1,9 +1,10 @@
-@CHARSET "UTF-8";
+﻿@CHARSET "UTF-8";
 
 #all {
 	margin: 0 auto;
 	width: 1000px;
 	height: auto;
+	margin-top:-100px;
 }
 
 #deco {
@@ -63,12 +64,11 @@
 
 #postscript {
 	margin: 0 auto;
-	margin-top: 30px;
 	width: 900px;
 	height: auto;
 }
 
-ul {
+.tabs_item {
 	padding: 0;
 	margin: 0;
 	height: 100%;
@@ -76,7 +76,7 @@ ul {
 }
 
 /* nav tag */
-li {
+.items {
 	display: block; /* 세로나열을 가로나열로 변경 */
 	border-left : 1px solid #999;
 	/* 각 메뉴의 왼쪽에 "|" 표시(분류 표시) */
@@ -90,7 +90,7 @@ li {
 	border-left: 1px solid #999;
 }
 
-ul li:first-child {
+.tabs_item .items:first-child {
 	border-left: none;
 } /* 메뉴 분류중 제일 왼쪽의 "|"는 삭제 */
 
