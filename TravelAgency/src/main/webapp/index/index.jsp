@@ -3,68 +3,84 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE HTML>
-<!--
-	Linear by TEMPLATED
-    templated.co @templatedco
-    Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
--->
+
 <html>
 <head>
-<title>Linear by TEMPLATED</title>
-<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<meta name="description" content="" />
-<meta name="keywords" content="" />
-<script src="js/jquery.min.js"></script>
-<link
-	href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,700,500,900'
-	rel='stylesheet' type='text/css'>
-<script src="js/main/skel.min.js" /></script>
-<script src="js/main/skel-panels.min.js"></script>
-<script src="js/main/init.js"></script>
-<noscript>
-	<link href="<c:url value="css/skel-noscript.css" />" rel="stylesheet">
-	<link href="<c:url value="css/style.css" />" rel="stylesheet">
-	<link href="<c:url value="css/style-desktop.css" />" rel="stylesheet">
-</noscript>
+<title>TravelAgency</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script src="js_bt/bootstrap.min.js"></script>
-<style>
-	img {
-		height: 300px;
-	}
-</style>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
 	<!-- Header -->
-	<div id="header" class="cont">
-		<div id="nav-wrapper">
-			<!-- Nav -->
-			<nav id="nav">
-				<ul>
-					<li class="active"><a href="/TravelAgency/index.do">Homepage</a></li>
-					<li><a href="/TravelAgency/joinAgree.do">Join</a></li>
-					<li><a href="/TravelAgency/packageView.do">Packages</a></li>
-					<li><a href="#">Search</a></li>
-					<li><a href="#">Contact Us</a></li>
+	<nav class="navbar navbar-inverse">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="/TravelAgency/index.do">TravelAgency</a>
+			</div>
+			<ul class="nav navbar-nav">
+				<li class="dropdown">
+					<a class="dropdown-toggle" data-toggle="dropdown" href="">
+						Contact Us
+					</a>
+					<ul class="dropdown-menu">
+						<li><a href="#">공지사항</a></li>
+						<li><a href="#">회원게시판</a></li>
+						<li><a href="#">FnA</a></li>
+					</ul>
+				</li>
+				<li class="dropdown">
+					<a class="dropdown-toggle" data-toggle="dropdown" href="">
+						Packages <span class="caret"></span>
+					</a>
+					<ul class="dropdown-menu">
+						<li><a href="/TravelAgency/packageView.do">유럽</a></li>
+						<li><a href="#">동남아</a></li>
+						<li><a href="#">미주</a></li>
+					</ul></li>
+				<li><a href="#">Page 2</a></li>
+			</ul>
+			<c:if test="${sessionScope.memId == null }">
+				<ul class="nav navbar-nav navbar-right">
 					<li>
-						<!-- SearchBar -->
-						<div style="display: inline-block;">
-							<input type="text" class="form-control" placeholder="Search"
-								style="width: 410px;">
-						</div>
-						<div style="display: inline-block">
-							<span class="glyphicon glyphicon-search" style="cursor: pointer;"></span>
-						</div>
+						<a href="/TravelAgency/joinAgree.do">
+							<span class="glyphicon glyphicon-user"></span> 
+							Sign Up
+						</a>
+					</li>
+					<li>
+						<a href="/TravelAgency/loginForm.do"><span class="glyphicon glyphicon-log-in"></span>
+							Login
+						</a>
 					</li>
 				</ul>
-			</nav>
+			</c:if>
+			<c:if test="${sessionScope.memId != null }">
+				<ul class="nav navbar-nav navbar-right">
+					<li>
+						<a href="/TravelAgency/mypage1AfterInfoChange.do">
+							<span class="glyphicon glyphicon-home"></span> 
+							myPage
+						</a>
+					</li>
+					<li>
+						<a href="/TravelAgency/logout.do"><span class="glyphicon glyphicon-log-out"></span>
+							Logout
+						</a>
+					</li>
+				</ul>
+			</c:if>
 		</div>
-	</div>
+	</nav>
 
 	<!-- Main -->
 	<div id="main">
-		<jsp:include page="${display}"/>
+		<jsp:include page="${display}" />
 	</div>
 </body>
 </html>

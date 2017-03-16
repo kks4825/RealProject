@@ -18,7 +18,7 @@ html {
 
 <div id="example">
 	<div class="demo-section k-content" style="text-align: center;">
-		<div id="calendar" style="width: 450px;"></div>
+		<div id="calendar" style="width:450px;"></div>
 	</div>
 	<script>
          $(document).ready(function() {

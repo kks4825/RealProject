@@ -112,6 +112,6 @@
 			</div>
 		</div>
 		<input type="button" name="perchase" value="결 제 하 기"
-			style="font-size: 22px; width: 150px; float: right;">
+			style="font-size: 22px; width: 150px; float: right;" onclick="location.href='/TravelAgency/payment.do'">
 	</div>
 </div>

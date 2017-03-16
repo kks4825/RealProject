@@ -93,6 +93,7 @@
 
 .tabs_item .items:first-child {
 	border-left: none;
+	background-color: #353535;
 } /* 메뉴 분류중 제일 왼쪽의 "|"는 삭제 */
 
 a {
@@ -110,8 +111,4 @@ div.tab_content {
 
 #content1 {
 	display: block;
-}
-
-td {
-	
 }

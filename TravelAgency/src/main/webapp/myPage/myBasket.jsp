@@ -1,20 +1,60 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>마이페이지-나의 장바구니</title>
+    
+<link rel="stylesheet" href="css/myPage/myBasket.css?ver=1">
+
+	<div class="t-wrap">
+		<div class="tu">
+			<jsp:include page="sideMenuBar.jsp" />
+			<div class="tbc">
+				<div class="tcb5"><font style="line-height:40px;"><b>나의 장바구니</b></font>
+					<table>
+						<tr>
+							<td colspan="5" height="2px" bgcolor="#607d8b"></td>
+						</tr>
+						<tr>
+							<th width="460" height="40" style="text-align:center;">상품명</th>
+							<th width="145">출발일/귀국일</th>
+							<th width="105">인원</th>
+							<th width="145">상품가</th>
+							<th width="115">예약하기</th>
+		
+						</tr>
+						<tr>
+							<td colspan="5" height="2px" bgcolor="#607d8b">
+							</td>
+						</tr>
+						<tr>
+							<td colspan="5" ><br><br>장바구니 내역이 없습니다.<br><br><br><br>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="5" height="2px" bgcolor="#607d8b">
+							</td></tr>
+						<tr>
+							<td colspan="5" height="2px" bgcolor="#607d8b">
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			<div class="tbd">d
+			</div>
+		</div>
+	</div>
+
+
+
+<%-- <%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 
 <style>
-
-body{margin:0px; padding:0px;}/*상위 스타일에 대한 원점 처리를 해 줍니다.*/
 
 .t-wrap{width:1200px; height:1200px;border:1px solid red;}/*가상의 홈페이지 공간*/
 
 .tu{width:1200px; height:1200px; margin:auto; border:1px solid red; position:relative;}/*가상의 바디*/
 
-.tba,.tbb,.myBasket_tbc,.tbd,.tca,.tcb1,.tcb2,.tcb3,.tcb4,.tcb5{border:1px solid red; text-align:center;layout:fixed;}
+.tba,.tbb,.tbc,.tbd,.tca,.tcb1,.tcb2,.tcb3,.tcb4,.tcb5{border:1px solid red; text-align:center;layout:fixed;}
 
 .tbb li a{text-decoration:none;}
 
@@ -24,7 +64,7 @@ body{margin:0px; padding:0px;}/*상위 스타일에 대한 원점 처리를 해 
 
 .tbb{background-color:none;width:200px; height:1000px; float:left; }
 
-.myBasket_tbc{background-color:none;width:996px; height:1000px; display:inline-block;}
+.tbc{background-color:none;width:996px; height:1000px; display:inline-block;}
 
 .tbd{background-color:none;width:1198px; height:200px; float:left; clear:both;margin-top:0px; }/*가로폭이 340픽셀 이상인 기기에서는 바디부의 우측으로 배열이 될수 있기 때문에  clear:both;속성을 줍니다.*/
 
@@ -44,11 +84,9 @@ body{margin:0px; padding:0px;}/*상위 스타일에 대한 원점 처리를 해 
 
 .tbb li li a:hover{background-color:black;width:110px; height:30px; margin:0px; border-radius:0.2em; display:block;}
 
-.myBasket_tcb5{background-color:none;width:996px; height:230px; padding-top:10px; layout:fixed; margin-bottom:0px;}
+.tcb5{background-color:none;width:996px; height:230px; padding-top:10px; layout:fixed; margin-bottom:0px;}
 
 </style>
-</head>
-<body>
 	<div class="t-wrap">
 		<div class="tu">
 			<div class="tbb">
@@ -80,8 +118,8 @@ body{margin:0px; padding:0px;}/*상위 스타일에 대한 원점 처리를 해 
 					</li></br>
 				</ul>
 			</div>
-			<div class="myBasket_tbc">
-				<div class="myBasket_tcb5"><font style="line-height:40px;"><b>나의 장바구니</b></font>
+			<div class="tbc">
+				<div class="tcb5"><font style="line-height:40px;"><b>나의 장바구니</b></font>
 					<table>
 						<tr>
 							<td colspan="5" bgcolor="#607d8b"></td>
@@ -115,6 +153,4 @@ body{margin:0px; padding:0px;}/*상위 스타일에 대한 원점 처리를 해 
 			<div class="tbd">d
 			</div>
 		</div>
-	</div>
-</body>
-</html>
+	</div> --%>
