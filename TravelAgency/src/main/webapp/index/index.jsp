@@ -26,6 +26,16 @@
 			<ul class="nav navbar-nav">
 				<li class="dropdown">
 					<a class="dropdown-toggle" data-toggle="dropdown" href="">
+						Packages
+					</a>
+					<ul class="dropdown-menu">
+						<li><a href="/TravelAgency/packageView.do">유럽</a></li>
+						<li><a href="#">동남아</a></li>
+						<li><a href="#">미주</a></li>
+					</ul>
+				</li>
+				<li class="dropdown">
+					<a class="dropdown-toggle" data-toggle="dropdown" href="">
 						Contact Us
 					</a>
 					<ul class="dropdown-menu">
@@ -34,16 +44,6 @@
 						<li><a href="#">FnA</a></li>
 					</ul>
 				</li>
-				<li class="dropdown">
-					<a class="dropdown-toggle" data-toggle="dropdown" href="">
-						Packages <span class="caret"></span>
-					</a>
-					<ul class="dropdown-menu">
-						<li><a href="/TravelAgency/packageView.do">유럽</a></li>
-						<li><a href="#">동남아</a></li>
-						<li><a href="#">미주</a></li>
-					</ul></li>
-				<li><a href="#">Page 2</a></li>
 			</ul>
 			<c:if test="${sessionScope.memId == null }">
 				<ul class="nav navbar-nav navbar-right">
@@ -63,7 +63,7 @@
 			<c:if test="${sessionScope.memId != null }">
 				<ul class="nav navbar-nav navbar-right">
 					<li>
-						<a href="/TravelAgency/mypage1AfterInfoChange.do">
+						<a href="/TravelAgency/myPage1.do">
 							<span class="glyphicon glyphicon-home"></span> 
 							myPage
 						</a>

@@ -9,7 +9,7 @@
 			<jsp:include page="sideMenuBar.jsp" />
 			<div class="tbc">
 				<div class="tcb1">
-					<font size=5 style="line-height: 40px;">&nbsp; &nbsp; <b><u>예약 확인</u></b></font>
+					<font size=5 style="line-height: 40px;">&nbsp; &nbsp; <b>예약 확인</b></font>
 					<div class="tcb1a">
 						<pre>[안내]  
 1. 예약코드를 클릭하시면 예약상세 페이지 확인이 가능하시며, 개별상품별 결제가 가능합니다. 
@@ -31,7 +31,8 @@
 										<option value="2013">2013</option>
 										<option value="2014">2014</option>
 										<option value="2015">2015</option>
-										<option value="2016" selected="selected">2016</option>
+										<option value="2016">2016</option>
+										<option value="2017" selected="selected">2017</option>
 								</select>년&nbsp; 
 								<select name="month">
 										<option value="1" selected="selected">1</option>
@@ -85,7 +86,8 @@
 										<option value="2013">2013</option>
 										<option value="2014">2014</option>
 										<option value="2015">2015</option>
-										<option value="2016" selected="selected">2016</option>
+										<option value="2016">2016</option>
+										<option value="2017" selected="selected">2017</option>
 								</select>년 &nbsp; 
 								<select name="month">
 										<option value="1" selected="selected">1</option>
@@ -148,15 +150,13 @@
 							<td colspan="7" bgcolor="#607d8b"></td>
 						</tr>
 						<tr>
-
-							<th width="130" height="40">예약날짜/<br>예약코드/결제
-							</th>
-							<th width="300">상품명</th>
-							<th width="130">총 결제금액</th>
-							<th width="100">인원</th>
-							<th width="130">출발일/귀국일</th>
-							<th width="100">예약상태</th>
-							<th width="100">상품평</th>
+							<td width="130" height="40" style="text-align:center;">예약날짜/<br>예약코드/결제</td>
+							<td width="300" style="text-align:center;">상품명</td>
+							<td width="130" style="text-align:center;">총 결제금액</td>
+							<td width="100" style="text-align:center;">인원</td>
+							<td width="130" style="text-align:center;">출발일/귀국일</td>
+							<td width="100" style="text-align:center;">예약상태</td>
+							<td width="100" style="text-align:center;">상품평</td>
 						</tr>
 						<tr>
 							<td colspan="7" bgcolor="#607d8b"></td>
@@ -201,15 +201,12 @@
 							<td colspan="6" bgcolor="#607d8b"></td>
 						</tr>
 						<tr>
-
-							<th width="145" height="40">예약날짜/<br>예약코드
-							</th>
-							<th width="315">상품명</th>
-							<th width="145">총 결제금액</th>
-							<th width="105">인원</th>
-							<th width="145">출발일/귀국일</th>
-							<th width="115">예약상태</th>
-
+							<td width="145" height="40" style="text-align:center;">예약날짜/<br>예약코드</td>
+							<td width="315" style="text-align:center;">상품명</td>
+							<td width="145" style="text-align:center;">총 결제금액</td>
+							<td width="105" style="text-align:center;">인원</td>
+							<td width="145" style="text-align:center;">출발일/귀국일</td>
+							<td width="115" style="text-align:center;">예약상태</td>
 						</tr>
 						<tr>
 							<td colspan="6" bgcolor="#607d8b"></td>

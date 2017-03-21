@@ -12,6 +12,7 @@ public class MainController {
 	@RequestMapping(value="/index.do", method=RequestMethod.GET)
 	public ModelAndView index() {
 		ModelAndView mav = new ModelAndView();
+		
 		mav.addObject("display", "/index/main.jsp");
 		mav.setViewName("/index/index");
 		

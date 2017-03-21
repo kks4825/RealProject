@@ -16,7 +16,6 @@ function getUserData() {
         $("#gender").text("성별 : "+response.gender);
         $("#birthday").text("생년월일 : "+response.birthday);
         $("#id").text("아이디 : "+response.id);
-        alert("aa");
     });
 }
 /* ======================= */
@@ -37,9 +36,10 @@ function getUserData() {
         if (response.status === 'connected') {
             //user is authorized
             //document.getElementById('loginBtn').style.display = 'none';
-            getUserData();            
+            getUserData();
+            $(location).attr('href','/TravelAgency/login.do');
         } else {
-            //user is not authorized
+            alert("이메일 또는 비밀번호가 일치하지 않습니다");
         }
   /* =============================== */
 
@@ -49,6 +49,8 @@ function getUserData() {
      js = d.createElement(s); js.id = id;
      js.src = "//connect.facebook.net/ko_KR/sdk.js";
      fjs.parentNode.insertBefore(js, fjs);
+     sessionStorage.setItem('facebookUserData', getUserData());
+     location.href="/TravelAgency/login.do";
    }(document, 'script', 'facebook-jssdk'));
 </script>
 
@@ -60,6 +62,9 @@ function getUserData() {
 	  js = d.createElement(s); js.id = id;
 	  js.src = "//connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v2.8&appId=758376737660632";
 	  fjs.parentNode.insertBefore(js, fjs);
+	  
+	  sessionStorage.setItem('facebookUserData', getUserData());
+      location.href="/TravelAgency/login.do";
 	}(document, 'script', 'facebook-jssdk'));
 	
 	$(document).ready(function(){
@@ -86,21 +91,19 @@ function getUserData() {
 
 		<H2>Login</H2><br />
 
-		<div id="login-box-name" style="margin-top: 20px;">Email:</div>
+		<div id="login-box-name" style="margin-top: 20px;">Id:</div>
 		<div id="login-box-field" style="margin-top: 20px;">
 			<input id="id" name="id" class="form-login" title="Username" value=""
 				size="30" maxlength="2048" />
 		</div>
 		<div id="login-box-name">Password:</div>
 		<div id="login-box-field">
-
-			<input id="pwd" name="pwd" type="password" class="form-login" title="Password"
-				value="" size="30" maxlength="2048" />
+			<input id="pwd" name="pwd" type="password" class="form-login" title="Password" value="" size="30" maxlength="1024" />
 		</div>
 		<br /> 
 		<span class="login-box-options">
-			<input type="checkbox" name="1" value="1"> Remember Me 
-			<a href="#"	style="margin-left: 30px;">Forgot password?</a>
+			<a href="/TravelAgency/idFind.do" style="margin-left:30px;">아이디 찾기</a>
+			<a href="/TravelAgency/pwdFind.do" style="margin-left:30px;">비밀번호 찾기</a>
 		</span> <br><br> 
 			<a href="#" id="login">
 				<img src="/TravelAgency/image/member/login-btn.png"	style="margin-left: 90px; width: 103px; height: 42px;" />

@@ -26,4 +26,8 @@ public interface MemberDAO {
 	public MemberDTO login(String id, String pwd);
 
 	public String pwdCheck(String id, String pwd);
+
+	public void pwdChange(String memId, String newPwd);
+
+	public void leaveSuccess(Map<String, String> map);
 }

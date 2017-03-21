@@ -33,3 +33,13 @@ visaEndYear varchar2(6) default null,
 visaEndMonth varchar2(6) default null,
 visaEndDay varchar2(6) default null
 );
+
+create table newzipcode (
+zipcode varchar2(50),
+sido varchar2(50),
+sigungu varchar2(50),
+yubmyundong varchar2(50),
+ri varchar2(50),
+roadname varchar2(100),
+buildingname varchar2(100)
+);

@@ -25,8 +25,8 @@ import member.dao.MemberDAO;
 public class MemberController {
 	@Autowired
 	private MemberDAO memberDAO;
-	
-	//회원가입시작
+
+	// 회원가입시작
 	@RequestMapping(value = "/joinAgree.do", method = RequestMethod.GET)
 	public ModelAndView joinAgree() {
 		ModelAndView mav = new ModelAndView();
@@ -44,7 +44,7 @@ public class MemberController {
 
 		return mav;
 	}
-	
+
 	@RequestMapping(value = "/checkPost.do", method = RequestMethod.GET)
 	public String checkPost() {
 		return "/member/checkPost";
@@ -67,7 +67,7 @@ public class MemberController {
 		model.addAttribute("list", list);
 		return "/member/checkPost";
 	}
-	
+
 	private boolean isDataEmpty(String sido, String sigungu, String roadname) {
 		return sido != "" && sigungu != "" && roadname != "";
 	}
@@ -75,34 +75,31 @@ public class MemberController {
 	private boolean isDataNull(String sido, String sigungu, String roadname) {
 		return sido != null && sigungu != null && roadname != null;
 	}
-	
+
 	@RequestMapping(value = "/signUp.do", method = RequestMethod.POST)
 	public String signUp(@ModelAttribute MemberDTO memberDTO, Model model, HttpSession session) {
 		int su = memberDAO.signUp(memberDTO);
-		
+
 		model.addAttribute("display", "/member/joinConfirm.jsp");
 		session.setAttribute("id", memberDTO.getMemId());
-			
+
 		return "/index/index";
 	}
-	
+
 	// 아이디 중복확인
-		@RequestMapping(value = "/idCheck", method = RequestMethod.GET)
-		public ModelAndView checkId(@RequestParam String memId) {
-			// DB
-			boolean exist = memberDAO.isExistId(memId);
+	@RequestMapping(value = "/idCheck", method = RequestMethod.GET)
+	public ModelAndView checkId(@RequestParam String memId) {
+		// DB
+		boolean exist = memberDAO.isExistId(memId);
+		ModelAndView mav = new ModelAndView();
 
-			ModelAndView mav = new ModelAndView();
-
-			if (exist)
-				mav.setViewName("/member/checkIdFail"); // 사용 불가능
-			else
-				mav.setViewName("/member/checkIdOk"); // 가능
-
-			mav.addObject("memId", memId);
-
-			return mav;
-		}
+		if (exist)
+			mav.setViewName("/member/checkIdFail"); // 사용 불가능
+		else
+			mav.setViewName("/member/checkIdOk"); // 가능
+		mav.addObject("memId", memId);
+		return mav;
+	}
 
 	@RequestMapping(value = "/loginForm.do")
 	public ModelAndView loginForm() {
@@ -113,17 +110,25 @@ public class MemberController {
 	}
 
 	@RequestMapping(value = "/login.do", method = RequestMethod.POST)
-	public ModelAndView login(@RequestParam String id, @RequestParam String pwd, HttpSession session) {
+	public ModelAndView login(@RequestParam(required=false) String id,
+							  @RequestParam(required=false) String pwd,
+							  HttpSession session) {
 		ModelAndView mav = new ModelAndView();
-
-		MemberDTO memberDTO = memberDAO.login(id, pwd);
+		
+		MemberDTO memberDTO = null;
+		
+		if(id != null && pwd != null){
+			memberDTO = memberDAO.login(id, pwd);
+		} else if(session.getAttribute("facebookUserData") != null) {
+			mav.addObject("display", "/member/login.jsp");
+		}
 
 		if (memberDTO != null) {
 			session.setAttribute("memName", memberDTO.getMemName());
 			session.setAttribute("memId", memberDTO.getMemId());
 			session.setAttribute("memberDTO", memberDTO);
 
-			session.setMaxInactiveInterval(60 * 10);
+			session.setMaxInactiveInterval(60 * 30);
 
 			mav.addObject("display", "/member/login.jsp");
 		} else {
@@ -146,17 +151,29 @@ public class MemberController {
 		return mav;
 	}
 
-	
+	// 마이페이지 시작
+	// 예약확인
+	@RequestMapping(value = "/myPage1.do")
+	public ModelAndView myPage1() {
+		ModelAndView mav = new ModelAndView();
 
-	//마이페이지 시작
-	//여권,비자 정보창
-	@RequestMapping(value = "/myPassport_visa.do")
+		mav.addObject("display", "/myPage/myPage1.jsp");
+		mav.setViewName("/index/index");
+
+		return mav;
+	}
+
+	// 여권,비자 정보창
+	@RequestMapping(value = "/myPassport.do")
 	public ModelAndView myPassport_visa(HttpSession session) {
 		String memId = (String) session.getAttribute("memId");
+		
 		MemberDTO memberDTO = memberDAO.getPassport_visa(memId);
+
 		ModelAndView mav = new ModelAndView();
+
 		mav.addObject("memberDTO", memberDTO);
-		mav.addObject("display", "/myPage/myPassport_visa.jsp");
+		mav.addObject("display", "/myPage/myPassport.jsp");
 		mav.setViewName("/index/index");
 
 		return mav;
@@ -165,137 +182,198 @@ public class MemberController {
 	// 여권정보입력
 	@RequestMapping(value = "/passport_information.do", method = RequestMethod.POST)
 	public ModelAndView passport_information(@ModelAttribute MemberDTO memberDTO, HttpSession session) {
+		System.out.println(memberDTO.getPassportNumber());
+		System.out.println(memberDTO.getFirstName());
+		System.out.println(memberDTO.getLastName());
+		System.out.println(memberDTO.getPassportStartYear());
+		System.out.println(memberDTO.getPassportStartMonth());
+		System.out.println(memberDTO.getPassportStartDay());
+		
 		memberDTO.setMemId((String) session.getAttribute("memId"));
+
 		memberDAO.passport(memberDTO);
+
+		session.setAttribute("memberDTO", memberDTO);
+		session.setMaxInactiveInterval(60 * 30);
+
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("display", "/myPage/myPassport_visa.jsp");
+
+		mav.addObject("display", "/myPage/passportUpdateOk.jsp");
 		mav.setViewName("/index/index");
 
 		return mav;
 	}
 
-	@RequestMapping(value = "/visa_information.do", method = RequestMethod.POST)
-	public ModelAndView visa_infomation(@ModelAttribute MemberDTO memberDTO, HttpSession session) {
-		memberDTO.setMemId((String) session.getAttribute("memId"));
-		memberDAO.visa(memberDTO);
-		ModelAndView mav = new ModelAndView();
-		mav.addObject("display", "/myPage/myPassport_visa.jsp");
-		mav.setViewName("/index/index");
-
-		return mav;
-	}
-
-	//기본정보 & 변경
+	// 기본정보 & 변경
 	@RequestMapping(value = "/myBasicInfo.do", method = RequestMethod.GET)
 	public ModelAndView myBasicInfo(HttpSession session) {
-		String id = (String) session.getAttribute("memId");
-		session.setAttribute("memId", id);
-
-		MemberDTO memberDTO = memberDAO.getMember(id);
-
-		// session.setAttribute("memDTO", memberDTO);
-
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("memberDTO", memberDTO);
+
+		mav.addObject("memberDTO", session.getAttribute("memberDTO"));
 		mav.addObject("display", "/myPage/myBasicInfo.jsp");
 		mav.setViewName("/index/index");
 
 		return mav;
 	}
 
-	
 	@RequestMapping(value = "/myBasicInfoConfirm.do", method = RequestMethod.POST)
-	public String modify(@ModelAttribute MemberDTO memberDTO, Model model) {
-		System.out.println(memberDTO.getMemMobile01());
-
+	public String myBasicInfoConfirm(@ModelAttribute MemberDTO memberDTO, Model model, HttpSession session) {
 		int su = memberDAO.myBasicInfoConfirm(memberDTO);
+
+		session.setAttribute("memberDTO", memberDTO);
+		session.setMaxInactiveInterval(60 * 30);
 
 		model.addAttribute("display", "/myPage/myBasicInfoConfirm.jsp");
 
 		return "/index/index";
 	}
-	
-	
+
 	@RequestMapping(value = "/mypage1AfterInfoChange.do")
 	public ModelAndView mypage1AfterInfoChange() {
 		ModelAndView mav = new ModelAndView();
+
 		mav.addObject("display", "/myPage/myBasicInfo.jsp");
 		mav.setViewName("/index/index");
 
 		return mav;
 	}
-	
-	//장바구니
-	@RequestMapping(value="/myBasket.do")
+
+	// 장바구니
+	@RequestMapping(value = "/myBasket.do")
 	public ModelAndView myBasket() {
 		ModelAndView mav = new ModelAndView();
-		
+
 		mav.addObject("display", "/myPage/myBasket.jsp");
 		mav.setViewName("/index/index");
-		
+
 		return mav;
 	}
-	
-	//상담문의
-	@RequestMapping(value="/myConsultation.do")
+
+	// 상담문의
+	@RequestMapping(value = "/myConsultation.do")
 	public ModelAndView myConsultation() {
 		ModelAndView mav = new ModelAndView();
-		
+
 		mav.addObject("display", "/myPage/myConsultation.jsp");
 		mav.setViewName("/index/index");
-		
+
 		return mav;
 	}
-	
-	//이용후기
-	@RequestMapping(value="/myReview.do")
+
+	// 이용후기
+	@RequestMapping(value = "/myReview.do")
 	public ModelAndView myReview() {
 		ModelAndView mav = new ModelAndView();
-		
+
 		mav.addObject("display", "/myPage/myReview.jsp");
 		mav.setViewName("/index/index");
-		
+
 		return mav;
 	}
-	
-	//비밀번호입력
-	@RequestMapping(value="/myPageInputPwd.do")
-	public ModelAndView myPageInputPwd(@RequestParam String pg,
-									   HttpSession session) {
+
+	// 비밀번호입력
+	@RequestMapping(value = "/myPageInputPwd.do")
+	public ModelAndView myPageInputPwd(@RequestParam String pg, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
-		
+
 		session.setAttribute("pg", pg);
-		
+
 		mav.addObject("display", "/myPage/myPageInputPwd.jsp");
 		mav.setViewName("/index/index");
-		
+
 		return mav;
 	}
-	
+
 	//비밀번호 체크
-	@RequestMapping(value="/pwdCheck.do", method=RequestMethod.POST)
-	public ModelAndView pwdCheck(@RequestParam String id, 
-								 @RequestParam String pwd,
-								 HttpSession session) {
+	@RequestMapping(value = "/pwdCheck.do", method = RequestMethod.POST)
+	public ModelAndView pwdCheck(@RequestParam String id, @RequestParam String pwd, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
-		
+
 		String checkId = memberDAO.pwdCheck(id, pwd);
-		
-		String pg = (String)session.getAttribute("pg");
-		
-		if(id.equals(checkId)) {
-			if(pg.equals("myBasicInfo"))
-				mav.addObject("display", "/myPage/myBasicInfo.jsp");
-			else if(pg.equals("myPwdChange"))
-				mav.addObject("display", "/myPage/myPwdChange.jsp");
+
+		String pg = (String) session.getAttribute("pg");
+
+		if (id.equals(checkId)) {
+			if (pg.equals("myBasicInfo"))
+				mav.addObject("pg", "myBasicInfo");
+			else if (pg.equals("myPwdChange"))
+				mav.addObject("pg", "myPwdChange");
+			else if (pg.equals("myPassport"))
+				mav.addObject("pg", "myPassport");
 			else
-				mav.addObject("display", "/myPage/myPassport_visa.jsp");
+				mav.addObject("pg", "memberLeave");
+			
+			mav.addObject("display", "/myPage/pwdCheckAfter.jsp");
 		} else {
 			mav.addObject("display", "/myPage/pwdCheckFail.jsp");
 		}
+
+		mav.setViewName("/index/index");
+
+		return mav;
+	}
+	
+	//비밀번호변경 화면
+	@RequestMapping(value="/myPwdChange.do")
+	public ModelAndView myPwdChange(){
+		ModelAndView mav = new ModelAndView();
+		
+		mav.addObject("display", "/myPage/myPwdChange.jsp");
 		
 		mav.setViewName("/index/index");
 		
+		return mav;
+	}
+	
+	//비밀번호변경 성공
+	@RequestMapping(value = "/pwdChange.do")
+	public ModelAndView pwdChange(@RequestParam String newPwd, HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+
+		String memId = (String) session.getAttribute("memId");
+
+		memberDAO.pwdChange(memId, newPwd);
+
+		mav.addObject("display", "/myPage/pwdChangeConfirm.jsp");
+
+		mav.setViewName("/index/index");
+
+		return mav;
+	}
+	
+	//회원탈퇴폼
+	@RequestMapping(value="/memberLeave.do")
+	public ModelAndView memberLeave() {
+		ModelAndView mav = new ModelAndView();
+		
+		mav.addObject("display", "/myPage/memberLeave.jsp");
+		
+		mav.setViewName("/index/index");
+		
+		return mav;
+	}
+	
+	//회원탈퇴완료
+	@RequestMapping(value = "/leaveSuccess.do")
+	public ModelAndView leaveSuccess(HttpSession session, @RequestParam String reason,
+			@RequestParam String requirement) {
+		ModelAndView mav = new ModelAndView();
+
+		String memId = (String) session.getAttribute("memId");
+
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("memId", memId);
+		map.put("reason", reason);
+		map.put("requirement", requirement);
+
+		memberDAO.leaveSuccess(map);
+
+		mav.addObject("display", "/myPage/leaveSuccess.jsp");
+		
+		mav.setViewName("/index/index");
+
+		session.invalidate();
+
 		return mav;
 	}
 }

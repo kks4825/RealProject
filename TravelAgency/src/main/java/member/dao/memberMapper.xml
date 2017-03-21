@@ -117,6 +117,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="pwdCheck" parameterType="java.util.Map" resultType="java.lang.String">
 		select memId from member where memId=#{id} and memPwd=#{pwd}
 	</select>
+	
+	<!-- 비밀번호 변경 -->
+	<update id="pwdChange" parameterType="java.util.Map">
+		update member set memPwd=#{newPwd} where memId=#{memId}
+	</update>
+	
+	<delete id="leaveSuccess" parameterType="java.util.Map">
+	begin
+		insert into memberLeave values(#{memId},#{reason},#{requirement});
+		
+		delete from member where memId=#{memId};
+	end;
+	</delete>
 </mapper>
 
 

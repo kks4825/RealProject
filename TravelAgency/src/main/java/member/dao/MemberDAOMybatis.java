@@ -86,4 +86,16 @@ public class MemberDAOMybatis implements MemberDAO {
 		
 		return checkId;
 	}
+
+	public void pwdChange(String memId, String newPwd) {
+		Map<String, String> map = new HashMap<String,String>();
+		map.put("memId", memId);
+		map.put("newPwd", newPwd);
+		
+		sqlSession.update("memberSQL.pwdChange", map);
+	}
+
+	public void leaveSuccess(Map<String, String> map) {
+		sqlSession.delete("memberSQL.leaveSuccess", map);
+	}
 }

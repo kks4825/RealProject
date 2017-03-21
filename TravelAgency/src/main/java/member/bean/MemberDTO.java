@@ -159,7 +159,7 @@ public class MemberDTO {
 	public String getPassportNumber() {
 		return passportNumber;
 	}
-	public void setPassprotNumber(String passportNumber) {
+	public void setPassportNumber(String passportNumber) {
 		this.passportNumber = passportNumber;
 	}
 	public String getPassportStartYear() {

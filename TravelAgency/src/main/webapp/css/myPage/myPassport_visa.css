@@ -46,8 +46,8 @@ h3{margin-bottom:10px; height:13px; padding-left:12px; font-size:14px; backgroun
 
 .passport_infomation{border:1px solid red; padding-left:10px; layout:fixed; text-align:left; background-color:none;width:996px; height:240px; padding-top:10px; layout:fixed; margin-bottom:20px;}
 
-.passport_infomation_save{width:680px; height:30px; layout:fixed; text-align:right; border:1px solid gray; layout:fixed;position:relative; left : 23px; top:15px;}
+.passport_infomation_save{width:680px; height:30px; layout:fixed; text-align:left; border:1px solid gray; layout:fixed;position:relative; left : 23px; top:15px;}
 
 .visa_infomation{border:1px solid red; padding-left:10px; layout:fixed; text-align:left; background-color:none;width:996px; height:200px; padding-top:0px; layout:fixed; margin-bottom:20px;}
 
-.visa_infomation_save{width:680px; height:30px; layout:fixed; text-align:right; border:1px solid gray; layout:fixed;position:relative; left : 23px; top:15px;}
+.visa_infomation_save{width:680px; height:30px; layout:fixed; text-align:left; border:1px solid gray; layout:fixed;position:relative; left : 23px; top:15px;}

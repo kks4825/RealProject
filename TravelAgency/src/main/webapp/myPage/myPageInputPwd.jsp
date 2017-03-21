@@ -29,9 +29,8 @@
 									<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;·비밀번호
 									</td>
 									<td>&nbsp;&nbsp;&nbsp;&nbsp;
-										<input name="page" type="hidden" value="<%= request.getRequestURL() %>">
 										<input name="id" type="hidden" value="${sessionScope.memId }">
-										<input name="pwd" type="text" placeholder="비밀번호를 입력하세요" size="35">
+										<input name="pwd" type="password" placeholder="비밀번호를 입력하세요" size="35">
 									</td>
 								</tr>
 							</table>

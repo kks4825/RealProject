@@ -40,7 +40,7 @@ body{margin:0px; padding:0px;}/*상위 스타일에 대한 원점 처리를 해 
 
 .tcb1a1a{width:946px; height:100px; padding-top:0px; layout:fixed; border:1px solid gray; text-align:center;layout:fixed;position:relative; left : 0px; top:0px; vertical-align: middle;}
 
-.tcb1a1b{background-color:#e6e6e6; width:946px; height:200px; padding-top:1px; layout:fixed; border:1px solid gray; text-align:justify;layout:fixed;position:relative; left : 0px; top:0px;}
+.tcb1a1b{background-color:#e6e6e6; width:946px; height:auto; margin-top:20px; layout:fixed; border:1px solid gray; text-align:justify;layout:fixed;position:relative; left : 0px; top:0px;}
 
 .tcb1a1c{width:946px; height:75px; padding-top:0px; layout:fixed; border:1px solid gray; text-align:justify;layout:fixed;position:relative; left : 0px; top:0px;vertical-align: middle;text-align:center; top:30px;}
 
@@ -55,3 +55,5 @@ body{margin:0px; padding:0px;}/*상위 스타일에 대한 원점 처리를 해 
 .tcb4a{width:946px; height:125px; padding-top:0px; layout:fixed; border:1px solid gray; text-align:justify;layout:fixed;position:relative; left : 23px; top:15px;}
 
 .tcb5{background-color:none;width:996px; height:230px; padding-top:10px; layout:fixed; margin-bottom:0px;}
+
+.reasonInput{display:inline; }

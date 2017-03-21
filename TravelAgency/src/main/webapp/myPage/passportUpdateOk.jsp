@@ -3,7 +3,8 @@
 
 <script>
 $(document).ready(function(){
-	alert("비밀번호가 일치하지 않습니다");
-	location.href="/TravelAgency/myPageInputPwd.do?pg=${sessionScope.pg}";
+	alert("여권정보가 등록 되었습니다.");
+	
+	$(location).attr("href","/TravelAgency/myPassport_visa.do");
 });
 </script>
