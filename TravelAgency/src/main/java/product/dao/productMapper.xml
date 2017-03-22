@@ -82,6 +82,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="pack_pur_cnt" parameterType="Int">
 		update packages set purchase_cnt=purchase_cnt+1 where pack_no=#{pack_no}
 	</update>
+	
+	<select id="travelReviewList" parameterType="Int" resultType="product.bean.TravelReviewDTO">
+		select * from 
+	</select>
 </mapper>
 
 

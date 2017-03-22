@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import product.bean.BankDTO;
 import product.bean.ProductDTO;
 import product.bean.SchedulesDTO;
+import product.bean.TravelReviewDTO;
 
 @Transactional
 @Component("productDAO")
@@ -59,5 +60,11 @@ public class ProductDAOMybatis implements ProductDAO{
 	public void purchasing(int pack_no) {
 		int su = sqlSession.update("productSQL.pack_pur_cnt",pack_no);
 		System.out.println(su);
+	}
+
+	public List<TravelReviewDTO> travelReviewList() {
+		List<TravelReviewDTO> travelReviewList = sqlSession.selectList("productSQL.travelReviewList");
+		
+		return travelReviewList;
 	}
 }

@@ -23,6 +23,7 @@ import org.springframework.web.servlet.ModelAndView;
 import product.bean.BankDTO;
 import product.bean.ProductDTO;
 import product.bean.SchedulesDTO;
+import product.bean.TravelReviewDTO;
 import product.dao.ProductDAO;
 
 @Controller
@@ -48,7 +49,8 @@ public class ProductController {
 	public ModelAndView detailView(@RequestParam int seq) {
 		//DB
 		ProductDTO productDTO = productDAO.packageView(seq);
-		List<SchedulesDTO> scheduleList= productDAO.schedules(seq);
+		List<SchedulesDTO> scheduleList = productDAO.schedules(seq);
+		List<TravelReviewDTO> travelReviewList = productDAO.travelReviewList();
 		
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("productDTO", productDTO);

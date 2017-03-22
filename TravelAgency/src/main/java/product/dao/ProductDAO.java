@@ -1,9 +1,11 @@
 package product.dao;
+
 import java.util.List;
 
 import product.bean.BankDTO;
 import product.bean.ProductDTO;
 import product.bean.SchedulesDTO;
+import product.bean.TravelReviewDTO;
 
 public interface ProductDAO {
 
@@ -23,6 +25,5 @@ public interface ProductDAO {
 
 	public void purchasing(int pack_no);
 
-
-
+	public List<TravelReviewDTO> travelReviewList();
 }
