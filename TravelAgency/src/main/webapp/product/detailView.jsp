@@ -98,9 +98,6 @@ window.onload =function(){
 				</div>
 			</form>
 			<br> <input type="submit" value="예약하기" width="500px">
-			
-			</div>
-			</div>
 		</div>
 	<div id="detailInfo">
 		<div id="tabs">

@@ -167,6 +167,7 @@ public class ProductController {
 		
 		return mav;
 	}
+	
 	@RequestMapping(value="/purchaseComplete.do")
 	public ModelAndView purchaseComplete(@RequestParam int pack_no){
 		productDAO.purchasing(pack_no);
