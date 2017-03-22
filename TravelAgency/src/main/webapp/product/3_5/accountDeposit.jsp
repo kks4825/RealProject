@@ -1,30 +1,30 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<link rel="stylesheet" href="../css_bt/bootstrap.min.css" type="text/css">
-<script src="../js/jquery.min.js" type="text/javascript"></script>
-<script src="../js_bt/bootstrap.min.js" type="text/javascript"></script>
+<link rel="stylesheet" href="/TravelAgency/css_bt/bootstrap.min.css" type="text/css">
+<script src="/TravelAgency/js/jquery.min.js" type="text/javascript"></script>
+<script src="/TravelAgency/js_bt/bootstrap.min.js" type="text/javascript"></script>
 <style>
 div {
 	margin: 10px;
+}
+select {
+	height: 25px;
 }
 </style>
 
 <div class="well">
 	<p class="sel_option_tit">
-		입금 은행 <select name="bank" id="bank">
+		<strong>입금 은행</strong> <select name="bank" id="bank">
 			<option selected="selected" value="">은행을 선택해 주세요</option>
-			<option value="b1">우리은행</option>
-			<option value="b2">신한은행</option>
-			<option value="b3">하나은행</option>
-			<option value="b4">국민은행</option>
-			<option value="b5">기업은행</option>
-			<option value="b6">농협은행</option>
-			<option value="b7">부산은행</option>
+			<option value="우리은행">우리은행</option>
+			<option value="신한은행">신한은행</option>
+			<option value="하나은행">하나은행</option>
+			<option value="국민은행">국민은행</option>
+			<option value="기업은행">기업은행</option>
+			<option value="농협은행">농협은행</option>
+			<option value="부산은행">부산은행</option>
 		</select>
-	</p>
-	<p>
-		예금주명 <input type="text" id="name">
 	</p>
 </div>
 <ul class="notice">

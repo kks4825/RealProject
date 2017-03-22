@@ -57,21 +57,21 @@
 <div style="margin:0 auto; width:70%; margin-top:-80px;">
 	<h1>예약하기</h1>
 	<div style="margin: 30px">
-		<div class="container-fluid">
+		<div class="container-fluid" >
 			<h2>날짜선택</h2>
 			<div class="row">
 				<div class="col-md-6">
 					<p align="center">
 						출발날짜<br />
-						<iframe src="/TravelAgency/product/3_1/calendarTest.jsp" width="500" height="370"
-							frameborder="0"></iframe>
+						<iframe src="/TravelAgency/product/3_1/calendarTest.jsp" width="500" height="380"
+							frameborder="0" scrolling="no"></iframe>
 					</p>
 				</div>
 				<div class="col-md-6">
 					<p align="center">
 						도착날짜<br />
-						<iframe src="/TravelAgency/product/3_1/calendarTest.jsp" width="500" height="370"
-							frameborder="0"></iframe>
+						<iframe src="/TravelAgency/product/3_1/calendarTest.jsp" width="500" height="380"
+							frameborder="0" scrolling="no"></iframe>
 					</p>
 				</div>
 			</div>
@@ -112,6 +112,6 @@
 			</div>
 		</div>
 		<input type="button" name="perchase" value="결 제 하 기"
-			style="font-size: 22px; width: 150px; float: right;" onclick="location.href='/TravelAgency/payment.do'">
+			style="font-size: 22px; width: 150px; float: right;"onclick="location.href='/TravelAgency/payment.do'">
 	</div>
 </div>

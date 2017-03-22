@@ -1,0 +1,67 @@
+create table packages(
+pack_no number, --primary key, schedules table에서 foreign key역할. 
+pack_title varchar2(100),
+pack_price_kid number,
+pack_price_adult number,
+pack_desc clob,
+pack_city varchar2(100),
+pack_depart varchar2(30),
+pack_arriv varchar2(30),
+pack_air varchar2(100),
+pack_detail clob,
+tour_info clob,
+tour_ref clob,
+purchase_cnt number default 0,
+image1 varchar2(300),
+image2 varchar2(300),
+image3 varchar2(300),
+image4 varchar2(300),
+image5 varchar2(300),
+image6 varchar2(300),
+image7 varchar2(300),
+image8 varchar2(300),
+image9 varchar2(300));
+drop table packages purge;
+--sequence 설정
+select * from packages;
+create sequence pack_no;
+drop sequence pack_no;
+--컬럼추가
+alter table packages modify(packages_purchase_cnt number default 0);
+--primary key 설정
+ALTER TABLE packages
+ADD CONSTRAINT pack_no_PK PRIMARY KEY(pack_no);
+--primarykey삭제
+AlTER TABLE packages
+DROP CONSTRAINT pack_no_PK;
+
+create table schedules(
+pack_no number, --foreign key
+schedules_date varchar2(20), --일자
+schedules_no number,
+schedules_content varchar2(1200)
+);
+drop table schedules purge;
+--sequence 설정
+create sequence schedules_no;
+drop sequence schedules_no;
+--foreingkey 설정
+ALTER TABLE schedules
+add CONSTRAINT pack_no_FK FOREIGN KEY(pack_no)
+REFERENCES packages(pack_no) ON DELETE CASCADE;
+--foreignkey 삭제
+ALTER TABLE schedules
+DROP CONSTRAINT pack_no_FK;
+--primarykey삭제
+AlTER TABLE schedules
+DROP CONSTRAINT schedules_no_PK;
+
+--은행DB
+create table banking(
+ bank_no number,
+ bank_name varchar2(50),
+ bank_account number
+);
+--sequence 설정
+create sequence bank_no;
+--매출DB

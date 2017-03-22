@@ -1,12 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<link rel="stylesheet" href="../css_bt/bootstrap.min.css">
-<script src="../js/jquery.min.js"></script>
-<script src="../js_bt/bootstrap.min.js"></script>
+<link rel="stylesheet" href="/TravelAgency/css_bt/bootstrap.min.css">
+<script src="/TravelAgency/js/jquery.min.js"></script>
+<script src="/TravelAgency/js_bt/bootstrap.min.js"></script>
 <style>
 div {
 	margin: 10px;
+}
+select {
+	height: 25px;
 }
 </style>
 
@@ -15,27 +18,27 @@ div {
 		<tr>
 			<th>카드 종류</th>
 			<td><select name="card" id="card">
-					<option selected="selected" value="">카드 종류를 선택해 주세요</option>
-					<option value="c1">우리카드</option>
-					<option value="c2">신한카드</option>
-					<option value="c3">하나카드</option>
-					<option value="c4">국민카드</option>
-					<option value="c5">삼성카드</option>
-					<option value="c6">비씨카드</option>
-					<option value="c7">씨티은행카드</option>
+					<option selected="selected" value="1">카드 종류를 선택해 주세요</option>
+					<option value="우리카드">우리카드</option>
+					<option value="신한카드">신한카드</option>
+					<option value="하나카드">하나카드</option>
+					<option value="국민카드">국민카드</option>
+					<option value="삼성카드">삼성카드</option>
+					<option value="비씨카드">비씨카드</option>
+					<option value="씨티은행카드">씨티은행카드</option>
 			</select></td>
 		</tr>
 		<tr>
 			<th>할부 선택</th>
 			<td><select name="monthly" id="monthly">
-					<option selected="selected" value="">할부 기간 선택</option>
-					<option value="m1">일시불</option>
-					<option value="m2">1개월</option>
-					<option value="m3">2개월</option>
-					<option value="m4">3개월</option>
-					<option value="m5">4개월</option>
-					<option value="m6">5개월</option>
-					<option value="m7">6개월</option>
+					<option selected="selected" value="2">할부 기간 선택</option>
+					<option value="일시불">일시불</option>
+					<option value="1개월">1개월</option>
+					<option value="2개월">2개월</option>
+					<option value="3개월">3개월</option>
+					<option value="4개월">4개월</option>
+					<option value="5개월">5개월</option>
+					<option value="6개월">6개월</option>
 			</select></td>
 		</tr>
 	</table>

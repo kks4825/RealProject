@@ -30,8 +30,8 @@
 					</a>
 					<ul class="dropdown-menu">
 						<li><a href="/TravelAgency/packageView.do">유럽</a></li>
-						<li><a href="#">동남아</a></li>
-						<li><a href="#">미주</a></li>
+						<li><a href="/TravelAgency/packageView.do">동남아</a></li>
+						<li><a href="/TravelAgency/packageView.do">미주</a></li>
 					</ul>
 				</li>
 				<li class="dropdown">

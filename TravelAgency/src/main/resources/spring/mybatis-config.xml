@@ -7,11 +7,15 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	<typeAliases>
 		<typeAlias type="member.bean.MemberDTO" alias="member"/>
 		<typeAlias type="member.bean.ZipcodeDTO" alias="zipcode"/>
+		<typeAlias type="product.bean.ProductDTO" alias="product"/>
+		<typeAlias type="product.bean.SchedulesDTO" alias="schedules"/>
+		<typeAlias type="product.bean.BankDTO" alias="bank"/>
 		<!-- <typeAlias type="board.bean.BoardDTO" alias="board"/> -->
 	</typeAliases>
 	
 	<mappers>
 		<mapper resource="member/dao/memberMapper.xml"/>
+		<mapper resource="product/dao/productMapper.xml"/>
 		<!-- <mapper resource="board/dao/boardMapper.xml"/> -->
 	</mappers>
 </configuration>
