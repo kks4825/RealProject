@@ -8,7 +8,10 @@
 <body id="package">
     <div id="wrapper-package">
     	<!-- 패키지 추가는 관리자권한에서만 볼 수 있게 수정 -->
-        <input type="button" id="add-package" value="패키지 추가" onclick="location.href='/TravelAgency/package_upload_Form.do'"/>
+    	<c:if test="${sessionScope.memId=='admin'}">
+        	<input type="button" id="add-package" value="패키지 추가" 
+        	onclick="location.href='/TravelAgency/package_upload_Form.do'"/>
+        </c:if>
         <!--패키지 추가하면 a태그가 추가되어야 함-->
         <section class="thumbnails">
         	<c:forEach var="productDTO" items="${list}">
