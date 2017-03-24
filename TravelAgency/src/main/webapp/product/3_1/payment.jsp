@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<script src="js/product/payment.js" type="text/javascript"></script>
+<script src="js/product/payment.js?ver=1" type="text/javascript"></script>
 <script type="text/javascript">
 $(document).ready(function() {
 		$(".payMethod").click(
@@ -21,9 +21,7 @@ window.onload =function(){
     $("#totalPay").append(new Intl.NumberFormat("ko-KR").format(totalPay)+"원");
     $('#totalPayHidden').val(new Intl.NumberFormat("ko-KR").format(totalPay)+"원");
   }
-function paymentCheck(){
-	document.paymentForm.submit();
-}
+
 </script>
 <style media="screen">
 	div {
@@ -104,15 +102,13 @@ function paymentCheck(){
 
 		</div>
 		<div class="">
-			<!-- <iframe src="about:blank" width="100%" height="300px"
-				id="payMethodWindow" frameborder="0"></iframe> -->
-			<div id="content1" class="tab_content">
+			<div id="content1" class="tab_content" style="display:block;">
 				<div class="well" style="height: 115px;">
 					<table class="table table-hover">
 						<tr>
 							<td>카드 종류</td>
 							<td><select name="card" id="card">
-									<option selected="selected" value="1">카드 종류를 선택해 주세요</option>
+									<option selected="selected" value="0">카드 종류를 선택해 주세요</option>
 									<option value="우리카드">우리카드</option>
 									<option value="신한카드">신한카드</option>
 									<option value="하나카드">하나카드</option>
@@ -125,7 +121,7 @@ function paymentCheck(){
 						<tr>
 							<td>할부 선택</td>
 							<td><select name="monthly" id="monthly">
-									<option selected="selected" value="2">할부 기간 선택</option>
+									<option selected="selected" value="0">할부 기간 선택</option>
 									<option value="일시불">일시불</option>
 									<option value="1개월">1개월</option>
 									<option value="2개월">2개월</option>
@@ -204,7 +200,7 @@ function paymentCheck(){
 				<div class="well">
 					<p class="sel_option_tit">
 						<strong>입금 은행</strong> <select name="bank" id="bank">
-							<option selected="selected" value="">은행을 선택해 주세요</option>
+							<option selected="selected" value="0">은행을 선택해 주세요</option>
 							<option value="우리은행">우리은행</option>
 							<option value="신한은행">신한은행</option>
 							<option value="하나은행">하나은행</option>
@@ -245,7 +241,7 @@ function paymentCheck(){
 				</div>
 			</div>
 		</div>
-		<input type="button" value="결제" onclick="javascript:paymentCheck()"
+		<input type="button" value="결제" id="paymentBtn"
 			style="font-size: 22px; float: right; width: 120px;">
 		<input type="button" value="이전" onclick="history.back(-1)"
 			style="font-size: 22px; float: right; width: 120px;">

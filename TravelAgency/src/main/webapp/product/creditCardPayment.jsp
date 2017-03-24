@@ -27,8 +27,23 @@ function maxLengthCheck2(object){
  }    
 }
 function creditCheck(){
+	var totalNumber=($('#1').val().length+$('#2').val().length+$('#3').val().length+$('#4').val().length);
+	var cvcNumber=$('#cvc').val().length;
+	var cardPassword=$('#cardPassword').val().length;
+	if(totalNumber!=16){
+		alert("카드번호를 정확히 입력해주세요");
+	}else if(cvcNumber!=3){
+		alert("카드번호cvc 번호를 정확히 입력해주세요");
+	}else if(cardPassword!=4){
+		alert("카드비밀번호를 정확히 입력해주세요");
+	}
 	document.creditForm.submit();
 }
+
+/* 카드번호 16자리가 안되면 에러 $().val().length;
+cvc번호 3자리 안되면 에러
+카드비밀번호 4자리 안되면 에러 */
+
 </script>
 <div>
 	<div>
@@ -51,10 +66,10 @@ function creditCheck(){
 		  	<tr>
 		  		<th>카드번호</th>
 		  		<td>
-		  		 <input type="number" maxlength="4" max="9999" oninput="maxLengthCheck(this)">
-		  		 -<input type="password" maxlength="4">
-		  		 -<input type="number" maxlength="4" max="9999" oninput="maxLengthCheck(this)">
-		  		 -<input type="password" maxlength="4">
+		  		 <input type="number" maxlength="4" max="9999" oninput="maxLengthCheck(this)" id="1">
+		  		 -<input type="password" maxlength="4" id="2">
+		  		 -<input type="number" maxlength="4" max="9999" oninput="maxLengthCheck(this)" id="3">
+		  		 -<input type="password" maxlength="4" id="4">
 		  		</td>
 		  	</tr>
 		  	<tr>
@@ -75,7 +90,6 @@ function creditCheck(){
 		  				<option value="12월">12월</option>
 		  			</select>/
 		  			<select name="valid_year">
-		  				<option value="17년">17년</option>
 		  				<option value="18년">18년</option>
 		  				<option value="19년">19년</option>
 		  				<option value="20년">20년</option>
@@ -87,11 +101,11 @@ function creditCheck(){
 		  	</tr>
 		  	<tr>
 		  		<th>CVC번호</th>
-		  		<td><input type="number" maxlength="3" max="999" oninput="maxLengthCheck2(this)"></td>
+		  		<td><input type="number" maxlength="3" max="999" oninput="maxLengthCheck2(this)" id="cvc"></td>
 		  	</tr>
 		  	<tr>
 		  		<th>카드비밀번호</th>
-		  		<td><input type="password" maxlength="4"></td>
+		  		<td><input type="password" maxlength="4" id="cardPassword"></td>
 		  	</tr>
 		  </table>
 		  <input type="button" value="결제방법변경" onclick="history.back(-1)">

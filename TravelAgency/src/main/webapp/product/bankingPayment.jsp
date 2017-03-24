@@ -12,7 +12,26 @@ div{
 	padding:10px;
 	margin:10px;
 }
+#bankInfo th{
+	width:200px;
+}
 </style>
+<script>
+$(document).ready(function(){
+    var number=${bankDTO.bank_account};
+    var num = number.toString();
+    var account='';
+    account+=num.substr(0,4);
+    account+="-";
+    account+=num.substr(4,4);
+    account+="-";
+    account+=num.substr(8,4);
+    account+="-";
+    account+=num.substr(12,4);
+    //계좌번호는 최대 16자리임.    
+    $('#account').append(account);
+});
+</script>
 <div>
 	<div>
 		<table id="bankInfo" class="table table-striped">
@@ -22,8 +41,8 @@ div{
 			</tr>
 			
 			<tr>
-				<th>계좌번호</th>
-				<td><fmt:formatNumber pattern="####################" value="${bankDTO.bank_account }"/></td>
+				<th>계좌번호</th> <!-- fmt format말고 jquery로 format지정해서 넣기 -->
+				<td id="account"></td>
 			</tr>
 			
 			<tr>
