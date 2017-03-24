@@ -2,9 +2,8 @@
 
 #all {
 	margin: 0 auto;
-	width: 1000px;
+	width: 71em;
 	height: auto;
-	margin-top:-80px;
 }
 
 #deco {
@@ -43,7 +42,7 @@
 	float: left;
 	margin-top: 20px;
 	margin-left: 10px;
-	width: auto;
+	width: 32em;
 	height: auto;
 }
 
@@ -96,7 +95,7 @@
 	background-color: #353535;
 } /* 메뉴 분류중 제일 왼쪽의 "|"는 삭제 */
 
-a {
+#schedule #core_info #tour_info #tour_ref #safe_info {
 	text-decoration: none;
 	color: #FFFFFF;
 }
@@ -107,6 +106,8 @@ div.tab_content {
 	width: 900px;
 	height: auto;
 	border: 1px solid green;
+	overflow:hidden;
+	word-wrap:break-word;
 }
 
 #content1 {

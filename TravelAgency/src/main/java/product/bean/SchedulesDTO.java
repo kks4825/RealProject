@@ -4,6 +4,7 @@ public class SchedulesDTO {
 	private int pack_no;
 	private int schedules_no;
 	private String schedules_content;
+	private String schedules_date;
 	
 	public int getPack_no() {
 		return pack_no;
@@ -22,5 +23,11 @@ public class SchedulesDTO {
 	}
 	public void setSchedules_content(String schedules_content) {
 		this.schedules_content = schedules_content;
-	}	
+	}
+	public String getSchedules_date() {
+		return schedules_date;
+	}
+	public void setSchedules_date(String schedules_date) {
+		this.schedules_date = schedules_date;
+	}
 }
