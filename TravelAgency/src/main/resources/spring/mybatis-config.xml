@@ -10,6 +10,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<typeAlias type="product.bean.ProductDTO" alias="product"/>
 		<typeAlias type="product.bean.SchedulesDTO" alias="schedules"/>
 		<typeAlias type="product.bean.BankDTO" alias="bank"/>
+		<typeAlias type="product.bean.TravelReviewDTO" alias="review"/>
 		<!-- <typeAlias type="board.bean.BoardDTO" alias="board"/> -->
 	</typeAliases>
 	

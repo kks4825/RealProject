@@ -4,6 +4,7 @@ package product.bean;
 public class ProductDTO {
 	private int pack_no;
 	private String pack_title;
+	private String pack_category;
 	private int pack_price_kid;
 	private int pack_price_adult;
 	private String pack_desc;
@@ -24,6 +25,13 @@ public class ProductDTO {
 	private String image8;
 	private String image9;
 	
+	
+	public String getPack_category() {
+		return pack_category;
+	}
+	public void setPack_category(String pack_category) {
+		this.pack_category = pack_category;
+	}
 	public int getPack_no() {
 		return pack_no;
 	}

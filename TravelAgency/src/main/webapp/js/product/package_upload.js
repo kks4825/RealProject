@@ -1,6 +1,10 @@
 $(document).ready(function(){
     //유효성검사
 	$('#upload_check').on("click",function(){
+		if(document.getElementById('pack_title').val()==""){
+			alert("패키지 명을 입력하시오");
+		}
+		
 		/*li개수 파악해서 createElement로 input tpye값에 hidden, value값에 li값 넘기기.*/
 		var liLength = $('.items').length;
 		
@@ -14,10 +18,11 @@ $(document).ready(function(){
 		
 		document.package_upload_Form.submit();
 	});
+	//여행기간 설정할 때 오늘보다 이른 출발날이면 다시 선택하기, 도착날이 출발날보다 이르면 다시선택하기.
 
 	//일정표추가
 	var count=0;
-	$('#sche_add').on("click",function(){
+	$('#sche_add').on("click",function() {
 		count++;
 	    var newItem = document.createElement("li");
 	    newItem.setAttribute("class","items");

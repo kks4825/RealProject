@@ -10,6 +10,7 @@ public class TravelReviewDTO {
 	private Date reviewDate;
 	private int starScore;
 	private int pack_no;
+	private String pack_city;
 	
 	public int getSeq() {
 		return seq;
@@ -53,4 +54,11 @@ public class TravelReviewDTO {
 	public void setPack_no(int pack_no) {
 		this.pack_no = pack_no;
 	}
+	public String getPack_city() {
+		return pack_city;
+	}
+	public void setPack_city(String pack_city) {
+		this.pack_city = pack_city;
+	}
+	
 }

@@ -9,6 +9,8 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
@@ -33,12 +35,12 @@ public class ProductController {
 	private ProductDAO productDAO;
 	
 	@RequestMapping(value="/packageView.do")
-	public ModelAndView packageView() {		
+	public ModelAndView packageView(@RequestParam String category) {		
 		ModelAndView mav = new ModelAndView();
 		//db
-		List<ProductDTO> list = productDAO.searchResult();
+		List<ProductDTO> list = productDAO.packageView(category);
 		
-		mav.addObject("list",list);
+		mav.addObject("list", list);
 		mav.addObject("display", "/product/packageView.jsp");
 		mav.setViewName("/index/index");
 		
@@ -46,16 +48,22 @@ public class ProductController {
 	}
 	
 	@RequestMapping(value="/detailView.do")
-	public ModelAndView detailView(@RequestParam int seq) {
+	public ModelAndView detailView(@RequestParam int seq
+								  ,HttpSession session) {
 		//DB
-		ProductDTO productDTO = productDAO.packageView(seq);
-		List<SchedulesDTO> scheduleList = productDAO.schedules(seq);
-		List<TravelReviewDTO> travelReviewList = productDAO.travelReviewList();
+		ProductDTO productDTO = productDAO.detailView(seq);
+		List<SchedulesDTO> scheduleList= productDAO.schedules(seq);
+		
+		System.out.println(productDTO.getPack_no());
+		
+		List<TravelReviewDTO> reviewList = productDAO.travelReviewList(productDTO.getPack_no());
 		
 		ModelAndView mav = new ModelAndView();
+		mav.addObject("reviewList", reviewList);
 		mav.addObject("productDTO", productDTO);
 		mav.addObject("scheduleList",scheduleList);
 		mav.addObject("display", "/product/detailView.jsp");
+		
 		mav.setViewName("/index/index");
 		
 		return mav;
@@ -65,8 +73,10 @@ public class ProductController {
 	public ModelAndView payment(@RequestParam Map<String,String> map) {
 		//DB
 		ProductDTO productDTO = productDAO.paymentPackage(Integer.parseInt(map.get("pack_no")));
+		
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("productDTO",productDTO);
+		
+		mav.addObject("productDTO", productDTO);
 		mav.addObject("adults",map.get("adults"));
 		mav.addObject("kids",map.get("kids"));
 		mav.addObject("payment",map.get("payment"));
@@ -77,10 +87,12 @@ public class ProductController {
 	}
 	
 	@RequestMapping(value="/searchResult.do", method=RequestMethod.GET)
-	public ModelAndView seachResult(){
+	public ModelAndView seachResult() {
 		ModelAndView mav = new ModelAndView();
+		
 		List<ProductDTO> list = productDAO.searchResult();
-		mav.addObject("list",list);
+		
+		mav.addObject("list", list);
 		mav.addObject("display", "/product/searchResult.jsp");
 		mav.setViewName("/index/index");
 		
@@ -88,7 +100,7 @@ public class ProductController {
 	}
 	
 	@RequestMapping(value="/package_upload_Form.do", method=RequestMethod.GET)
-	public ModelAndView package_upload_Form(){
+	public ModelAndView package_upload_Form() {
 		ModelAndView mav = new ModelAndView();
 		
 		mav.addObject("display", "/product/package_upload.jsp");
@@ -101,11 +113,11 @@ public class ProductController {
 	public ModelAndView package_upload(@ModelAttribute ProductDTO productDTO
 									, @RequestParam(required=false) MultipartFile[] img
 									, @RequestParam(required=false, value="schedules_content") String[] schedules_content
-									, @RequestParam(required=false) int liLength){
+									, @RequestParam(required=false) int liLength) {
 		String filePath = "E:/workspace/TravelAgency/src/main/webapp/product_img";
 		
 		String[] fileName = new String[9];
-		for(int i=0;i<fileName.length;i++){
+		for(int i=0;i < fileName.length;i++){
 			if(fileName[i]!=""){
 				fileName[i] = img[i].getOriginalFilename();
 				File file = new File(filePath, fileName[i]);
@@ -130,19 +142,20 @@ public class ProductController {
 		productDTO.setImage8(fileName[7]);
 		productDTO.setImage9(fileName[8]);
 		
-			    
 	    //DB
 		productDAO.productUpload(productDTO);
 		
 		for(int i=0; i<liLength; i++){
 			productDAO.scheduleUpload(schedules_content[i],i+1+"일차");
 		}
+		
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("display", "/product/package_upload_complete.jsp");
 		mav.setViewName("/index/index");
 		
 		return mav;
-		}
+	}
+	
 	public String getCurrentDayTime(){
 	    long time = System.currentTimeMillis();
 	    SimpleDateFormat dayTime = new SimpleDateFormat("yyyyMMdd-HH-mm-ss", Locale.KOREA);
@@ -150,7 +163,7 @@ public class ProductController {
 	}
 	
 	@RequestMapping(value="/paymentChecking.do")
-	public ModelAndView paymentComplete(@RequestParam Map<String,String> map){
+	public ModelAndView paymentComplete(@RequestParam Map<String,String> map) {
 		ModelAndView mav = new ModelAndView();
 		if(map.get("paymethod").equals("account_depo")){
 			BankDTO bankDTO = productDAO.bankAccount(map.get("bank"));
@@ -171,12 +184,12 @@ public class ProductController {
 	}
 	
 	@RequestMapping(value="/purchaseComplete.do")
-	public ModelAndView purchaseComplete(@RequestParam int pack_no){
+	public ModelAndView purchaseComplete(@RequestParam int pack_no) {
 		productDAO.purchasing(pack_no);
-		System.out.println("pack_no"+pack_no);
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("display", "/product/purchaseComplete.jsp");
 		mav.setViewName("/index/index");
 		return mav;
 	}
 }
+

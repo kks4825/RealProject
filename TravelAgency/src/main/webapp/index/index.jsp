@@ -15,6 +15,14 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style>
+#package_list_table th{
+	width:100px;
+}
+#package_list_table td{
+	width:500px;
+}
+</style>
 </head>
 <body>
 	<!-- Header -->
@@ -29,9 +37,9 @@
 						Packages
 					</a>
 					<ul class="dropdown-menu">
-						<li><a href="/TravelAgency/packageView.do">유럽</a></li>
-						<li><a href="/TravelAgency/packageView.do">동남아</a></li>
-						<li><a href="/TravelAgency/packageView.do">미주</a></li>
+						<li><a href="/TravelAgency/packageView.do?category=eu">유럽</a></li>
+						<li><a href="/TravelAgency/packageView.do?category=ea">동남아</a></li>
+						<li><a href="/TravelAgency/packageView.do?category=am">미주</a></li>
 					</ul>
 				</li>
 				<li class="dropdown">

@@ -25,19 +25,24 @@ public class ProductDAOMybatis implements ProductDAO{
 		sqlSession.insert("productSQL.productUpload", productDTO);		
 	}
 	
+	public List<ProductDTO> packageView(String category) {
+		List<ProductDTO> list = sqlSession.selectList("productSQL.productList",category);
+		return list;
+	}
+	
+	public List<ProductDTO> searchResult() {
+		List<ProductDTO> list = sqlSession.selectList("productSQL.productList");
+		return list;
+	}
+	
 	public void scheduleUpload(String schedules_content, String date) {
 		Map<String,String> map = new HashMap<String,String>();
 		map.put("schedules_content", schedules_content);
 		map.put("date", date);
 		sqlSession.insert("productSQL.scheduleUpload", map);		
-	}
+	}	
 
-	public List<ProductDTO> searchResult() {
-		List<ProductDTO> list = sqlSession.selectList("productSQL.productList");
-		return list;
-	}
-
-	public ProductDTO packageView(int seq) {
+	public ProductDTO detailView(int seq) {
 		ProductDTO productDTO = sqlSession.selectOne("productSQL.detailView",seq);
 		return productDTO;
 	}
@@ -58,13 +63,15 @@ public class ProductDAOMybatis implements ProductDAO{
 	}
 
 	public void purchasing(int pack_no) {
-		int su = sqlSession.update("productSQL.pack_pur_cnt",pack_no);
-		System.out.println(su);
+		sqlSession.update("productSQL.pack_pur_cnt",pack_no);
 	}
 
-	public List<TravelReviewDTO> travelReviewList() {
-		List<TravelReviewDTO> travelReviewList = sqlSession.selectList("productSQL.travelReviewList");
+
+	public List<TravelReviewDTO> travelReviewList(int pack_no) {
+		List<TravelReviewDTO> reviewList = sqlSession.selectList("productSQL.travelReviewList", pack_no);
 		
-		return travelReviewList;
+		return reviewList;
 	}
+
+
 }

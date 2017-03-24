@@ -1,5 +1,4 @@
 package product.dao;
-
 import java.util.List;
 
 import product.bean.BankDTO;
@@ -15,7 +14,7 @@ public interface ProductDAO {
 
 	public List<ProductDTO> searchResult();
 
-	public ProductDTO packageView(int seq);
+	public List<ProductDTO> packageView(String category);
 
 	public List<SchedulesDTO> schedules(int seq);
 
@@ -25,5 +24,7 @@ public interface ProductDAO {
 
 	public void purchasing(int pack_no);
 
-	public List<TravelReviewDTO> travelReviewList();
+	public ProductDTO detailView(int seq);
+
+	public List<TravelReviewDTO> travelReviewList(int pack_no);
 }

@@ -7,6 +7,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="productUpload" parameterType="product">
 		insert into packages(pack_no
 							,pack_title
+							,pack_category
 							,pack_price_kid
 							,pack_price_adult
 							,pack_desc
@@ -28,6 +29,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 							,image9)
 					values(pack_no.nextval
 							,#{pack_title}
+							,#{pack_category}
 							,#{pack_price_kid}
 							,#{pack_price_adult}
 							,#{pack_desc}
@@ -63,8 +65,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 							  )	
 	</insert>
 	
-	<select id="productList" resultType="product">
-		select * from packages
+	<select id="productList" parameterType="String" resultType="product">
+		select * from packages where pack_category=#{category}
 	</select>
 	
 	<select id="detailView" parameterType="Int" resultType="product">
@@ -83,8 +85,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		update packages set purchase_cnt=purchase_cnt+1 where pack_no=#{pack_no}
 	</update>
 	
-	<select id="travelReviewList" parameterType="Int" resultType="product.bean.TravelReviewDTO">
-		select * from 
+	<select id="travelReviewList" parameterType="int" resultType="review">
+		select * from travelReview where pack_no=#{pack_no}
 	</select>
 </mapper>
 

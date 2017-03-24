@@ -16,18 +16,24 @@ $(function() {
 	$('#date_arriv').datepicker({dateFormat: 'yy년 mm월 dd일'});
 });
 </script>
-<script src="js/product/package_upload.js?ver=1" type="text/javascript"></script>
+<script src="js/product/package_upload.js" type="text/javascript"></script>
 
 <body id="package_upload">
 	<div id="package_uploadDIV">
-		<form name="package_upload_Form" method="post"
-			enctype="multipart/form-data"
-			action="/TravelAgency/package_upload.do">
-			<table id="package_list_table" border="1.2px" cellspacing="0">
+		<form name="package_upload_Form" method="post" enctype="multipart/form-data" action="/TravelAgency/package_upload.do">
+			<table id="package_list_table" class="table table-striped">
 				<tr>
 					<th>패키지명</th>
-					<td><input type="text" class="pack_up_list" name="pack_title"><input
-						type="file" name="img" size="40"></td>
+					<td>
+						<p><input type="text" class="pack_up_list" name="pack_title" id="pack_title">
+						<select name="pack_category" id="pack_category">
+							<option value="">지역선택</option>
+							<option value="ea">동남아</option>
+							<option value="eu">유럽</option>
+							<option value="am">미주</option>
+						</select></p>
+						<input type="file" name="img" size="40">
+					</td>
 				</tr>
 				<tr>
 					<th>패키지금액</th>
@@ -47,7 +53,7 @@ $(function() {
 				<tr>
 					<th>여행기간</th>
 					<td><input type="text" name="pack_depart" size="15"
-						id="date_depart" />~ <input type="text" name="pack_arriv"
+						id="date_depart" />~<input type="text" name="pack_arriv"
 						size="15" id="date_arriv" /></td>
 				</tr>
 				<tr>

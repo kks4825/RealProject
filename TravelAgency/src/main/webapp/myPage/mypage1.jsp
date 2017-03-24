@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <link rel="stylesheet" href="/TravelAgency/css/myPage/myPage1.css?ver=1">
 
@@ -150,13 +149,12 @@
 							<td colspan="7" bgcolor="#607d8b"></td>
 						</tr>
 						<tr>
-							<td width="130" height="40" style="text-align:center;">예약날짜/<br>예약코드/결제</td>
-							<td width="300" style="text-align:center;">상품명</td>
-							<td width="130" style="text-align:center;">총 결제금액</td>
-							<td width="100" style="text-align:center;">인원</td>
-							<td width="130" style="text-align:center;">출발일/귀국일</td>
-							<td width="100" style="text-align:center;">예약상태</td>
-							<td width="100" style="text-align:center;">상품평</td>
+							<td width="20%" height="40" style="text-align:center;">예약날짜/예약번호/결제방법</td>
+							<td width="30%" style="text-align:center;">상품명</td>
+							<td width="10%" style="text-align:center;">총 결제금액</td>
+							<td width="10%" style="text-align:center;">인원(성인/아동)</td>
+							<td width="25%" style="text-align:center;">출발일/귀국일</td>
+							<td width="5%" style="text-align:center;">상품평</td>
 						</tr>
 						<tr>
 							<td colspan="7" bgcolor="#607d8b"></td>
