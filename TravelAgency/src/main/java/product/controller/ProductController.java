@@ -9,11 +9,13 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -49,12 +51,12 @@ public class ProductController {
 	
 	@RequestMapping(value="/detailView.do")
 	public ModelAndView detailView(@RequestParam int seq
-								  ,HttpSession session) {
+								  ,HttpSession session
+								  ,Model mod) {
+
 		//DB
 		ProductDTO productDTO = productDAO.detailView(seq);
 		List<SchedulesDTO> scheduleList= productDAO.schedules(seq);
-		
-		System.out.println(productDTO.getPack_no());
 		
 		List<TravelReviewDTO> reviewList = productDAO.travelReviewList(productDTO.getPack_no());
 		
@@ -113,10 +115,12 @@ public class ProductController {
 	public ModelAndView package_upload(@ModelAttribute ProductDTO productDTO
 									, @RequestParam(required=false) MultipartFile[] img
 									, @RequestParam(required=false, value="schedules_content") String[] schedules_content
-									, @RequestParam(required=false) int liLength) {
-		String filePath = "E:/workspace/TravelAgency/src/main/webapp/product_img";
+									, @RequestParam(required=false) int liLength
+									, HttpServletRequest request ) {
+		String filePath = request.getSession().getServletContext().getRealPath("/")+"/product_img";
 		
 		String[] fileName = new String[9];
+		
 		for(int i=0;i < fileName.length;i++){
 			if(fileName[i]!=""){
 				fileName[i] = img[i].getOriginalFilename();

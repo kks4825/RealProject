@@ -1,5 +1,13 @@
 //==$(function(){
 $(document).ready(function(){
+	$('#reserveBtn').click(function(){		
+		if($('#kids option:selected').val()=='0'&&$('#adults option:selected').val()=='0'){
+			alert("선택된 인원이 없습니다.");
+		}else{
+			document.detailViewForm.submit();
+		}
+	});
+	
 	$('#schedule').click(function(){
 		$('.tab_content').css("display","none");
 		$('#content1').css("display","block");

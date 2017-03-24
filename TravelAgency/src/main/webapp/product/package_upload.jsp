@@ -12,11 +12,11 @@
 <script>
 $(function() {
 	$.datepicker.setDefaults($.datepicker.regional['ko']); //datepicker 한국어로 사용하기 위한 언어설정
-	$('#date_depart').datepicker({dateFormat: 'yy년 mm월 dd일'});
-	$('#date_arriv').datepicker({dateFormat: 'yy년 mm월 dd일'});
+	$('#date_depart').datepicker({dateFormat: 'yy-m-dd'});
+	$('#date_arriv').datepicker({dateFormat: 'yy-m-dd'});
 });
 </script>
-<script src="js/product/package_upload.js" type="text/javascript"></script>
+<script src="js/product/package_upload.js?ver=1" type="text/javascript"></script>
 
 <body id="package_upload">
 	<div id="package_uploadDIV">
@@ -32,23 +32,21 @@ $(function() {
 							<option value="eu">유럽</option>
 							<option value="am">미주</option>
 						</select></p>
-						<input type="file" name="img" size="40">
+						<input type="file" name="img" size="40" id="img1">
 					</td>
 				</tr>
 				<tr>
 					<th>패키지금액</th>
-					<td><input type="number" class="pack_up_list"
-						name="pack_price_kid" placeholder="아동"> <input
-						type="number" class="pack_up_list" name="pack_price_adult"
-						placeholder="성인"></td>
+					<td><input type="number" class="pack_up_list" name="pack_price_kid" placeholder="아동" id="pack_price_kid"> 
+						<input type="number" class="pack_up_list" name="pack_price_adult" id="pack_price_adult"	placeholder="성인"></td>
 				</tr>
 				<tr>
 					<th>패키지설명</th>
-					<td><textarea rows="5" cols="70" name="pack_desc"></textarea></td>
+					<td><textarea rows="5" cols="70" name="pack_desc" id="pack_desc"></textarea></td>
 				</tr>
 				<tr>
 					<th>여행도시</th>
-					<td><input type="text" class="pack_up_list" name="pack_city"></td>
+					<td><input type="text" class="pack_up_list" name="pack_city" id="pack_city"></td>
 				</tr>
 				<tr>
 					<th>여행기간</th>
@@ -58,34 +56,33 @@ $(function() {
 				</tr>
 				<tr>
 					<th>항공사</th>
-					<td><input type="text" class="pack_up_list" name="pack_air"></td>
+					<td><input type="text" class="pack_up_list" name="pack_air" id="pack_air"></td>
 				</tr>
 				<tr>
 					<th>핵심정보</th>
-					<td><textarea rows="5" cols="70" name="pack_detail"></textarea><br>
-						<input type="file" name="img" size="40"> <input
-						type="file" name="img" size="40"> <input type="file"
-						name="img" size="40"> <input type="file" name="img"
-						size="40"></td>
+					<td><textarea rows="5" cols="70" name="pack_detail" id="pack_detail"></textarea><br>
+						<input type="file" name="img" size="40" id="img2"> 
+						<input type="file" name="img" size="40" id="img3"> 
+						<input type="file" name="img" size="40" id="img4"> 
+						<input type="file" name="img" size="40" id="img5"></td>
 					<td></td>
 				</tr>
 				<tr>
 					<th>관광정보</th>
-					<td><textarea rows="5" cols="70" name="tour_info"></textarea><br>
-						<input type="file" name="img" size="40"> <input
-						type="file" name="img" size="40"> <input type="file"
-						name="img" size="40"> <input type="file" name="img"
-						size="40"></td>
+					<td><textarea rows="5" cols="70" name="tour_info" id="tour_info"></textarea><br>
+						<input type="file" name="img" size="40" id="img6">
+						<input type="file" name="img" size="40" id="img7"> 
+						<input type="file" name="img" size="40" id="img8"> 
+						<input type="file" name="img" size="40" id="img9"></td>
 				</tr>
 				<tr>
 					<th>여행참고사항</th>
-					<td><textarea rows="5" cols="70" name="tour_ref"></textarea></td>
+					<td><textarea rows="5" cols="70" name="tour_ref" id="tour_ref"></textarea></td>
 				</tr>
 				<tr>
 					<th>일정표<input type="button" value="일정추가" id="sche_add"></th>
 					<!-- onclick="javascript:appendItem()" -->
 				</tr>
-
 			</table>
 			<ol id="schedules"></ol>
 			<input type="button" value="등록" id="upload_check">
