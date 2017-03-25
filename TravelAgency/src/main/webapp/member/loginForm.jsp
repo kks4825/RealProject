@@ -23,7 +23,7 @@ function getUserData() {
         $("#email").text("이메일 : "+response.email);
         $("#gender").text("성별 : "+response.gender);
         $("#birthday").text("생년월일 : "+response.birthday);
-        $("#id").text("아이디 : "+response.id);
+        $("#id").text("아이디 : " + response.id);
     });
   
     function statusChangeCallback(response) {
@@ -101,12 +101,12 @@ function getUserData() {
 
 			<div id="login-box-name" style="margin-top: 20px;">Id:</div>
 			<div id="login-box-field" style="margin-top: 20px;">
-				<input id="id" name="id" class="form-login" title="Username"
+				<input id="id" name="memId" class="form-login" title="Username"
 					value="" size="30" maxlength="2048" />
 			</div>
 			<div id="login-box-name">Password:</div>
 			<div id="login-box-field">
-				<input id="pwd" name="pwd" type="password" class="form-login"
+				<input id="pwd" name="memPwd" type="password" class="form-login"
 					title="Password" value="" size="30" maxlength="1024" />
 			</div>
 			<br> 

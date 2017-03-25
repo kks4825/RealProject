@@ -92,6 +92,8 @@ public class MemberController {
 
 	@RequestMapping(value = "/signUp.do", method = RequestMethod.POST)
 	public String signUp(@ModelAttribute MemberDTO memberDTO, Model model, HttpSession session) {
+		memberDTO.setMemPwd(encoder.saltEncoding(memberDTO.getMemPwd(), memberDTO.getMemId()));
+		
 		int su = memberDAO.signUp(memberDTO);
 
 		model.addAttribute("display", "/member/joinConfirm.jsp");
