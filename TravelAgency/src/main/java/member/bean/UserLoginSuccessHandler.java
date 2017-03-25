@@ -1,21 +1,24 @@
 package member.bean;
 
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
-
 import java.io.IOException;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+
+import member.dao.MemberDAO;
 
 public class UserLoginSuccessHandler implements AuthenticationSuccessHandler {
+	@Autowired
+	MemberDAO memberDAO;
 
 	private static final Logger logger = LoggerFactory.getLogger(UserLoginSuccessHandler.class);
 
@@ -25,6 +28,7 @@ public class UserLoginSuccessHandler implements AuthenticationSuccessHandler {
 		logger.info(auth.getAuthorities().toString());
 		logger.info(auth.getDetails().toString());
 		logger.info(auth.getPrincipal().toString());
+		
 		for (GrantedAuthority a : auth.getAuthorities()) {
 			logger.info(a.getAuthority());
 		}
@@ -38,5 +42,13 @@ public class UserLoginSuccessHandler implements AuthenticationSuccessHandler {
 		res.sendRedirect(req.getContextPath() + "/index.do");
 		
 		req.getSession().setAttribute("memId", auth.getName());
+		req.getSession().setAttribute("memberDTO", memberDAO.getMember(auth.getName()));
 	}
 }
+
+
+
+
+
+
+

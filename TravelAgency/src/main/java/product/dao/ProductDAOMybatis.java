@@ -73,5 +73,9 @@ public class ProductDAOMybatis implements ProductDAO{
 		return reviewList;
 	}
 
-
+	public int getTotalA(int pack_no) {
+		int totalA = sqlSession.selectOne("memberSQL.getTotalA", pack_no);
+		
+		return totalA;
+	}
 }

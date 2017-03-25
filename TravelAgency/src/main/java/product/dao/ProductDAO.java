@@ -27,4 +27,6 @@ public interface ProductDAO {
 	public ProductDTO detailView(int seq);
 
 	public List<TravelReviewDTO> travelReviewList(int pack_no);
+	
+	public int getTotalA(int pack_no);
 }

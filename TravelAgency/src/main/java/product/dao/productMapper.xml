@@ -88,6 +88,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="travelReviewList" parameterType="int" resultType="review">
 		select * from travelReview where pack_no=#{pack_no}
 	</select>
+	
+	<select id="getTotalA" parameterType="int" resultType="int">
+		select count(*) from travelReview where pack_no=#{pack_no}
+	</select>
 </mapper>
 
 
