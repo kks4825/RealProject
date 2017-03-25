@@ -141,8 +141,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="selectUser" parameterType="java.lang.String" resultType="map">
 		SELECT memId,memPwd,enabled,authority from member where memId = #{memId, jdbcType=VARCHAR}
-	</select> 
-	
+	</select>
 </mapper>
 
 

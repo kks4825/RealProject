@@ -46,7 +46,7 @@ public class MemberDAOMybatis implements MemberDAO {
 		sqlSession.update("memberSQL.passport", memberDTO);
 	}
 
-	//바자 정보입력
+	//비자 정보입력
 	public void visa(MemberDTO memberDTO) {
 		sqlSession.update("memberSQL.visa", memberDTO);
 	}

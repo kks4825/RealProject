@@ -124,6 +124,11 @@ public class MemberController {
 		mav.setViewName("/index/index");
 		return mav;
 	}
+	
+	@RequestMapping(value="/loginFail.do")
+	public String loginFail(){
+		return "/member/loginFail";
+	}
 
 	/*
 	 * @RequestMapping(value = "/login.do", method = RequestMethod.POST) public
@@ -149,7 +154,8 @@ public class MemberController {
 	 * 
 	 * mav.setViewName("/index/index");
 	 * 
-	 * return mav; }
+	 * return mav; 
+	 * }
 	 */
 
 	@RequestMapping(value = "/logout.do")
@@ -175,7 +181,6 @@ public class MemberController {
 		return mav;
 	}
 
-	// 여권,비자 정보창
 	// 여권,비자 정보창
 	@RequestMapping(value = "/myPassport.do")
 	public ModelAndView myPassport_visa() {
@@ -301,7 +306,9 @@ public class MemberController {
 	@RequestMapping(value = "/pwdCheck.do", method = RequestMethod.POST)
 	public ModelAndView pwdCheck(@RequestParam String id, @RequestParam String pwd, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
-
+		
+		pwd = encoder.saltEncoding(pwd, id);
+		
 		String checkId = memberDAO.pwdCheck(id, pwd);
 
 		String pg = (String) session.getAttribute("pg");
@@ -344,7 +351,9 @@ public class MemberController {
 		ModelAndView mav = new ModelAndView();
 
 		String memId = SecurityContextHolder.getContext().getAuthentication().getName();
-
+		
+		newPwd = encoder.saltEncoding(newPwd, memId);
+		
 		memberDAO.pwdChange(memId, newPwd);
 
 		mav.addObject("display", "/myPage/pwdChangeConfirm.jsp");
