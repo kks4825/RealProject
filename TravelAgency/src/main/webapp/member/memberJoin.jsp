@@ -2,24 +2,26 @@
 	pageEncoding="UTF-8"%>
 <script src="http://code.jquery.com/jquery-1.3.2.min.js" ></script>
 <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.0/jquery.validate.min.js" ></script>
+<script type="text/javascript" src="additional-methods.min.js"></script>
+<script type="text/javascript" src="messages_ko.min.js"></script>
 
 
 <script type="text/javascript">
-/* $(document).ready(function () {          
-	  $('#memberJoin').validate({
-	      rules: {
-	          memId:{required:true, minlength:3, remote:"Validate"},
+ $(document).ready(function () {          
+	  $('.memberjoin').validate({
+		  rules: {
+	          memId:{required:true, minlength:3},
 	          memPwd:{required:true},
 	          memPwdChk: {required:true, equalTo:'#memPwd'}, 
 	          memName: {required:true},    
 	          memEmail: {email:true},
-	          memAddr2: {required:true}
+	          memAddr2: {required:true},
+	          mailCheck:{equalTo:'#mailReCheck'}
 	      },
 	      messages: {
 	    	  memId: {
 	               required:"아이디를 입력해주세요.",
-	               minlength: jQuery.format("아이디는 {0}자 이상 입력해주세요!"),
-	               remote : jQuery.format("입력하신 {0}는 이미존재하는 아이디입니다. ")
+	               minlength: jQuery.format("아이디는 {0}자 이상 입력해주세요!")
 	          },
 	          memPwd:"암호를 입력해주세요.",
 	          memPwdChk: {
@@ -29,15 +31,23 @@
 	   	      memEmail: {
 	              email:"이메일 형식이 틀립니다."
 	   	      },
-	   	      memAddr2:"주소를 입력해주세요."
-	      },
-	      submitHandler: function (frm){
-	          frm.submit();
-	      },
-	      success: function(e){
+	   	      memAddr2:"주소를 입력해주세요.",
+	   	      mailCheck:{
+	   	    	  equalTo:"이메일 인증이 필요합니다."
+	   	      }
+	      }, errorPlacement: function(error, element) {
+	            // do nothing
+	      }, invalidHandler: function(form, validator) {
+	             var errors = validator.numberOfInvalids();
+	             if (errors) {
+	                 alert(validator.errorList[0].message);
+	                 validator.errorList[0].element.focus();
+	             }
+	      }, submitHandler: function(form) {
+	            form.submit();
 	      }
 	  });
-	}); */
+	}); 
 	
 function zipcodeSearch(){
 	window.open("/TravelAgency/checkPost.do","","width=450 height=400 scrollbars=yes");
@@ -50,6 +60,16 @@ function idCheck(){
 	else
 		window.open("/TravelAgency/idCheck.do?memId="+memId,"","width=320 height=100");	
 }
+
+function checkEmail(){
+	var sEmail = document.memberJoin.memEmail.value;
+	if(sEmail=="")
+		alert("먼저 이메일을 입력하세요");
+	else
+		
+		window.open("/TravelAgency/sendMail/emailChk.do?memEmail="+sEmail,"","width=320 height=100");
+	
+}
 </script>
 <h2>&nbsp;회원가입</h2>
 <div class="member_title_step"
@@ -59,7 +79,7 @@ function idCheck(){
 		class="step_off">3&nbsp;가입완료</span>
 </div>
 <br>
-<form id="memberJoin" name="memberJoin" method="post" action="/TravelAgency/signUp.do">
+<form class="memberjoin" id="memberJoin" name="memberJoin" method="post" action="/TravelAgency/signUp.do">
 <font color="red">&nbsp;&nbsp;*</font>
 <font id="s">&nbsp;표시 항목은 필수 입력 항목입니다.</font>
 <br>
@@ -134,7 +154,12 @@ function idCheck(){
 		<td align="center" bgcolor="#D4F4FA" style="font-weight: bold">E
 			- mail&nbsp;</td>
 		<td valign="top"></td>
-		<td><input type="text" name="memEmail" id="memEmail" size="28"></td>
+		<td><input type="text" name="memEmail" id="memEmail" size="28">
+			&nbsp;<input type="button" name="mailCheck" id="mailCheck" value="이메일 인증" 
+			style="border: none; width: 73pt; height: 18pt; background-color: #36589C; color: #FFFFFF;"
+			onclick="checkEmail()">
+			<input type="hidden" name="mailReCheck" id="mailReCheck" value="인증완료">
+		</td>
 	</tr>
 
 	<tr height="30">

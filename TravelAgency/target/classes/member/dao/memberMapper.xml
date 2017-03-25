@@ -130,6 +130,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		delete from member where memId=#{memId};
 	end;
 	</delete>
+	<!-- 이메일 체크 -->
+	<select id="findAccount" parameterType="java.lang.String" resultType="member">
+		select * from member where memEmail=#{memEmail}
+	</select>
+	<!-- 임시비밀번호 변경 -->
+	<update id="tempPwdChange" parameterType="java.util.Map">
+		update member set memPwd=#{tempPwd} where memId=#{memId}
+	</update>
+	
+	<select id="selectUser" parameterType="java.lang.String" resultType="map">
+		SELECT memId,memPwd,enabled,authority from member where memId = #{memId, jdbcType=VARCHAR}
+	</select> 
+	
 </mapper>
 
 

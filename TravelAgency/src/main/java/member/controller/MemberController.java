@@ -2,11 +2,18 @@ package member.controller;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,14 +24,21 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import member.bean.MemberDTO;
+import member.bean.ShaEncoder;
+import member.bean.UserDetailsVO;
 import member.bean.ZipcodeDTO;
 import member.dao.MemberDAO;
 
 @Controller
 @Component
 public class MemberController {
+	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
+
 	@Autowired
 	private MemberDAO memberDAO;
+
+	@Resource(name = "shaEncoder")
+	private ShaEncoder encoder;
 
 	// 회원가입시작
 	@RequestMapping(value = "/joinAgree.do", method = RequestMethod.GET)
@@ -109,36 +123,32 @@ public class MemberController {
 		return mav;
 	}
 
-	@RequestMapping(value = "/login.do", method = RequestMethod.POST)
-	public ModelAndView login(@RequestParam(required=false) String id,
-							  @RequestParam(required=false) String pwd,
-							  HttpSession session) {
-		ModelAndView mav = new ModelAndView();
-		
-		MemberDTO memberDTO = null;
-		
-		if(id != null && pwd != null){
-			memberDTO = memberDAO.login(id, pwd);
-		} else if(session.getAttribute("facebookUserData") != null) {
-			mav.addObject("display", "/member/login.jsp");
-		}
-
-		if (memberDTO != null) {
-			session.setAttribute("memName", memberDTO.getMemName());
-			session.setAttribute("memId", memberDTO.getMemId());
-			session.setAttribute("memberDTO", memberDTO);
-
-			session.setMaxInactiveInterval(60 * 30);
-
-			mav.addObject("display", "/member/login.jsp");
-		} else {
-			mav.addObject("display", "/member/loginFail.jsp");
-		}
-
-		mav.setViewName("/index/index");
-
-		return mav;
-	}
+	/*
+	 * @RequestMapping(value = "/login.do", method = RequestMethod.POST) public
+	 * ModelAndView login(@RequestParam(required=false) String id,
+	 * 
+	 * @RequestParam(required=false) String pwd, HttpSession session) {
+	 * ModelAndView mav = new ModelAndView();
+	 * 
+	 * MemberDTO memberDTO = null;
+	 * 
+	 * if(id != null && pwd != null){ memberDTO = memberDAO.login(id, pwd); }
+	 * else if(session.getAttribute("facebookUserData") != null) {
+	 * mav.addObject("display", "/member/login.jsp"); }
+	 * 
+	 * if (memberDTO != null) { session.setAttribute("memName",
+	 * memberDTO.getMemName()); session.setAttribute("memId",
+	 * memberDTO.getMemId()); session.setAttribute("memberDTO", memberDTO);
+	 * 
+	 * session.setMaxInactiveInterval(60 * 30);
+	 * 
+	 * mav.addObject("display", "/member/login.jsp"); } else {
+	 * mav.addObject("display", "/member/loginFail.jsp"); }
+	 * 
+	 * mav.setViewName("/index/index");
+	 * 
+	 * return mav; }
+	 */
 
 	@RequestMapping(value = "/logout.do")
 	public ModelAndView logout(HttpSession session) {
@@ -164,10 +174,11 @@ public class MemberController {
 	}
 
 	// 여권,비자 정보창
+	// 여권,비자 정보창
 	@RequestMapping(value = "/myPassport.do")
-	public ModelAndView myPassport_visa(HttpSession session) {
-		String memId = (String) session.getAttribute("memId");
-		
+	public ModelAndView myPassport_visa() {
+		String memId = SecurityContextHolder.getContext().getAuthentication().getName();
+
 		MemberDTO memberDTO = memberDAO.getPassport_visa(memId);
 
 		ModelAndView mav = new ModelAndView();
@@ -181,7 +192,7 @@ public class MemberController {
 
 	// 여권정보입력
 	@RequestMapping(value = "/passport_information.do", method = RequestMethod.POST)
-	public ModelAndView passport_information(@ModelAttribute MemberDTO memberDTO, HttpSession session) {
+	public ModelAndView passport_information(@ModelAttribute MemberDTO memberDTO,HttpSession session) {
 		System.out.println(memberDTO.getPassportNumber());
 		System.out.println(memberDTO.getFirstName());
 		System.out.println(memberDTO.getLastName());
@@ -189,7 +200,7 @@ public class MemberController {
 		System.out.println(memberDTO.getPassportStartMonth());
 		System.out.println(memberDTO.getPassportStartDay());
 		
-		memberDTO.setMemId((String) session.getAttribute("memId"));
+		memberDTO.setMemId((String) SecurityContextHolder.getContext().getAuthentication().getName());
 
 		memberDAO.passport(memberDTO);
 
@@ -284,7 +295,7 @@ public class MemberController {
 		return mav;
 	}
 
-	//비밀번호 체크
+	// 비밀번호 체크
 	@RequestMapping(value = "/pwdCheck.do", method = RequestMethod.POST)
 	public ModelAndView pwdCheck(@RequestParam String id, @RequestParam String pwd, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
@@ -302,7 +313,7 @@ public class MemberController {
 				mav.addObject("pg", "myPassport");
 			else
 				mav.addObject("pg", "memberLeave");
-			
+
 			mav.addObject("display", "/myPage/pwdCheckAfter.jsp");
 		} else {
 			mav.addObject("display", "/myPage/pwdCheckFail.jsp");
@@ -312,25 +323,25 @@ public class MemberController {
 
 		return mav;
 	}
-	
-	//비밀번호변경 화면
-	@RequestMapping(value="/myPwdChange.do")
-	public ModelAndView myPwdChange(){
+
+	// 비밀번호변경 화면
+	@RequestMapping(value = "/myPwdChange.do")
+	public ModelAndView myPwdChange() {
 		ModelAndView mav = new ModelAndView();
-		
+
 		mav.addObject("display", "/myPage/myPwdChange.jsp");
-		
+
 		mav.setViewName("/index/index");
-		
+
 		return mav;
 	}
-	
-	//비밀번호변경 성공
+
+	// 비밀번호변경 성공
 	@RequestMapping(value = "/pwdChange.do")
 	public ModelAndView pwdChange(@RequestParam String newPwd, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 
-		String memId = (String) session.getAttribute("memId");
+		String memId = SecurityContextHolder.getContext().getAuthentication().getName();
 
 		memberDAO.pwdChange(memId, newPwd);
 
@@ -340,26 +351,26 @@ public class MemberController {
 
 		return mav;
 	}
-	
-	//회원탈퇴폼
-	@RequestMapping(value="/memberLeave.do")
+
+	// 회원탈퇴폼
+	@RequestMapping(value = "/memberLeave.do")
 	public ModelAndView memberLeave() {
 		ModelAndView mav = new ModelAndView();
-		
+
 		mav.addObject("display", "/myPage/memberLeave.jsp");
-		
+
 		mav.setViewName("/index/index");
-		
+
 		return mav;
 	}
-	
-	//회원탈퇴완료
+
+	// 회원탈퇴완료
 	@RequestMapping(value = "/leaveSuccess.do")
 	public ModelAndView leaveSuccess(HttpSession session, @RequestParam String reason,
 			@RequestParam String requirement) {
 		ModelAndView mav = new ModelAndView();
 
-		String memId = (String) session.getAttribute("memId");
+		String memId = SecurityContextHolder.getContext().getAuthentication().getName();
 
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("memId", memId);
@@ -374,6 +385,22 @@ public class MemberController {
 
 		session.invalidate();
 
+		return mav;
+	}
+	
+	@RequestMapping(value ="/checkAuth.do", method = RequestMethod.GET)
+	@Secured({"ROLE_USER"})
+	public ModelAndView checkAuth(Locale locale, Authentication auth) {
+		UserDetailsVO vo = (UserDetailsVO) auth.getPrincipal();
+		logger.info("Welcome checkAuth! Authentication is {}.", auth);
+		logger.info("UserDetailsVO == {}.", vo);
+		
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("auth", auth );
+		mav.addObject("vo", vo );
+		mav.addObject("display", "/member/checkAuth.jsp");
+		mav.setViewName("/index/index");
+		
 		return mav;
 	}
 }

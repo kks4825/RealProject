@@ -30,4 +30,10 @@ public interface MemberDAO {
 	public void pwdChange(String memId, String newPwd);
 
 	public void leaveSuccess(Map<String, String> map);
+
+	public MemberDTO findAccount(String email);
+
+	public void updateInfo(String memId, String tempPwd);
+
+	public Map<String, Object> selectUser(String memId);
 }
