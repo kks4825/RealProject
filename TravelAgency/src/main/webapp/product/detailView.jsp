@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<link rel="stylesheet" href="css/product/detail.css" type="text/css" media="screen">
+<link rel="stylesheet" href="css/product/detail.css?ver=1" type="text/css" media="screen">
 
 <script src="js/product/detail.js" type="text/javascript"></script>
 <script>
@@ -15,43 +15,28 @@
 		$("#payment").append(
 				new Intl.NumberFormat("ko-KR").format(totalPay) + "원");
 	}
-	$(document).ready(
-			function() {
-				$('#adults')
-						.change(
-								function() {
-									var adultCount = $(
-											'#adults option:selected').val();
-									var kidsCount = $('#kids option:selected')
-											.val();
-									var totalPay = adultCount
-											* '${productDTO.pack_price_adult }'
-											+ kidsCount
-											* '${productDTO.pack_price_kid }';
-									$("#payment").empty();
-									$("#payment").append(
-											new Intl.NumberFormat("ko-KR")
-													.format(totalPay)
-													+ "원");
-								});
-				$('#kids')
-						.change(
-								function() {
-									var adultCount = $(
-											'#adults option:selected').val();
-									var kidsCount = $('#kids option:selected')
-											.val();
-									var totalPay = adultCount
-											* '${productDTO.pack_price_adult }'
-											+ kidsCount
-											* '${productDTO.pack_price_kid }';
-									$("#payment").empty();
-									$("#payment").append(
-											new Intl.NumberFormat("ko-KR")
-													.format(totalPay)
-													+ "원");
-								});
-			});
+	$(document).ready(function() {
+		$('#adults').change(function() {
+			var adultCount = $('#adults option:selected').val();
+			var kidsCount = $('#kids option:selected').val();
+			var totalPay = adultCount * '${productDTO.pack_price_adult }' + kidsCount * '${productDTO.pack_price_kid }';
+			$("#payment").empty();
+			$("#payment").append(new Intl.NumberFormat("ko-KR").format(totalPay)+ "원");
+		});
+		
+		$('#kids').change(function() {
+			var adultCount = $('#adults option:selected').val();
+			var kidsCount = $('#kids option:selected').val();
+			var totalPay = adultCount * '${productDTO.pack_price_adult }' + kidsCount * '${productDTO.pack_price_kid }';
+			
+			$("#payment").empty();
+			$("#payment").append(new Intl.NumberFormat("ko-KR").format(totalPay)+ "원");
+		});
+	});
+	
+	function reviewPaging(pg){
+		location.href="/TravelAgency/detailView.do?pg="+pg+"&seq="+${productDTO.pack_no };
+	}
 </script>
 
 <div id="all">
@@ -187,7 +172,7 @@
 			<tr>
 				<td width="100px" style="text-align: center;">글번호</td>
 				<td width="450px" style="text-align: center;">제목</td>
-				<td width="100px" style="text-align: center;">이름</td>
+				<td width="100px" style="text-align: center;">아이디</td>
 				<td width="150px" style="text-align: center;">작성일</td>
 				<td width="100px" style="text-align: center;">평점</td>
 			</tr>
@@ -210,13 +195,11 @@
 				<td colspan="5" bgcolor="777777"></td>
 			</tr>
 			<tr>
-				<td colspan="5" align="right"><input type="button" value="작성하기">
-				</td>
+				<td colspan="5">&nbsp; </td>
 			</tr>
-			<tr>
-				<td colspan="5" style="text-align: center;">| 1 | 2 | 3 | 4 | 5
-					| ></td>
-			</tr>
-		</table>
+		</table>		
+		<div class="pagination">
+			${reviewPaging.pagingHTML}
+		</div>
 	</div>
 </div>

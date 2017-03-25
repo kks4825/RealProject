@@ -85,8 +85,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		update packages set purchase_cnt=purchase_cnt+1 where pack_no=#{pack_no}
 	</update>
 	
-	<select id="travelReviewList" parameterType="int" resultType="review">
-		select * from travelReview where pack_no=#{pack_no}
+	<select id="travelReviewList" parameterType="java.util.Map" resultType="review">
+		<![CDATA[
+		select * from
+		(select rownum rn, tt.* from
+		(select * from travelReview where pack_no=#{pack_no} order by seq desc)tt
+		)where rn>=#{startNum} and rn<=#{endNum}
+		]]>
 	</select>
 	
 	<select id="getTotalA" parameterType="int" resultType="int">

@@ -3,7 +3,6 @@ package product.bean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import member.dao.MemberDAO;
 import product.dao.ProductDAO;
 
 @Component
@@ -41,17 +40,17 @@ public class ReviewPaging {
 		if(endPage > totalP) endPage = totalP;
 		
 		if(startPage>pageBlock)
-			pagingHTML.append("[<span id=paging onclick=ReviewPaging("+(startPage-1)+")>이전</span>]");
+			pagingHTML.append("<a href=# id=paging onclick=reviewPaging("+(startPage-1)+")>&laquo;</a>");
 			
 		for(int i=startPage; i<=endPage; i++){
 			if(i==currentPage)
-				pagingHTML.append("[<span id=currentPaging onclick=ReviewPaging("+i+")>"+i+"</span>]");
+				pagingHTML.append("<a href=# id=currentPaging onclick=reviewPaging("+i+")>"+i+"</span>");
 			else
-				pagingHTML.append("[<span id=paging onclick=ReviewPaging("+i+")>"+i+"</span>]");
+				pagingHTML.append("<a href=# id=paging onclick=reviewPaging("+i+")>"+i+"</span>");
 		}
 		
 		if(endPage<totalP)
-			pagingHTML.append("[<span id=paging onclick=ReviewPaging("+(endPage+1)+")>다음</span>]");	
+			pagingHTML.append("<a href=# id=paging onclick=reviewPaging("+(endPage+1)+")>&raquo;</span>");	
 	}
 }
 

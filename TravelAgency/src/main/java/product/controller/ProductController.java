@@ -5,6 +5,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -53,21 +54,32 @@ public class ProductController {
 	}
 	
 	@RequestMapping(value="/detailView.do")
-	public ModelAndView detailView(@RequestParam int seq) {
-
+	public ModelAndView detailView(@RequestParam int seq, @RequestParam(required=false) String pg) {
+		if(pg==null) pg="1";
+		
 		//DB
 		ProductDTO productDTO = productDAO.detailView(seq);
 		List<SchedulesDTO> scheduleList= productDAO.schedules(seq);
 		
-		List<TravelReviewDTO> reviewList = productDAO.travelReviewList(productDTO.getPack_no());
+		int endNum = Integer.parseInt(pg)*10;
+		int startNum = endNum-9;
+		
+		Map<String, Object> map = new HashMap<String,Object>();
+		map.put("pack_no", productDTO.getPack_no());
+		map.put("startNum", startNum);
+		map.put("endNum", endNum);
+		
+		List<TravelReviewDTO> reviewList = productDAO.travelReviewList(map);
 		
 		//페이징처리
 		reviewPaging.setCurrentPage(Integer.parseInt(pg));
-		reviewPaging.setPageBlock(3);
-		reviewPaging.setPageSize(5);
+		reviewPaging.setPageBlock(5);
+		reviewPaging.setPageSize(10);
 		reviewPaging.makePagingHTML(productDTO.getPack_no());
 		
 		ModelAndView mav = new ModelAndView();
+		
+		mav.addObject("reviewPaging", reviewPaging);
 		mav.addObject("reviewList", reviewList);
 		mav.addObject("productDTO", productDTO);
 		mav.addObject("scheduleList",scheduleList);
