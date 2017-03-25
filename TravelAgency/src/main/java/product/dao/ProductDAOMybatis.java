@@ -67,14 +67,14 @@ public class ProductDAOMybatis implements ProductDAO{
 	}
 
 
-	public List<TravelReviewDTO> travelReviewList(int pack_no) {
-		List<TravelReviewDTO> reviewList = sqlSession.selectList("productSQL.travelReviewList", pack_no);
+	public List<TravelReviewDTO> travelReviewList(Map<String, Object> map) {
+		List<TravelReviewDTO> reviewList = sqlSession.selectList("productSQL.travelReviewList", map);
 		
 		return reviewList;
 	}
 
 	public int getTotalA(int pack_no) {
-		int totalA = sqlSession.selectOne("memberSQL.getTotalA", pack_no);
+		int totalA = sqlSession.selectOne("productSQL.getTotalA", pack_no);
 		
 		return totalA;
 	}

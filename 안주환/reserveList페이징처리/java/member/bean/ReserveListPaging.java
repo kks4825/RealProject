@@ -1,14 +1,14 @@
-package product.bean;
+package member.bean;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import product.dao.ProductDAO;
+import member.dao.MemberDAO;
 
 @Component
-public class ReviewPaging {
+public class ReserveListPaging {
 	@Autowired
-	private ProductDAO productDAO;
+	private MemberDAO memberDAO;
 	
 	private int currentPage;	//현재페이지
 	private int pageBlock;	//[이전][1][2][3][다음]
@@ -28,10 +28,10 @@ public class ReviewPaging {
 		return pagingHTML;
 	}
 	
-	public void makePagingHTML(int pack_no){
+	public void makePagingHTML(String memId){
 		pagingHTML = new StringBuffer();
 		
-		int totalA = productDAO.getTotalA(pack_no);	//총글수
+		int totalA = memberDAO.getTotalA(memId);	//총글수
 		int totalP = (totalA+pageSize-1)/pageSize;	//총페이지수
 		
 		int startPage = (currentPage-1)/pageBlock*pageBlock+1;
@@ -40,18 +40,21 @@ public class ReviewPaging {
 		if(endPage > totalP) endPage = totalP;
 		
 		if(startPage>pageBlock)
-			pagingHTML.append("<a href=# id=paging onclick=reviewPaging("+(startPage-1)+")>&laquo;</a>");
-			
-		for(int i=startPage; i<=endPage; i++){
-			if(i==currentPage)
-				pagingHTML.append("<a href=# id=currentPaging onclick=reviewPaging("+i+")>"+i+"</span>");
-			else
-				pagingHTML.append("<a href=# id=paging onclick=reviewPaging("+i+")>"+i+"</span>");
-		}
+			pagingHTML.append("<a id=paging href=myPage1.do?pg="+(startPage-1)+">[이전]</a>");
 		
-		if(endPage<totalP)
-			pagingHTML.append("<a href=# id=paging onclick=reviewPaging("+(endPage+1)+")>&raquo;</span>");	
+		for(int i=startPage;i<=endPage;i++){
+			if(i==currentPage)
+				pagingHTML.append("[<a id=currentPaging href=myPage1.do?pg="+i+">"+i+"</a>]");
+			else
+				pagingHTML.append("[<a id=paging href=myPage1.do?pg="+i+">"+i+"</a>]");
+		}	
+		
+		if(endPage < totalP)
+			pagingHTML.append("<a id=paging href=myPage1.do?pg="+(endPage+1)+">[다음]</a>");
+		
 	}
+	
+	
 }
 
 
