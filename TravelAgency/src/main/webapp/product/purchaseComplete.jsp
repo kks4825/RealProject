@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <script>
 $(document).ready(function(){
-	alert("결제상태확인(마이페이지)");
+	alert("결제내역확인(마이페이지)");
 	location.href="/TravelAgency/myPage1.do";
 });
 </script>

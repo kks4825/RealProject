@@ -32,11 +32,9 @@
 						<table>
 							<tr>
 								<td width="944px" height="47px" style="border: 1px solid red;">
-									출발일: &nbsp; 
-								<input type="text" name="pack_depart" size="15" id="date_depart_search" />&nbsp;~ 도착일: &nbsp;
-								<input type="text" name="pack_arriv" size="15" id="date_arriv_search" />
-								<input type="button" value="&nbsp;&nbsp;검색&nbsp;&nbsp;">&nbsp;&nbsp;
-									*최대 1년 단위 검색 가능
+									도시 검색: &nbsp; 
+								<input type="text" name="city_search" size="25" id="city_search" />
+								<input type="button" value="&nbsp;&nbsp;검색&nbsp;&nbsp;">
 								</td>
 							</tr>
 						</table>
@@ -78,11 +76,11 @@
 										<td>${reserveList.numOfPerson }</td>
 										<td id="payState">${reserveList.paymentState }</td> 
 										<td>
-											<c:if test="${reserveList.reviewSEQ eq 0}"> <!-- 상품평 작성되면 0에서 1로 바 -->
-												<input type="button" value="상품평작성" id="reviewWrite"/>
+											<c:if test="${reserveList.reviewSEQ eq null}"> 
+												<input type="button" value="여행후기작성" id="reviewWrite" onclick="javascript:reviewWriteForm(${reserveList.pack_no},'${productList.pack_arriv}')"/>
 											</c:if>
-											<c:if test="${reserveList.reviewSEQ eq 1}">
-												<input type="button" value="상품평보기" id="reviews"/>
+											<c:if test="${reserveList.reviewSEQ ne null}">
+												<input type="button" value="여행후기보기" id="reviews" onclick=""/>
 											</c:if>
 										</td>
 										<td>

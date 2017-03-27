@@ -184,7 +184,7 @@
 					<tr>
 						<td width="100px" style="text-align: center;">${TravelReviewDTO.seq }</td>
 						<td width="450px" style="text-align: center;">${TravelReviewDTO.subject }</td>
-						<td width="100px" style="text-align: center;">${TravelReviewDTO.id }</td>
+						<td width="100px" style="text-align: center;">${TravelReviewDTO.memId }</td>
 						<td width="150px" style="text-align: center;">
 							<fmt:formatDate	value="${TravelReviewDTO.reviewDate}" pattern="yyyy.MM.dd" /></td>
 						<td width="100px" style="text-align: center;">${TravelReviewDTO.starScore }</td>

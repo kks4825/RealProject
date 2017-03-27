@@ -153,5 +153,10 @@ public class MemberDAOMybatis implements MemberDAO {
 	public void reserveCancel(int seq) {
 		sqlSession.delete("memberSQL.reserveCancel",seq);
 	}
+
+	public void reviewWrite(Map<String, String> map) {
+		sqlSession.insert("memberSQL.reviewWrite",map);
+		
+	}
 	
 }

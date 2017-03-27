@@ -379,7 +379,32 @@ public class MemberController {
 
 		return mav;
 	}
+	//이용후기 폼
+	@RequestMapping(value="/reviewWriteForm.do")
+	public ModelAndView reviewWriteForm(@RequestParam int pack_no){
+		String memId = SecurityContextHolder.getContext().getAuthentication().getName();
+		MemberDTO memberDTO = memberDAO.getMember(memId);
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("pack_no",pack_no);
+		mav.addObject("memberDTO",memberDTO);
+		mav.setViewName("/product/travel_write");
 
+		return mav;
+	}
+	//이용후기 등록
+	@RequestMapping(value="/reviewWrite.do")
+	public ModelAndView reviewWrite(@RequestParam Map<String, String> map){
+		String memId = SecurityContextHolder.getContext().getAuthentication().getName();
+		
+		ProductDTO productDTO = productDAO.detailView(Integer.parseInt(map.get("pack_no")));
+		System.out.println(productDTO.getPack_city());
+		map.put("pack_city", productDTO.getPack_city());
+		map.put("memId", memId);
+		memberDAO.reviewWrite(map);
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("/myPage/reviewWriteComplete");
+		return mav;
+	}
 	// 비밀번호입력
 	@RequestMapping(value = "/myPageInputPwd.do")
 	public ModelAndView myPageInputPwd(@RequestParam String pg, HttpSession session) {
@@ -388,7 +413,7 @@ public class MemberController {
 		session.setAttribute("pg", pg);
 
 		mav.addObject("display", "/myPage/myPageInputPwd.jsp");
-		mav.setViewName("/index/index");
+		mav.setViewName("/myPage/myPageInputPwd");
 
 		return mav;
 	}

@@ -185,6 +185,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<delete id="reserveCancel" parameterType="Integer">
 		delete from reservelist where list_seq=#{seq}
 	</delete>
+	<!-- 리뷰작성 -->
+	<insert id="reviewWrite" parameterType="java.util.Map">
+	begin
+		insert into travelreview values(seq.nextval, #{memId},#{subject},#{content},sysdate,#{starscore},#{pack_no},#{pack_city});
+		update reservelist set reviewseq=seq.currval where pack_no=#{pack_no} and memId=#{memId};
+	end;
+	</insert>
 </mapper>
 
 

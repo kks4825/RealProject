@@ -1,39 +1,30 @@
-$(function() {
-	$.datepicker.setDefaults($.datepicker.regional['ko']); //datepicker 한국어로 사용하기 위한 언어설정
-	$('#date_depart_search').datepicker({dateFormat: 'yy년mm월dd일'});
-	$('#date_arriv_search').datepicker({dateFormat: 'yy년mm월dd일'});
-});
-$(document).ready(function(){
-    var date_a_s = 29991231; //초기값 설정
-    var liLength;
-    $('#date_depart_search').change(function(){
-        //출발날짜
-        var date_depart = $('#date_depart_search').val();
-        var date_depart_split1 = date_depart.substr(0,4);
-        var date_depart_split2 = date_depart.substr(5,2);
-        var date_depart_split3 = date_depart.substr(8,2);
-        var date_d_s = date_depart_split1+date_depart_split2+date_depart_split3;
-        if((date_a_s-date_d_s)<=0){
-            alert("출발날짜는 도착날짜보다 이르게 설정되어야 합니다.");
-            $('#date_depart_search').val("");
-        }
-    });
-    $('#date_arriv_search').change(function(){
-        //출발날짜
-        var date_depart = $('#date_depart_search').val();
-        var date_depart_split1 = date_depart.substr(0,4);
-        var date_depart_split2 = date_depart.substr(5,2);
-        var date_depart_split3 = date_depart.substr(8,2);
-        var date_d_s = date_depart_split1+date_depart_split2+date_depart_split3;
-        //도착날짜
-        var date_arriv = $('#date_arriv_search').val();
-        var date_arriv_split1 = date_arriv.substr(0,4);
-        var date_arriv_split2 = date_arriv.substr(5,2);
-        var date_arriv_split3 = date_arriv.substr(8,2);
-        date_a_s = date_arriv_split1+date_arriv_split2+date_arriv_split3;
-        if((date_a_s-date_d_s)<=0){
-            alert("도착날짜는 출발날짜보다 늦게 설정되어야 합니다.");
-            $('#date_arriv_search').val("");
-        }
-    });
-});
+
+function reviewWriteForm(pack_no,date_arriv){
+	//패키지 날짜
+    var date_arriv_split = date_arriv.split('-');
+    date_arriv_num = date_arriv_split[0]+date_arriv_split[1]+date_arriv_split[2];
+	//지금날짜
+    var year = new Date().getFullYear();
+    var month = new Date().getMonth()+1;
+    var day = new Date().getDate();
+    var now = year+""+5+""+day;	//임시 값
+    //지금날짜와 패키지 날짜를 뺀 값
+    var gap = now-date_arriv_num;
+    if(gap<0){
+    	alert("여행후기는 여행을 다녀온 이후 작성할 수 있습니다.");
+    }else{
+    	//window open post 방식으로 보내야 pack_no가 사용자가 볼 수 없다.
+    	window.open("/TravelAgency/reviewWriteForm.do?pack_no="+pack_no,"","width=550 height=600,toolbar=no,scrollbars=no,resizealbe=no");
+    }
+}
+function reviewWrite(){
+	if(document.getElementById('subject').value==""){
+		alert("상품평 제목을 입력해 주세요");
+	}else if(document.getElementById('starscore').value==""){
+		alert("별점을 선택해 주세요");
+	}else if(document.getElementById('content').value==""){
+		alert("상품평 내용을 입력해 주세요");
+	}else{
+		document.reviewWriteForm.submit();
+	}	
+}
