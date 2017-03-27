@@ -182,12 +182,6 @@ public class ProductController {
 		return mav;
 	}
 	
-	public String getCurrentDayTime(){
-	    long time = System.currentTimeMillis();
-	    SimpleDateFormat dayTime = new SimpleDateFormat("yyyyMMdd-HH-mm-ss", Locale.KOREA);
-	    return dayTime.format(new Date(time));
-	}
-	
 	@RequestMapping(value="/paymentChecking.do")
 	public ModelAndView paymentComplete(@RequestParam Map<String,String> map){
 		ModelAndView mav = new ModelAndView();

@@ -71,10 +71,20 @@
 			<c:if test="${sessionScope.memId != null }">
 				<ul class="nav navbar-nav navbar-right">
 					<li>
-						<a href="/TravelAgency/myPage1.do?pg=1">
-							<span class="glyphicon glyphicon-home"></span> 
-							myPage
-						</a>
+						<c:if test="${sessionScope.memId != 'admin'}">
+							<a href="/TravelAgency/myPage1.do?pg=1">
+								<span class="glyphicon glyphicon-home"></span> 
+								myPage
+							</a>
+						</c:if>
+						<c:if test="${sessionScope.memid == 'admin' }">
+							<li class="tca">
+								<a href="/TravelAgency/payCheck.do">
+									<span class="glyphicon glyphicon-home"></span> 
+									admin
+								</a>
+							</li>
+						</c:if>
 					</li>
 					<li>
 						<a href="/TravelAgency/logout.do"><span class="glyphicon glyphicon-log-out"></span>

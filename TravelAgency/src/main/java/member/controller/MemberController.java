@@ -316,7 +316,7 @@ public class MemberController {
 
 	// 결제대기목록
 	@RequestMapping(value = "/payCheck.do")
-	public ModelAndView myBasket() {
+	public ModelAndView payCheck() {
 		String state = "결제대기(계좌입금)";
 		List<ReserveListDTO> reserveList_unPaid = memberDAO.reserveList_unPaid(state);
 		// product값

@@ -4,18 +4,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script src="js/product/payment.js?ver=1" type="text/javascript"></script>
 <script type="text/javascript">
-$(document).ready(function() {
-		$(".payMethod").click(
-			function() {
-				if ($(this).val() == 'credit_card') {
-					$('#payMethodWindow').attr("src",
-							"/TravelAgency/product/3_5/creditCard.jsp");
-				} else if ($(this).val() == 'account_depo') {
-					$('#payMethodWindow').attr("src",
-							"/TravelAgency/product/3_5/accountDeposit.jsp");
-				}
-			});
-	});
 window.onload =function(){
     var totalPay = '${adults}'*'${productDTO.pack_price_adult }'+'${kids}'*'${productDTO.pack_price_kid }';
     $("#totalPay").append(new Intl.NumberFormat("ko-KR").format(totalPay)+"원");
@@ -65,6 +53,8 @@ window.onload =function(){
 	<h1>결제하기</h1>
 	<form name="paymentForm" method="post" action="/TravelAgency/paymentChecking.do">
 	<input type="hidden" name="pack_no" value="${productDTO.pack_no }">
+	<input type="hidden" name="adults" value="${adults }">
+	<input type="hidden" name="kids" value="${kids }">
 	<input type="hidden" id="totalPayHidden" name="totalPay" value="">
 	<!-- 회원id가져갈 hidden 인풋 있어야함. -->
 	<div class="perchase_info">

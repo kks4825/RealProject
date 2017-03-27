@@ -4,7 +4,6 @@
 <div class="tbb">
 	<ul>
 		<li class="tca"><a href="/TravelAgency/myPage1.do">나의 예약보기</a></li>
-		<li class="tca"><a href="/TravelAgency/myBasket.do">나의 장바구니</a></li>
 		<li class="tca"><a href="#">나의 참여내역</a>
 			<ul>
 				<li><a href="/TravelAgency/myConsultation.do">상담문의</a></li>
