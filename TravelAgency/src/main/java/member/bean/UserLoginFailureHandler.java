@@ -26,7 +26,7 @@ public class UserLoginFailureHandler implements AuthenticationFailureHandler{
 			 logger.info(s.getLineNumber()+"");
 			 logger.info(s.isNativeMethod()+"");
 		 }
-	 req.setAttribute("errMsg",auth.getMessage());
+	 req.setAttribute("errMsg", auth.getMessage());
 	 req.getRequestDispatcher("/loginForm.do").forward(req, res);
 	 }
 }

@@ -1,5 +1,6 @@
 package product.dao;
 import java.util.List;
+import java.util.Map;
 
 import product.bean.BankDTO;
 import product.bean.ProductDTO;
@@ -26,5 +27,7 @@ public interface ProductDAO {
 
 	public ProductDTO detailView(int seq);
 
-	public List<TravelReviewDTO> travelReviewList(int pack_no);
+	public List<TravelReviewDTO> travelReviewList(Map<String, Object> map);
+	
+	public int getTotalA(int pack_no);
 }

@@ -10,13 +10,13 @@
   http://www.springframework.org/schema/util/spring-util-3.1.xsd">
 
   	<http auto-config="true" use-expressions="true">
-<!-- 		<intercept-url pattern="/index.do" access="hasRole('ROLE_USER')" />
+<!-- 	<intercept-url pattern="/index.do" access="hasRole('ROLE_USER')" />
 		<intercept-url pattern="/**" access="permitAll" />	 -->
 		<form-login login-page="/loginForm.do"
 					login-processing-url="/login.do"
 					authentication-success-handler-ref="userLoginSuccessHandler"
 					authentication-failure-handler-ref="userLoginFailureHandler"
-   					username-parameter="memId" 
+   					username-parameter="memId"
    					password-parameter="memPwd" />
    		
    		<session-management invalid-session-url="/loginForm.do">
@@ -41,7 +41,7 @@
 		</authentication-provider>
 	</authentication-manager>
 	
-	<!-- 로그인 성공,실패시 페이지 이동 -->
+	<!-- 로그인 성공, 실패시 페이지 이동 -->
 	<beans:bean id="userLoginSuccessHandler" class="member.bean.UserLoginSuccessHandler"/>
 	<beans:bean id="userLoginFailureHandler" class="member.bean.UserLoginFailureHandler"/> 
 	<beans:bean id="userDeniedHandler" class="member.bean.UserDeniedHandler"/> 

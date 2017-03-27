@@ -4,8 +4,7 @@
 
 <script type="text/javascript">
 	function zipcodeSearch() {
-		window.open("/TravelAgency/checkPost.do", "",
-				"width=450 height=400 scrollbars=yes");
+		window.open("/TravelAgency/checkPost.do", "", "width=450 height=400 scrollbars=yes");
 	}
 
 	window.onload = function() {

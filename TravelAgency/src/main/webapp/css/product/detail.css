@@ -113,3 +113,34 @@ div.tab_content {
 #content1 {
 	display: block;
 }
+
+.pagination {
+    margin-left:50%;
+}
+
+.pagination a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+.pagination a:hover {
+    background-color: #ddd;
+    border-radius: 5px;
+}
+
+#currentPaging {
+	background-color: #4CAF50;
+    color: white;
+    border-radius: 5px;
+    
+}
+
+/*
+#paging {
+	color: black;
+    float: left;
+    text-decoration: none;
+} */
+
