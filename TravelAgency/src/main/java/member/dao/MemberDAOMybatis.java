@@ -154,4 +154,11 @@ public class MemberDAOMybatis implements MemberDAO {
 		sqlSession.delete("memberSQL.reserveCancel",seq);
 	}
 	
+	public boolean reserveCheck(Map<String, Object> map1) {
+		boolean exist = false;
+		ReserveListDTO reserveListDTO = sqlSession.selectOne("memberSQL.reserveCheck", map1);
+		if(reserveListDTO!=null) exist = true; //값이 있따.
+		System.out.println("su="+reserveListDTO);
+		return exist;
+	}
 }

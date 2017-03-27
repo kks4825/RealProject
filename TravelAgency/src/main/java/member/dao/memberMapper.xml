@@ -185,6 +185,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<delete id="reserveCancel" parameterType="Integer">
 		delete from reservelist where list_seq=#{seq}
 	</delete>
+	
+	<select id="reserveCheck" parameterType="java.util.Map" resultType="reserveList">
+		select * from reservelist where memId=#{memId} AND pack_no=#{pack_no}
+	</select>
 </mapper>
 
 

@@ -94,20 +94,28 @@ public class ProductController {
 	}
 	
 	@RequestMapping(value="/payment.do")
-	public ModelAndView payment(@RequestParam Map<String,String> map) {
+	public ModelAndView payment(@RequestParam Map<String,String> map
+								,HttpSession session) {
 		//DB
-		ProductDTO productDTO = productDAO.paymentPackage(Integer.parseInt(map.get("pack_no")));
-		
-		ModelAndView mav = new ModelAndView();
-		
-		mav.addObject("productDTO", productDTO);
-		mav.addObject("adults",map.get("adults"));
-		mav.addObject("kids",map.get("kids"));
-		mav.addObject("payment",map.get("payment"));
-		mav.addObject("display", "/product/3_1/payment.jsp");
-		mav.setViewName("/index/index");
-		
-		return mav;
+				ModelAndView mav = new ModelAndView();
+				String memId = (String) session.getAttribute("memId");
+				Map<String,Object> map1 = new HashMap<String,Object>();
+				map1.put("memId", memId);
+				map1.put("pack_no", Integer.parseInt(map.get("pack_no")));
+				boolean isExistPay = memberDAO.reserveCheck(map1);
+				if(isExistPay){
+					mav.addObject("display", "/myPage/isExistPayment.jsp");
+					mav.setViewName("/index/index");
+				}else{
+					ProductDTO productDTO = productDAO.paymentPackage(Integer.parseInt(map.get("pack_no")));
+					mav.addObject("productDTO",productDTO);
+					mav.addObject("adults",map.get("adults"));
+					mav.addObject("kids",map.get("kids"));
+					mav.addObject("payment",map.get("payment"));
+					mav.addObject("display", "/product/3_1/payment.jsp");
+					mav.setViewName("/index/index");
+				}
+				return mav;
 	}
 	
 	@RequestMapping(value="/searchResult.do", method=RequestMethod.GET)

@@ -122,35 +122,6 @@
 						</table>
 					</div>
 				</div>
-				<div class="tcb5">
-					<font style="line-height: 40px;"><b>취소 내역</b></font>
-					<table>
-						<tr>
-							<td colspan="6" bgcolor="#607d8b"></td>
-						</tr>
-						<tr>
-							<td width="145" height="40" style="text-align:center;">예약날짜/<br>예약코드</td>
-							<td width="315" style="text-align:center;">상품명</td>
-							<td width="145" style="text-align:center;">총 결제금액</td>
-							<td width="105" style="text-align:center;">인원</td>
-							<td width="145" style="text-align:center;">출발일/귀국일</td>
-							<td width="115" style="text-align:center;">예약상태</td>
-						</tr>
-						<tr>
-							<td colspan="6" bgcolor="#607d8b"></td>
-						</tr>
-						<tr>
-							<td colspan="6"><br> <br>취소내역이 없습니다.<br> <br>
-								<br> <br></td>
-						</tr>
-						<tr>
-							<td colspan="6" bgcolor="#607d8b"></td>
-						</tr>
-						<tr>
-							<td colspan="6" bgcolor="#607d8b"></td>
-						</tr>
-					</table>
-				</div>
 			</div>
 			<div class="tbd"></div>
 		</div>
