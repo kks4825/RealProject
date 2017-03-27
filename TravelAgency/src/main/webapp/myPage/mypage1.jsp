@@ -1,7 +1,15 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <link rel="stylesheet" href="/TravelAgency/css/myPage/myPage1.css?ver=1">
-
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"></link>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+<!-- jQuery UI 국제화 대응을 위한 라이브러리 (다국어) -->
+<script	src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/i18n/jquery-ui-i18n.min.js"></script>
+<script src="js/myPage/myPage1.js?ver=1"></script>
 <div id="body">
 	<div class="t-wrap">
 		<div class="tu">
@@ -24,117 +32,9 @@
 						<table>
 							<tr>
 								<td width="944px" height="47px" style="border: 1px solid red;">
-									출발일 &nbsp; 
-								<select name="year">
-										<option value="2012">2012</option>
-										<option value="2013">2013</option>
-										<option value="2014">2014</option>
-										<option value="2015">2015</option>
-										<option value="2016">2016</option>
-										<option value="2017" selected="selected">2017</option>
-								</select>년&nbsp; 
-								<select name="month">
-										<option value="1" selected="selected">1</option>
-										<option value="2">2</option>
-										<option value="3">3</option>
-										<option value="4">4</option>
-										<option value="5">5</option>
-										<option value="6">6</option>
-										<option value="7">7</option>
-										<option value="8">8</option>
-										<option value="9">9</option>
-										<option value="10">10</option>
-										<option value="11">11</option>
-										<option value="12">12</option>
-								</select>월 &nbsp; 
-								<select name="day">
-										<option value="1" selected="selected">1</option>
-										<option value="2">2</option>
-										<option value="3">3</option>
-										<option value="4">4</option>
-										<option value="5">5</option>
-										<option value="6">6</option>
-										<option value="7">7</option>
-										<option value="8">8</option>
-										<option value="9">9</option>
-										<option value="10">10</option>
-										<option value="11">11</option>
-										<option value="12">12</option>
-										<option value="13">13</option>
-										<option value="14">14</option>
-										<option value="15">15</option>
-										<option value="16">16</option>
-										<option value="17">17</option>
-										<option value="18">18</option>
-										<option value="19">19</option>
-										<option value="20">20</option>
-										<option value="21">21</option>
-										<option value="22">22</option>
-										<option value="23">23</option>
-										<option value="24">24</option>
-										<option value="25">25</option>
-										<option value="26">26</option>
-										<option value="27">27</option>
-										<option value="28">28</option>
-										<option value="29">29</option>
-										<option value="30">30</option>
-										<option value="31">31</option>
-								</select>일&nbsp;&nbsp; ~ &nbsp;&nbsp; 
-								<select name="year">
-										<option value="2012">2012</option>
-										<option value="2013">2013</option>
-										<option value="2014">2014</option>
-										<option value="2015">2015</option>
-										<option value="2016">2016</option>
-										<option value="2017" selected="selected">2017</option>
-								</select>년 &nbsp; 
-								<select name="month">
-										<option value="1" selected="selected">1</option>
-										<option value="2">2</option>
-										<option value="3">3</option>
-										<option value="4">4</option>
-										<option value="5">5</option>
-										<option value="6">6</option>
-										<option value="7">7</option>
-										<option value="8">8</option>
-										<option value="9">9</option>
-										<option value="10">10</option>
-										<option value="11">11</option>
-										<option value="12">12</option>
-								</select>월 &nbsp; 
-								<select name="day">
-										<option value="1" selected="selected">1</option>
-										<option value="2">2</option>
-										<option value="3">3</option>
-										<option value="4">4</option>
-										<option value="5">5</option>
-										<option value="6">6</option>
-										<option value="7">7</option>
-										<option value="8">8</option>
-										<option value="9">9</option>
-										<option value="10">10</option>
-										<option value="11">11</option>
-										<option value="12">12</option>
-										<option value="13">13</option>
-										<option value="14">14</option>
-										<option value="15">15</option>
-										<option value="16">16</option>
-										<option value="17">17</option>
-										<option value="18">18</option>
-										<option value="19">19</option>
-										<option value="20">20</option>
-										<option value="21">21</option>
-										<option value="22">22</option>
-										<option value="23">23</option>
-										<option value="24">24</option>
-										<option value="25">25</option>
-										<option value="26">26</option>
-										<option value="27">27</option>
-										<option value="28">28</option>
-										<option value="29">29</option>
-										<option value="30">30</option>
-										<option value="31">31</option>
-								</select>일&nbsp; 
+									출발일: &nbsp; 
+								<input type="text" name="pack_depart" size="15" id="date_depart_search" />&nbsp;~ 도착일: &nbsp;
+								<input type="text" name="pack_arriv" size="15" id="date_arriv_search" />
 								<input type="button" value="&nbsp;&nbsp;검색&nbsp;&nbsp;">&nbsp;&nbsp;
 									*최대 1년 단위 검색 가능
 								</td>
@@ -144,33 +44,63 @@
 				</div>
 				<div class="tcb3">
 					<font style="line-height: 40px;"><b>예약 내역</b></font>
-					<table>
+					<table border="1">
 						<tr>
-							<td colspan="7" bgcolor="#607d8b"></td>
+							<td colspan="8" bgcolor="#607d8b"></td>
 						</tr>
 						<tr>
-							<td width="20%" height="40" style="text-align:center;">예약날짜/예약번호/결제방법</td>
-							<td width="30%" style="text-align:center;">상품명</td>
-							<td width="10%" style="text-align:center;">총 결제금액</td>
-							<td width="10%" style="text-align:center;">인원(성인/아동)</td>
-							<td width="25%" style="text-align:center;">출발일/귀국일</td>
-							<td width="5%" style="text-align:center;">상품평</td>
+							<td width="300" style="text-align:center;">상품명</td>
+							<td width="130" style="text-align:center;">출발일/귀국일</td>
+							<td width="130" height="40" style="text-align:center;">예약시간/<br>예약번호</td>
+							<td width="130" style="text-align:center;">총 결제금액</td>
+							<td width="100" style="text-align:center;">인원</td>							
+							<td width="100" style="text-align:center;">결제상태</td>
+							<td width="100" style="text-align:center;">상품평</td>
+							<td width="70"" style="text-align:center;">예약취소</td>
 						</tr>
 						<tr>
-							<td colspan="7" bgcolor="#607d8b"></td>
+							<td colspan="8" bgcolor="#607d8b"></td>
+						</tr>
+						 <c:if test="${reserveList eq ''}">
+							<tr>
+								<td colspan="8"><br> <br>예약내역이 없습니다.<br> <br>
+									<br> <br></td>
+							</tr>
+						</c:if>
+						<c:if test="${reserveList ne ''}">
+							<c:forEach var="productList" items="${productList }" varStatus="varStatus">
+								<tr>
+									<td>${productList.pack_title }</td> <!-- 상품명 pack_no로 가져오기 -->
+									<td>${productList.pack_depart }~<br>${productList.pack_arriv }</td> <!-- 출발일 귀국일 pack_no로 가져오기 -->
+								<c:forEach var="reserveList" begin="${varStatus.index}" end="${varStatus.index}" items="${reserveList }">
+										<td>${reserveList.reserveTime }/${reserveList.list_SEQ }</td>
+										<td>${reserveList.totalPay }</td>
+										<td>${reserveList.numOfPerson }</td>
+										<td id="payState">${reserveList.paymentState }</td> 
+										<td>
+											<c:if test="${reserveList.reviewSEQ eq 0}"> <!-- 상품평 작성되면 0에서 1로 바 -->
+												<input type="button" value="상품평작성" id="reviewWrite"/>
+											</c:if>
+											<c:if test="${reserveList.reviewSEQ eq 1}">
+												<input type="button" value="상품평보기" id="reviews"/>
+											</c:if>
+										</td>
+										<td>
+											<input type="button" value="취소" onclick="location='reserveCancel.do?seq=${reserveList.list_SEQ}'"/>
+										</td>				
+								</c:forEach>
+								</tr>
+							</c:forEach>
+						</c:if>
+						<tr>
+							<td colspan="8" bgcolor="#607d8b"></td>
 						</tr>
 						<tr>
-							<td colspan="7"><br> <br>예약내역이 없습니다.<br> <br>
-								<br> <br></td>
-						</tr>
-						<tr>
-							<td colspan="7" bgcolor="#607d8b"></td>
-						</tr>
-						<tr>
-							<td colspan="7" bgcolor="#607d8b"></td>
+							<td colspan="8" bgcolor="#607d8b"></td>
 						</tr>
 					</table>
 				</div>
+				${ReserveListPaging.pagingHTML }<br>
 				<div class="tcb4">
 					<div class="tcb4a">
 						<table>

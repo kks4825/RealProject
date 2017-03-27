@@ -5,6 +5,7 @@ import java.util.Map;
 
 import member.bean.MemberDTO;
 import member.bean.ZipcodeDTO;
+import member.bean.ReserveListDTO;
 
 public interface MemberDAO {
 	public boolean isExistId(String id);
@@ -36,4 +37,14 @@ public interface MemberDAO {
 	public void updateInfo(String memId, String tempPwd);
 
 	public Map<String, Object> selectUser(String memId);
+
+	public List<ReserveListDTO> reserveList(int startNum, int endNum, String memId);
+	
+	public void payChecked(int list_SEQ);
+	
+	public int getTotalA(String memId);
+
+	public List<ReserveListDTO> reserveList_unPaid(String state);
+	
+	public void reserveCancel(int seq);
 }

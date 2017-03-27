@@ -71,7 +71,7 @@
 			<c:if test="${sessionScope.memId != null }">
 				<ul class="nav navbar-nav navbar-right">
 					<li>
-						<a href="/TravelAgency/myPage1.do">
+						<a href="/TravelAgency/myPage1.do?pg=1">
 							<span class="glyphicon glyphicon-home"></span> 
 							myPage
 						</a>

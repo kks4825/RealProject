@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import member.bean.MemberDTO;
+import member.bean.ReserveListDTO;
 import member.bean.ZipcodeDTO;
 
 @Component("memberDAO")
@@ -119,4 +120,38 @@ public class MemberDAOMybatis implements MemberDAO {
 		
 		return map;
 	}
+	
+	public void reserveAdd(Map<String, String> map) {
+		sqlSession.insert("memberSQL.reservePack",map);		
+	}
+	
+	public List<ReserveListDTO> reserveList_unPaid(String state) {
+		List<ReserveListDTO> list = sqlSession.selectList("memberSQL.reserveList_unPiad",state);
+		return list;
+	}
+	
+	public void payChecked(int list_SEQ) {
+		sqlSession.update("memberSQL.payChecked",list_SEQ);
+	}
+	
+	public List<ReserveListDTO> reserveList(int startNum, int endNum, String memId) {
+		Map<String,String> map = new HashMap<String,String>();
+		map.put("startNum",startNum+"");
+		map.put("endNum",endNum+"");
+		map.put("memId",memId);
+		List<ReserveListDTO> list = sqlSession.selectList("memberSQL.reserveList", map);
+		
+		return list;
+	}
+	
+	public int getTotalA(String memId) {
+		int totalA = sqlSession.selectOne("memberSQL.getTotalA", memId);
+		
+		return totalA;
+	}
+	
+	public void reserveCancel(int seq) {
+		sqlSession.delete("memberSQL.reserveCancel",seq);
+	}
+	
 }
