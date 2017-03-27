@@ -94,7 +94,7 @@ window.onload =function(){
 			<table id="info_table">
 				<tr>
 					<th><input type="radio" name="paymethod" value="credit_card"
-						class="payMethod" id="credit_card">신용카드</th>
+						class="payMethod" id="credit_card" checked="checked">신용카드</th>
 					<th><input type="radio" name="paymethod" value="account_depo"
 						class="payMethod" id="account_depo">계좌입금</th>
 				</tr>

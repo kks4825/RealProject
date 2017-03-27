@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <script>
 $(document).ready(function(){
-	alert("결제상태확인(마이페이지)");
-	location.href="/TravelAgency/myPage1.do";
+	alert("예약이 취소 되었습니다");
+	$(location).attr("href","/TravelAgency/myPage1.do");
 });
 </script>

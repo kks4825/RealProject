@@ -47,4 +47,6 @@ public interface MemberDAO {
 	public List<ReserveListDTO> reserveList_unPaid(String state);
 	
 	public void reserveCancel(int seq);
+
+	public void reserveAdd(Map<String, String> map);
 }

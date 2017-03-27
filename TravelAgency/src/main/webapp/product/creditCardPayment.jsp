@@ -36,8 +36,10 @@ function creditCheck(){
 		alert("카드번호cvc 번호를 정확히 입력해주세요");
 	}else if(cardPassword!=4){
 		alert("카드비밀번호를 정확히 입력해주세요");
+	}else{
+		alert("결제가 완료되었습니다. 마이페이지(예약내역)로 이동합니다.");
+		document.creditForm.submit();
 	}
-	document.creditForm.submit();
 }
 
 /* 카드번호 16자리가 안되면 에러 $().val().length;
@@ -50,6 +52,12 @@ cvc번호 3자리 안되면 에러
 		<h2>카드정보입력</h2>
 		<form name="creditForm" method="post" action="/TravelAgency/purchaseComplete.do">
 		  <input type="hidden" name="pack_no" value="${pack_no }">
+		  <input type="hidden" name="adults" value="${adults }">
+		  <input type="hidden" name="kids" value="${kids }">
+		  <input type="hidden" name="paymethod" value="${card }+${monthly}">
+		  <input type="hidden" name="totalPay" value="${totalPay }">
+		  <input type="hidden" name="paymentState" value="결제완료(신용카드)">
+		  
 		  <table class="table table-striped">
 		  	<tr>
 		  		<th>카드종류</th>

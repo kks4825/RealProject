@@ -30,10 +30,22 @@ $(document).ready(function(){
     account+=num.substr(12,4);
     //계좌번호는 최대 16자리임.    
     $('#account').append(account);
+    $('#myPage1').click(function(){
+    	document.bankingForm.submit();
+    });
 });
+
 </script>
 <div>
 	<div>
+		<form name="bankingForm" method="post" action="/TravelAgency/purchaseComplete.do">
+		<input type="hidden" name="pack_no" value="${pack_no }">
+		<input type="hidden" name="adults" value="${adults }">
+		<input type="hidden" name="kids" value="${kids }">
+		<input type="hidden" name="paymethod" value="${bankDTO.bank_name }">
+		<input type="hidden" name="totalPay" value="${totalPay }">
+		<input type="hidden" name="paymentState" value="결제대기(계좌입금)">
+		
 		<table id="bankInfo" class="table table-striped">
 			<tr>
 				<th>은행명</th>
@@ -55,6 +67,7 @@ $(document).ready(function(){
 		   입금 완료 후 ‘결제완료’ 확인까지 <strong>최대 10분</strong>이 소요됩니다. 입금기한 내에 미입금시 주문이 자동취소 됩니다. 
 		</p>
 		<input type="button" value="결제방법변경" onclick="history.back(-1)">
-		<input type="button" value="마이페이지" onclick="href='/TravelAgency/index.do'"> <!-- 마이페이지에서 결제 완료하면 "/TravelAgency/purchaseComplete.do"로 가기 --> 
+		<input type="button" value="마이페이지" id="myPage1"> <!-- 마이페이지에서 결제 완료하면 "/TravelAgency/purchaseComplete.do"로 가기 -->
+		</form> 
 	</div>
 </div>

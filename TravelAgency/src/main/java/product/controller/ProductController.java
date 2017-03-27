@@ -25,6 +25,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import member.dao.MemberDAO;
 import product.bean.BankDTO;
 import product.bean.ProductDTO;
 import product.bean.ReviewPaging;
@@ -37,6 +38,8 @@ import product.dao.ProductDAO;
 public class ProductController {
 	@Autowired
 	private ProductDAO productDAO;
+	@Autowired
+	private MemberDAO memberDAO;
 	@Autowired
 	private ReviewPaging reviewPaging;
 
@@ -186,12 +189,14 @@ public class ProductController {
 	}
 	
 	@RequestMapping(value="/paymentChecking.do")
-	public ModelAndView paymentComplete(@RequestParam Map<String,String> map) {
+	public ModelAndView paymentComplete(@RequestParam Map<String,String> map){
 		ModelAndView mav = new ModelAndView();
 		if(map.get("paymethod").equals("account_depo")){
 			BankDTO bankDTO = productDAO.bankAccount(map.get("bank"));
 			mav.addObject("pack_no",map.get("pack_no"));
 			mav.addObject("totalPay",map.get("totalPay"));
+			mav.addObject("adults",map.get("adults"));
+			mav.addObject("kids",map.get("kids"));
 			mav.addObject("bankDTO", bankDTO);
 			mav.addObject("display", "/product/bankingPayment.jsp");
 		}else if(map.get("paymethod").equals("credit_card")){
@@ -199,16 +204,22 @@ public class ProductController {
 			mav.addObject("card",map.get("card"));
 			mav.addObject("monthly",map.get("monthly"));
 			mav.addObject("totalPay",map.get("totalPay"));
+			mav.addObject("adults",map.get("adults"));
+			mav.addObject("kids",map.get("kids"));
 			mav.addObject("display", "/product/creditCardPayment.jsp");
 		}
 		mav.setViewName("/index/index");
 		
 		return mav;
 	}
-	
 	@RequestMapping(value="/purchaseComplete.do")
-	public ModelAndView purchaseComplete(@RequestParam int pack_no) {
-		productDAO.purchasing(pack_no);
+	public ModelAndView purchaseComplete(@RequestParam Map<String,String> map, HttpSession session){
+		String memId = (String) session.getAttribute("memId");
+		map.put("memId", memId);
+		map.put("numOfPerson", "성인:"+map.get("adults")+"명"+",아동:"+map.get("kids")+"명");
+		System.out.println("payMethod:"+map.get("paymethod"));
+		memberDAO.reserveAdd(map);
+		
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("display", "/product/purchaseComplete.jsp");
 		mav.setViewName("/index/index");
