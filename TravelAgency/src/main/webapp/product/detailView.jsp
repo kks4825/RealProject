@@ -5,7 +5,7 @@
 
 <link rel="stylesheet" href="css/product/detail.css?ver=1" type="text/css" media="screen">
 
-<script src="js/product/detail.js" type="text/javascript"></script>
+<script src="js/product/detail.js?ver=1" type="text/javascript"></script>
 <script>
 	window.onload = function() {
 		var adultCount = $('#adults option:selected').val();
@@ -72,6 +72,7 @@
 					<tr>
 						<td width="100px">여행기간</td>
 						<td>출발:${productDTO.pack_depart }, 도착:${productDTO.pack_arriv }</td>
+						<input type="hidden" id="depart_day" value="${productDTO.pack_depart }"/>
 					</tr>
 					<tr>
 						<td width="100px">여행도시</td>
@@ -102,7 +103,7 @@
 						</td>
 					</tr>
 					<tr>
-						<td><br><input type="submit" value="예약하기" width="500px"></td>
+						<td><br><input type="button" id="reserveBtn" value="예약하기" width="500px"></td>
 					</tr>
 				</table>
 			</div>

@@ -7,7 +7,7 @@ function reviewWriteForm(pack_no,date_arriv){
     var year = new Date().getFullYear();
     var month = new Date().getMonth()+1;
     var day = new Date().getDate();
-    var now = year+""+5+""+day;	//임시 값
+    var now = year+""+month+""+day;	//임시 값
     //지금날짜와 패키지 날짜를 뺀 값
     var gap = now-date_arriv_num;
     if(gap<0){
@@ -28,3 +28,9 @@ function reviewWrite(){
 		document.reviewWriteForm.submit();
 	}	
 }
+//==$(function(){
+$(document).ready(function(){
+	$('#reserveCancel').click(function(){
+		alert("취소 클릭");
+	});
+});

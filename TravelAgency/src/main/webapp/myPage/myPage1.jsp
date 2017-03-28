@@ -80,11 +80,12 @@
 												<input type="button" value="여행후기작성" id="reviewWrite" onclick="javascript:reviewWriteForm(${reserveList.pack_no},'${productList.pack_arriv}')"/>
 											</c:if>
 											<c:if test="${reserveList.reviewSEQ ne null}">
-												<input type="button" value="여행후기보기" id="reviews" onclick=""/>
+												<input type="text" value="후기작성완료" size="8" readonly/>
 											</c:if>
 										</td>
 										<td>
-											<input type="button" value="취소" onclick="location='reserveCancel.do?seq=${reserveList.list_SEQ}'"/>
+											<input type="button" value="취소" id="reserveCancel" />
+<%-- 											onclick="location='reserveCancel.do?seq=${reserveList.list_SEQ}'" --%>
 										</td>				
 								</c:forEach>
 								</tr>
