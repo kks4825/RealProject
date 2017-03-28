@@ -166,4 +166,11 @@ public class MemberDAOMybatis implements MemberDAO {
 		System.out.println("su="+reserveListDTO);
 		return exist;
 	}
+
+	public void reviewDelete(int seq, String memId) {
+		Map<String,String> map = new HashMap<String,String>();
+		map.put("pack_no", seq+"");
+		map.put("memId", memId);
+		sqlSession.delete("memberSQL.reviewDelte",map);
+	}
 }

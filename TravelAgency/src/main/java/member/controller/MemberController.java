@@ -229,12 +229,25 @@ public class MemberController {
 		return mav;
 	}
 
-	// 예약취소
-	@RequestMapping(value = "/reserveCancel.do", method = RequestMethod.GET)
-	public ModelAndView reserveCancel(@RequestParam int seq) {
+	// 예약취소 Form
+	@RequestMapping(value = "/reserveCancelForm.do")
+	public ModelAndView reserveCancelForm(@RequestParam int seq, int remain_date, int refund_percent) {
 		ModelAndView mav = new ModelAndView();
+		mav.addObject("seq",seq);
+		mav.addObject("remain_date",remain_date);
+		mav.addObject("refund_percent", refund_percent);
+		mav.setViewName("/myPage/reserveCancel");
+		return mav;
+	}
+	// 예약취소
+	@RequestMapping(value = "/reserveCancel.do")
+	public ModelAndView reserveCancel(@RequestParam int seq) {
+		String memId = SecurityContextHolder.getContext().getAuthentication().getName();
+		ModelAndView mav = new ModelAndView();
+		//review도 삭제해야함.
 		memberDAO.reserveCancel(seq);
-		mav.addObject("display", "/myPage/reserveCancel.jsp");
+		memberDAO.reviewDelete(seq, memId);
+		mav.addObject("display", "/myPage/myPage1.jsp");
 		mav.setViewName("/index/index");
 		return mav;
 	}

@@ -10,6 +10,7 @@
 <!-- jQuery UI 국제화 대응을 위한 라이브러리 (다국어) -->
 <script	src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/i18n/jquery-ui-i18n.min.js"></script>
 <script src="js/myPage/myPage1.js?ver=1"></script>
+<form name="myPageForm" action="">
 <div id="body">
 	<div class="t-wrap">
 		<div class="tu">
@@ -70,22 +71,23 @@
 								<tr>
 									<td>${productList.pack_title }</td> <!-- 상품명 pack_no로 가져오기 -->
 									<td>${productList.pack_depart }~<br>${productList.pack_arriv }</td> <!-- 출발일 귀국일 pack_no로 가져오기 -->
+									<input type="hidden" value="${productList.pack_depart }" id="depart_date"/>
 								<c:forEach var="reserveList" begin="${varStatus.index}" end="${varStatus.index}" items="${reserveList }">
 										<td>${reserveList.reserveTime }/${reserveList.list_SEQ }</td>
 										<td>${reserveList.totalPay }</td>
 										<td>${reserveList.numOfPerson }</td>
 										<td id="payState">${reserveList.paymentState }</td> 
 										<td>
-											<c:if test="${reserveList.reviewSEQ eq null}"> 
+											<c:if test="${reserveList.reviewSEQ eq '0'}">
 												<input type="button" value="여행후기작성" id="reviewWrite" onclick="javascript:reviewWriteForm(${reserveList.pack_no},'${productList.pack_arriv}')"/>
 											</c:if>
-											<c:if test="${reserveList.reviewSEQ ne null}">
+											<c:if test="${reserveList.reviewSEQ ne '0'}">
 												<input type="text" value="후기작성완료" size="8" readonly/>
 											</c:if>
 										</td>
 										<td>
 											<input type="button" value="취소" id="reserveCancel" />
-<%-- 											onclick="location='reserveCancel.do?seq=${reserveList.list_SEQ}'" --%>
+											<input type="hidden" value="${reserveList.list_SEQ}" id="cancel_seq"/>
 										</td>				
 								</c:forEach>
 								</tr>
@@ -126,3 +128,4 @@
 		</div>
 	</div>
 </div>
+</form>

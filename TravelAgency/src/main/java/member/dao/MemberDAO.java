@@ -53,4 +53,6 @@ public interface MemberDAO {
 	public void reviewWrite(Map<String, String> map);
 	
 	public boolean reserveCheck(Map<String, Object> map1);
+
+	public void reviewDelete(int seq, String memId);
 }
