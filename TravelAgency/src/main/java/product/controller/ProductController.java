@@ -220,8 +220,7 @@ public class ProductController {
 	public ModelAndView purchaseComplete(@RequestParam Map<String, String> map, HttpSession session) {
 		String memId = (String) session.getAttribute("memId");
 		map.put("memId", memId);
-		map.put("numOfPerson", "성인:" + map.get("adults") + "명" + ",아동:" + map.get("kids") + "명");
-		System.out.println("payMethod:" + map.get("paymethod"));
+		map.put("numOfPerson", "성인:"+map.get("adults")+"명"+",<br>아동:"+map.get("kids")+"명");
 		memberDAO.reserveAdd(map);
 
 		ModelAndView mav = new ModelAndView();

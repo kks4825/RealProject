@@ -49,6 +49,10 @@ public interface MemberDAO {
 	public void reserveCancel(int seq);
 
 	public void reserveAdd(Map<String, String> map);
+
+	public void reviewWrite(Map<String, String> map);
 	
 	public boolean reserveCheck(Map<String, Object> map1);
+
+	public void reviewDelete(int seq, String memId);
 }

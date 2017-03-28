@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class TravelReviewDTO {
 	private int seq;
-	private String id;
+	private String memId;
 	private String subject;
 	private String content;
 	private Date reviewDate;
@@ -17,12 +17,12 @@ public class TravelReviewDTO {
 	}
 	public void setSeq(int seq) {
 		this.seq = seq;
+	}	
+	public String getMemId() {
+		return memId;
 	}
-	public String getId() {
-		return id;
-	}
-	public void setId(String id) {
-		this.id = id;
+	public void setMemId(String memId) {
+		this.memId = memId;
 	}
 	public String getSubject() {
 		return subject;

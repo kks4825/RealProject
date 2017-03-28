@@ -153,6 +153,11 @@ public class MemberDAOMybatis implements MemberDAO {
 	public void reserveCancel(int seq) {
 		sqlSession.delete("memberSQL.reserveCancel",seq);
 	}
+
+	public void reviewWrite(Map<String, String> map) {
+		sqlSession.insert("memberSQL.reviewWrite",map);
+		
+	}
 	
 	public boolean reserveCheck(Map<String, Object> map1) {
 		boolean exist = false;
@@ -160,5 +165,12 @@ public class MemberDAOMybatis implements MemberDAO {
 		if(reserveListDTO!=null) exist = true; //값이 있따.
 		System.out.println("su="+reserveListDTO);
 		return exist;
+	}
+
+	public void reviewDelete(int seq, String memId) {
+		Map<String,String> map = new HashMap<String,String>();
+		map.put("pack_no", seq+"");
+		map.put("memId", memId);
+		sqlSession.delete("memberSQL.reviewDelte",map);
 	}
 }

@@ -10,6 +10,7 @@
 <!-- jQuery UI 국제화 대응을 위한 라이브러리 (다국어) -->
 <script	src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/i18n/jquery-ui-i18n.min.js"></script>
 <script src="js/myPage/myPage1.js?ver=1"></script>
+<form name="myPageForm" action="">
 <div id="body">
 	<div class="t-wrap">
 		<div class="tu">
@@ -32,11 +33,9 @@
 						<table>
 							<tr>
 								<td width="944px" height="47px" style="border: 1px solid red;">
-									출발일: &nbsp; 
-								<input type="text" name="pack_depart" size="15" id="date_depart_search" />&nbsp;~ 도착일: &nbsp;
-								<input type="text" name="pack_arriv" size="15" id="date_arriv_search" />
-								<input type="button" value="&nbsp;&nbsp;검색&nbsp;&nbsp;">&nbsp;&nbsp;
-									*최대 1년 단위 검색 가능
+									도시 검색: &nbsp; 
+								<input type="text" name="city_search" size="25" id="city_search" />
+								<input type="button" value="&nbsp;&nbsp;검색&nbsp;&nbsp;">
 								</td>
 							</tr>
 						</table>
@@ -56,7 +55,7 @@
 							<td width="100" style="text-align:center;">인원</td>							
 							<td width="100" style="text-align:center;">결제상태</td>
 							<td width="100" style="text-align:center;">상품평</td>
-							<td width="70"" style="text-align:center;">예약취소</td>
+							<td width="70" style="text-align:center;">예약취소</td>
 						</tr>
 						<tr>
 							<td colspan="8" bgcolor="#607d8b"></td>
@@ -72,21 +71,23 @@
 								<tr>
 									<td>${productList.pack_title }</td> <!-- 상품명 pack_no로 가져오기 -->
 									<td>${productList.pack_depart }~<br>${productList.pack_arriv }</td> <!-- 출발일 귀국일 pack_no로 가져오기 -->
+									<input type="hidden" value="${productList.pack_depart }" id="depart_date"/>
 								<c:forEach var="reserveList" begin="${varStatus.index}" end="${varStatus.index}" items="${reserveList }">
 										<td>${reserveList.reserveTime }/${reserveList.list_SEQ }</td>
 										<td>${reserveList.totalPay }</td>
 										<td>${reserveList.numOfPerson }</td>
 										<td id="payState">${reserveList.paymentState }</td> 
 										<td>
-											<c:if test="${reserveList.reviewSEQ eq 0}"> <!-- 상품평 작성되면 0에서 1로 바 -->
-												<input type="button" value="상품평작성" id="reviewWrite"/>
+											<c:if test="${reserveList.reviewSEQ eq '0'}">
+												<input type="button" value="여행후기작성" id="reviewWrite" onclick="javascript:reviewWriteForm(${reserveList.pack_no},'${productList.pack_arriv}')"/>
 											</c:if>
-											<c:if test="${reserveList.reviewSEQ eq 1}">
-												<input type="button" value="상품평보기" id="reviews"/>
+											<c:if test="${reserveList.reviewSEQ ne '0'}">
+												<input type="text" value="후기작성완료" size="8" readonly/>
 											</c:if>
 										</td>
 										<td>
-											<input type="button" value="취소" onclick="location='reserveCancel.do?seq=${reserveList.list_SEQ}'"/>
+											<input type="button" value="취소" id="reserveCancel" />
+											<input type="hidden" value="${reserveList.list_SEQ}" id="cancel_seq"/>
 										</td>				
 								</c:forEach>
 								</tr>
@@ -127,3 +128,4 @@
 		</div>
 	</div>
 </div>
+</form>
