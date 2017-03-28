@@ -54,7 +54,7 @@
 							<td width="100" style="text-align:center;">인원</td>							
 							<td width="100" style="text-align:center;">결제상태</td>
 							<td width="100" style="text-align:center;">상품평</td>
-							<td width="70"" style="text-align:center;">예약취소</td>
+							<td width="70" style="text-align:center;">예약취소</td>
 						</tr>
 						<tr>
 							<td colspan="8" bgcolor="#607d8b"></td>

@@ -49,11 +49,8 @@ public interface MemberDAO {
 	public void reserveCancel(int seq);
 
 	public void reserveAdd(Map<String, String> map);
-<<<<<<< HEAD
 
 	public void reviewWrite(Map<String, String> map);
-=======
 	
 	public boolean reserveCheck(Map<String, Object> map1);
->>>>>>> 79354d5589b7e8b1136e86b4cdcb12b14a8a45fa
 }
