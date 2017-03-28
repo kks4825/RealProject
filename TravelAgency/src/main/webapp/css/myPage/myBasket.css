@@ -34,4 +34,4 @@
 
 .tbb li li a:hover{background-color:black;width:110px; height:30px; margin:0px; border-radius:0.2em; display:block;}
 
-.tcb5{background-color:none;width:996px; height:230px; padding-top:10px; layout:fixed; margin-bottom:0px;}
+.tcb5{background-color:none;width:996px; height:auto; padding-top:10px; layout:fixed; margin-bottom:0px;}

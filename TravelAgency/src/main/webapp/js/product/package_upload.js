@@ -97,10 +97,10 @@ $(document).ready(function(){
 			alert("여행참고사항을 입력하시오");
 		}else if($('#img1').val()==""){
 			alert("패키지 대표사진을 선택하시오");
-		}else if($('#img2').val()==""||$('#img3').val()==""||$('#img4').val()==""||$('#img5').val()==""){
+		/*}else if($('#img2').val()==""||$('#img3').val()==""||$('#img4').val()==""||$('#img5').val()==""){
 			alert("사진을 전부 선택하시오");
 		}else if($('#img6').val()==""||$('#img7').val()==""||$('#img8').val()==""||$('#img9').val()==""){
-			alert("사진을 전부 선택하시오");
+			alert("사진을 전부 선택하시오");*/
 		}else {
 			document.package_upload_Form.submit();
 		}
