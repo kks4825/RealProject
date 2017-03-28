@@ -6,8 +6,7 @@ $(document).ready(function(){
 	$('#cancelBtn').click(function(){
 		alert("예약이 취소 되었습니다");
 		var seq = $('#seq').val();
-		$("myPageForm").reset();
-		window.close();
+		$(location).attr("href","/TravelAgency/reserveCancel.do?seq="+seq);
 	});
 });
 </script>

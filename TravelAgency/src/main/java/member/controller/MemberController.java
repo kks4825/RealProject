@@ -247,7 +247,7 @@ public class MemberController {
 		//review도 삭제해야함.
 		memberDAO.reserveCancel(seq);
 		memberDAO.reviewDelete(seq, memId);
-		mav.addObject("display", "/myPage/myPage1.jsp");
+		mav.addObject("display", "/myPage/reserveCancelComplete.jsp");
 		mav.setViewName("/index/index");
 		return mav;
 	}

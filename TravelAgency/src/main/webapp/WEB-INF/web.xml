@@ -91,11 +91,6 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 		<servlet-name>default</servlet-name>
 		<url-pattern>*.ttf</url-pattern>
 	</servlet-mapping>
-	
-	<servlet-mapping>
-		<servlet-name>default</servlet-name>
-		<url-pattern>*.bmp</url-pattern>
-	</servlet-mapping>
 
 	<!-- 스프링에 파라메터로 한글을 넘길 때 -->
 	<filter>

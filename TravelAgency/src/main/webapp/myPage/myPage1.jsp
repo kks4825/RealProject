@@ -10,7 +10,7 @@
 <!-- jQuery UI 국제화 대응을 위한 라이브러리 (다국어) -->
 <script	src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/i18n/jquery-ui-i18n.min.js"></script>
 <script src="js/myPage/myPage1.js?ver=1"></script>
-<form name="myPageForm" action="">
+<form name="myPageForm" action="" id="myPage1">
 <div id="body">
 	<div class="t-wrap">
 		<div class="tu">
