@@ -77,7 +77,7 @@
 								myPage
 							</a>
 						</c:if>
-						<c:if test="${sessionScope.memid == 'admin' }">
+						<c:if test="${sessionScope.memId == 'admin' }">
 							<li class="tca">
 								<a href="/TravelAgency/payCheck.do">
 									<span class="glyphicon glyphicon-home"></span> 

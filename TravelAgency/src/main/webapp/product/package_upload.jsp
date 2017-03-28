@@ -16,7 +16,7 @@ $(function() {
 	$('#date_arriv').datepicker({dateFormat: 'yy-m-dd'});
 });
 </script>
-<script src="js/product/package_upload.js?ver=1" type="text/javascript"></script>
+<script src="js/product/package_upload.js" type="text/javascript"></script>
 
 <body id="package_upload">
 	<div id="package_uploadDIV">
@@ -59,7 +59,7 @@ $(function() {
 					<td><input type="text" class="pack_up_list" name="pack_air" id="pack_air"></td>
 				</tr>
 				<tr>
-					<th>핵심정보</th>
+					<th>가격정보</th>
 					<td><textarea rows="5" cols="70" name="pack_detail" id="pack_detail"></textarea><br>
 						<input type="file" name="img" size="40" id="img2"> 
 						<input type="file" name="img" size="40" id="img3"> 

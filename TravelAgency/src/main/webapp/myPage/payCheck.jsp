@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     
-<link rel="stylesheet" href="css/myPage/myBasket.css?ver=1">
+<link rel="stylesheet" href="css/myPage/myBasket.css">
 <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 <script>
 $(document).ready(function(){
@@ -19,7 +19,7 @@ $(document).ready(function(){
 		<div class="tu">
 			<jsp:include page="sideMenuBar.jsp" />
 			<div class="tbc">
-				<div class="tcb5"><font style="line-height:40px;"><b>결제대기목록(관리자)</b></font>
+				<div class="tcb5" style="margin:0 auto;"><font style="line-height:40px;"><b>결제대기목록(관리자)</b></font>
 					<form name="payCheckForm">
 						<table>
 							<tr>
