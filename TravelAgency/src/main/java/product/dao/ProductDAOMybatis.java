@@ -78,4 +78,10 @@ public class ProductDAOMybatis implements ProductDAO{
 		
 		return totalA;
 	}
+
+	public String safeinfo() {
+		String safeinfo = sqlSession.selectOne("productSQL.safeinfo");
+		
+		return safeinfo;
+	}
 }

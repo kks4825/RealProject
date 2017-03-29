@@ -30,4 +30,6 @@ public interface ProductDAO {
 	public List<TravelReviewDTO> travelReviewList(Map<String, Object> map);
 	
 	public int getTotalA(int pack_no);
+
+	public String safeinfo();
 }

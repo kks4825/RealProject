@@ -3,11 +3,8 @@ package product.controller;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,7 +13,6 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -74,6 +70,9 @@ public class ProductController {
 		map.put("endNum", endNum);
 
 		List<TravelReviewDTO> reviewList = productDAO.travelReviewList(map);
+		
+		//안전정보 DB
+		String safeinfo = productDAO.safeinfo();
 
 		// 페이징처리
 		reviewPaging.setCurrentPage(Integer.parseInt(pg));
@@ -87,6 +86,7 @@ public class ProductController {
 		mav.addObject("reviewList", reviewList);
 		mav.addObject("productDTO", productDTO);
 		mav.addObject("scheduleList", scheduleList);
+		mav.addObject("safeinfo", safeinfo);
 		mav.addObject("display", "/product/detailView.jsp");
 
 		mav.setViewName("/index/index");
@@ -146,14 +146,16 @@ public class ProductController {
 			@RequestParam(required = false) MultipartFile[] img,
 			@RequestParam(required = false, value = "schedules_content") String[] schedules_content,
 			@RequestParam(required = false) int liLength, HttpServletRequest request) {
-		String filePath = request.getSession().getServletContext().getRealPath("/") + "/product_img";
+		
+		String filePath = request.getSession().getServletContext().getRealPath("/") + "product_img";
 
-		System.out.println(filePath);
+		System.out.println("filePath="+filePath);
 
 		String[] fileName = new String[9];
 
 		for (int i = 0; i < fileName.length; i++) {
 			if (fileName[i] != "") {
+				System.out.println("fileName["+i+"]"+fileName[i]);
 				fileName[i] = img[i].getOriginalFilename();
 				File file = new File(filePath, fileName[i]);
 
@@ -220,12 +222,14 @@ public class ProductController {
 	public ModelAndView purchaseComplete(@RequestParam Map<String, String> map, HttpSession session) {
 		String memId = (String) session.getAttribute("memId");
 		map.put("memId", memId);
-		map.put("numOfPerson", "성인:"+map.get("adults")+"명"+",<br>아동:"+map.get("kids")+"명");
+		map.put("numOfPerson", "성인:" + map.get("adults")+"명"+",<br>아동:"+map.get("kids")+"명");
 		memberDAO.reserveAdd(map);
 
 		ModelAndView mav = new ModelAndView();
+		
 		mav.addObject("display", "/product/purchaseComplete.jsp");
 		mav.setViewName("/index/index");
+		
 		return mav;
 	}
 }

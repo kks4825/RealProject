@@ -19,7 +19,7 @@
 		$('#adults').change(function() {
 			var adultCount = $('#adults option:selected').val();
 			var kidsCount = $('#kids option:selected').val();
-			var totalPay = adultCount * '${productDTO.pack_price_adult }' + kidsCount * '${productDTO.pack_price_kid }';
+			var totalPay = adultCount * '$v {productDTO.pack_price_adult }' + kidsCount * '${productDTO.pack_price_kid }';
 			$("#payment").empty();
 			$("#payment").append(new Intl.NumberFormat("ko-KR").format(totalPay)+ "원");
 		});
@@ -152,17 +152,18 @@
 		</div>
 		<div id="content3" class="tab_content">
 			<pre style="word-wrap: break-word; white-space: pre-wrap; white-space: -moz-pre-wrap; 
-			white-space: -pre-wrap; white-space: -o-pre-wrap; word-break:break-all;">
-				${productDTO.tour_info }
+			white-space: -pre-wrap; white-space: -o-pre-wrap; word-break:break-all;">${productDTO.tour_info }
 			</pre>
 		</div>
 		<div id="content4" class="tab_content">
 			<pre style="word-wrap: break-word; white-space: pre-wrap; white-space: -moz-pre-wrap; 
-			white-space: -pre-wrap; white-space: -o-pre-wrap; word-break:break-all;">
-				${productDTO.tour_ref }
+			white-space: -pre-wrap; white-space: -o-pre-wrap; word-break:break-all;">${productDTO.tour_ref }
 			</pre>
 		</div>
-		<div id="content5" class="tab_content">해외여행 안전정보</div>
+		<div id="content5" class="tab_content">
+			<pre style="word-wrap: break-word; white-space: pre-wrap; white-space: -moz-pre-wrap; 
+			white-space: -pre-wrap; white-space: -o-pre-wrap; word-break:break-all;">${safeinfo }</pre>
+		</div>
 	</div>
 	<div id="postscript">
 		<img src="image/product/post.jpg" style="width: 100px; height: 40px;">
