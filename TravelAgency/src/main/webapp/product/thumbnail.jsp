@@ -37,6 +37,7 @@ $(window).load(function() {
   <!-- Normal Demo-->
   <c:forEach var="productDTO" items="${list}">
   <div class="column">
+  <a href="/TravelAgency/detailView.do?seq=${productDTO.pack_no }">
     <!-- Post-->    
     <div class="post-module">
       <!-- Thumbnail-->      

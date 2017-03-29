@@ -25,12 +25,11 @@
 </style>
 <link rel="stylesheet" href="css/product/thumbnail.css?ver=1" />
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" />
-<script src="http://codepen.io/andytran/pen/vLmRVp.js" ></script>
 <script src="http://code.jquery.com/jquery-1.3.2.min.js" ></script>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js" ></script> 
-<script src="http://codepen.io/andytran/pen/vLmRVp.js" ></script>
+<!-- <script src="http://codepen.io/andytran/pen/vLmRVp.js" ></script> -->
 <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.0/jquery.validate.min.js" ></script>
-<script src="//use.typekit.net/xyl8bgh.js"></script>
+<!-- <script src="//use.typekit.net/xyl8bgh.js"></script> -->
 </head>
 <body>
 	<!-- Header -->
@@ -40,9 +39,6 @@
 				<a class="navbar-brand" href="/TravelAgency/index.do">TravelAgency</a>
 			</div>
 			<ul class="nav navbar-nav">
-			<li>
-			<a href="/TravelAgency/thumbnailTest.do?category=eu">thumbnails</a>
-			</li>
 				<li class="dropdown">
 					<a class="dropdown-toggle" data-toggle="dropdown" href="">
 						Packages

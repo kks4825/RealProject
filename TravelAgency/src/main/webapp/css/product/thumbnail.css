@@ -85,20 +85,20 @@ body {
   margin: 0;
   padding: 0 0 10px;
   color: #333333;
-  font-size: 26px;
+  font-size: 20px;
   font-weight: 700;
 }
 .post-module .post-content .sub_title {
   margin: 0;
   padding: 0 0 20px;
   color: #e74c3c;
-  font-size: 20px;
+  font-size: 17px;
   font-weight: 400;
 }
 .post-module .post-content .description {
   display: none;
   color: #666666;
-  font-size: 14px;
+  font-size: 13px;
   line-height: 1.8em;
 }
 .post-module .post-content .post-meta {
