@@ -1,33 +1,34 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
 <!DOCTYPE HTML>
-
 <html>
 <head>
 <title>TravelAgency</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> 
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<style>
-#package_list_table th{
-	width:100px;
-}
-#package_list_table td{
-	width:500px;
-}
-</style>
-<link rel="stylesheet" href="css/product/thumbnail.css?ver=1" />
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" />
-<script src="http://code.jquery.com/jquery-1.3.2.min.js" ></script>
-<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js" ></script> 
-<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.0/jquery.validate.min.js" ></script>
+<link rel="stylesheet" type="text/css" href="css/board/ext-all.css">
+<link rel="stylesheet" type="text/css" href="css/board/common.css">
+<script type="text/javascript" src="js/board/jquery.min.js"></script>
+<script type="text/javascript" src="js/board/ext-jquery-adapter.js"></script>
+<script type="text/javascript" src="js/board/ext-all-3.js"></script>
+<script type="text/javascript" src="js/board/lang.js"></script>
+<script type="text/javascript" src="js/board/common.js"></script>
+<!-- 제이쿼리 버전 충돌로 인해 재설정 -->
+<script type="text/javascript" src="js/board/jquery-1.11.3.min.js"></script>
+<script>
+	var jb = jQuery.noConflict();
+</script>
+<script type="text/javascript" src="js/board/jquery.bxslider.min.js"></script>
+<script type="text/javascript" src="js/board/project_ui.js"></script>
+<script type="text/javascript" src="js/board/nav.js"></script>
+<script type="text/javascript" src="js/board/keydown.js"></script>
+<script type="text/javascript" src="js/board/bookmark.js"></script>
+<link rel="stylesheet" type="text/css" href="css/board/reset.css" />
+<link rel="stylesheet" type="text/css" href="css/board/skin.css" />
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script src="js/board/jquery.bxslider.min.js"></script>
+<link href="css/board/jquery.bxslider.css" rel="stylesheet" />
 <script>
 $(document).ready(function(){
 	$('#searchBtn').click(function(){
@@ -42,84 +43,88 @@ $(document).ready(function(){
 </script>
 </head>
 <body>
-	<!-- Header -->
-	<nav class="navbar navbar-inverse">
-		<div class="container">
-			<div class="navbar-header">
-				<a class="navbar-brand" href="/TravelAgency/index.do">TravelAgency</a>
-			</div>
-			<ul class="nav navbar-nav">
-				<li class="dropdown">
-					<a class="dropdown-toggle" data-toggle="dropdown" href="">
-						Packages
+	<div id="wrap">
+	<div id="header">
+<div id="gnb">
+	<div class="head_inner">
+	<c:if test="${sessionScope.memId == null }">
+		<ul class="gnb_right">
+			<li><a href="/TravelAgency/loginForm.do">Login</a></li>
+			<li><a href="/TravelAgency/joinAgree.do"><span class="glyphicon glyphicon-user"></span> 
+							Sign Up</a></li>
+			<li><a href="#" id="favorite" title="즐겨찾기 등록">bookmark</a></li>
+			<li><a href="#">contact us</a></li>
+		</ul>
+	</c:if>
+	<c:if test="${sessionScope.memId != null }">
+		
+		<ul class="gnb_right">
+			<li>
+				<c:if test="${sessionScope.memId != 'admin'}">
+					<a href="/TravelAgency/myPage1.do?pg=1">
+						<span class="glyphicon glyphicon-home"></span> 
+						myPage
 					</a>
-					<ul class="dropdown-menu">
-						<li><a href="/TravelAgency/packageThumbView.do?category=eu">유럽</a></li>
-						<li><a href="/TravelAgency/packageThumbView.do?category=ea">동남아</a></li>
-						<li><a href="/TravelAgency/packageThumbView.do?category=am">미주</a></li>
-					</ul>
-				</li>
-				<li class="dropdown">
-					<a class="dropdown-toggle" data-toggle="dropdown" href="">
-						Contact Us
-					</a>
-					<ul class="dropdown-menu">
-						<li><a href="#">공지사항</a></li>
-						<li><a href="#">회원게시판</a></li>
-						<li><a href="#">FnA</a></li>
-					</ul>
-				</li>
-				<li>
-					<input type="text" value="" id="searchBar"/>
-					<input type="button" id="searchBtn" value="검색"/>
-				</li>
-			</ul>
-			<c:if test="${sessionScope.memId == null }">
-				<ul class="nav navbar-nav navbar-right">
-					<li>
-						<a href="/TravelAgency/joinAgree.do">
-							<span class="glyphicon glyphicon-user"></span> 
-							Sign Up
+				</c:if>
+				<c:if test="${sessionScope.memId == 'admin' }">
+					<li class="tca">
+						<a href="/TravelAgency/payCheck.do">
+							<span class="glyphicon glyphicon-home"></span> 
+							admin
 						</a>
 					</li>
-					<li>
-						<a href="/TravelAgency/loginForm.do"><span class="glyphicon glyphicon-log-in"></span>
-							Login
-						</a>
-					</li>
+				</c:if>
+			</li>
+			<li><a href="/TravelAgency/logout.do">Logout</a></li>
+			<li><a href="/TravelAgency/myPage1.do?pg=1"><span class="glyphicon glyphicon-home"></span> mypage</a></li>
+			<li><a href="#" id="favorite" title="즐겨찾기 등록">bookmark</a></li>
+			<li><a href="#">contact us</a></li>
+		</ul>
+	</c:if>
+</div>
+</div><!--gnb-->
+<div id="lnb" >
+	<div class="head_inner">
+		<h1 style="width:200px;"><a href="/TravelAgency/index.do"><img src="images/main/EmperorTour.png" alt="로고"></a></h1>
+		<ul class="lnb_nav">
+			<li><a href="#">PACKAGES</a></li>
+			<li><a href="#">CUSTOMER&nbsp;CENTER</a></li>
+			<li>
+				<input type="text" value="" id="searchBar"/>
+				<input type="button" id="searchBtn" value="검색"/>
+			</li>
+		</ul>
+	</div>
+	<div class="drop_menu_wrap">
+		<h1 style="width:500px; height:350px;"><a href="#"><!-- <img src="" alt="드롭다운"> --></a></h1>
+		<ul class="drop_list">
+			<li>
+			</li>
+			<li>
+				<ul class="drop_child">
+					<li><a href="/TravelAgency/packageThumbView.do?category=ea">동남아</a></li>
+					<li><a href="/TravelAgency/packageThumbView.do?category=am">미주</a></li>
+					<li><a href="/TravelAgency/packageThumbView.do?category=eu">유럽</a></li>
 				</ul>
-			</c:if>
-			<c:if test="${sessionScope.memId != null }">
-				<ul class="nav navbar-nav navbar-right">
-					<li>
-						<c:if test="${sessionScope.memId != 'admin'}">
-							<a href="/TravelAgency/myPage1.do?pg=1">
-								<span class="glyphicon glyphicon-home"></span> 
-								myPage
-							</a>
-						</c:if>
-						<c:if test="${sessionScope.memId == 'admin' }">
-							<li class="tca">
-								<a href="/TravelAgency/payCheck.do">
-									<span class="glyphicon glyphicon-home"></span> 
-									admin
-								</a>
-							</li>
-						</c:if>
-					</li>
-					<li>
-						<a href="/TravelAgency/logout.do"><span class="glyphicon glyphicon-log-out"></span>
-							Logout
-						</a>
-					</li>
+			</li>
+			<li>
+				<ul class="drop_child">
+					<li><a href="/TravelAgency/boardNotice.do?pg=1">공지사항</a></li>
+					<li><a href="/TravelAgency/boardNoticeQna.do?pg=1">질문과답변</a></li>
+					<li><a href="/TravelAgency/boardNoticeQna.do?pg=1">1:1문의</a></li>
 				</ul>
-			</c:if>
-		</div>
-	</nav>
-
+			</li>
+		</ul>
+	</div>
+	</div><!--lnb-->
+	</div><!--header-->
 	<!-- Main -->
 	<div id="main">
 		<jsp:include page="${display}" />
+	</div>
+	<!-- bottom -->
+	<div id="bottom">
+		<jsp:include page="bottom.jsp" />
 	</div>
 </body>
 </html>

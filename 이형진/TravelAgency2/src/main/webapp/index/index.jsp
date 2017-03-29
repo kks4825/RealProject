@@ -7,10 +7,6 @@
 <head>
 <meta charset="utf-8" />
 <title>황제투어</title>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta http-equiv="X-UA-Compatible" content="IE=8" />
-<meta http-equiv='imagetoolbar' content='no' >
 <link rel="stylesheet" type="text/css" href="css/board/ext-all.css">
 <link rel="stylesheet" type="text/css" href="css/board/common.css">
 <script type="text/javascript" src="js/board/jquery.min.js"></script>
@@ -29,8 +25,6 @@
 <script type="text/javascript" src="js/board/keydown.js"></script>
 <script type="text/javascript" src="js/board/bookmark.js"></script>
 <!-- // -->
-
-
 <link rel="stylesheet" type="text/css" href="css/board/reset.css" />
 <link rel="stylesheet" type="text/css" href="css/board/skin.css" />
 
@@ -122,92 +116,3 @@
 	</div>
 </body>
 </html>
-
-	
-
-<%-- <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
-<!DOCTYPE HTML>
-
-<html>
-<head>
-<title>TravelAgency</title>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-</head>
-<body>
-	<!-- Header -->
-	<nav class="navbar navbar-inverse">
-		<div class="container">
-			<div class="navbar-header">
-				<a class="navbar-brand" href="/TravelAgency/index.do">TravelAgency</a>
-			</div>
-			<ul class="nav navbar-nav">
-				<li class="dropdown">
-					<a class="dropdown-toggle" data-toggle="dropdown" href="">
-						Contact Us
-					</a>
-					<ul class="dropdown-menu">
-						<li><a href="/TravelAgency/boardNotice.do?pg=1">공지사항</a></li>
-						<li><a href="#">회원게시판</a></li>
-						<li><a href="/TravelAgency/boardNoticeQna.do?pg=1">FnA</a></li>
-					</ul>
-				</li>
-				<li class="dropdown">
-					<a class="dropdown-toggle" data-toggle="dropdown" href="">
-						Packages <span class="caret"></span>
-					</a>
-					<ul class="dropdown-menu">
-						<li><a href="/TravelAgency/packageView.do">유럽</a></li>
-						<li><a href="#">동남아</a></li>
-						<li><a href="#">미주</a></li>
-					</ul></li>
-				<li><a href="#">Page 2</a></li>
-			</ul>
-			<c:if test="${sessionScope.memId == null }">
-				<ul class="nav navbar-nav navbar-right">
-					<li>
-						<a href="/TravelAgency/joinAgree.do">
-							<span class="glyphicon glyphicon-user"></span> 
-							Sign Up
-						</a>
-					</li>
-					<li>
-						<a href="/TravelAgency/loginForm.do"><span class="glyphicon glyphicon-log-in"></span>
-							Login
-						</a>
-					</li>
-				</ul>
-			</c:if>
-			<c:if test="${sessionScope.memId != null }">
-				<ul class="nav navbar-nav navbar-right">
-					<li>
-						<a href="/TravelAgency/mypage1AfterInfoChange.do">
-							<span class="glyphicon glyphicon-home"></span> 
-							myPage
-						</a>
-					</li>
-					<li>
-						<a href="/TravelAgency/logout.do"><span class="glyphicon glyphicon-log-out"></span>
-							Logout
-						</a>
-					</li>
-				</ul>
-			</c:if>
-		</div>
-	</nav>
-
-	<!-- Main -->
-	<div id="main">
-		<jsp:include page="${display}" />
-	</div>
-</body>
-</html> --%>
