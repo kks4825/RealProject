@@ -173,4 +173,16 @@ public class MemberDAOMybatis implements MemberDAO {
 		map.put("memId", memId);
 		sqlSession.delete("memberSQL.reviewDelte",map);
 	}
+
+	public List<ReserveListDTO> reserveListSearch(Map<String, String> map) {
+		List<ReserveListDTO> list = sqlSession.selectList("memberSQL.reserveListSearch", map);
+		
+		return list;
+	}
+
+	public int getTotalA(Map<String, String> map) {;
+		int totalA = sqlSession.selectOne("memberSQL.getSearchTotalA", map);
+		
+		return totalA;
+	}
 }

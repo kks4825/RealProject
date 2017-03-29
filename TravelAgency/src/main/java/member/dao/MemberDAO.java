@@ -55,4 +55,8 @@ public interface MemberDAO {
 	public boolean reserveCheck(Map<String, Object> map1);
 
 	public void reviewDelete(int seq, String memId);
+
+	public List<ReserveListDTO> reserveListSearch(Map<String, String> map);
+
+	public int getTotalA(Map<String, String> map);
 }

@@ -527,6 +527,50 @@ public class MemberController {
 
 		return mav;
 	}
+	
+	@RequestMapping(value = "/reserveSearch.do", method={RequestMethod.GET,RequestMethod.POST})
+	public ModelAndView reserveSearch(@RequestParam String citySearch
+										,@RequestParam(required=false) String pg){
+		System.out.println("citySearvh= "+citySearch);
+		ModelAndView mav = new ModelAndView();
+		Map<String, String> map = new HashMap<String, String>();
+
+		if (pg == null) pg = "1";
+		int endNum = Integer.parseInt(pg) * 3;
+		int startNum = endNum - 2;
+		String memId = SecurityContextHolder.getContext().getAuthentication().getName();
+		
+		map.put("citySearch", citySearch);
+		map.put("memId", memId);
+		map.put("startNum", startNum+"");
+		map.put("endNum", endNum+"");
+		
+		// DB
+		List<ReserveListDTO> reserveList = memberDAO.reserveListSearch(map);
+		ProductDTO productDTO = null;
+		ArrayList<ProductDTO> productList = new ArrayList<ProductDTO>();
+
+		for (int i = 0; i < reserveList.size(); i++) {
+			productDTO = productDAO.detailView(reserveList.get(i).getPack_no());
+			productList.add(productDTO);
+		}
+
+		// 페이징처리
+		reserveListPaging.setCurrentPage(Integer.parseInt(pg));
+		reserveListPaging.setPageBlock(3);
+		reserveListPaging.setPageSize(3);
+		reserveListPaging.makePagingHTML(map);
+
+		mav.addObject("pg", pg);
+		mav.addObject("reserveList", reserveList);
+		mav.addObject("productList", productList);
+		mav.addObject("citySearch", citySearch);
+		mav.addObject("ReserveListPaging", reserveListPaging);
+		mav.addObject("display", "/myPage/myPage1.jsp");
+		mav.setViewName("/index/index");
+
+		return mav;
+	}
 
 	@RequestMapping(value = "/checkAuth.do", method = RequestMethod.GET)
 	@Secured({ "ROLE_USER" })

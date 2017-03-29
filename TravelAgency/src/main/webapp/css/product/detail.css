@@ -135,6 +135,11 @@ div.tab_content {
     
 }
 
+#table table tr td {
+	font-size:9pt;
+	padding:2px;
+}
+
 /*
 #paging {
 	color: black;
