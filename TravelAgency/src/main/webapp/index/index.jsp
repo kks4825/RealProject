@@ -10,7 +10,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> 
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script
@@ -23,6 +23,23 @@
 	width:500px;
 }
 </style>
+<link rel="stylesheet" href="css/product/thumbnail.css?ver=1" />
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" />
+<script src="http://code.jquery.com/jquery-1.3.2.min.js" ></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js" ></script> 
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.0/jquery.validate.min.js" ></script>
+<script>
+$(document).ready(function(){
+	$('#searchBtn').click(function(){
+		var searchText = $('#searchBar').val();
+		if(searchText.length<2){
+			alert("도시 이름을 2자 이상 입력하세요.");
+		}else{
+			location.href="/TravelAgency/packageSearch.do?search="+searchText;
+		}
+	});
+});
+</script>
 </head>
 <body>
 	<!-- Header -->
@@ -37,9 +54,9 @@
 						Packages
 					</a>
 					<ul class="dropdown-menu">
-						<li><a href="/TravelAgency/packageView.do?category=eu">유럽</a></li>
-						<li><a href="/TravelAgency/packageView.do?category=ea">동남아</a></li>
-						<li><a href="/TravelAgency/packageView.do?category=am">미주</a></li>
+						<li><a href="/TravelAgency/packageThumbView.do?category=eu">유럽</a></li>
+						<li><a href="/TravelAgency/packageThumbView.do?category=ea">동남아</a></li>
+						<li><a href="/TravelAgency/packageThumbView.do?category=am">미주</a></li>
 					</ul>
 				</li>
 				<li class="dropdown">
@@ -51,6 +68,10 @@
 						<li><a href="#">회원게시판</a></li>
 						<li><a href="#">FnA</a></li>
 					</ul>
+				</li>
+				<li>
+					<input type="text" value="" id="searchBar"/>
+					<input type="button" id="searchBtn" value="검색"/>
 				</li>
 			</ul>
 			<c:if test="${sessionScope.memId == null }">

@@ -3,20 +3,17 @@ package product.controller;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -42,15 +39,17 @@ public class ProductController {
 	private MemberDAO memberDAO;
 	@Autowired
 	private ReviewPaging reviewPaging;
-
-	@RequestMapping(value = "/packageView.do")
+	
+	@RequestMapping(value = "/packageThumbView.do")
 	public ModelAndView packageView(@RequestParam String category) {
 		ModelAndView mav = new ModelAndView();
 		// db
 		List<ProductDTO> list = productDAO.packageView(category);
 
 		mav.addObject("list", list);
-		mav.addObject("display", "/product/packageView.jsp");
+
+		mav.addObject("category",category);
+		mav.addObject("display", "/product/thumbnail.jsp");
 		mav.setViewName("/index/index");
 
 		return mav;
@@ -74,6 +73,9 @@ public class ProductController {
 		map.put("endNum", endNum);
 
 		List<TravelReviewDTO> reviewList = productDAO.travelReviewList(map);
+		
+		//안전정보 DB
+		String safeinfo = productDAO.safeinfo();
 
 		// 페이징처리
 		reviewPaging.setCurrentPage(Integer.parseInt(pg));
@@ -87,6 +89,7 @@ public class ProductController {
 		mav.addObject("reviewList", reviewList);
 		mav.addObject("productDTO", productDTO);
 		mav.addObject("scheduleList", scheduleList);
+		mav.addObject("safeinfo", safeinfo);
 		mav.addObject("display", "/product/detailView.jsp");
 
 		mav.setViewName("/index/index");
@@ -95,6 +98,7 @@ public class ProductController {
 	}
 
 	@RequestMapping(value = "/payment.do")
+	@Secured({ "ROLE_USER" })
 	public ModelAndView payment(@RequestParam Map<String, String> map, HttpSession session) {
 		// DB
 		ModelAndView mav = new ModelAndView();
@@ -146,14 +150,18 @@ public class ProductController {
 			@RequestParam(required = false) MultipartFile[] img,
 			@RequestParam(required = false, value = "schedules_content") String[] schedules_content,
 			@RequestParam(required = false) int liLength, HttpServletRequest request) {
-		String filePath = request.getSession().getServletContext().getRealPath("/") + "/product_img";
+		
+//		String filePath = request.getSession().getServletContext().getRealPath("/") + "product_img";
 
-		System.out.println(filePath);
+		String filePath = "E:\\오후취업반\\github\\TravelAgency\\src\\main\\webapp\\product_img";
+		
+		System.out.println("filePath="+filePath);
 
 		String[] fileName = new String[9];
 
 		for (int i = 0; i < fileName.length; i++) {
 			if (fileName[i] != "") {
+				System.out.println("fileName["+i+"]"+fileName[i]);
 				fileName[i] = img[i].getOriginalFilename();
 				File file = new File(filePath, fileName[i]);
 
@@ -220,12 +228,28 @@ public class ProductController {
 	public ModelAndView purchaseComplete(@RequestParam Map<String, String> map, HttpSession session) {
 		String memId = (String) session.getAttribute("memId");
 		map.put("memId", memId);
-		map.put("numOfPerson", "성인:"+map.get("adults")+"명"+",<br>아동:"+map.get("kids")+"명");
+		map.put("numOfPerson", "성인:" + map.get("adults")+"명"+",<br>아동:"+map.get("kids")+"명");
 		memberDAO.reserveAdd(map);
 
 		ModelAndView mav = new ModelAndView();
+		
 		mav.addObject("display", "/product/purchaseComplete.jsp");
 		mav.setViewName("/index/index");
+		
+		return mav;
+	}
+	//패키지 검색
+	@RequestMapping(value = "/packageSearch.do")
+	public ModelAndView packageSearch(@RequestParam String search){
+		//DB
+		List<ProductDTO> list = productDAO.packageSearch(search);		
+		
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("list", list);
+		mav.addObject("category","search");
+		mav.addObject("display", "/product/thumbnail.jsp");
+		mav.setViewName("/index/index");
+		
 		return mav;
 	}
 }
