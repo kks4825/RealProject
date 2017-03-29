@@ -38,15 +38,17 @@ public class ProductController {
 	private MemberDAO memberDAO;
 	@Autowired
 	private ReviewPaging reviewPaging;
-
-	@RequestMapping(value = "/packageView.do")
+	
+	@RequestMapping(value = "/packageThumbView.do")
 	public ModelAndView packageView(@RequestParam String category) {
 		ModelAndView mav = new ModelAndView();
 		// db
 		List<ProductDTO> list = productDAO.packageView(category);
 
 		mav.addObject("list", list);
-		mav.addObject("display", "/product/packageView.jsp");
+
+		mav.addObject("category",category);
+		mav.addObject("display", "/product/thumbnail.jsp");
 		mav.setViewName("/index/index");
 
 		return mav;
@@ -147,8 +149,10 @@ public class ProductController {
 			@RequestParam(required = false, value = "schedules_content") String[] schedules_content,
 			@RequestParam(required = false) int liLength, HttpServletRequest request) {
 		
-		String filePath = request.getSession().getServletContext().getRealPath("/") + "product_img";
+//		String filePath = request.getSession().getServletContext().getRealPath("/") + "product_img";
 
+		String filePath = "E:\\오후취업반\\github\\TravelAgency\\src\\main\\webapp\\product_img";
+		
 		System.out.println("filePath="+filePath);
 
 		String[] fileName = new String[9];
