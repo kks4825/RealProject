@@ -28,6 +28,9 @@ $(window).load(function() {
         East Asia</c:if>
         <c:if test="${category eq 'am'}">
         America</c:if>
+        <c:if test="${category eq 'search' }">
+                검색결과
+        </c:if>
     </h1>
     <c:if test="${sessionScope.memId=='admin'}">
         	<input type="button" id="add-package" value="패키지 추가" 

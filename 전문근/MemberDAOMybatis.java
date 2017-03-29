@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import member.bean.MemberDTO;
 import member.bean.ReserveListDTO;
 import member.bean.ZipcodeDTO;
+import product.bean.ProductDTO;
 
 @Component("memberDAO")
 @Transactional
@@ -47,7 +48,7 @@ public class MemberDAOMybatis implements MemberDAO {
 		sqlSession.update("memberSQL.passport", memberDTO);
 	}
 
-	//바자 정보입력
+	//비자 정보입력
 	public void visa(MemberDTO memberDTO) {
 		sqlSession.update("memberSQL.visa", memberDTO);
 	}
@@ -100,20 +101,57 @@ public class MemberDAOMybatis implements MemberDAO {
 		sqlSession.delete("memberSQL.leaveSuccess", map);
 	}
 
+	public MemberDTO findAccount(String memEmail) {
+		MemberDTO memberDTO = sqlSession.selectOne("memberSQL.findAccount",memEmail);
+		
+		return memberDTO;
+	}
+
+	public void updateInfo(String memId, String tempPwd) {
+		Map<String, String> map = new HashMap<String,String>();
+		map.put("memId", memId);
+		map.put("tempPwd", tempPwd);
+		
+		sqlSession.update("memberSQL.tempPwdChange", map);
+		
+	}
+
+	public Map<String, Object> selectUser(String memId) {
+		Map<String, Object> map = sqlSession.selectOne("memberSQL.selectUser", memId);
+		
+		return map;
+	}
+	
 	public void reserveAdd(Map<String, String> map) {
 		sqlSession.insert("memberSQL.reservePack",map);		
 	}
-
-	public List<ReserveListDTO>  reserveList(String memId) {
-		List<ReserveListDTO> list = sqlSession.selectList("memberSQL.reserveList",memId);
-		return list;		
-	}
-
+	
 	public List<ReserveListDTO> reserveList_unPaid(String state) {
 		List<ReserveListDTO> list = sqlSession.selectList("memberSQL.reserveList_unPiad",state);
 		return list;
 	}
-
+	
+	public void payChecked(int list_SEQ) {
+		sqlSession.update("memberSQL.payChecked",list_SEQ);
+	}
+	
+	public List<ReserveListDTO> reserveList(int startNum, int endNum, String memId) {
+		Map<String,String> map = new HashMap<String,String>();
+		map.put("startNum",startNum+"");
+		map.put("endNum",endNum+"");
+		map.put("memId",memId);
+		
+		List<ReserveListDTO> list = sqlSession.selectList("memberSQL.reserveList", map);
+		
+		return list;
+	}
+	
+	public int getTotalA(String memId) {
+		int totalA = sqlSession.selectOne("memberSQL.getTotalA", memId);
+		
+		return totalA;
+	}
+	
 	public void reserveCancel(int seq) {
 		sqlSession.delete("memberSQL.reserveCancel",seq);
 	}
@@ -124,5 +162,32 @@ public class MemberDAOMybatis implements MemberDAO {
 		if(reserveListDTO!=null) exist = true; //값이 있따.
 		System.out.println("su="+reserveListDTO);
 		return exist;
+	}
+
+	public List<ReserveListDTO> reserveSearch(Map<String, String> map) {
+		List<ReserveListDTO> list = sqlSession.selectList("memberSQL.reserveSearch",map);
+		return list;
+	}
+
+	public List<ProductDTO> getPack_no(String memId) {
+		List<ProductDTO> list = sqlSession.selectList("memberSQL.getPack_no", memId);
+		return list;
+	}
+
+	public ReserveListDTO reserveSearchList(int pack_no) {
+		ReserveListDTO reserveListDTO = sqlSession.selectOne("memberSQL.reserveSearchList",pack_no);
+		return reserveListDTO;
+	}
+
+	public int getTotalA(Map<String, String> map) {;
+		int totalA = sqlSession.selectOne("memberSQL.getSearchTotalA", map);
+		return totalA;
+	}
+
+	public List<ReserveListDTO> reserveListSearch(Map<String, String> map) {
+		
+		List<ReserveListDTO> list = sqlSession.selectList("memberSQL.reserveListSearch", map);
+		
+		return list;
 	}
 }

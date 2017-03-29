@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="productSQL">
+	<insert id="productUpload" parameterType="product">
+		insert into packages(pack_no
+							,pack_title
+							,pack_category
+							,pack_price_kid
+							,pack_price_adult
+							,pack_desc
+							,pack_city
+							,pack_depart
+							,pack_arriv
+							,pack_air
+							,pack_detail
+							,tour_info
+							,tour_ref
+							,image1
+							,image2
+							,image3
+							,image4
+							,image5
+							,image6
+							,image7
+							,image8
+							,image9)
+					values(pack_no.nextval
+							,#{pack_title}
+							,#{pack_category}
+							,#{pack_price_kid}
+							,#{pack_price_adult}
+							,#{pack_desc}
+							,#{pack_city}
+							,#{pack_depart}
+							,#{pack_arriv}
+							,#{pack_air}
+							,#{pack_detail}
+							,#{tour_info}
+							,#{tour_ref}
+							,#{image1}
+							,#{image2}
+							,#{image3}
+							,#{image4}
+							,#{image5}
+							,#{image6}
+							,#{image7}
+							,#{image8}
+							,#{image9}
+							)
+	</insert>
+	
+	<insert id="scheduleUpload" parameterType="java.util.Map">
+		insert into schedules (pack_no
+							  ,schedules_date
+							  ,schedules_no
+							  ,schedules_content 
+							  ) 
+						values(pack_no.CURRVAL
+							  ,#{date}
+							  ,schedules_no.NEXTVAL
+							  ,#{schedules_content}
+							  )	
+	</insert>
+	
+	<select id="productList" parameterType="String" resultType="product">
+		select * from packages where pack_category=#{category}
+	</select>
+	
+	<select id="detailView" parameterType="Int" resultType="product">
+		select * from packages where pack_no=#{seq}
+	</select>
+	
+	<select id="schedules" parameterType="Int" resultType="schedules">
+		select * from schedules where pack_no=#{seq} order by schedules_no ASC
+	</select>
+	
+	<select id="bankAccount" parameterType="String" resultType="bank">
+		select * from banking where bank_name=#{bank}
+	</select>
+	
+	<update id="pack_pur_cnt" parameterType="Int">
+		update packages set purchase_cnt=purchase_cnt+1 where pack_no=#{pack_no}
+	</update>
+	
+	<select id="travelReviewList" parameterType="java.util.Map" resultType="review">
+		<![CDATA[
+		select * from
+		(select rownum rn, tt.* from
+		(select * from travelReview where pack_no=#{pack_no} order by seq desc)tt
+		)where rn>=#{startNum} and rn<=#{endNum}
+		]]>
+	</select>
+	
+	<select id="getTotalA" parameterType="int" resultType="int">
+		select count(*) from travelReview where pack_no=#{pack_no}
+	</select>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

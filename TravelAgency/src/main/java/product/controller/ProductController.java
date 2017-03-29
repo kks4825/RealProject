@@ -239,4 +239,18 @@ public class ProductController {
 		
 		return mav;
 	}
+	//패키지 검색
+	@RequestMapping(value = "/packageSearch.do")
+	public ModelAndView packageSearch(@RequestParam String search){
+		//DB
+		List<ProductDTO> list = productDAO.packageSearch(search);		
+		
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("list", list);
+		mav.addObject("category","search");
+		mav.addObject("display", "/product/thumbnail.jsp");
+		mav.setViewName("/index/index");
+		
+		return mav;
+	}
 }

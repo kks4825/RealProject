@@ -101,6 +101,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="safeinfo" resultType="java.lang.String">
 		select safeinfo from safeinfo
 	</select>
+	
+	<select id="searchResult" parameterType="String" resultType="product">
+		select * from packages where pack_city like '%'||#{search}||'%'
+	</select>
 </mapper>
 
 

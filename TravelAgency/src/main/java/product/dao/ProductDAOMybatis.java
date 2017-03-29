@@ -84,4 +84,9 @@ public class ProductDAOMybatis implements ProductDAO{
 		
 		return safeinfo;
 	}
+
+	public List<ProductDTO> packageSearch(String search) {
+		List<ProductDTO> list = sqlSession.selectList("productSQL.searchResult",search);
+		return list;
+	}
 }

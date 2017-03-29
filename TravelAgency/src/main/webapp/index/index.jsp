@@ -28,6 +28,18 @@
 <script src="http://code.jquery.com/jquery-1.3.2.min.js" ></script>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js" ></script> 
 <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.0/jquery.validate.min.js" ></script>
+<script>
+$(document).ready(function(){
+	$('#searchBtn').click(function(){
+		var searchText = $('#searchBar').val();
+		if(searchText.length<2){
+			alert("도시 이름을 2자 이상 입력하세요.");
+		}else{
+			location.href="/TravelAgency/packageSearch.do?search="+searchText;
+		}
+	});
+});
+</script>
 </head>
 <body>
 	<!-- Header -->
@@ -56,6 +68,10 @@
 						<li><a href="#">회원게시판</a></li>
 						<li><a href="#">FnA</a></li>
 					</ul>
+				</li>
+				<li>
+					<input type="text" value="" id="searchBar"/>
+					<input type="button" id="searchBtn" value="검색"/>
 				</li>
 			</ul>
 			<c:if test="${sessionScope.memId == null }">

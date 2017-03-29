@@ -32,4 +32,6 @@ public interface ProductDAO {
 	public int getTotalA(int pack_no);
 
 	public String safeinfo();
+
+	public List<ProductDTO> packageSearch(String search);
 }
