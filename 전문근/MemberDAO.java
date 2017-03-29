@@ -4,8 +4,9 @@ import java.util.List;
 import java.util.Map;
 
 import member.bean.MemberDTO;
-import member.bean.ReserveListDTO;
 import member.bean.ZipcodeDTO;
+import product.bean.ProductDTO;
+import member.bean.ReserveListDTO;
 
 public interface MemberDAO {
 	public boolean isExistId(String id);
@@ -32,13 +33,35 @@ public interface MemberDAO {
 
 	public void leaveSuccess(Map<String, String> map);
 
-	public void reserveAdd(Map<String, String> map);
+	public MemberDTO findAccount(String email);
 
-	public List<ReserveListDTO> reserveList(String memId);
+	public void updateInfo(String memId, String tempPwd);
+
+	public Map<String, Object> selectUser(String memId);
+
+	public List<ReserveListDTO> reserveList(int startNum, int endNum, String memId);
+	
+	public void payChecked(int list_SEQ);
+	
+	public int getTotalA(String memId);
 
 	public List<ReserveListDTO> reserveList_unPaid(String state);
 	
 	public void reserveCancel(int seq);
 
+	public void reserveAdd(Map<String, String> map);
+	
 	public boolean reserveCheck(Map<String, Object> map1);
+
+	public List<ReserveListDTO> reserveSearch(Map<String, String> map);
+
+	public List<ProductDTO> getPack_no(String memId);
+
+	public ReserveListDTO reserveSearchList(int pack_no);
+
+	public int getTotalA(Map<String, String> map);
+
+	public List<ReserveListDTO> reserveListSearch(Map<String, String> map);
+
+
 }

@@ -130,6 +130,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		delete from member where memId=#{memId};
 	end;
 	</delete>
+	<!-- 이메일 체크 -->
+	<select id="findAccount" parameterType="java.lang.String" resultType="member">
+		select * from member where memEmail=#{memEmail}
+	</select>
+	<!-- 임시비밀번호 변경 -->
+	<update id="tempPwdChange" parameterType="java.util.Map">
+		update member set memPwd=#{tempPwd} where memId=#{memId}
+	</update>
+	
+	<select id="selectUser" parameterType="java.lang.String" resultType="map">
+		SELECT memId,memPwd,enabled,authority from member where memId = #{memId, jdbcType=VARCHAR}
+	</select>
 	
 	<insert id="reservePack" parameterType="java.util.Map">
 		insert into reserveList(pack_no
@@ -150,30 +162,61 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		                 ,list_seq.NEXTVAL) 
 	</insert>
 	
-	<!-- 예약내역에 시간과 날짜 뿌릴 때 참고 : to_date('2002-09-05-14-11-12', 'yyyy-mm-dd-hh24-mi-ss') -->
-	<select id="reserveList" parameterType="String" resultType="reserveList">
-		select * from reservelist where memId=#{memId}
+	<select id="reserveList" parameterType="java.util.Map" resultType="reserveList">
+		<![CDATA[
+			select * from
+			(select rownum rn, tt.* from
+			(select * from reserveList where memId=#{memId} order by list_seq desc)tt
+			)where rn>=#{startNum} and rn<=#{endNum}
+		]]>
 	</select>
-	
-	<select id="reserveCheck" parameterType="java.util.Map" resultType="reserveList">
-		select * from reservelist where memId=#{memId} AND pack_no=#{pack_no}
+
+	<select id="reserveListSearch" parameterType="java.util.Map" resultType="reserveList">
+		<![CDATA[
+			select * from
+			(select rownum rn, tt.* from
+			(select r.pack_no,r.memid,r.reservetime, r.paymethod,r.totalPay, r.numofperson, r.paymentstate,r.list_seq,r.reviewseq
+			from reservelist r,packages p where r.pack_no = p.pack_no and r.memId=#{memId} and p.pack_city like '%'||#{citySearch}||'%' order by list_seq desc)tt
+			)where rn>=#{startNum} and rn<=#{endNum}
+		]]>	
 	</select>
-	
+
 	<select id="reserveList_unPiad" parameterType="String" resultType="reserveList">
 		select * from reservelist where paymentstate=#{state}
+	</select>
+	
+	<update id="payChecked" parameterType="Int">
+		update reservelist set paymentstate='결제완료(입금확인)' where list_seq=#{list_SEQ}
+	</update>
+	
+	<select id="getTotalA" parameterType="String" resultType="int">
+		select count(*) from reservelist where memId=#{memId}
+	</select>
+	
+	<select id="getPack_no" parameterType="String" resultType="product">
+		select pack_no from reservelist where memId=#{memId}
+	</select>
+	
+	<select id="getSearchTotalA" parameterType="java.util.Map" resultType="Integer">
+		select count(*) from reservelist r,packages p where r.pack_no = p.pack_no and r.memId=#{memId} and p.pack_city like '%'||#{citySearch}||'%'
+
 	</select>
 	
 	<delete id="reserveCancel" parameterType="Integer">
 		delete from reservelist where list_seq=#{seq}
 	</delete>
+	
+	<select id="reserveCheck" parameterType="java.util.Map" resultType="reserveList">
+		select * from reservelist where memId=#{memId} AND pack_no=#{pack_no}
+	</select>
+	
+	<select id="reserveSearchList" parameterType="Integer" resultType="reserveList">
+		select * from reservelist where pack_no=#{pack_no}
+	</select>
 </mapper>
-
-
-
-
-
-
-
-
-
-
+<!-- 
+	<select id="getSearchTotalA" parameterType="java.util.Map" resultType="product">
+		select * from packages where pack_no=#{pack_no} and pack_title like '%'||#{citySearch}||'%'
+	</select> -->
+<!-- select p.pack_title, p.pack_depart, p.pack_arriv from reservelist r,packages p where r.pack_no = p.pack_no and r.memId='Moon' and p.pack_title like '%5%';
+ -->
