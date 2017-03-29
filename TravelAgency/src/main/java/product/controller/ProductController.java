@@ -88,6 +88,7 @@ public class ProductController {
 		mav.addObject("reviewPaging", reviewPaging);
 		mav.addObject("reviewList", reviewList);
 		mav.addObject("productDTO", productDTO);
+		System.out.println(productDTO.getImage1());
 		mav.addObject("scheduleList", scheduleList);
 		mav.addObject("safeinfo", safeinfo);
 		mav.addObject("display", "/product/detailView.jsp");
