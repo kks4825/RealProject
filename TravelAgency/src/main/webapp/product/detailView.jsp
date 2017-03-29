@@ -133,7 +133,8 @@
 				<c:forEach var="scheduleList" items="${scheduleList }">
 					<tr>
 						<td width="100px">${scheduleList.schedules_date }</td>
-						<td><pre>${scheduleList.schedules_content }</pre></td>
+						<td><pre style="word-wrap: break-word; white-space: pre-wrap; white-space: -moz-pre-wrap; 
+			white-space: -pre-wrap; white-space: -o-pre-wrap; word-break:break-all;">${scheduleList.schedules_content }</pre></td>
 					</tr>
 				</c:forEach>
 			</table>

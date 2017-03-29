@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.FileCopyUtils;
@@ -97,6 +98,7 @@ public class ProductController {
 	}
 
 	@RequestMapping(value = "/payment.do")
+	@Secured({ "ROLE_USER" })
 	public ModelAndView payment(@RequestParam Map<String, String> map, HttpSession session) {
 		// DB
 		ModelAndView mav = new ModelAndView();
