@@ -42,15 +42,17 @@ public class ProductController {
 	private MemberDAO memberDAO;
 	@Autowired
 	private ReviewPaging reviewPaging;
-
-	@RequestMapping(value = "/packageView.do")
+	
+	@RequestMapping(value = "/packageThumbView.do")
 	public ModelAndView packageView(@RequestParam String category) {
 		ModelAndView mav = new ModelAndView();
 		// db
 		List<ProductDTO> list = productDAO.packageView(category);
 
 		mav.addObject("list", list);
-		mav.addObject("display", "/product/packageView.jsp");
+
+		mav.addObject("category",category);
+		mav.addObject("display", "/product/thumbnail.jsp");
 		mav.setViewName("/index/index");
 
 		return mav;
