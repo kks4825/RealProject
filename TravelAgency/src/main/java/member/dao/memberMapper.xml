@@ -200,6 +200,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<delete id="reviewDelte" parameterType="java.util.Map">
 		delete from travelreview where id=#{memId} and pack_no=#{pack_no}
 	</delete>
+	
+	<select id="getSearchTotalA" parameterType="java.util.Map" resultType="Integer">
+		select count(*) from reservelist r,packages p where r.pack_no = p.pack_no and r.memId=#{memId} and p.pack_city like '%'||#{citySearch}||'%'
+	</select>
+	
+	<select id="reserveListSearch" parameterType="java.util.Map" resultType="reserveList">
+		<![CDATA[
+			select * from
+			(select rownum rn, tt.* from
+			(select r.pack_no,r.memid,r.reservetime, r.paymethod,r.totalPay, r.numofperson, r.paymentstate,r.list_seq,r.reviewseq
+			from reservelist r,packages p where r.pack_no = p.pack_no and r.memId=#{memId} and p.pack_city like '%'||#{citySearch}||'%' order by list_seq desc)tt
+			)where rn>=#{startNum} and rn<=#{endNum}
+		]]>
+	</select>
 </mapper>
 
 

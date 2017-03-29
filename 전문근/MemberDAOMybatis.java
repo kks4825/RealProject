@@ -1,4 +1,4 @@
-package member.dao;
+﻿package member.dao;
 
 import java.util.HashMap;
 import java.util.List;
@@ -185,7 +185,6 @@ public class MemberDAOMybatis implements MemberDAO {
 	}
 
 	public List<ReserveListDTO> reserveListSearch(Map<String, String> map) {
-		
 		List<ReserveListDTO> list = sqlSession.selectList("memberSQL.reserveListSearch", map);
 		
 		return list;
