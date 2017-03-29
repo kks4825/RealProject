@@ -17,7 +17,9 @@ $(document).ready(function(){
 </script>
 	<div class="t-wrap">
 		<div class="tu">
-			<jsp:include page="sideMenuBar.jsp" />
+			<c:if test="${sessionScope.memId!='admin' }">
+				<jsp:include page="sideMenuBar.jsp" />
+			</c:if>
 			<div class="tbc">
 				<div class="tcb5" style="margin:0 auto;"><font style="line-height:40px;"><b>결제대기목록(관리자)</b></font>
 					<form name="payCheckForm">

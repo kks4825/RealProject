@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<link rel="stylesheet" href="css/product/detail.css?ver=1" type="text/css" media="screen">
+<link rel="stylesheet" href="css/product/detail.css" type="text/css" media="screen">
 
 <script src="js/product/detail.js?ver=1" type="text/javascript"></script>
 <script>
@@ -19,7 +19,7 @@
 		$('#adults').change(function() {
 			var adultCount = $('#adults option:selected').val();
 			var kidsCount = $('#kids option:selected').val();
-			var totalPay = adultCount * '$v {productDTO.pack_price_adult }' + kidsCount * '${productDTO.pack_price_kid }';
+			var totalPay = adultCount * '${productDTO.pack_price_adult }' + kidsCount * '${productDTO.pack_price_kid }';
 			$("#payment").empty();
 			$("#payment").append(new Intl.NumberFormat("ko-KR").format(totalPay)+ "원");
 		});
@@ -61,7 +61,7 @@
 					<dt style="font-size: 12px;">${productDTO.pack_desc }</dt>
 				</dl>
 			</div>
-			<div id="table">
+			<div id="table" cellpadding="10px">
 				<!-- 정보 테이블-->
 				<table>
 					<tr>
@@ -142,14 +142,22 @@
 		<div id="content2" class="tab_content">
 			<pre>${productDTO.pack_detail }</pre>
 			<br>
-				<img src="product_img/${productDTO.image2 }" style="width: 400px; height: 250px;">
-				<img src="product_img/${productDTO.image3 }" style="width: 400px; height: 250px;"><br>
-				<img src="product_img/${productDTO.image4 }" style="width: 400px; height: 250px;">
-				<img src="product_img/${productDTO.image5 }" style="width: 400px; height: 250px;"><br> 
-				<img src="product_img/${productDTO.image6 }" style="width: 400px; height: 250px;">
-				<img src="product_img/${productDTO.image7 }" style="width: 400px; height: 250px;"><br> 
-				<img src="product_img/${productDTO.image8 }" style="width: 400px; height: 250px;"> 
-				<img src="product_img/${productDTO.image9 }" style="width: 400px; height: 250px;"><br>
+				<div style="margin:auto; height:auto; width:100%;">
+					<img src="product_img/${productDTO.image2 }" style="width: 400px; height: 250px;">
+					<img src="product_img/${productDTO.image3 }" style="width: 400px; height: 250px;"><br>
+					<img src="product_img/${productDTO.image4 }" style="width: 400px; height: 250px;">
+					<img src="product_img/${productDTO.image5 }" style="width: 400px; height: 250px;"><br> 
+					<img src="product_img/${productDTO.image6 }" style="width: 400px; height: 250px;">
+					<c:if test="${productDTO.image7 != null }">
+						<img src="product_img/${productDTO.image7 }" style="width: 400px; height: 250px;"><br>
+					</c:if>
+					<c:if test="${productDTO.image8 != null }"> 
+						<img src="product_img/${productDTO.image8 }" style="width: 400px; height: 250px;">
+					</c:if>
+					<c:if test="${productDTO.image9 != null }"> 
+						<img src="product_img/${productDTO.image9 }" style="width: 400px; height: 250px;"><br>
+					</c:if>
+				</div>
 		</div>
 		<div id="content3" class="tab_content">
 			<pre style="word-wrap: break-word; white-space: pre-wrap; white-space: -moz-pre-wrap; 
