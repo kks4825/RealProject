@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:security="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.1.xsd
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.3.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+    
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+    
+    <!-- 추후 입력 -->
+    <context:component-scan base-package="member.bean"/>
+    <context:component-scan base-package="member.dao"/>
+    <context:component-scan base-package="product.bean"/>
+    <context:component-scan base-package="product.dao"/>
+    <context:component-scan base-package="mail.service"/>
+    
+    <context:annotation-config/>
+    
+    <!-- Connection Pool & DataSource -->
+	<bean id="dataSource"
+	      class="org.apache.commons.dbcp.BasicDataSource"
+	      p:driverClassName="oracle.jdbc.driver.OracleDriver"
+	      p:url="jdbc:oracle:thin:@192.168.46.40:1521:xe"
+	      p:username="project"
+	      p:password="itbank"
+	      p:maxActive="20"
+	      p:maxIdle="3"/>
+
+	<!-- SqlSessionFactory -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"/>
+		<property name="configLocation" value="classpath:spring/mybatis-config.xml"/>
+	</bean>
+	
+	<!-- SqlSession -->
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"/>
+	</bean>
+	
+	<!-- Transaction -->
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
+	
+	<bean id="javaMailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+	    <property name="host" value="smtp.gmail.com" />
+	    <property name="port" value="587" />
+	    <property name="username" value="zwanrn@gmail.com" />
+	    <property name="password" value="wnghksl46" />
+	    <property name="javaMailProperties">
+	        <props>
+	            <prop key="mail.smtp.ssl.trust">smtp.gmail.com</prop>
+	            <prop key="mail.smtp.starttls.enable">true</prop>
+	            <prop key="mail.smtp.auth">true</prop>
+	        </props>
+	    </property>
+	</bean>
+
+	<bean id="mailService" class="mail.service.MailServiceImpl">
+	    <property name="javaMailSender" ref="javaMailSender" />
+	</bean>
+	
+	<security:global-method-security secured-annotations="enabled"/>
+</beans>
