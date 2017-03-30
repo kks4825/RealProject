@@ -1,9 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<script src="http://code.jquery.com/jquery-1.3.2.min.js"></script>
-<script
-	src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.0/jquery.validate.min.js"></script>
+<!-- <script src="http://code.jquery.com/jquery-1.3.2.min.js"></script> -->
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.0/jquery.validate.min.js"></script>
 
 <script type="text/javascript">
 	$(document).ready(function() {
@@ -41,7 +40,7 @@
 				memPwd : "암호를 입력해주세요.",
 				memPwdChk : {
 					required : "암호를 다시 한번 입력해주세요.",
-					equalTo : "암호가 일치하지 않습니다."
+					qualTo : "암호가 일치하지 않습니다."
 				},
 				memName : "이름을 입력해주세요.",
 				memEmail : {
@@ -114,23 +113,24 @@
 			<div id="module_joinform" class="him_module">
 				<form class="memberJoin" id="memberJoin" name="memberJoin"
 					method="post" action="/TravelAgency/signUp.do">
-					<input type="hidden" name="cmd" value="join" /><input
-						type="hidden" name="act" value="register" /><input type="hidden"
-						name="PHPSESSID" value="e6c323afdbef5396094baba900a6a291" /><input
-						type="hidden" name="checked_id" value="" /><input type="hidden"
-						name="checked_email" value="" /><input type="hidden"
-						name="callback_type" value="iframe" /><input type="hidden"
-						name="callback_func" value="parent.join.callbackSubmit" /><input
-						type="hidden" name="callback"
-						value="http://skin4.dartplus.kr/lib/common/callback.php" />
+					<input type="hidden" name="cmd" value="join" />
+					<input type="hidden" name="act" value="register" />
+					<input type="hidden" name="PHPSESSID" value="e6c323afdbef5396094baba900a6a291" />
+					<input type="hidden" name="checked_id" value="" />
+					<input type="hidden" name="checked_email" value="" />
+					<input type="hidden" name="callback_type" value="iframe" />
+					<input type="hidden" name="callback_func" value="parent.join.callbackSubmit" />
+					<input type="hidden" name="callback" value="http://skin4.dartplus.kr/lib/common/callback.php" />
 
 					<div class="sub_join">
 						<h2 class="join_tit">기본정보</h2>
 						<table class="board_css">
 							<tr>
 								<th>이름</th>
-								<td><input type="text" name="memName" id="memName"
-									allowblank=false style='' label='이름' class=''></td>
+								<td>
+									<input type="text" name="memName" id="memName" maxlength="20"><br>
+									<label for="memName" class="error"></label>
+								</td>
 							</tr>
 							<tr>
 								<th>성별</th>
@@ -140,27 +140,30 @@
 							</tr>
 							<tr>
 								<th>아이디</th>
-								<td width="600"><input type="text" name="memId" size="16"
-									id="memId">&nbsp;&nbsp; <input type="button"
-									value="ID중복검사"
-									style="border: none; width: 85pt; height: 18pt; background-color: #404040; color: #FFFFFF; cursor: pointer;"
+								<td width="600">
+									<input type="text" name="memId" size="16" id="memId">&nbsp;&nbsp; 
+									<input type="button" value="ID중복검사" style="border: none; width: 85pt; height: 18pt; background-color: #404040; color: #FFFFFF; cursor: pointer;"
 									onclick="javascript:idCheck()"><br>
-								<input type="hidden" name="check" value="0"> <font
-									id="s" style="font-weight: bold">아이디는 영문,숫자 조합으로 하셔야
-										합니다.<br> 아이디는 <font color="red">소문자</font>로 저장 됩니다.
+									<input type="hidden" name="check" value="0">
+									<font id="s" style="font-weight: bold">아이디는 영문,숫자 조합으로 하셔야 합니다.<br> 
+										아이디는 <font color="red">소문자</font>로 저장 됩니다.
 								</font></td>
 							</tr>
 							<tr>
 								<th>비밀번호</th>
-								<td><input type="password" name="memPwd" id="memPwd"
-									allowblank=false label='비밀번호' class='' style='' /> 
-									<span class="guide">비밀번호는 대소문자 구분하여 영문+숫자 6~16자로 입력하세요.</span></td>
+								<td>
+									<input type="password" name="memPwd" id="memPwd"/><br>
+									<label for="memPwd" class="error"></label>
+									<font id="s" style="font-weight: bold">비밀번호는 4자리이상 12자리이하로
+										입력해주세요.</font>
+								</td>
 							</tr>
 							<tr>
 								<th>비밀번호 확인</th>
-								<td><input type="password" name="memPwdChk" id="memPwdChk"
-									allowblank=false label='비밀번호 확인' class='' sync='mpasswd'
-									style='' syncText='비밀번호 확인-항목이일치하지않습니다'></td>
+								<td>
+									<input type="password" name="memPwdChk" id="memPwdChk" size="16"><br>
+									<label for="memPwdChk" class="error"></label>
+								</td>
 							</tr>
 							<tr>
 								<th>생년월일</th>
