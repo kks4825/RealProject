@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<<<<<<< HEAD
-
 <script src="http://code.jquery.com/jquery-1.3.2.min.js"></script>
 <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.0/jquery.validate.min.js"></script>
 
@@ -72,7 +70,6 @@
 		window.open("/TravelAgency/checkPost.do", "",
 				"width=450 height=400 scrollbars=yes");
 	}
-=======
 <script src="http://code.jquery.com/jquery-1.3.2.min.js" ></script>
 <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.0/jquery.validate.min.js" ></script>
 <script type="text/javascript">
@@ -121,7 +118,6 @@
 function zipcodeSearch(){
 	window.open("/TravelAgency/checkPost.do","","width=450 height=400 scrollbars=yes");
 }
->>>>>>> c5c273ac08503f0b8b6a8e7006a178506e3a989b
 
 function idCheck(){
 	var memId = document.getElementById('memId').value;
