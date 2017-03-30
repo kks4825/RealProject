@@ -1,41 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <!-- 하단 공통 footer 생성영역 -->
-
-<script>
-var sidebarurl = "http://skin14.dartplus.kr/"; // Change as required 
-var sidebartitle = "가비아"; // Change as required 
-var url = this.location; 
-var title = document.title; 
-
-function bookmarksite() { 
-if (window.sidebar && window.sidebar.addPanel){ // Firefox 
-window.sidebar.addPanel(sidebartitle, sidebarurl,""); 
-} 
-else if ( document.all ) { // IE Favorite 
-window.external.AddFavorite(url, title); 
-} 
-else if (window.opera && window.print) { 
-// do nothing 
- } 
-else if (navigator.appName=="Netscape") { 
-alert("확인을 클릭하신 후 주소창에서 <Ctrl-D>를 누르시면 즐겨찾기에 등록됩니다."); 
-} 
- } 
-
- if (window.sidebar && window.sidebar.addPanel) { 
-  document.write('<a href = "javascript:bookmarksite();"></a>'); 
-  } 
- else if (document.all) { 
-  document.write('<a href = "javascript:bookmarksite();"></a>'); 
- } 
- else if (window.opera && window.print) { 
-document.write('<a href = "'+sidebarurl+'" title="'+sidebartitle+'" rel="sidebar"></a>'); 
- } 
- else if (navigator.appName=="Netscape") { 
-  document.write('<a href = "javascript:bookmarksite();"></a>'); 
-} 
-</script>
 	
 	<div id="footer">
 <div class="footer_cont blind">
