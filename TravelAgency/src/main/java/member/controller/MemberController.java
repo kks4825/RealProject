@@ -123,6 +123,7 @@ public class MemberController {
 		else
 			mav.setViewName("/member/checkIdOk"); // 가능
 		mav.addObject("memId", memId);
+		
 		return mav;
 	}
 

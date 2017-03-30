@@ -33,6 +33,8 @@ public class MailController {
         
 	    session.setAttribute("joinCode", joinCode);
         
+	    sendMailAuth(session, memEmail);
+	    
 		ModelAndView mav = new ModelAndView();
 		
 		mav.addObject("memEmail", memEmail);
@@ -41,9 +43,9 @@ public class MailController {
 		return mav;
 	}
     
-    // 회원가입 인증 이메일 전송
-    @RequestMapping(value = "/sendMail/auth.do", method = RequestMethod.GET/*, produces = "application/json"*/)
-    @ResponseBody
+//    // 회원가입 인증 이메일 전송
+//    @RequestMapping(value = "/sendMail/auth.do", method = RequestMethod.GET/*, produces = "application/json"*/)
+//    @ResponseBody
     public boolean sendMailAuth(HttpSession session, @RequestParam String email) {
     	String joinCode = (String) session.getAttribute("joinCode");
         String subject = "회원가입 인증 코드 발급 안내 입니다. - OO투어";
@@ -74,9 +76,12 @@ public class MailController {
            	
     	if (memberDTO != null) {
             String subject = "아이디 찾기 안내 입니다.";
+            
             StringBuilder sb = new StringBuilder();
             sb.append("귀하의 아이디는 " + memberDTO.getMemId() + " 입니다.");
+            
             mailService.send(subject, sb.toString(), "zwanrn@gmail.com", memEmail, null);
+            
             mav.addObject("resultMsg", "귀하의 이메일 주소로 해당 이메일로 가입된 아이디를 발송 하였습니다.");
             mav.addObject("display", "/member/searchIdOk.jsp");
         } else {
@@ -111,7 +116,8 @@ public class MailController {
             	mav.addObject("resultMsg", "입력하신 이메일의 회원정보와 가입된 아이디가 일치하지 않습니다.");
             	mav.addObject("display", "/member/searchPwd.jsp");
         		mav.setViewName("/index/index");
-                return mav;
+                
+        		return mav;
             }
 
             int ran = new Random().nextInt(100000) + 10000; // 10000 ~ 99999
@@ -120,9 +126,12 @@ public class MailController {
             memberDAO.updateInfo(memberDTO.getMemId(), tempPwd); // 해당 유저의 DB정보 변경
 
             String subject = "임시 비밀번호 발급 안내 입니다.";
+            
             StringBuilder sb = new StringBuilder();
             sb.append("귀하의 임시 비밀번호는 " + tempPwd + " 입니다.");
+            
             mailService.send(subject, sb.toString(), "zwanrn@gmail.com", memEmail, null);
+            
             mav.addObject("resultMsg", "귀하의 이메일 주소로 새로운 임시 비밀번호를 발송 하였습니다.");
             mav.addObject("display", "/member/searchPwdOk.jsp");
         } else {
