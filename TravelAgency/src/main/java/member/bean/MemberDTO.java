@@ -240,6 +240,4 @@ public class MemberDTO {
 	public void setVisaEndDay(String visaEndDay) {
 		this.visaEndDay = visaEndDay;
 	}
-	
-	
 }

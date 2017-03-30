@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<link rel="stylesheet" href="css/product/detail.css" type="text/css" media="screen">
+<link rel="stylesheet" href="css/product/detail.css?ver=1" type="text/css" media="screen">
 
 <script src="js/product/detail.js?ver=1" type="text/javascript"></script>
 <script>
