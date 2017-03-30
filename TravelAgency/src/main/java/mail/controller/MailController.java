@@ -24,12 +24,22 @@ public class MailController {
 	private MemberDAO memberDAO;
 	@Autowired
     private MailService mailService;
-	
+	//이메일 존재여부
+	@RequestMapping(value = "/emailExist.do", method = RequestMethod.GET)
+	 public ModelAndView emailExist( @RequestParam String memEmail){
+		ModelAndView mav = new ModelAndView();
+		int emailExist = memberDAO.EmailCheck(memEmail);
+		System.out.println(emailExist);
+		mav.addObject("emailExist",emailExist);
+		mav.setViewName("/member/emailExist");
+		return mav;
+	}
 	//이메일 인증창 및 인증번호 생성
-	@RequestMapping(value = "/sendMail/emailChk.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/emailChk.do", method = RequestMethod.GET)
 	 public ModelAndView emailChk(HttpSession session, @RequestParam String memEmail){
 		ModelAndView mav = new ModelAndView();
-		int emailExist = (memberDAO.EmailCheck(memEmail));
+		System.out.println("jsp에서 param으로 받은 "+memEmail);
+		int emailExist = memberDAO.EmailCheck(memEmail);
 		System.out.println(emailExist);
 		if(emailExist==1){
 			mav.addObject("emailExist",emailExist);
