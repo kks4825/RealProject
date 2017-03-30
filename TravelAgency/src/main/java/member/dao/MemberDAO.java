@@ -59,4 +59,6 @@ public interface MemberDAO {
 	public List<ReserveListDTO> reserveListSearch(Map<String, String> map);
 
 	public int getTotalA(Map<String, String> map);
+
+	public int EmailCheck(String memEmail);
 }

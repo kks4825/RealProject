@@ -7,8 +7,14 @@
 <title>Insert title here</title>
 <script>
 window.onload = function() {
-	location.href="http://localhost:8080/TravelAgency/sendMail/auth.do?email=${memEmail}";
-	alert("인증을 위한 이메일이 발송되었습니다.");
+	var emailExist = '${emailExist}';
+	if(emailExist=='1'){
+		alert("이미 가입된 메일입니다.");
+		window.close();
+	}else if(emailExist=='0'){
+		alert("인증을 위한 이메일이 발송되었습니다.");
+		location.href="http://localhost:8080/TravelAgency/sendMail/auth.do?email=${memEmail}";
+	}
 }
 
 function emailCheck(){

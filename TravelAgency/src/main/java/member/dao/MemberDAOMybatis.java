@@ -182,7 +182,11 @@ public class MemberDAOMybatis implements MemberDAO {
 
 	public int getTotalA(Map<String, String> map) {;
 		int totalA = sqlSession.selectOne("memberSQL.getSearchTotalA", map);
-		
 		return totalA;
+	}
+
+	public int EmailCheck(String memEmail) {
+		int emailExist = sqlSession.selectOne("memberSQL.isEmailExist",memEmail);
+		return emailExist;
 	}
 }
