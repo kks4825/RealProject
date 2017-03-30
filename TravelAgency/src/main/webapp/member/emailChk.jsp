@@ -7,7 +7,6 @@
 <title>Insert title here</title>
 <script>
 window.onload = function() {
-<<<<<<< HEAD
 	var emailExist = '${emailExist}';
 	if(emailExist=='1'){
 		alert("이미 가입된 메일입니다.");
@@ -16,10 +15,6 @@ window.onload = function() {
 		alert("인증을 위한 이메일이 발송되었습니다.");
 		location.href="http://localhost:8080/TravelAgency/sendMail/auth.do?email=${memEmail}";
 	}
-=======
-	/* location.href="http://localhost:8080/TravelAgency/sendMail/auth.do?email=${memEmail}"; */
-	alert("인증을 위한 이메일이 발송되었습니다.");
->>>>>>> 5dcad2b66008f5a2fc520e28bfeaafdc3a3733f8
 }
 
 function emailCheck(){

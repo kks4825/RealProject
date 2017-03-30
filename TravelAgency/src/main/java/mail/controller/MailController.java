@@ -28,16 +28,6 @@ public class MailController {
 	//이메일 인증창 및 인증번호 생성
 	@RequestMapping(value = "/sendMail/emailChk.do", method = RequestMethod.GET)
 	 public ModelAndView emailChk(HttpSession session, @RequestParam String memEmail){
-<<<<<<< HEAD
-=======
-	    int ran = new Random().nextInt(100000) + 10000; // 10000 ~ 99999
-	    String joinCode = String.valueOf(ran);
-        
-	    session.setAttribute("joinCode", joinCode);
-        
-	    sendMailAuth(session, memEmail);
-	    
->>>>>>> 5dcad2b66008f5a2fc520e28bfeaafdc3a3733f8
 		ModelAndView mav = new ModelAndView();
 		int emailExist = (memberDAO.EmailCheck(memEmail));
 		System.out.println(emailExist);
