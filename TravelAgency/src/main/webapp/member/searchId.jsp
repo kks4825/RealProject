@@ -8,7 +8,7 @@
 </head>
 <script>
 
-function check(){
+function idCheck(){
 	var memEmail = document.getElementById('memEmail').value;
 	if(memEmail==""){
 		alert("이메일을 입력하세요");
@@ -16,12 +16,15 @@ function check(){
 		window.open("/TravelAgency/emailExist.do?memEmail="+memEmail,"","top=200,left=300,width=10,height=10,resizable=no,scrollbars=no");
 		//document.searchId.submit();
 	}
-} 
+}
+function pwdCheck(){
+	window.open("/TravelAgency/pwdFind.do","","top=200,left=300,width=850,height=550,resizable=no,scrollbars=no,resizable=no");
+}
 </script>
 <body>
 <form method="post" name="searchId" action="/TravelAgency/sendMail/id.do">
 <div class="header" style="text-align:center; padding-top:50px; padding-bottom:30px;">
-	<font size=6 face="Comic Sans MS" ><strong>아이디 찾기</strong></font><br><br>
+	<font size=6 face="Comic Sans MS" ><strong>아이디/비밀번호 찾기</strong></font><br><br>
 	<font size=3 face="Comic Sans MS" color="#5D5D5D"><b>아이디가 기억나지 않으세요?  이메일 입력을 통해 아이디를 확인하실수 있습니다.</b></font>
 </div><br><br>
 
@@ -37,7 +40,10 @@ function check(){
 	</span><br><br><br>
 	
 	<input type="button" style="border:none; width:100pt;height:45pt; font-size:20px; background-color:#36589C; color:#FFFFFF; cursor:pointer" 
-		value="아이디 찾기" onclick="javascript:check()"><br><br><br>
+		value="아이디 찾기" onclick="javascript:idCheck()">
+	<input type="button" style="border:none; width:100pt;height:45pt; font-size:20px; background-color:#36589C; color:#FFFFFF; cursor:pointer" 
+	value="비밀번호 찾기" onclick="pwdCheck()"/>
+		<br><br><br>
 </div>
 </form>
 </body>

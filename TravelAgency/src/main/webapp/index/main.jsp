@@ -5,21 +5,6 @@
 <div id="content">
 	<div class="main_visual blind">
 		<div style="text-align: center;">
-			<table cellpadding=0 cellspacing=20
-				style="border-top: solid 1px #C7E2EB; border-bottom: solid 1px #C7E2EB; width: 100%; text-align: center;"
-				align="center">
-				<tr>
-					<td><img src="/skin/_modules/images/warning_img.png"></td>
-				</tr>
-				<tr>
-					<td style="font-size: 11px; line-height: 150%"><strong>mainslide</strong>는
-						등록되지 않았거나 삭제된 이미지슬라이드 아이디입니다.</td>
-				</tr>
-				<tr>
-					<td><a href="javascript:history.back();"><img
-							src="/skin/_modules/images/btn_ok.png" style="border: none"></a></td>
-				</tr>
-			</table>
 		</div>
 	</div>
 	<div class="main_banner">
@@ -47,6 +32,7 @@
 					src="images/main/main_sub_bnr_04.png" alt="오시는길"></a></li>
 		</ul>
 	</div>
+<<<<<<< HEAD
 	<!--main_banner-->
 	<div id="asideBnrWrap">
 		<img src="images/main/TravelAgency1.png" alt="WE ARE ANEX"
@@ -369,7 +355,7 @@
 </div>
 <!--content-->
 
+=======
+>>>>>>> fc8c9a724922b05f014da01f1ef8e95973a5930b
 </div>
-<!--wrap-->
-
 

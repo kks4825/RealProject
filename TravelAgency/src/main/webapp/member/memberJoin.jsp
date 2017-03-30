@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<<<<<<< HEAD
 
+=======
+>>>>>>> fc8c9a724922b05f014da01f1ef8e95973a5930b
 <script src="http://code.jquery.com/jquery-1.3.2.min.js"></script>
 <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.0/jquery.validate.min.js"></script>
 
@@ -72,7 +75,10 @@
 				"width=450 height=400 scrollbars=yes");
 	}
 </script>
+<<<<<<< HEAD
 
+=======
+>>>>>>> fc8c9a724922b05f014da01f1ef8e95973a5930b
 <script src="http://code.jquery.com/jquery-1.3.2.min.js" ></script>
 <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.0/jquery.validate.min.js" ></script>
 <script type="text/javascript">
@@ -132,7 +138,6 @@ function idCheck(){
 
 function checkEmail(){
 	var sEmail = document.memberJoin.memEmail.value;
-	alert(sEmail);
 	if(sEmail==""){
 		alert("먼저 이메일을 입력하세요");
 	}else{
