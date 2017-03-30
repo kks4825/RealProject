@@ -216,7 +216,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="isEmailExist" parameterType="java.util.Map" resultType="Integer">
-		<![CDATA[select count(*) from member where mememail = #{memEmail}]]>
+		select count(*) from member where mememail = #{memEmail}
 	</select>
 </mapper>
 

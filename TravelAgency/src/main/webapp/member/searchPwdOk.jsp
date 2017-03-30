@@ -3,13 +3,17 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Insert title here</title>
+<script>
+function loginAgain(){
+	opener.location.href="/TravelAgency/login.do";
+	window.close();
+}
+</script>
 </head>
 <body>
 <form method="post" name="searchPwdFail" action="/TravelAgency/sendMail/password.do">
 <div class="header" style="text-align:center;">
-	<font size=6 face="Comic Sans MS" style="background-color:#DBDBDB;"><strong>비밀번호 찾기</strong></font><br><br>
+	<font size=6 face="Comic Sans MS" "><strong>비밀번호 찾기</strong></font><br><br>
 	<font size=3 face="Comic Sans MS" color="#5D5D5D"><b>비밀번호가 기억나지 않으세요?  아이디와 이메일 확인과정을 통해 임시비밀번호를 발급받으실 수 있습니다.</b></font>
 </div><br><br>
 
@@ -20,7 +24,7 @@
 <div class="member_find" style="background-color:#F6F6F6; text-align:center;">
 		
 	<input type="button" style="border:none; width:120pt;height:45pt; font-size:20px; background-color:#36589C; color:#FFFFFF;" 
-		value="로그인" onclick="location.href='../loginForm.do'"><br><br><br>
+		value="로그인" onclick="javascript:loginAgain()"><br><br><br>
 </div>
 </form>
 </body>

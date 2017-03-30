@@ -29,7 +29,7 @@ public class MailController {
 	 public ModelAndView emailExist( @RequestParam String memEmail){
 		ModelAndView mav = new ModelAndView();
 		int emailExist = memberDAO.EmailCheck(memEmail);
-		System.out.println(emailExist);
+		mav.addObject("memEmail", memEmail);
 		mav.addObject("emailExist",emailExist);
 		mav.setViewName("/member/emailExist");
 		return mav;
@@ -56,9 +56,9 @@ public class MailController {
 		return mav;
 	}
     
-//    // 회원가입 인증 이메일 전송
-//    @RequestMapping(value = "/sendMail/auth.do", method = RequestMethod.GET/*, produces = "application/json"*/)
-//    @ResponseBody
+    // 회원가입 인증 이메일 전송
+    @RequestMapping(value = "/sendMail/auth.do", method = RequestMethod.GET/*, produces = "application/json"*/)
+    @ResponseBody
     public boolean sendMailAuth(HttpSession session, @RequestParam String email) {
     	String joinCode = (String) session.getAttribute("joinCode");
         String subject = "회원가입 인증 코드 발급 안내 입니다. - OO투어";
@@ -82,7 +82,7 @@ public class MailController {
     }
     
     // 아이디 찾기
-    @RequestMapping(value = "/sendMail/id.do", method = RequestMethod.POST)
+    @RequestMapping(value = "/sendMailId.do", method = RequestMethod.GET)
     public ModelAndView sendMailId(HttpSession session, @RequestParam String memEmail) {
     	ModelAndView mav = new ModelAndView();
     	MemberDTO memberDTO = memberDAO.findAccount(memEmail);
@@ -96,14 +96,9 @@ public class MailController {
             mailService.send(subject, sb.toString(), "zwanrn@gmail.com", memEmail, null);
             
             mav.addObject("resultMsg", "귀하의 이메일 주소로 해당 이메일로 가입된 아이디를 발송 하였습니다.");
-            mav.addObject("display", "/member/searchIdOk.jsp");
-        } else {
-        	mav.addObject("resultMsg", "귀하의 이메일로 가입된 아이디가 존재하지 않습니다.");
-        	mav.addObject("display", "/member/searchIdFail.jsp");
-        }
-    	
-		mav.setViewName("/index/index");
-        
+            mav.addObject("display", "/member/searchId.jsp");
+        }   
+    	mav.setViewName("/index/index");
 		return mav;
     }
     
@@ -112,8 +107,9 @@ public class MailController {
     public ModelAndView pwdFind(){
     	ModelAndView mav = new ModelAndView();
     	
-    	mav.addObject("display", "/member/searchPwd.jsp");
-		mav.setViewName("/index/index");
+    	/*mav.addObject("display", "/member/searchPwd.jsp");
+		mav.setViewName("/index/index");*/
+		mav.setViewName("/member/searchPwd");
 		
 		return mav;
     }
@@ -127,8 +123,7 @@ public class MailController {
         if (memberDTO != null) {
             if (!memberDTO.getMemId().equals(memId)) {
             	mav.addObject("resultMsg", "입력하신 이메일의 회원정보와 가입된 아이디가 일치하지 않습니다.");
-            	mav.addObject("display", "/member/searchPwd.jsp");
-        		mav.setViewName("/index/index");
+        		mav.setViewName("/member/searchPwd");
                 
         		return mav;
             }
@@ -146,13 +141,11 @@ public class MailController {
             mailService.send(subject, sb.toString(), "zwanrn@gmail.com", memEmail, null);
             
             mav.addObject("resultMsg", "귀하의 이메일 주소로 새로운 임시 비밀번호를 발송 하였습니다.");
-            mav.addObject("display", "/member/searchPwdOk.jsp");
+            mav.setViewName("/member/searchPwdOk");
         } else {
         	mav.addObject("resultMsg", "귀하의 이메일로 가입된 아이디가 존재하지 않습니다.");
-        	mav.addObject("display", "/member/searchPwdFail.jsp");
-        }
-		mav.setViewName("/index/index");
-       
+        	mav.setViewName("/member/searchPwdFail");
+        }       
 		return mav;
     }
 }

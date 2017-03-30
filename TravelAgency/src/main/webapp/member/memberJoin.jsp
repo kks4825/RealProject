@@ -130,7 +130,6 @@ function idCheck(){
 
 function checkEmail(){
 	var sEmail = document.memberJoin.memEmail.value;
-	alert(sEmail);
 	if(sEmail==""){
 		alert("먼저 이메일을 입력하세요");
 	}else{

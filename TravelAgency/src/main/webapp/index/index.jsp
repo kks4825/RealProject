@@ -21,13 +21,13 @@
 </script>
 <script type="text/javascript" src="js/board/jquery.bxslider.min.js"></script>
 <script type="text/javascript" src="js/board/project_ui.js"></script>
-<script type="text/javascript" src="js/board/nav.js"></script>
+<script type="text/javascript" src="js/board/nav.js"></script> 
 <script type="text/javascript" src="js/board/keydown.js"></script>
 <script type="text/javascript" src="js/board/bookmark.js"></script>
-<link rel="stylesheet" type="text/css" href="css/board/reset.css" />
+<link rel="stylesheet" type="text/css" href="css/board/reset.css" /> 
 <link rel="stylesheet" type="text/css" href="css/board/skin.css" />
 <script type="text/javascript"
-	src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+	src="http://code.jquery.com/jquery-1.9.1.min.js"></script> 
 <script src="js/board/jquery.bxslider.min.js"></script>
 <link href="css/board/jquery.bxslider.css" rel="stylesheet" />
 <script>
