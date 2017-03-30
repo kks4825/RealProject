@@ -70,6 +70,7 @@
 		window.open("/TravelAgency/checkPost.do", "",
 				"width=450 height=400 scrollbars=yes");
 	}
+</script>
 <script src="http://code.jquery.com/jquery-1.3.2.min.js" ></script>
 <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.0/jquery.validate.min.js" ></script>
 <script type="text/javascript">
