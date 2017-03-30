@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<!-- <script src="http://code.jquery.com/jquery-1.3.2.min.js"></script> -->
+<script src="http://code.jquery.com/jquery-1.3.2.min.js"></script>
 <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.0/jquery.validate.min.js"></script>
 
 <script type="text/javascript">
 	$(document).ready(function() {
-		$('.memberjoin').validate({
+		$('.memberJoin').validate({
 			rules : {
 				memId : {
 					required : true,

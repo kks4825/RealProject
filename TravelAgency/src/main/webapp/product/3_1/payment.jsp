@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <script src="js/product/payment.js?ver=1" type="text/javascript"></script>
 <script type="text/javascript">
 window.onload =function(){
@@ -49,7 +50,7 @@ window.onload =function(){
 	}
 </style>
 
-<div style="margin:0 auto; width:70%; margin-top:-80px;">
+<div style="margin:0 auto; width:80%;">
 	<h1>결제하기</h1>
 	<form name="paymentForm" method="post" action="/TravelAgency/paymentChecking.do">
 	<input type="hidden" name="pack_no" value="${productDTO.pack_no }">
