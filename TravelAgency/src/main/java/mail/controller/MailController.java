@@ -31,23 +31,30 @@ public class MailController {
 	
 	//이메일 존재여부
 	@RequestMapping(value = "/emailExist.do", method = RequestMethod.GET)
-	 public ModelAndView emailExist( @RequestParam String memEmail){
+	 public ModelAndView emailExist(@RequestParam String memEmail){
 		ModelAndView mav = new ModelAndView();
+		
 		int emailExist = memberDAO.EmailCheck(memEmail);
+		
 		mav.addObject("memEmail", memEmail);
 		mav.addObject("emailExist",emailExist);
 		mav.setViewName("/member/emailExist");
+		
 		return mav;
 	}
 	//이메일 인증창 및 인증번호 생성
 	@RequestMapping(value = "/emailChk.do", method = RequestMethod.GET)
 	 public ModelAndView emailChk(HttpSession session, @RequestParam String memEmail){
 		ModelAndView mav = new ModelAndView();
+		
 		System.out.println("jsp에서 param으로 받은 "+memEmail);
+		
 		int emailExist = memberDAO.EmailCheck(memEmail);
 		System.out.println(emailExist);
+		
 		if(emailExist==1){
 			mav.addObject("emailExist",emailExist);
+			
 			mav.setViewName("/member/emailChk");
 		}else{
 		    int ran = new Random().nextInt(100000) + 10000; // 10000 ~ 99999
@@ -56,8 +63,10 @@ public class MailController {
 		    session.setAttribute("joinCode", joinCode);
 		    mav.addObject("emailExist",emailExist);
 			mav.addObject("memEmail", memEmail);
+			
 			mav.setViewName("/member/emailChk");			
 		}
+		
 		return mav;
 	}
     
@@ -152,7 +161,8 @@ public class MailController {
         } else {
         	mav.addObject("resultMsg", "귀하의 이메일로 가입된 아이디가 존재하지 않습니다.");
         	mav.setViewName("/member/searchPwdFail");
-        }       
+        }
+        
 		return mav;
     }
 }
