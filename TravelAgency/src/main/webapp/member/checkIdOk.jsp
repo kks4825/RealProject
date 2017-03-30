@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>아이디 사용가능</title>
 <script type="text/javascript">
 function checkIdClose(){
 	opener.memberJoin.memId.value = '${memId }';

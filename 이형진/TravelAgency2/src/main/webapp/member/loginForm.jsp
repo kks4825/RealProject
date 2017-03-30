@@ -1,33 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-<meta charset="utf-8" />
-<title>황제투어</title>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta http-equiv="X-UA-Compatible" content="IE=8" />
-<meta http-equiv='imagetoolbar' content='no' >
-<link rel="stylesheet" type="text/css" href="css/board/ext-all.css">
-<link rel="stylesheet" type="text/css" href="css/board/common.css">
-<script type="text/javascript" src="js/board/jquery.min.js"></script>
-<script type="text/javascript" src="js/board/ext-jquery-adapter.js"></script>
-<script type="text/javascript" src="js/board/ext-all-3.js"></script>
-<script type="text/javascript" src="js/board/lang.js"></script>
-<script type="text/javascript" src="js/board/common.js"></script>
-<!-- 제이쿼리 버전 충돌로 인해 재설정 -->
-<script type="text/javascript" src="js/board/jquery-1.11.3.min.js"></script>
-<script>
-	var jb = jQuery.noConflict();
-</script>
-<script type="text/javascript" src="js/board/jquery.bxslider.min.js"></script>
-<script type="text/javascript" src="js/board/project_ui.js"></script>
-<script type="text/javascript" src="js/board/nav.js"></script>
-<script type="text/javascript" src="js/board/keydown.js"></script>
-<script type="text/javascript" src="js/board/bookmark.js"></script>
-<!-- // -->
 <script>
 window.fbAsyncInit = function() {
     FB.init({
@@ -114,17 +86,6 @@ function getUserData() {
 </script>
 <!-- // -->
 
-
-<link rel="stylesheet" type="text/css" href="css/board/reset.css" />
-<link rel="stylesheet" type="text/css" href="css/board/skin.css" />
-
-<!-- banner slider-->
-<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-<script src="js/board/jquery.bxslider.min.js"></script>
-<link href="css/board/jquery.bxslider.css" rel="stylesheet" />
-
-</head>
-
 	<div id="content_sub">
 		<div class="sub_container">
 
@@ -185,75 +146,4 @@ function getUserData() {
 	<div style="height:50px;"></div>
 </form>
 
-
-	<div id="footer">
-<div class="footer_cont blind">
-			<h2 class="blind">하단 네비게비게이션</h2>
-			<ul class="footer_nav">
-				<li class="first"><a href="/about/about">회사소개</a></li>
-				<li><a href="/member/agreement">이용약관</a></li>
-				<li><a href="/member/policy">개인정보취급방침</a></li>
-				<li><a href="/about/location">오시는길</a></li>
-			</ul><!--footer_nav-->
-			
-			<p>&copy;Gabia Inc. All Rights Reserved.</p>
-			<h2 class="blind">하단 SNS 버튼</h2>
-			<ul class="footer_sns">
-				
-			</ul><!--footer_sns-->
-		</div><!--footer_cont-->
-		
-
-		<address>
-			<p>(주)황제투어&nbsp;&nbsp;|&nbsp;&nbsp;대표이사: 김동욱 경기도 성남시 분당구 대왕판교로 660(삼평동) 유스페이스1 B동 4층&nbsp;&nbsp;|&nbsp;&nbsp;소재지: 경기도 성남시 분당구 대왕판교로 660(삼평동) 유스페이스1 B동 4층</p>
-			<p>사업자등록번호: 214-86-39239&nbsp;&nbsp;|&nbsp;&nbsp;통신판매업 신고번호: 제2012-경기성남-1188호 </p>
-			<p class="copy">Copyright@Gabia All rights Reserved</p>
-		</address>
-	</div><!--footer-->
-
-</div><!--wrap-->
-
-
-<!-- 하단 공통 footer 생성영역 -->
-
-<script type="text/javascript">
-var sidebarurl = "http://skin14.dartplus.kr/"; // Change as required 
-var sidebartitle = "가비아"; // Change as required 
-var url = this.location; 
-var title = document.title; 
-
-function bookmarksite() { 
-if (window.sidebar && window.sidebar.addPanel){ // Firefox 
-window.sidebar.addPanel(sidebartitle, sidebarurl,""); 
-} 
-else if ( document.all ) { // IE Favorite 
-window.external.AddFavorite(url, title); 
-} 
-else if (window.opera && window.print) { 
-// do nothing 
- } 
-else if (navigator.appName=="Netscape") { 
-alert("확인을 클릭하신 후 주소창에서 <Ctrl-D>를 누르시면 즐겨찾기에 등록됩니다."); 
-} 
- } 
-
- if (window.sidebar && window.sidebar.addPanel) { 
-  document.write('<a href = "javascript:bookmarksite();"></a>'); 
-  } 
- else if (document.all) { 
-  document.write('<a href = "javascript:bookmarksite();"></a>'); 
- } 
- else if (window.opera && window.print) { 
-document.write('<a href = "'+sidebarurl+'" title="'+sidebartitle+'" rel="sidebar"></a>'); 
- } 
- else if (navigator.appName=="Netscape") { 
-  document.write('<a href = "javascript:bookmarksite();"></a>'); 
-} 
-</script>
-
-  <!--각종처리를 위한 히든 템플릿변수입니다. 삭제하시면 절대! 안됩니다.-->
-  <!--업데이트를 위한 히든 템플릿변수입니다. 삭제하시면 절대! 안됩니다.-->
-
-</body>
-</html>
 

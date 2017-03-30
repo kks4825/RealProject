@@ -48,7 +48,7 @@ public class ProductController {
 
 		mav.addObject("list", list);
 
-		mav.addObject("category",category);
+		mav.addObject("category", category);
 		mav.addObject("display", "/product/thumbnail.jsp");
 		mav.setViewName("/index/index");
 

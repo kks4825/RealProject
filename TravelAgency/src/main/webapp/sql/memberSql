@@ -24,14 +24,7 @@ passportStartMonth varchar2(6) default null,
 passportStartDay varchar2(6) default null,
 passportEndYear varchar2(6) default null,
 passportEndMonth varchar2(6) default null,
-passportEndDay varchar2(6) default null,
-visaContry varchar2(6) default null,
-visaStartYear varchar2(6) default null,
-visaStartMonth varchar2(6) default null,
-visaStartDay varchar2(6) default null,
-visaEndYear varchar2(6) default null,
-visaEndMonth varchar2(6) default null,
-visaEndDay varchar2(6) default null
+passportEndDay varchar2(6) default null
 );
 
 create table newzipcode (

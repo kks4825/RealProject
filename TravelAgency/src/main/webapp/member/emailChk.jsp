@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 <script>
 window.onload = function() {
-	location.href="http://localhost:8080/TravelAgency/sendMail/auth.do?email=${memEmail}";
+	/* location.href="http://localhost:8080/TravelAgency/sendMail/auth.do?email=${memEmail}"; */
 	alert("인증을 위한 이메일이 발송되었습니다.");
 }
 

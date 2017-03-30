@@ -26,7 +26,7 @@ public class ProductDAOMybatis implements ProductDAO{
 	}
 	
 	public List<ProductDTO> packageView(String category) {
-		List<ProductDTO> list = sqlSession.selectList("productSQL.productList",category);
+		List<ProductDTO> list = sqlSession.selectList("productSQL.productList", category);
 		return list;
 	}
 	

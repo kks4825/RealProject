@@ -2,14 +2,11 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<!-- <link rel="stylesheet" href="css/product/thumbnail.css?ver=1" />
+<link rel="stylesheet" href="css/product/thumbnail.css?ver=1" />
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" />
-<script src="http://codepen.io/andytran/pen/vLmRVp.js" ></script>
 <script src="http://code.jquery.com/jquery-1.3.2.min.js" ></script>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js" ></script> 
-<script src="http://codepen.io/andytran/pen/vLmRVp.js" ></script>
 <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.0/jquery.validate.min.js" ></script>
-<script src="//use.typekit.net/xyl8bgh.js"></script> -->
 <script>try{Typekit.load();}catch(e){}</script>
 <script>
 $(window).load(function() {
