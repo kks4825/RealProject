@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,6 +24,7 @@ import board.bean.BoardDTO;
 import board.bean.BoardPaging;
 import board.bean.BoardQnaPaging;
 import board.dao.BoardDAO;
+import member.bean.MemberDTO;
 
 
 @Controller
@@ -267,7 +269,8 @@ public class BoardController {
 	//
 	//=============================================================================
 	//아래쪽은 QnA관련 컨트롤러
-	@RequestMapping(value="/boardNoticeQna.do", method=RequestMethod.GET) 
+	@RequestMapping(value="/boardNoticeQna.do", method=RequestMethod.GET)
+	@Secured({ "ROLE_USER" })
 	public ModelAndView boardNoticeQna(@RequestParam(required=false) String pg,
 										@CookieValue(value="boardSeq",required=false,defaultValue="")String boardSeq,
 										HttpServletResponse response,
@@ -318,7 +321,10 @@ public class BoardController {
 							    Model model,
 							    HttpSession session){
 		String id = (String) session.getAttribute("memId");
-		String name =(String) session.getAttribute("memName");
+		
+		
+		MemberDTO memberDTO = (MemberDTO) session.getAttribute("memberDTO");
+		String name = memberDTO.getMemName();
 		
 		System.out.println(id);
 		System.out.println(name);
@@ -420,7 +426,8 @@ public class BoardController {
 							    HttpSession session){
 		//데이터
 		String id = (String) session.getAttribute("memId");
-		String name = (String) session.getAttribute("memName");
+		MemberDTO memberDTO = (MemberDTO) session.getAttribute("memberDTO");
+		String name = memberDTO.getMemName();
 		
 		map.put("id", id);
 		map.put("name", name);

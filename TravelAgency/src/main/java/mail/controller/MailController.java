@@ -2,6 +2,7 @@ package mail.controller;
 
 import java.util.Random;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import mail.service.MailService;
 import member.bean.MemberDTO;
+import member.bean.ShaEncoder;
 import member.dao.MemberDAO;
 
 @Controller
@@ -24,6 +26,9 @@ public class MailController {
 	private MemberDAO memberDAO;
 	@Autowired
     private MailService mailService;
+	@Resource(name = "shaEncoder")
+	private ShaEncoder encoder;
+	
 	//이메일 존재여부
 	@RequestMapping(value = "/emailExist.do", method = RequestMethod.GET)
 	 public ModelAndView emailExist( @RequestParam String memEmail){
@@ -136,7 +141,9 @@ public class MailController {
             int ran = new Random().nextInt(100000) + 10000; // 10000 ~ 99999
             String tempPwd = String.valueOf(ran);
             
-            memberDAO.updateInfo(memberDTO.getMemId(), tempPwd); // 해당 유저의 DB정보 변경
+            String newPwd = encoder.saltEncoding(tempPwd, memId);
+            
+            memberDAO.updateInfo(memberDTO.getMemId(), newPwd); // 해당 유저의 DB정보 변경
 
             String subject = "임시 비밀번호 발급 안내 입니다.";
             

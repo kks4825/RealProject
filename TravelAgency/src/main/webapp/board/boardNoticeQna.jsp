@@ -131,9 +131,7 @@
 									<td align="center">${boardDTO.logtime }</td>
 								</tr>
 							</tbody>
-							
 						</c:forEach>
-							
 					</c:if>
 					
 

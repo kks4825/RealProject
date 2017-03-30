@@ -29,24 +29,20 @@
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 <script src="js/board/jquery.bxslider.min.js"></script>
-<link href="css/board/jquery.bxslider.css" rel="stylesheet" />
+<!-- <link href="css/board/jquery.bxslider.css" rel="stylesheet" /> -->
+
 <script>
-	$(document)
-			.ready(
-					function() {
-						$('#searchBtn')
-								.click(
-										function() {
-											var searchText = $('#searchBar')
-													.val();
-											if (searchText.length < 2) {
-												alert("도시 이름을 2자 이상 입력하세요.");
-											} else {
-												location.href = "/TravelAgency/packageSearch.do?search="
-														+ searchText;
-											}
-										});
-					});
+$(document).ready(function() {
+	$('#searchBtn').click(function() {
+		var searchText = $('#searchBar').val();
+		
+		if (searchText.length < 2) {
+			alert("도시 이름을 2자 이상 입력하세요.");
+		} else {
+			location.href = "/TravelAgency/packageSearch.do?search="+ searchText;
+		}
+	});
+});
 </script>
 </head>
 <body>
@@ -84,14 +80,16 @@
 			<div id="lnb">
 				<div class="head_inner">
 					<h1 style="width: 200px;">
-						<a href="/TravelAgency/index.do"><img
-							src="images/main/EmperorTour.png" alt="로고"></a>
+						<a href="/TravelAgency/index.do">
+							<img src="images/main/EmperorTour.png" alt="로고">
+						</a>
 					</h1>
 					<ul class="lnb_nav">
 						<li><a href="#">PACKAGES</a></li>
 						<li><a href="#">CUSTOMER&nbsp;CENTER</a></li>
-						<li><input type="text" value="" id="searchBar" /> <input
-							type="button" id="searchBtn" value="검색" /></li>
+						<li><input type="text" value="" id="searchBar" style="width:200pt; height:18pt;" /> 
+							<input type="button" id="searchBtn" value="검색" style="width:40pt; height:20pt;"/>
+						</li>
 					</ul>
 				</div>
 				<div class="drop_menu_wrap">
@@ -100,7 +98,6 @@
 						</a>
 					</h1>
 					<ul class="drop_list">
-						<li></li>
 						<li>
 							<ul class="drop_child">
 								<li><a href="/TravelAgency/packageThumbView.do?category=ea">동남아</a></li>
@@ -114,6 +111,8 @@
 								<li><a href="/TravelAgency/boardNoticeQna.do?pg=1">1:1문의</a></li>
 							</ul>
 						</li>
+						<li></li>
+						<li></li>
 					</ul>
 				</div>
 			</div>

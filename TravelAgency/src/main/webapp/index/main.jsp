@@ -34,7 +34,6 @@
 						src="images/main/TravelAgency4.png" /></a></li>
 			</ul>
 
-
 			<h2 class="blind">링크 배너</h2>
 		</div>
 		<ul id="subBnrWrap">
@@ -140,8 +139,7 @@
 			<h2>
 				<a href="/customer/event_01">EVENT</a>
 			</h2>
-			<link rel="stylesheet" type="text/css"
-				href="/skin/_modules/choice/gallery/choice.css">
+			<link rel="stylesheet" type="text/css" href="/skin/_modules/choice/gallery/choice.css">
 			<div id="choice_event"></div>
 			<script>
 				var choice = {
@@ -370,7 +368,6 @@
 
 </div>
 <!--content-->
-
 
 </div>
 <!--wrap-->
