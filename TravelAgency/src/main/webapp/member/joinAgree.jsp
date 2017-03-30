@@ -3,36 +3,41 @@
 
 <script src="js/jquery.min.js"></script>
 <script type="text/javascript">
-$(document).ready(function(){	
-	$('#yes').click(function(){
-		if($('#info').prop("checked") && $('#info2').prop("checked"))
-			$(location).attr('href',"/TravelAgency/memberJoin.do");
-		else if($('#info').prop("checked"))
-			alert("투어회원 약관에 동의하셔야 가입이 진행됩니다");
-		else if($('#info2').prop("checked"))
-			alert("개인정보 수집 및 이용에 동의하셔야 가입이 진행됩니다");
-		else
-			alert("필수 동의사항에 동의하셔야 가입이 진행됩니다");
+	$(document).ready(function() {
+		$('#yes').click(function() {
+			if ($('#info').prop("checked") && $('#info2').prop("checked"))
+				$(location).attr('href', "/TravelAgency/memberJoin.do");
+			else if ($('#info').prop("checked"))
+				alert("투어회원 약관에 동의하셔야 가입이 진행됩니다");
+			else if ($('#info2').prop("checked"))
+				alert("개인정보 수집 및 이용에 동의하셔야 가입이 진행됩니다");
+			else
+				alert("필수 동의사항에 동의하셔야 가입이 진행됩니다");
+		});
 	});
-});
 </script>
+
 <div id="content_sub">
-		<div class="sub_container">
+	<div class="sub_container">
 
-<div class="sub_menu">
-				<!--leftmenu영역시작-->
+		<div class="sub_menu">
+			<!--leftmenu영역시작-->
 
-				<!--leftmenu영역끝-->
-			</div><!--sub_menu-->
-			<div class="sub_cont">
-				<div class="sub_tit">
-					<h3>JOIN</h3>
-					<p><span class="home">HOME</span><span>마이페이지</span><span class="bold">회원가입</span></p>
-				</div><!--sub_tit-->
-				<div class="sub_agree">
-					<h2>이용약관</h2>
-					<div class="agree_box">
-						<textarea readonly>제1조 (목적) 
+			<!--leftmenu영역끝-->
+		</div>
+		<!--sub_menu-->
+		<div class="sub_cont">
+			<div class="sub_tit">
+				<h3>JOIN</h3>
+				<p>
+					<span class="home">HOME</span><span>마이페이지</span><span class="bold">회원가입</span>
+				</p>
+			</div>
+			<!--sub_tit-->
+			<div class="sub_agree">
+				<h2>이용약관</h2>
+				<div class="agree_box">
+					<textarea readonly>제1조 (목적) 
 본 약관(이하 "약관")은 ㈜황제투어(이하 '회사')와 회원에 관한 제반사항을 규정함을 목적으로 합니다.
 
 제2조 (약관의 효력 등) 
@@ -95,15 +100,17 @@ $(document).ready(function(){
 ② 회원은 ID와 비밀번호를 제 3 자가 알 수 있도록 해서는 안 됩니다.
 ③ 회원은 본 약관 및 관계법령에서 규정한 사항을 준수합니다. 
 
-< 부 칙 ></textarea>
-						<h4>
-							<input type="checkbox" value="약관동의" id="info2">
-							<label for="chk_agreement">&nbsp;<em>'이용약관'</em>에 동의하십니까?</label>
-						</h4>
-					</div><!--agree_box-->
-					<h2>개인정보 취급방침</h2>
-					<div class="agree_box">
-						<textarea readonly>황제투어(이하 ‘회사'라 함)는 회원의 개인정보 보호를 매우 중요시하며, 『정보통신망 이용촉진 및 정보보호 등에 관한 법률』 및 전기통신사업법, 통신비밀보호법을 준수하고 있습니다. 
+</textarea>
+					<h4>
+						<input type="checkbox" value="약관동의" id="info2"> <label
+							for="chk_agreement">&nbsp;<em>'이용약관'</em>에 동의하십니까?
+						</label>
+					</h4>
+				</div>
+				<!--agree_box-->
+				<h2>개인정보 취급방침</h2>
+				<div class="agree_box">
+					<textarea readonly>황제투어(이하 ‘회사'라 함)는 회원의 개인정보 보호를 매우 중요시하며, 『정보통신망 이용촉진 및 정보보호 등에 관한 법률』 및 전기통신사업법, 통신비밀보호법을 준수하고 있습니다. 
 
 회사는 개인정보취급방침을 수립하여 회원의 개인정보를 보호하고 있으며, 이를 홈페이지에 명시하여 회원이 온라인상에서 회사에 제공한 개인정보가 어떠한 용도와 방식으로 이용되고 있으며 개인정보보호를 위해 어떠한 조치를 취하는지 알려드립니다. 
 
@@ -123,16 +130,24 @@ $(document).ready(function(){
 
 
 1. 수집하는 개인정보 항목 및 수집방법 ‘개인정보‘란 생존하는 개인에 관한 정보로서 성명, 주민등록번호 등에 의하여 당해 개인을 식별할 수 있는 정보(당해 정보만으로는 특정 개인을 알아볼 수 없는 경우에도 다른 정보와 용이하게 결합하여 알아볼 수 있는 것을 포함)를 말합니다.</textarea>
-						<h4>
-							<input type="checkbox" value="약관동의" id="info">
-							<label for="chk_privacy">&nbsp;<em>'개인정보 보호를 위한 개인정보 취급방침'</em>에 동의합니다.</label>
-						</h4>
-					</div><!--agree_box-->
-					<div class="btn_center">
-						<a  class="btn blue" id="yes">확인</a>
-						<a href="/TravelAgency/index.do" class="btn white" id="btn_notagree">취소</a>
-						
-						<div style="height:50px;"></div>
-					</div><!--btn_center-->
-				</div><!--sub_agree-->
-			</div><!--sub_cont-->
+					<h4>
+						<input type="checkbox" value="약관동의" id="info"> <label
+							for="chk_privacy">&nbsp;<em>'개인정보 보호를 위한 개인정보 취급방침'</em>에
+							동의합니다.
+						</label>
+					</h4>
+				</div>
+				<!--agree_box-->
+				<div class="btn_center">
+					<a class="btn blue" id="yes">확인</a> <a
+						href="/TravelAgency/index.do" class="btn white" id="btn_notagree">취소</a>
+
+					<div style="height: 50px;"></div>
+				</div>
+				<!--btn_center-->
+			</div>
+			<!--sub_agree-->
+		</div>
+		<!--sub_cont-->
+	</div>
+</div>

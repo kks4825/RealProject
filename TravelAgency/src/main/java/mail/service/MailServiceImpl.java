@@ -4,7 +4,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.mail.javamail.JavaMailSender;
 
-
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import org.springframework.mail.javamail.MimeMessageHelper;
@@ -14,7 +13,6 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 @Service
 @Component
 public class MailServiceImpl implements MailService {
-	// org.springframework.mail.javamail.JavaMailSender
 	private JavaMailSender javaMailSender;
 	
 	public void setJavaMailSender(JavaMailSender javaMailSender) {
@@ -22,11 +20,9 @@ public class MailServiceImpl implements MailService {
 	}
 	
 	public boolean send(String subject, String text, String from, String to, String filePath) {
-		// javax.mail.internet.MimeMessage
 	    MimeMessage message = javaMailSender.createMimeMessage();
 	   
 	    try {
-	        // org.springframework.mail.javamail.MimeMessageHelper
 	        MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8");
 	        helper.setSubject(subject);
 	        helper.setText(text, true);
@@ -44,6 +40,7 @@ public class MailServiceImpl implements MailService {
 	        javaMailSender.send(message);
 	        
 	        return true;
+	        
 	    } catch (MessagingException e) {
 	        e.printStackTrace();
 	    }

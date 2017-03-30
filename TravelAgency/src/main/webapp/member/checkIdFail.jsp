@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>아이디 사용 불가능</title>
 </head>
 <body>
 <form name="" method="get" action="/TravelAgency/idCheck.do">
