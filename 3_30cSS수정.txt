@@ -1,11 +1,11 @@
-1. 비밀번호찾기(아이디찾기 옆에 버튼 만들어서)
-2. 1:1문의 작성
-3. banking DB추가
+1. 비밀번호찾기(아이디찾기 옆에 버튼 만들어서) -형진
+2. 1:1문의 작성 - 동욱
+3. banking DB추가 - 동욱
 3. css 변경
-1) main에 키스사진 지우기
-2) detailView.jsp
-3) myPage1.jsp
-4) 나의정보관리
-5) payment.jsp
-6) paymentChecking : bankingPayment.jsp, creditPayment.jsp -> div배치
-7) 검색창만 메인에서 CSS바꾸기
+1) main에 키스사진 지우기  7) 검색창만 메인에서 CSS바꾸기 => 형진
+2) detailView.jsp  => 문근
+3) myPage1.jsp => 윤성
+4) 나의정보관리 *2=>세동 
+5) 나의정보관리 *2=>민기
+5) payment.jsp div 조정=>주환 
+6) paymentChecking : bankingPayment.jsp, creditPayment.jsp -> div배치 => 주환
