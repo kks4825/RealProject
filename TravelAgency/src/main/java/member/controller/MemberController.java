@@ -333,6 +333,7 @@ public class MemberController {
 	public ModelAndView payCheck() {
 		String state = "결제대기(계좌입금)";
 		List<ReserveListDTO> reserveList_unPaid = memberDAO.reserveList_unPaid(state);
+		
 		// product값
 		ProductDTO productDTO = null;
 		ArrayList<ProductDTO> productList = new ArrayList<ProductDTO>();
@@ -341,6 +342,7 @@ public class MemberController {
 			productDTO = productDAO.detailView(reserveList_unPaid.get(i).getPack_no());
 			productList.add(productDTO);
 		}
+		
 		// member값
 		MemberDTO memberDTO = null;
 		ArrayList<MemberDTO> memberList = new ArrayList<MemberDTO>();
@@ -351,6 +353,7 @@ public class MemberController {
 		}
 
 		ModelAndView mav = new ModelAndView();
+		
 		mav.addObject("memberList", memberList);
 		mav.addObject("productList", productList);
 		mav.addObject("reserveList_unPaid", reserveList_unPaid);
@@ -360,11 +363,12 @@ public class MemberController {
 		return mav;
 	}
 
-	// 결제 입금 확인
+	//결제 입금 확인
 	@RequestMapping(value = "/payChecked.do")
 	public ModelAndView payChecked(@RequestParam int list_SEQ) {
 		ModelAndView mav = new ModelAndView();
-		// db가서 입금확인으로 바꾸기.
+		
+		//db가서 입금확인으로 바꾸기.
 		memberDAO.payChecked(list_SEQ);
 		mav.addObject("display", "/myPage/payCheckedComplete.jsp");
 		mav.setViewName("/index/index");

@@ -6,72 +6,6 @@
 <link href="/TravelAgency/css/member/login-box.css" rel="stylesheet"
 	type="text/css" />
 
-<script>
-	window.fbAsyncInit = function() {
-		FB.init({
-			appId : '969677883167671',
-			cookie : true, // 서버가 액세스 할 수 있도록 쿠키를 활성화합니다.
-			xfbml : true,
-			version : 'v2.8',
-		});
-		FB.AppEvents.logPageView();
-	};
-	/* ====================== */
-
-	function getUserData() {
-		FB.api('/me', {
-			fields : 'name,email,gender,birthday'
-		}, function(response) {
-			console.log(JSON.stringify(response));
-			$("#name").text("이름 : " + response.name);
-			$("#email").text("이메일 : " + response.email);
-			$("#gender").text("성별 : " + response.gender);
-			$("#birthday").text("생년월일 : " + response.birthday);
-			$("#id").text("아이디 : " + response.id);
-		});
-
-		function statusChangeCallback(response) {
-			console.log('statusChangeCallback');
-			console.log(response);
-			// response 객체는 현재 로그인 상태를 나타내는 정보를 보여준다. 
-			// 앱에서 현재의 로그인 상태에 따라 동작하면 된다.
-			// FB.getLoginStatus().의 레퍼런스에서 더 자세한 내용이 참조 가능하다.
-
-			FB.getLoginStatus(function(response) {
-				if (response.status === 'connected') {
-					//user is authorized
-					//document.getElementById('loginBtn').style.display = 'none';
-					getUserData();
-				} else {
-					alert("이메일 또는 비밀번호가 일치하지 않습니다");
-				}
-			});
-		}
-		/* ============================ */
-		//check user session and refresh it
-		function checkLoginState() {
-			FB.getLoginStatus(function(response) {
-				statusChangeCallback(response);
-
-				$(location).attr('href', '/TravelAgency/login.do');
-			});
-		}
-	}
-
-	/* =============================== */
-
-	(function(d, s, id) {
-		var js, fjs = d.getElementsByTagName(s)[0];
-		if (d.getElementById(id)) {
-			return;
-		}
-		js = d.createElement(s);
-		js.id = id;
-		js.src = "//connect.facebook.net/ko_KR/sdk.js";
-		fjs.parentNode.insertBefore(js, fjs);
-	}(document, 'script', 'facebook-jssdk'));
-</script>
-
 <div id="fb-root"></div>
 <script>
 	(function(d, s, id) {
@@ -139,10 +73,6 @@
 									</a>
 								</h3>
 							</div>
-							<p>
-								<input type="checkbox" name="save_member_id" value="1">
-								아이디저장
-							</p>
 
 							<iframe id="hiddenframe" name="hiddenframe" frameborder=0
 								style="width: 0px; height: 0px;"></iframe>
@@ -151,8 +81,8 @@
 					<div class="login_btn">
 						<div class="btn_idfind">
 							<a href="/TravelAgency/idFind.do">
-								<p>아이디를 잊으셨나요?</p>
-								<h2>아이디 찾기</h2>
+								<p>아이디/비밀번호를 잊으셨나요?</p>
+								<h2>아이디/비밀번호 찾기</h2>
 							</a>
 						</div>
 						<div class="btn_join">

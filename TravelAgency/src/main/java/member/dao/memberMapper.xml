@@ -214,6 +214,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			)where rn>=#{startNum} and rn<=#{endNum}
 		]]>
 	</select>
+	
+	<select id="isEmailExist" parameterType="java.util.Map" resultType="Integer">
+		select count(*) from member where mememail = #{memEmail}
+	</select>
 </mapper>
 
 

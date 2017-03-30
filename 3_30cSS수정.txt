@@ -1,0 +1,9 @@
+2. 아이디/비밀번호 없으면 
+3. css 변경
+1) main에 키스사진 지우기  7) 검색창만 메인에서 CSS바꾸기 => 형진
+2) detailView.jsp  => 문근
+3) myPage1.jsp => 윤성
+4) 나의정보관리 *2=>세동 
+5) 나의정보관리 *2=>민기
+5) payment.jsp div 조정=>주환 
+6) paymentChecking : bankingPayment.jsp, creditPayment.jsp -> div배치 => 주환

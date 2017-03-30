@@ -107,7 +107,7 @@
 					</tr>
 				</table>
 			</div>
-			<div style="display: inline-block; float: right; height: 40px; margin-top:-3em;">
+			<div style="display: inline-block; float: right; height: 40px; margin-top:10em;">
 				<b>금액
 					<p id="payment" name="payment"></p>
 				</b>

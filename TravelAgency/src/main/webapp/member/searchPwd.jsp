@@ -24,7 +24,7 @@ function check(){
 <body>
 <form method="post" name="searchPwd" action="/TravelAgency/sendMail/password.do">
 <div class="header" style="text-align:center;">
-	<font size=6 face="Comic Sans MS" style="background-color:#DBDBDB;"><strong>비밀번호 찾기</strong></font><br><br>
+	<font size=6 face="Comic Sans MS" ><strong>비밀번호 찾기</strong></font><br><br>
 	<font size=3 face="Comic Sans MS" color="#5D5D5D"><b>비밀번호가 기억나지 않으세요?  아이디와 이메일 확인과정을 통해 임시비밀번호를 발급받으실 수 있습니다.</b></font>
 </div><br><br>
 
