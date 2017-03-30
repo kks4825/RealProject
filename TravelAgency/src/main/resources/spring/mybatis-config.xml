@@ -12,12 +12,12 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<typeAlias type="product.bean.BankDTO" alias="bank"/>
 		<typeAlias type="product.bean.TravelReviewDTO" alias="review"/>
 		<typeAlias type="member.bean.ReserveListDTO" alias="reserveList"/>
-		<!-- <typeAlias type="board.bean.BoardDTO" alias="board"/> -->
+		<typeAlias type="board.bean.BoardDTO" alias="board"/>
 	</typeAliases>
 	
 	<mappers>
 		<mapper resource="member/dao/memberMapper.xml"/>
 		<mapper resource="product/dao/productMapper.xml"/>
-		<!-- <mapper resource="board/dao/boardMapper.xml"/> -->
+		<mapper resource="board/dao/boardMapper.xml"/>
 	</mappers>
 </configuration>

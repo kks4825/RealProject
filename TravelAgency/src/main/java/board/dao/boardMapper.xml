@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="boardSQL">
+	<insert id="boardWrite" parameterType="java.util.Map">
+		insert into board (seq
+						   ,subject
+						   ,name
+						   ,content
+						   ,ref)<!-- 그룹번호 -->
+		values(seq_board.nextval
+				,#{subject}
+				,#{name}
+				,#{content}
+				,seq_board.currval)
+	</insert>
+
+	<select id="getTotalA" resultType="java.lang.Integer">
+		select count(*) from board	
+	</select>
+	
+	<select id="getSearchTotalA" parameterType="java.util.Map" resultType="int">
+		select count(*) from board where ${colName} like '%'||#{value}||'%'
+	</select>
+	
+	<select id="boardNotice" parameterType="java.util.Map" resultType="board">
+		<![CDATA[
+		select seq,subject,name,content
+				,ref,lev,step,pseq,reply,hit
+				,to_char(logtime,'YYYY.MM.DD')as logtime from
+		(select rownum rn, tt.* from
+		(select * from board order by ref desc, step asc)tt
+		)where rn>=#{startNum} and rn<=#{endNum}
+		]]>
+	</select>
+	
+	<select id="boardSearch" parameterType="java.util.Map" resultType="board">
+		<![CDATA[
+			select seq,subject,name,content
+				,ref,lev,step,pseq,reply,hit
+				,to_char(logtime,'YYYY.MM.DD')as logtime from
+		(select rownum rn, tt.* from
+		(select * from board where ${colName} like '%'||#{value}||'%' order by ref desc, step asc)tt
+		)where rn>=#{startNum} and rn<=#{endNum}		
+		]]>	
+	</select>
+	
+	<update id="addHit" parameterType="java.lang.Integer">
+		update board set hit=hit+1 where seq=#{seq}		
+	</update>
+	
+	<select id="boardView" parameterType="java.lang.Integer" resultType="board">
+		select * from board where seq=#{seq}
+	</select>
+	
+	<delete id="boardDelete" parameterType="java.lang.Integer">
+		begin
+			update board set reply=reply-1 
+				where seq=(select pseq from board where seq=#{seq});
+				
+			update board set subject='[원글이 삭제 된 답글] '||subject where pseq=#{seq};
+			
+			delete from board where seq=#{seq};
+		end;
+	</delete>
+	
+	<insert id="boardReply" parameterType="java.util.Map">
+		begin
+			update board set step=step+1 where ref=#{boardDTO.ref} and step>#{boardDTO.step};
+			
+			insert into board values(seq_board.nextval
+									,#{map.subject}
+	                				,#{map.name}
+									,#{map.content}
+									,#{map.ref}
+									,#{map.lev}
+									,#{map.step}
+									,#{map.pseq}
+									,0
+									,0
+									,sysdate);
+									
+			update board set reply=reply+1 where seq=#{boardDTO.seq};
+		end;	
+	</insert>
+	
+	<update id="boardModify" parameterType="java.util.Map">
+		update board set subject=#{subject}
+						,content=#{content}
+		where seq=#{seq}
+	</update>
+	
+	<!-- =======위쪽은 공지사항=========아래쪽은 QnA=============== -->
+	<select id="boardNoticeQna" parameterType="java.util.Map" resultType="board">
+		<choose>
+			<when test='id == "admin"'>
+				<![CDATA[
+					select seq,category,subject,id,name,content,answer
+							,ref,lev,step,pseq,reply
+							,to_char(logtime,'YYYY.MM.DD')as logtime from
+					(select rownum rn, tt.* from
+					(select * from boardQna order by ref desc, step asc)tt
+					)where rn>=#{startNum} and rn<=#{endNum}
+				]]>
+			</when>
+			
+			<when test='id != "admin"'>
+				<![CDATA[
+					select seq,category,subject,id,name,content,answer
+							,ref,lev,step,pseq,reply
+							,to_char(logtime,'YYYY.MM.DD')as logtime from
+					(select rownum rn, tt.* from
+					(select * from boardQna where answer=#{id} or id=#{id} order by ref desc, step asc)tt
+					)where rn>=#{startNum} and rn<=#{endNum}
+				]]>
+			</when>
+		</choose>
+	</select>
+	
+	<select id="getTotalQnaA" parameterType="java.util.Map" resultType="java.lang.Integer">
+		select count(*) from boardQna 
+			<if test='id != "admin"'>
+				where id=#{id}
+			</if> 
+	</select>
+	
+	<select id="getSearchTotalQnaA" parameterType="java.util.Map" resultType="int">	
+		<choose>
+			<when test='id == "admin"'>
+				select count(*) from boardQna where ${colName} like '%'||#{value}||'%'
+			</when>
+			
+			<when test='id != "admin"'>
+				select count(*) from		
+				(select * from boardQna where (${colName} like '%'||#{value}||'%') and ((id=#{id} and answer='admin') or (id='admin' and answer=#{id})))
+			</when>
+		</choose>	
+	</select>
+
+	<insert id="boardQnaWrite" parameterType="java.util.Map">
+		insert into boardQna(seq
+						     ,category
+						     ,subject
+						     ,id
+						     ,name
+						     ,content
+						     ,ref)
+		values(seq_boardQna.nextval
+			    ,#{category}
+				,#{subject}
+				,#{id}
+				,#{name}
+				,#{content}
+				,seq_boardQna.currval)
+	</insert>
+	
+	<select id="boardQnaView" parameterType="java.lang.Integer" resultType="board">
+		select * from boardQna where seq=#{seq}
+	</select>
+	
+	<update id="boardQnaModify" parameterType="java.util.Map">
+		update boardQna set subject=#{subject}
+						,content=#{content}
+		where seq=#{seq}
+	</update>
+	
+	<delete id="boardDeleteQna" parameterType="java.lang.Integer">
+		begin
+			update boardQna set reply=reply-1 
+				where seq=(select pseq from boardQna where seq=#{seq});
+				
+			update boardQna set subject='[원글이 삭제 된 답글] '||subject where pseq=#{seq};
+			
+			delete from boardQna where seq=#{seq};
+		end;
+	</delete>
+	
+	<insert id="boardReplyQna" parameterType="java.util.Map">
+		begin
+			update boardQna set step=step+1 where ref=#{boardDTO.ref} and step>#{boardDTO.step};
+			
+			insert into boardQna values(seq_boardQna.nextval
+		                                 ,#{map.category}
+		                                 ,#{map.subject}
+		                                 ,#{map.id}
+	                				     ,#{map.name}
+                                 		 ,#{map.content}
+                                 		 ,#{map.answer}
+									     ,#{map.ref}
+						                 ,#{map.lev}
+						                 ,#{map.step}
+						                 ,#{map.pseq}
+						                 ,0
+						                 ,sysdate);
+									
+			update boardQna set reply=reply+1 where seq=#{boardDTO.seq};
+			
+			update boardQna set answer='admin' where seq=#{map.seq};
+  		end;	
+	</insert>
+
+	<select id="boardQnaSearch" parameterType="java.util.Map" resultType="board">
+		<choose>
+			<when test='id == "admin"'>
+				<![CDATA[
+				select seq,category,subject,id,name,content
+				,ref,lev,step,pseq,reply
+				,to_char(logtime,'YYYY.MM.DD')as logtime from
+				(select rownum rn, tt.* from
+				(select * from boardQna where ${colName} like '%'||#{value}||'%' order by ref desc, step asc)tt
+				)where rn>=#{startNum} and rn<=#{endNum}
+				]]>	
+			</when>
+				
+			<when test='id != "admin"'>
+				<![CDATA[
+					select seq,category,subject,id,name,content,answer
+						,ref,lev,step,pseq,reply
+						,to_char(logtime,'YYYY.MM.DD')as logtime from
+				(select rownum rn, tt.* from
+				(select * from boardQna where (${colName} like '%'||#{value}||'%') and ((id=#{id} and answer='admin') or (id='admin' and answer=#{id}))  order by ref desc, step asc)tt
+				)where rn>=#{startNum} and rn<=#{endNum}
+				]]>	
+			</when>
+		</choose>	
+	</select>
+
+</mapper>

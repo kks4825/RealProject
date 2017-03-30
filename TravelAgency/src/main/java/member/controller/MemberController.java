@@ -411,12 +411,16 @@ public class MemberController {
 		String memId = SecurityContextHolder.getContext().getAuthentication().getName();
 		
 		ProductDTO productDTO = productDAO.detailView(Integer.parseInt(map.get("pack_no")));
-		System.out.println(productDTO.getPack_city());
+		
 		map.put("pack_city", productDTO.getPack_city());
 		map.put("memId", memId);
+		
 		memberDAO.reviewWrite(map);
+		
 		ModelAndView mav = new ModelAndView();
+		
 		mav.setViewName("/myPage/reviewWriteComplete");
+		
 		return mav;
 	}
 	// 비밀번호입력
@@ -427,7 +431,8 @@ public class MemberController {
 		session.setAttribute("pg", pg);
 
 		mav.addObject("display", "/myPage/myPageInputPwd.jsp");
-		mav.setViewName("/myPage/myPageInputPwd");
+		
+		mav.setViewName("/index/index");
 
 		return mav;
 	}
@@ -568,6 +573,7 @@ public class MemberController {
 		mav.addObject("citySearch", citySearch);
 		mav.addObject("ReserveListPaging", reserveListPaging);
 		mav.addObject("display", "/myPage/myPage1.jsp");
+		
 		mav.setViewName("/index/index");
 
 		return mav;

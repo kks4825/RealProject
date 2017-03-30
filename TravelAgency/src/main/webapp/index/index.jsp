@@ -76,10 +76,6 @@
 									</a></li>
 								</c:if></li>
 							<li><a href="/TravelAgency/logout.do">Logout</a></li>
-							<li><a href="/TravelAgency/myPage1.do?pg=1"><span
-									class="glyphicon glyphicon-home"></span> mypage</a></li>
-							<li><a href="#" id="favorite" title="즐겨찾기 등록">bookmark</a></li>
-							<li><a href="#">contact us</a></li>
 						</ul>
 					</c:if>
 				</div>
@@ -100,8 +96,7 @@
 				</div>
 				<div class="drop_menu_wrap">
 					<h1 style="width: 500px; height: 350px;">
-						<a href="#">
-							<!-- <img src="" alt="드롭다운"> -->
+						<a href="#"> <!-- <img src="" alt="드롭다운"> -->
 						</a>
 					</h1>
 					<ul class="drop_list">
@@ -116,7 +111,6 @@
 						<li>
 							<ul class="drop_child">
 								<li><a href="/TravelAgency/boardNotice.do?pg=1">공지사항</a></li>
-								<li><a href="/TravelAgency/boardNoticeQna.do?pg=1">질문과답변</a></li>
 								<li><a href="/TravelAgency/boardNoticeQna.do?pg=1">1:1문의</a></li>
 							</ul>
 						</li>
@@ -134,5 +128,6 @@
 		<div id="bottom">
 			<jsp:include page="bottom.jsp" />
 		</div>
+	</div>
 </body>
 </html>
