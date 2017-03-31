@@ -187,8 +187,8 @@ public class MemberController {
 
 		if (pg == null)
 			pg = "1";
-		int endNum = Integer.parseInt(pg) * 3;
-		int startNum = endNum - 2;
+		int endNum = Integer.parseInt(pg) * 5;
+		int startNum = endNum - 4;
 
 		/*
 		 * List<ReserveListDTO> reserveList = memberDAO.reserveList(memId);
@@ -217,7 +217,7 @@ public class MemberController {
 		// 페이징처리
 		reserveListPaging.setCurrentPage(Integer.parseInt(pg));
 		reserveListPaging.setPageBlock(3);
-		reserveListPaging.setPageSize(3);
+		reserveListPaging.setPageSize(5);
 		reserveListPaging.makePagingHTML(memId);
 
 		mav.addObject("pg", pg);
@@ -570,7 +570,7 @@ public class MemberController {
 		// 페이징처리
 		reserveListPaging.setCurrentPage(Integer.parseInt(pg));
 		reserveListPaging.setPageBlock(3);
-		reserveListPaging.setPageSize(3);
+		reserveListPaging.setPageSize(5);
 		reserveListPaging.makePagingHTML(map);
 
 		mav.addObject("pg", pg);

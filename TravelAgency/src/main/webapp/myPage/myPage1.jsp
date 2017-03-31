@@ -3,7 +3,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <link rel="stylesheet" type="text/css" href="css/board/ext-all.css">
-<link rel="stylesheet" href="/TravelAgency/css/myPage/myPage1.css?ver=1">
+<link rel="stylesheet" href="/TravelAgency/css/myPage/myPage1.css">
 <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 <script src="js/myPage/myPage1.js?ver=1"></script>
@@ -35,6 +35,22 @@ function reviewWriteForm(pack_no,date_arriv){
     }
 }
 </script>
+<style>
+#currentPaging{
+	cursor:pointer;
+	color:red;
+}
+#paging{
+	cursor:pointer;
+	color:black;
+	text-decoration: none;
+}
+span{font-size:15px;}
+span:link {color:black; text-decoration:none;}
+span:visited {color:black; text-decoration:none;}
+span:hover {color:black; text-decoration:underline;}
+span:active {color:black; text-decoration:none; font-weight:bold;}
+</style>
 <form name="myPageForm" method="post" action="/TravelAgency/reserveSearch.do">
 <div id="body">
 	<div class="t-wrap">
@@ -69,8 +85,7 @@ function reviewWriteForm(pack_no,date_arriv){
 								<br>
 								<br>
 								
-								<input type="text" name="citySearch" id="citySearch" style="width:230px; height:25px; autocorrect="off" autocomplete="off" autocapitalize="off"  name="query"  class="sinput" value="" maxlength="255" 
-            					/>
+								<input type="text" name="citySearch" id="citySearch" style="width:230px; height:25px; autocorrect="off" autocomplete="off" autocapitalize="off"  name="query"  class="sinput" value="" maxlength="255" />
 								<input type="button" id="SearchButton" style="height:28px; width:100px; background-color: #1e70dd; color: #FFFFFF;" value="&nbsp;&nbsp;search&nbsp;&nbsp;" >
 								
 								</td>
@@ -79,70 +94,67 @@ function reviewWriteForm(pack_no,date_arriv){
 					</div>
 				</div>
 				<div class="tcb3">
-					<font style="font-size:15pt; line-height: 60px; background-color: #606060; color: #FFFFFF;"><b>&nbsp;&nbsp;&nbsp;&nbsp;예약 내역</b></font>
-					<table border="1" style="font-size:10pt; background-color: #606060; color: #FFFFFF;">
+					<font style="font-size:15pt; line-height: 60px; background-color: #777777; color: #FFFFFF;"><b>&nbsp;&nbsp;&nbsp;&nbsp;예약 내역</b></font>
+					<table class="tcb6" style="font-size:10pt; background-color: #777777; color: #FFFFFF;">
 						<tr>
-							<td colspan="8" bgcolor="#607d8b"></td>
+							<td colspan="8" bgcolor="#FFFFFF" style="height:2px;"></td>
 						</tr>
 						<tr>
-							<td width="300" style="text-align:center;">상품명</td>
-							<td width="130" style="text-align:center;">출발일/귀국일</td>
-							<td width="130" height="40" style="text-align:center;">예약시간/예약번호</td>
-							<td width="130" style="text-align:center;">총 결제금액</td>
-							<td width="100" style="text-align:center;">인원</td>							
-							<td width="100" style="text-align:center;">결제상태</td>
-							<td width="100" style="text-align:center;">상품평</td>
-							<td width="70"" style="text-align:center;">예약취소</td>
+							<td width="300" valign="middle" style="text-align:center;vertical-align: middle;">상품명</td>
+							<td width="130" valign="middle" style="text-align:center;vertical-align: middle;">출발일/귀국일</td>
+							<td width="130" valign="middle" height="40" style="text-align:center;vertical-align: middle;">예약시간/예약번호</td>
+							<td width="130" valign="middle" style="text-align:center;vertical-align: middle;">총 결제금액</td>
+							<td width="100" style="text-align:center;vertical-align: middle;">인원</td>							
+							<td width="130" style="text-align:center;vertical-align: middle;">결제상태</td>
+							<td width="100" style="text-align:center;vertical-align: middle;">상품평</td>
+							<td width="70" style="text-align:center;vertical-align: middle;">예약취소</td>
 						</tr>
 						<tr>
-							<td colspan="8" bgcolor="#607d8b"></td>
 						</tr>
 						 <c:if test="${reserveList eq ''}">
 							<tr>
 								<td colspan="8"><br> <br>예약내역이 없습니다.<br> <br>
-									<br> <br></td>
+								</td>
 							</tr>
 						</c:if>
 						<c:if test="${reserveList ne ''}">
 							<c:forEach var="productList" items="${productList }" varStatus="varStatus">
 								<tr>
-									<td>${productList.pack_title }</td> <!-- 상품명 pack_no로 가져오기 -->
-									<td>${productList.pack_depart }~<br>${productList.pack_arriv }</td> <!-- 출발일 귀국일 pack_no로 가져오기 -->
+									<td colspan="8" bgcolor="#FFFFFF" style="height:2px;"></td>
+								</tr>
+								<tr>
+									<td style="padding:10px; height:3px;">${productList.pack_title }</td> <!-- 상품명 pack_no로 가져오기 -->
+									<td align="center" style="vertical-align: middle;">${productList.pack_depart }~<br>${productList.pack_arriv }</td> <!-- 출발일 귀국일 pack_no로 가져오기 -->
 								<c:forEach var="reserveList" begin="${varStatus.index}" end="${varStatus.index}" items="${reserveList }">
-										<td>${reserveList.reserveTime }/${reserveList.list_SEQ }</td>
-										<td>${reserveList.totalPay }</td>
-										<td>${reserveList.numOfPerson }</td>
-										<td id="payState">${reserveList.paymentState }</td> 
-										<td>
+										<td align="center" style="vertical-align: middle;">${reserveList.reserveTime }/${reserveList.list_SEQ }</td>
+										<td align="center" style="vertical-align: middle;">${reserveList.totalPay }</td>
+										<td align="center" style="vertical-align: middle;">${reserveList.numOfPerson }</td>
+										<td id="payState" style="vertical-align: middle;">${reserveList.paymentState }</td> 
+										<td align="center" style="vertical-align: middle;">
                                             <c:if test="${reserveList.reviewSEQ eq '0'}"> 
-                                                <input type="button" value="여행후기작성" id="reviewWrite" onclick="javascript:reviewWriteForm(${reserveList.pack_no},'${productList.pack_arriv}')"/>
+                                                <input type="button" value="여행후기작성" id="reviewWrite" onclick="javascript:reviewWriteForm(${reserveList.pack_no},'${productList.pack_arriv}')" style="cursor:pointer;"/>
 											</c:if>
 											<c:if test="${reserveList.reviewSEQ ne '0'}">
 												<input type="button" value="후기작성완료"  disabled />
 											</c:if>
 										</td>
-										<td>
+										<td align="center" style="vertical-align: middle;">
 											<input type="hidden" value="${productList.pack_depart }" id="depart_date${varStatus.index }"/>
 											<input type="hidden" value="${reserveList.list_SEQ }" id="cancel_seq${varStatus.index }"/>
 											<input type="hidden" value="${reserveList.reviewSEQ }" id="review_seq${varStatus.index }"/>
-											<input type="button" value="취소" class="reserveCancel"/>
+											<input type="button" value="취소" class="reserveCancel" style="cursor:pointer;"/>
 										</td>				
 								</c:forEach>
 								</tr>
 							</c:forEach>
 						</c:if>
-						<tr>
-							<td colspan="8" bgcolor="#607d8b"></td>
-						</tr>
-						<tr>
-							<td colspan="8" bgcolor="#607d8b"></td>
-						</tr>
 					</table>
-					<div>
-					${ReserveListPaging.pagingHTML }<br>
+					<div id="paging" style="text-align:center;">
+						${ReserveListPaging.pagingHTML }							
 					</div>
+					</div>
+				</div>
 			</div>
-			<div class="tbd"></div>
 		</div>
 	</div>
 </div>
