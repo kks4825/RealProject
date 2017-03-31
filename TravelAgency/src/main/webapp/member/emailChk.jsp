@@ -1,23 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Insert title here</title>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 <script>
-window.onload = function() {
+$(document).ready(function(){
 	var emailExist = '${emailExist}';
-	
-	if(emailExist=='1') {
+	if(emailExist==1) {
 		alert("이미 가입된 메일입니다.");
 		window.close();
-	}else if(emailExist=='0'){
+	}else if(emailExist==0){
 		alert("인증을 위한 이메일이 발송되었습니다.");
 		location.href="http://localhost:8080/TravelAgency/sendMail/auth.do?email=${memEmail}";
 	}
-}
-
+});
 function emailCheck(){
 	var form = document.emailChk;
 	var joinCode = ${sessionScope.joinCode};
@@ -35,11 +29,7 @@ function emailCheck(){
 	}
 } 
 </script>
-</head>
-<body>
-<form method="" name="emailChk" >
+<form method="get" name="emailChk" >
 	<input type="text" name="joincodeChk"><br/><br/>
 	<input type="button" value="인증" onclick="javascript:emailCheck()">
 </form>
-</body>
-</html>

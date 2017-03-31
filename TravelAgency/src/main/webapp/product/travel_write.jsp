@@ -2,7 +2,20 @@
 	pageEncoding="UTF-8"%>
 
 <script src="js/myPage/myPage1.js?ver=1"></script>
-
+<script>
+function reviewWrite(){
+    if(document.getElementById('subject').value==""){
+        alert("상품평 제목을 입력해 주세요");
+    }else if(document.getElementById('starscore').value==""){
+        alert("별점을 선택해 주세요");
+    }else if(document.getElementById('content').value==""){
+        alert("상품평 내용을 입력해 주세요");
+    }else{
+        document.reviewWriteForm.submit();
+        opener.location.reload();
+    }    
+}
+</script>
 <div class="header" style="text-align:left; ">
 	<font size=5 face="Comic Sans MS"><strong>여행후기</strong></font><br><br>
 </div>

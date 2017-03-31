@@ -198,7 +198,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<delete id="reviewDelte" parameterType="java.util.Map">
-		delete from travelreview where id=#{memId} and pack_no=#{pack_no}
+		delete from travelreview where id=#{memId} and seq=#{review_seq}
 	</delete>
 	
 	<select id="getSearchTotalA" parameterType="java.util.Map" resultType="Integer">
@@ -215,7 +215,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		]]>
 	</select>
 	
-	<select id="isEmailExist" parameterType="java.util.Map" resultType="Integer">
+	<select id="isEmailExist" parameterType="String" resultType="Integer">
 		select count(*) from member where mememail = #{memEmail}
 	</select>
 </mapper>

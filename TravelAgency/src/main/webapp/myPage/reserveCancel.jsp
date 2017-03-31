@@ -2,11 +2,13 @@
     pageEncoding="UTF-8"%>
 <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 <script>
+
 $(document).ready(function(){
 	$('#cancelBtn').click(function(){
 		alert("예약이 취소 되었습니다");
 		var seq = $('#seq').val();
-		$(location).attr("href","/TravelAgency/reserveCancel.do?seq="+seq);
+		var review_seq = $('#review_seq').val();
+		$(location).attr("href","/TravelAgency/reserveCancel.do?seq="+seq+"&review_seq="+review_seq);
 	});
 });
 </script>
@@ -18,6 +20,7 @@ $(document).ready(function(){
 		취소 요청하시겠습니까?
 	</p>
 	<input type="hidden" value="${seq }" id="seq"/>
+	<input type="hidden" value="${review_seq }" id="review_seq"/>
 	<input type="button" value="확인" id="cancelBtn"/>
 	<input type="button" value="취소" onclick="window.close()"/>
 </body>
