@@ -71,7 +71,7 @@ public class MailController {
     @ResponseBody
     public boolean sendMailAuth(HttpSession session, @RequestParam String email) {
     	String joinCode = (String) session.getAttribute("joinCode");
-        String subject = "회원가입 인증 코드 발급 안내 입니다. - OO투어";
+        String subject = "회원가입 인증 코드 발급 안내 입니다. - 황제투어";
        
         StringBuilder sb = new StringBuilder();
         
