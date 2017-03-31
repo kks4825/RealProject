@@ -50,6 +50,11 @@ span:link {color:black; text-decoration:none;}
 span:visited {color:black; text-decoration:none;}
 span:hover {color:black; text-decoration:underline;}
 span:active {color:black; text-decoration:none; font-weight:bold;}
+
+#title:link {color:#FFFFFF; text-decoration:none;}
+#title:visited {color:#FFFFFF; text-decoration:none;}
+#title:hover {color:#FFFFFF; text-decoration:underline;}
+#title:active {color:#FFFFFF; text-decoration:none; font-weight:bold;}
 </style>
 <form name="myPageForm" method="post" action="/TravelAgency/reserveSearch.do">
 <div id="body">
@@ -123,7 +128,11 @@ span:active {color:black; text-decoration:none; font-weight:bold;}
 									<td colspan="8" bgcolor="#FFFFFF" style="height:2px;"></td>
 								</tr>
 								<tr>
-									<td style="padding:10px; height:3px;">${productList.pack_title }</td> <!-- 상품명 pack_no로 가져오기 -->
+									<td style="padding:10px; height:3px;">
+										<a href="/TravelAgency/detailView.do?seq=${productList.pack_no }" id="title">
+											${productList.pack_title }
+										</a>
+									</td> <!-- 상품명 pack_no로 가져오기 -->
 									<td align="center" style="vertical-align: middle;">${productList.pack_depart }~<br>${productList.pack_arriv }</td> <!-- 출발일 귀국일 pack_no로 가져오기 -->
 								<c:forEach var="reserveList" begin="${varStatus.index}" end="${varStatus.index}" items="${reserveList }">
 										<td align="center" style="vertical-align: middle;">${reserveList.reserveTime }/${reserveList.list_SEQ }</td>
