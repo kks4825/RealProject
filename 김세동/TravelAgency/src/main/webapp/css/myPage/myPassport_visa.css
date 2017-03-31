@@ -1,0 +1,93 @@
+@CHARSET "UTF-8";
+
+body{margin:0px; padding:0px;}/*상위 스타일에 대한 원점 처리를 해 줍니다.*/
+
+h3{margin-bottom:10px; height:13px; padding-left:12px; font-size:14px; background:url('http://image1.hanatour.com/2010/images/mypage/ico_leave.gif') no-repeat 0 4px; color:#424242; letter-spacing:-1px;}
+
+.t-wrap{margin:0 auto; width:1200px; height:1200px;border:1px solid red;}/*가상의 홈페이지 공간*/
+
+.tu{width:1200px; height:1200px; margin:auto; border:1px solid red; position:relative;}/*가상의 바디*/
+
+.tba,.tbb,.passport_visa,.tbd,.tca{border:1px solid red; text-align:center;layout:fixed;}
+
+.passport_infomation{ layout:fixed; }
+.passport_infomation img{float:left; padding-left:10px;}
+
+.tcb2,.tcb3{border:1px solid red; layout:fixed; text-align:left}
+.tcb3 li{list-style:none; line-height:25px;}
+
+.tbb li a{text-decoration:none;}
+
+.tbb li li a{text-decoration:none;}
+
+.tba{background-color:none;vertical-align:middle;width:198px; height:200px;margin-bottom:0px; position:relative;}
+
+.tbb{background-color:none;width:200px; height:1000px; float:left; }
+
+.passport_visa{background-color:none;width:996px; height:1000px; display:inline-block;}
+
+.tbd{background-color:none;width:1198px; height:200px; float:left; clear:both;margin-top:0px; }/*가로폭이 340픽셀 이상인 기기에서는 바디부의 우측으로 배열이 될수 있기 때문에  clear:both;속성을 줍니다.*/
+
+.tbb>ul{background-color:none;width:100px; height:30px; margin:0px; border-radius:0.1em; display:block; position:relative;left:-200;top:100px;border:1px solid #34a435;}
+
+.tbb>ul>.tca{background-color:none;width:110px; height:30px; margin:0px; border-radius:0.2em; border:1px solid red; display:inline-block; }
+
+.tbb>ul>li:hover ul{width:85px; height:30px; margin-left:40px; border-radius:0.2em; display:block; position:absolute;}
+
+.tbb>ul>.tca a{background-color:none;width:110px; height:30px; margin:0px; border-radius:0.2em; display:block;}
+
+.tbb ul ul{display:none;}
+
+.tbb ul{list-style:none;}
+
+.tbb li li a{border:2px solid gray;display:none; background-color:none;width:85px; height:30px; margin:0px; border-radius:0.2em; display:block;}
+
+.tbb li li a:hover{background-color:black;width:110px; height:30px; margin:0px; border-radius:0.2em; display:block;}
+
+.passport_infomation{ padding-left:10px; layout:fixed; text-align:left; background-color:none;width:996px; height:240px; padding-top:10px; layout:fixed; margin-bottom:20px;}
+
+.passport_infomation_save{width:680px; height:30px; layout:fixed; text-align:left; border:1px solid gray; layout:fixed;position:relative; left : 23px; top:15px;}
+
+.visa_infomation{border:1px solid red; padding-left:10px; layout:fixed; text-align:left; background-color:none;width:996px; height:200px; padding-top:0px; layout:fixed; margin-bottom:20px;}
+
+.visa_infomation_save{width:680px; height:30px; layout:fixed; text-align:left; border:1px solid gray; layout:fixed;position:relative; left : 23px; top:15px;}
+
+
+table.board1_css {border-top:1px solid #d3d3d3 ;border-top:2px solid #1b7fd3; font-size:12px; text-align:left; margin-bottom:40px;}
+/*table.board_css tr {border-bottom:1px solid #d3d3d3;}*/
+table.board1_css th,
+table.board1_css td {
+	border:1px solid #d3d3d3;
+	vertical-align:middle;
+}
+
+table.board1_css th {
+	color:#333333; font-weight:600; padding:15px 35px; background-color:#fafafa; width:98px;font-size:13px;color:#333;font-family: 'Nanum GothicB'; font-weight:bold;}
+table.board1_css td {color:#888888; font-weight:100; padding:10px 20px;}
+table.board1_css td div.view_cont {padding:8px 10px 50px 10px; line-height:26px; min-height:150px;}
+table.board1_css td input[type=text], table.board1_css td input[type=password]{min-width:150px; padding:0 10px; height:24px; border:1px solid #d3d3d3;}
+table.board1_css td input.tel {min-width:50px;}
+table.board1_css td textarea {min-width:96%; padding:2%; height:200px; border:1px solid #d3d3d3;}
+table.board1_css .guide {text-indent:5px; display:inline-block;zoom:1;*display:inline/*IE7 HACK*/;_display:inline;/*IE6 HACK*/}
+table.board1_css td p {
+	padding:0 15px;
+}
+table.board1_css td p em {
+	color:#333;
+}
+table.board1_css td p span {
+	color:#888;
+	margin-right:12px;
+}
+.btn_center {text-align:center; }
+.btn_center a {margin:0 5px; line-height:25px;}
+.btn {display:inline-block; font-size:15px; color:#ffffff; font-weight:600; width:98px; height:38px; line-height:38px; text-align:center;font-size:15px;font-family: 'Nanum GothicB';font-weight:bold;}
+.gray {background-color:#888888;}
+.white {background-color:#fff; border:solid 1px #ddd;color:#666;}
+.blue {background-color:#1b7fd3; border:solid 1px #1b7fd3;}
+.btn_center input {margin-top:-4px;}
+
+.sub_join table.board1_css td input[type=text], .sub_join table.board_css td input[type=password] {min-width:150px; width:157px !important; padding:0 8px; height:23px; border:1px solid #d3d3d3;}
+.sub_join table.captcha {}
+.sub_join table.captcha th {padding:4px;border:solid 1px #d3d3d3;}
+.sub_join table.captcha td {border:solid 1px #d3d3d3; vertical-align:middle;}

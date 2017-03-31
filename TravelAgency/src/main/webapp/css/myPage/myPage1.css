@@ -2,9 +2,9 @@
 
 #body{margin:0px; padding:0px;}/*상위 스타일에 대한 원점 처리를 해 줍니다.*/
 
-.t-wrap{margin:0 auto; width:1200px; height:1200px;}/*가상의 홈페이지 공간*/
+.t-wrap{margin:0 auto; width:1200px; height:680px;}/*가상의 홈페이지 공간*/
 
-.tu{width:1200px; height:1200px; margin:auto;  position:relative;}/*가상의 바디*/
+.tu{width:1200px; height:500px; margin:auto;  position:relative;}/*가상의 바디*/
 
 .tba,.tbb,.tbc,.tbd,.tca,.tcb1,.tcb2,.tcb3,.tcb4,.tcb5{ layout:fixed;}
 
@@ -14,9 +14,9 @@
 
 .tba{background-color:none;vertical-align:middle;width:198px; height:200px;margin-bottom:0px; position:relative;}
 
-.tbb{background-color:none;width:200px; height:1000px; float:left; font-size:15px; text-align:center; }
+.tbb{background-color:none;width:200px; height:400px; float:left; font-size:15px; text-align:center; }
 
-.tbc{background-color:none;width:996px; height:1000px; display:inline-block;}
+.tbc{background-color:none;width:996px; height:400px; display:inline-block;}
 
 .tbd{background-color:none;width:1198px; height:200px; float:left; clear:both;margin-top:0px; }/*가로폭이 340픽셀 이상인 기기에서는 바디부의 우측으로 배열이 될수 있기 때문에  clear:both;속성을 줍니다.*/
 
@@ -44,7 +44,7 @@
 
 .tcb2a{width:946px; height:49px; padding-top:0px; layout:fixed; text-align:left;layout:fixed;position:relative; left : 23px; top:13px;}
 
-.tcb3{background-color: #606060; color: #FFFFFF;width:996px; height:100px; padding-top:10px; layout:fixed; margin-bottom:20px; margin-left:20px;}
+.tcb3{background-color: #777777; color: #FFFFFF;width:996px; height:100px; padding-top:10px; layout:fixed; margin-bottom:20px; margin-left:20px;}
 
 .tcb4{background-color:none;width:996px; height:155px; padding-top:0px; layout:fixed; margin-bottom:20px;}
 
@@ -52,4 +52,7 @@
 
 .tcb5{background-color:none;width:996px; height:230px; padding-top:10px; layout:fixed; margin-bottom:0px;}
 
+<<<<<<< HEAD
 .page{background-color:blue; text-align:center;}
+=======
+>>>>>>> 66ac0596d3b6455eb3da48e2aba0c49efeead3de
