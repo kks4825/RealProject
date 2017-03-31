@@ -2,15 +2,10 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
-
 <link rel="stylesheet" type="text/css" href="css/board/ext-all.css">
 <link rel="stylesheet" href="/TravelAgency/css/myPage/myPage1.css?ver=1">
-<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"></link>
 <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
-<!-- jQuery UI 국제화 대응을 위한 라이브러리 (다국어) -->
-<script	src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/i18n/jquery-ui-i18n.min.js"></script>
 <script src="js/myPage/myPage1.js?ver=1"></script>
 <script>
 function ReserveListPaging(pg){
@@ -20,6 +15,24 @@ function ReserveListPaging(pg){
 function searchReserveListPaging(pg){
 	location.href="/TravelAgency/reserveSearch.do?pg="+pg
 			+"&citySearch="+encodeURIComponent('${citySearch}');
+}
+function reviewWriteForm(pack_no,date_arriv){
+    //패키지 날짜
+    var date_arriv_split = date_arriv.split('-');
+    date_arriv_num = date_arriv_split[0]+date_arriv_split[1]+date_arriv_split[2];
+    //지금날짜
+    var year = new Date().getFullYear();
+    var month = new Date().getMonth()+1;
+    var day = new Date().getDate();
+    var now = year+""+5+""+day;    //임시 값
+    //지금날짜와 패키지 날짜를 뺀 값
+    var gap = now-date_arriv_num;
+    if(gap<0){
+        alert("여행후기는 여행을 다녀온 이후 작성할 수 있습니다.");
+    }else{
+        //window open post 방식으로 보내야 pack_no가 사용자가 볼 수 없다.
+        window.open("/TravelAgency/reviewWriteForm.do?pack_no="+pack_no,"","width=600 height=600,toolbar=no,scrollbars=no,resizealbe=no");
+    }
 }
 </script>
 <form name="myPageForm" method="post" action="/TravelAgency/reserveSearch.do">
@@ -58,8 +71,7 @@ function searchReserveListPaging(pg){
 								
 								<input type="text" name="citySearch" id="citySearch" style="width:230px; height:25px; autocorrect="off" autocomplete="off" autocapitalize="off"  name="query"  class="sinput" value="" maxlength="255" 
             					/>
-								<input type="button" id="SearchButton" style="height:28px; width:100px; background-color: #1e70dd; color: #FFFFFF;" value="&nbsp;&nbsp;search&nbsp;&nbsp;" onclick="search()">&nbsp;&nbsp;
-									*최대 1년 단위 검색 가능
+								<input type="button" id="SearchButton" style="height:28px; width:100px; background-color: #1e70dd; color: #FFFFFF;" value="&nbsp;&nbsp;search&nbsp;&nbsp;" >
 								
 								</td>
 							</tr>
@@ -102,15 +114,18 @@ function searchReserveListPaging(pg){
 										<td>${reserveList.numOfPerson }</td>
 										<td id="payState">${reserveList.paymentState }</td> 
 										<td>
-											<c:if test="${reserveList.reviewSEQ eq 0}"> <!-- 상품평 작성되면 0에서 1로 바 -->
-												<input type="button" value="상품평작성" id="reviewWrite"/>
+                                            <c:if test="${reserveList.reviewSEQ eq '0'}"> 
+                                                <input type="button" value="여행후기작성" id="reviewWrite" onclick="javascript:reviewWriteForm(${reserveList.pack_no},'${productList.pack_arriv}')"/>
 											</c:if>
-											<c:if test="${reserveList.reviewSEQ eq 1}">
-												<input type="button" value="상품평보기" id="reviews"/>
+											<c:if test="${reserveList.reviewSEQ ne '0'}">
+												<input type="button" value="후기작성완료"  disabled />
 											</c:if>
 										</td>
 										<td>
-											<input type="button" value="취소" onclick="location='reserveCancelForm.do?seq=${reserveList.list_SEQ}'"/>
+											<input type="hidden" value="${productList.pack_depart }" id="depart_date${varStatus.index }"/>
+											<input type="hidden" value="${reserveList.list_SEQ }" id="cancel_seq${varStatus.index }"/>
+											<input type="hidden" value="${reserveList.reviewSEQ }" id="review_seq${varStatus.index }"/>
+											<input type="button" value="취소" class="reserveCancel"/>
 										</td>				
 								</c:forEach>
 								</tr>
@@ -123,8 +138,9 @@ function searchReserveListPaging(pg){
 							<td colspan="8" bgcolor="#607d8b"></td>
 						</tr>
 					</table>
-				</div>
-				${ReserveListPaging.pagingHTML }<br>
+					<div>
+					${ReserveListPaging.pagingHTML }<br>
+					</div>
 			</div>
 			<div class="tbd"></div>
 		</div>
