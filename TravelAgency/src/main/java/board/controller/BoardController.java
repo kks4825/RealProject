@@ -26,7 +26,6 @@ import board.bean.BoardQnaPaging;
 import board.dao.BoardDAO;
 import member.bean.MemberDTO;
 
-
 @Controller
 @Component
 public class BoardController {
@@ -36,7 +35,6 @@ public class BoardController {
 	private BoardPaging boardPaging;
 	@Autowired
 	private BoardQnaPaging boardQnaPaging;
-	
 	
 	@RequestMapping(value="/boardNotice.do", method = RequestMethod.GET)
 	public ModelAndView boardNotice(@RequestParam(required=false) String pg,
@@ -84,7 +82,9 @@ public class BoardController {
 							  Model model,
 							  HttpSession session){
 		String id = (String) session.getAttribute("memId");
-		String name =(String) session.getAttribute("memName");
+		MemberDTO memberDTO = (MemberDTO) session.getAttribute("memberDTO");
+		
+		String name = memberDTO.getMemName();
 		
 		map.put("id", id);
 		map.put("name", name);
@@ -197,7 +197,9 @@ public class BoardController {
 							 HttpSession session){
 		//데이터
 		String id = (String) session.getAttribute("memId");
-		String name = (String) session.getAttribute("memName");
+		MemberDTO memberDTO = (MemberDTO) session.getAttribute("memberDTO");
+		
+		String name = memberDTO.getMemName();
 		
 		map.put("id", id);
 		map.put("name", name);

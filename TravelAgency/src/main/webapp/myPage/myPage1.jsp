@@ -92,7 +92,7 @@ function reviewWriteForm(pack_no,date_arriv){
 							<td width="100" style="text-align:center;">인원</td>							
 							<td width="100" style="text-align:center;">결제상태</td>
 							<td width="100" style="text-align:center;">상품평</td>
-							<td width="70"" style="text-align:center;">예약취소</td>
+							<td width="70" style="text-align:center;">예약취소</td>
 						</tr>
 						<tr>
 							<td colspan="8" bgcolor="#607d8b"></td>
@@ -138,12 +138,14 @@ function reviewWriteForm(pack_no,date_arriv){
 							<td colspan="8" bgcolor="#607d8b"></td>
 						</tr>
 					</table>
-					<div>
-					${ReserveListPaging.pagingHTML }<br>
+					<div class="page">
+						${ReserveListPaging.pagingHTML }<br>
 					</div>
 			</div>
 			<div class="tbd"></div>
 		</div>
 	</div>
+</div>
+</div>
 </div>
 </form>

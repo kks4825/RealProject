@@ -11,12 +11,12 @@
 <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.0/jquery.validate.min.js"></script>
 <script>try{Typekit.load();}catch(e){}</script>
 <script>
-$(window).load(function() {
+/* $(window).load(function() {
 	  $('.post-module').hover(function() {
 	    $(this).find('.description').stop().animate({
 	      height: "toggle",opacity: "toggle"}, 300);
 	  });
-	});
+}); */
 </script>
 
 <div class="container">

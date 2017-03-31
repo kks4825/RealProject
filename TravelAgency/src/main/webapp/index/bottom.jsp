@@ -1,26 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-<!-- ÇÏ´Ü °øÅë footer »ý¼º¿µ¿ª -->
-	
-	<div id="footer">
-<div class="footer_cont blind">
-			<h2 class="blind">ÇÏ´Ü ³×ºñ°Ôºñ°ÔÀÌ¼Ç</h2>
-			<ul class="footer_nav">
-				<li class="first"><a href="/about/about">È¸»ç¼Ò°³</a></li>
-				<li><a href="/member/agreement">ÀÌ¿ë¾à°ü</a></li>
-				<li><a href="/member/policy">°³ÀÎÁ¤º¸Ãë±Þ¹æÄ§</a></li>
-				<li><a href="/about/location">¿À½Ã´Â±æ</a></li>
-			</ul><!--footer_nav-->
-			<address>¢ßÈ²Á¦Åõ¾î &#124; ´ëÇ¥ÀÌ»ç: ±èµ¿¿í &#124; ¼ÒÀçÁö: °æ±âµµ ¼º³²½Ã ºÐ´ç±¸ ´ë¿ÕÆÇ±³·Î 660(»ïÆòµ¿) À¯½ºÆäÀÌ½º1 Bµ¿ 4Ãþ<br/>»ç¾÷ÀÚµî·Ï¹øÈ£: 214-86-39239 &#124; Åë½ÅÆÇ¸Å¾÷ ½Å°í¹øÈ£: Á¦2012-°æ±â¼º³²-1188È£ </address>
-			<h2 class="blind">ÇÏ´Ü SNS ¹öÆ°</h2>
-			<ul class="footer_sns">
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!-- í•˜ë‹¨ ê³µí†µ footer ìƒì„±ì˜ì—­ -->
 
-			</ul><!--footer_sns-->
-		</div><!--footer_cont-->
-		
-
-		<address>
-			<p>(ÁÖ)È²Á¦Åõ¾î&nbsp;&nbsp;|&nbsp;&nbsp;´ëÇ¥ÀÌ»ç:±èµ¿¿í &nbsp;¼ÒÀçÁö:°æ±âµµ ¼º³²½Ã ºÐ´ç±¸ ´ë¿ÕÆÇ±³·Î 660(»ïÆòµ¿) À¯½ºÆäÀÌ½º1 Bµ¿ 4Ãþ&nbsp;&nbsp;|&nbsp;&nbsp;¼ÒÀçÁö: °æ±âµµ ¼º³²½Ã ºÐ´ç±¸ ´ë¿ÕÆÇ±³·Î 660(»ïÆòµ¿) À¯½ºÆäÀÌ½º1 Bµ¿ 4Ãþ</p>
-			<p>»ç¾÷ÀÚµî·Ï¹øÈ£: 214-86-39239&nbsp;&nbsp;|&nbsp;&nbsp;Åë½ÅÆÇ¸Å¾÷ ½Å°í¹øÈ£: Á¦2012-°æ±â¼º³²-1188È£ </p>
-		</address>
-	</div><!--footer-->
+<div id="footer" style="text-align:center;">
+	<address>
+		<p>(ì£¼)í™©ì œíˆ¬ì–´&nbsp;&nbsp;|&nbsp;&nbsp;ëŒ€í‘œì´ì‚¬:ê¹€ë™ìš± &nbsp;ì†Œìž¬ì§€:ê²½ê¸°ë„ ì„±ë‚¨ì‹œ ë¶„ë‹¹êµ¬
+			ëŒ€ì™•íŒêµë¡œ 660(ì‚¼í‰ë™) ìœ ìŠ¤íŽ˜ì´ìŠ¤1 Bë™ 4ì¸µ&nbsp;&nbsp;|&nbsp;&nbsp;ì†Œìž¬ì§€: ê²½ê¸°ë„ ì„±ë‚¨ì‹œ ë¶„ë‹¹êµ¬
+			ëŒ€ì™•íŒêµë¡œ 660(ì‚¼í‰ë™) ìœ ìŠ¤íŽ˜ì´ìŠ¤1 Bë™ 4ì¸µ</p>
+		<p>ì‚¬ì—…ìžë“±ë¡ë²ˆí˜¸: 214-86-39239&nbsp;&nbsp;|&nbsp;&nbsp;í†µì‹ íŒë§¤ì—… ì‹ ê³ ë²ˆí˜¸:
+			ì œ2012-ê²½ê¸°ì„±ë‚¨-1188í˜¸</p>
+	</address>
+</div>
+<!--footer-->

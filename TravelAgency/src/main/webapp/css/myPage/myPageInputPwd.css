@@ -2,11 +2,11 @@
 
 body{margin:0px; padding:0px;}/*상위 스타일에 대한 원점 처리를 해 줍니다.*/
 
-.t-wrap{margin:0 auto; width:1200px; height:1200px;border:1px solid red;}/*가상의 홈페이지 공간*/
+.t-wrap{margin:0 auto; width:1200px; height:1200px;}/*가상의 홈페이지 공간*/
 
-.tu{width:1200px; height:1200px; margin:auto; border:1px solid red; position:relative;}/*가상의 바디*/
+.tu{width:1200px; height:1200px; margin:auto; position:relative;}/*가상의 바디*/
 
-.tba,.tbb,.tbc,.tbd,.tca,.tcb1,.tcb2,.tcb3,.tcb4,.tcb5{border:1px solid red; text-align:center;layout:fixed;}
+.tba,.tbb,.tbc,.tbd,.tca,.tcb1,.tcb2,.tcb3,.tcb4,.tcb5{ text-align:center;layout:fixed;}
 
 .tbb li a{text-decoration:none;}
 
@@ -44,7 +44,7 @@ body{margin:0px; padding:0px;}/*상위 스타일에 대한 원점 처리를 해 
 
 .tcb1a1a{width:700px; height:100px; padding-top:0px; layout:fixed; border:0px solid gray; text-align:center;layout:fixed;position:relative; left:-120px;}
 
-.tcb1a1b{background-color:#e6e6e6; width:450px; height:100px; padding-top:0px; layout:fixed; border:1px solid gray; text-align:justify;layout:fixed;position:relative; left:0px; top:0px;}
+.tcb1a1b{width:450px; height:100px; padding-top:0px; layout:fixed; text-align:justify;layout:fixed;position:relative; left:0px; top:0px;}
 
 .tcb1a1c{width:450px; height:100px; padding-top:0px; layout:fixed; border:0px solid gray; text-align:justify;layout:fixed;position:relative; left : 0px; top:0px;}
 

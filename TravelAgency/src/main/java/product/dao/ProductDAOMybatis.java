@@ -1,6 +1,7 @@
 package product.dao;
 
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -87,6 +88,12 @@ public class ProductDAOMybatis implements ProductDAO{
 
 	public List<ProductDTO> packageSearch(String search) {
 		List<ProductDTO> list = sqlSession.selectList("productSQL.searchResult",search);
+		return list;
+	}
+
+	public List<ProductDTO> productRank() {
+		List<ProductDTO> list = sqlSession.selectList("productSQL.productRank");
+		
 		return list;
 	}
 }

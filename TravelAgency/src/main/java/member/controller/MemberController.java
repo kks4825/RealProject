@@ -7,6 +7,7 @@ import java.util.Locale;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -128,10 +129,17 @@ public class MemberController {
 	}
 
 	@RequestMapping(value = "/loginForm.do")
-	public ModelAndView loginForm() {
+	public ModelAndView loginForm(HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("display", "/member/loginForm.jsp");
+		
+		if(request.getAttribute("loginFail")=="1"){
+			mav.addObject("display", "/member/loginFail.jsp");
+		}else{
+			mav.addObject("display", "/member/loginForm.jsp");
+		}
+		
 		mav.setViewName("/index/index");
+		
 		return mav;
 	}
 

@@ -1,8 +1,16 @@
 @CHARSET "UTF-8";
+body {
+  background: #f2f2f2;
+  font-family: 'proxima-nova-soft', sans-serif;
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
 #all {
 	margin: 0 auto;
 	width: 71em;
+	background: #ffffff;
 	height: auto;
 }
 
@@ -10,7 +18,7 @@
 	margin: 0 auto;
 	width: 900px;
 	height: 50px;
-	border-bottom: 5px double aqua;
+	border-bottom: 5px double #1b7fd3;
 }
 
 #productInfo {
@@ -18,7 +26,8 @@
 	margin-top: 10px;
 	width: 900px;
 	height: 22em;
-	border: 1px solid gray;
+	background-color: #f2f2f2;	
+	border: 1px solid black;
 }
 
 #img {
@@ -50,8 +59,9 @@
 	margin: auto;
 	margin-top: 30px;
 	width: 900px;
+	background-color: #f2f2f2;
 	height: auto;
-	border: 1px solid pink;
+	border: 1px solid black;
 }
 
 #tabs {
@@ -80,18 +90,19 @@
 	border-left : 1px solid #999;
 	/* 각 메뉴의 왼쪽에 "|" 표시(분류 표시) */
 	font: bold 15px Dotum; /* 폰트 설정 - 30px의 돋움체 굵은 글씨로 표시 */
-	background-color: #BDBDBD;
+	background-color: #f2f2f2;
 	height: 100%;
 	width: 19.9%;
 	float: left;
 	text-align: center;
 	line-height: 50px;
 	border-left: 1px solid #999;
+	border-bottom : 3px solid #FFFFFF;
 }
 
 .tabs_item .items:first-child {
 	border-left: none;
-	background-color: #353535;
+	background-color: #BDBDBD;
 } /* 메뉴 분류중 제일 왼쪽의 "|"는 삭제 */
 
 #schedule #core_info #tour_info #tour_ref #safe_info {
@@ -138,7 +149,9 @@ div.tab_content {
 #table table tr td {
 	font-size:9pt;
 	padding:2px;
+	margin-top:10px;
 }
+
 
 /*
 #paging {

@@ -28,7 +28,6 @@
 <script>
 	var jb = jQuery.noConflict();
 </script>
-<script type="text/javascript" src="js/board/jquery.bxslider.min.js"></script>
 <script type="text/javascript" src="js/board/project_ui.js"></script>
 <script type="text/javascript" src="js/board/nav.js"></script> 
 <script type="text/javascript" src="js/board/keydown.js"></script>

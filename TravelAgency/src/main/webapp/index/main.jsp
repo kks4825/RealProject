@@ -1,21 +1,31 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<script src="js/board/jquery.bxslider.min.js"></script>
-<link href="css/board/jquery.bxslider.css" rel="stylesheet" />
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
+<link href="css/main/jquery.bxslider.css" rel="stylesheet" />
+<link href="css/product/thumbnail.css?ver=1" rel="stylesheet" />
+
+<script src="http://code.jquery.com/jquery-1.3.2.min.js"></script>
+<script
+	src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script
+	src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.0/jquery.validate.min.js"></script>
+<script src="js/main/jquery.bxslider.min.js"></script>
+
 <script>
-$(document).ready(function(){ 
-  $('#mainSlideBnr').bxSlider({
-	  auto: true,
-	  mode: 'fade',
-	  captions: true
+	$(document).ready(function() {
+		$('#mainSlideBnr').bxSlider({
+			auto : true,
+			mode : 'fade',
+			captions : true
+		});
 	});
-});
 </script>
 
 <div id="content">
 	<div class="main_visual blind">
-		<div style="text-align: center;">
-		</div>
+		<div style="text-align: center;"></div>
 	</div>
 	<div class="main_banner">
 		<div id="main_banner_slide">
@@ -26,16 +36,35 @@ $(document).ready(function(){
 				<li><img src="images/main/TravelAgency4.png" /></li>
 			</ul>
 		</div>
-		<ul id="subBnrWrap">
-			<li><a href="/about/history"><img
-					src="images/main/main_sub_bnr_01.png" alt="회사연혁"></a></li>
-			<li><a href="/about/about"><img
-					src="images/main/main_sub_bnr_02.png" alt="기업이념"></a></li>
-			<li><a href="/business/business1"><img
-					src="images/main/main_sub_bnr_03.png" alt="서비스소개"></a></li>
-			<li><a href="/about/location"><img
-					src="images/main/main_sub_bnr_04.png" alt="오시는길"></a></li>
-		</ul>
+	</div>
+	<div class="container">
+		<c:forEach var="rankList" items="${rankList}">
+			<div class="column">
+				<a href="/TravelAgency/detailView.do?seq=${rankList.pack_no }">
+					<!-- Post-->
+					<div class="post-module">
+						<!-- Thumbnail-->
+						<div class="thumbnail">
+							<img src="product_img/${rankList.image1 }" />
+						</div>
+						<!-- Post Content-->
+						<div class="post-content">
+							<div class="category">Photos</div>
+							<h1 class="title">${rankList.pack_title }</h1>
+							<h2 class="sub_title">
+								출발날짜:${rankList.pack_depart }<br>
+								도착날짜:${rankList.pack_arriv }<br>
+							</h2>
+							<p class="description">${rankList.pack_city }<br>
+								가격(성인기준)
+								<fmt:formatNumber pattern="#,##0원"
+									value="${productDTO.pack_price_adult }" />
+							</p>
+						</div>
+					</div>
+				</a>
+			</div>
+		</c:forEach>
 	</div>
 </div>
 

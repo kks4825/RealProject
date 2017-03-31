@@ -3,9 +3,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<link rel="stylesheet" href="css/product/detail.css?ver=1" type="text/css" media="screen">
+<link rel="stylesheet" href="css/product/detail.css" type="text/css" media="screen">
 
-<script src="js/product/detail.js?ver=1" type="text/javascript"></script>
+<script src="js/product/detail.js" type="text/javascript"></script>
 <script>
 	window.onload = function() {
 		var adultCount = $('#adults option:selected').val();
@@ -43,7 +43,7 @@
 	<!-- 전체 -->
 	<form name="detailViewForm" method="post" action="/TravelAgency/payment.do">
 		<input type="hidden" name="pack_no" value="${productDTO.pack_no }">
-		<div id="deco">
+		<div id="deco" align="center">
 			<br> <img src="image/product/product.jpg" style="width: 80px; height: 20px;">
 		</div>
 		<div id="productInfo">
@@ -103,11 +103,11 @@
 						</td>
 					</tr>
 					<tr>
-						<td><br><input type="button" id="reserveBtn" value="예약하기" width="500px"></td>
+						<td><br><input type="button" id="reserveBtn" value="예약하기" width="500px" style="width:80px; height:30px;"></td>
 					</tr>
 				</table>
 			</div>
-			<div style="display: inline-block; float: right; height: 40px; margin-top:10em;">
+			<div style="display: inline-block; float: right; height: 40px; margin-top:-3em;">
 				<b>금액
 					<p id="payment" name="payment"></p>
 				</b>
@@ -135,6 +135,9 @@
 						<td width="100px">${scheduleList.schedules_date }</td>
 						<td><pre style="word-wrap: break-word; white-space: pre-wrap; white-space: -moz-pre-wrap; 
 			white-space: -pre-wrap; white-space: -o-pre-wrap; word-break:break-all;">${scheduleList.schedules_content }</pre></td>
+					</tr>
+					<tr>
+						<td colspan="2" bgcolor="#607d8b" style="height:1px;"></td>
 					</tr>
 				</c:forEach>
 			</table>
@@ -176,19 +179,19 @@
 	</div>
 	<div id="postscript">
 		<img src="image/product/post.jpg" style="width: 100px; height: 40px;">
-		<table>
+		<table border="1" height="300px">
 			<tr>
-				<td colspan="5" bgcolor="777777"></td>
+				<td colspan="5" bgcolor="#607d8b" style="height:1px;"></td>
 			</tr>
 			<tr>
-				<td width="100px" style="text-align: center;">글번호</td>
-				<td width="450px" style="text-align: center;">제목</td>
-				<td width="100px" style="text-align: center;">아이디</td>
-				<td width="150px" style="text-align: center;">작성일</td>
-				<td width="100px" style="text-align: center;">평점</td>
+				<th width="100px" height="40px" style="font-size:11pt; text-align: center;">글번호</th>
+				<th width="450px" height="40px" style="font-size:11pt; text-align: center;">제목</th>
+				<th width="100px" height="40px" style="font-size:11pt; text-align: center;">아이디</th>
+				<th width="150px" height="40px" style="font-size:11pt; text-align: center;">작성일</th>
+				<th width="100px" height="40px" style="font-size:11pt; text-align: center;">평점</th>
 			</tr>
 			<tr>
-				<td colspan="5" bgcolor="777777"></td>
+				<td colspan="5" bgcolor="#607d8b" style="height:1px;"></td>
 			</tr>
 			<c:if test="${reviewList != null }">
 				<c:forEach var="TravelReviewDTO" items="${reviewList }">
@@ -200,10 +203,13 @@
 							<fmt:formatDate	value="${TravelReviewDTO.reviewDate}" pattern="yyyy.MM.dd" /></td>
 						<td width="100px" style="text-align: center;">${TravelReviewDTO.starScore }</td>
 					</tr>
+					<tr>
+						<td colspan="5" bgcolor="#607d8b" style="height:1px;"></td>
+					</tr>
 				</c:forEach>
 			</c:if>
 			<tr>
-				<td colspan="5" bgcolor="777777"></td>
+				<td colspan="5" bgcolor="#607d8b" style="height:1px;"></td>
 			</tr>
 			<tr>
 				<td colspan="5">&nbsp; </td>

@@ -1,4 +1,5 @@
 package product.dao;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -34,4 +35,6 @@ public interface ProductDAO {
 	public String safeinfo();
 
 	public List<ProductDTO> packageSearch(String search);
+
+	public List<ProductDTO> productRank();
 }

@@ -105,19 +105,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="searchResult" parameterType="String" resultType="product">
 		select * from packages where pack_city like '%'||#{search}||'%'
 	</select>
+	
+	<select id="productRank" resultType="product">
+		select * from (
+			SELECT pack_no, pack_title, pack_city, pack_depart, pack_arriv, image1, pack_price_adult,
+				   pack_category, RANK() OVER (PARTITION BY pack_category ORDER BY purchase_cnt DESC ) as rk
+			FROM packages
+		) where rk=1 
+		order by pack_category ASC
+	</select>
 </mapper>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
