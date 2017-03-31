@@ -1,0 +1,9 @@
+diff a/TravelAgency/src/main/webapp/js/myPage/myPage1.js b/TravelAgency/src/main/webapp/js/myPage/myPage1.js	(rejected hunks)
+@@ -40,6 +40,7 @@
+ 
+ function reviewWriteForm(pack_no,date_arriv){
+ 	//패키지 날짜
++    var date_arriv_split = date_arriv.split('-');
+     date_arriv_num = date_arriv_split[0]+date_arriv_split[1]+date_arriv_split[2];
+ 	//지금날짜
+     var year = new Date().getFullYear();
