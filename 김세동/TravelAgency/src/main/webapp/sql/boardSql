@@ -1,0 +1,41 @@
+--시퀀스 생성(공지사항)
+create sequence seq_board  nocache nocycle;
+
+--테이블 작성(공지사항테이블)
+CREATE TABLE board(
+     seq NUMBER NOT NULL,               -- 글번호
+     subject VARCHAR2(255) NOT NULL,    -- 제목
+     name VARCHAR2(40) NOT NULL,        -- 이름
+     content VARCHAR2(4000) NOT NULL,   -- 내용 
+
+     ref NUMBER NOT NULL,               -- 그룹번호
+     lev NUMBER DEFAULT 0 NOT NULL,     -- 단계
+     steq NUMBER DEFAULT 0 NOT NULL,    -- 원글번호
+     reep NUMBER DEFAULT 0 NOT NULL,    -- 글순서
+     psply NUMBER DEFAULT 0 NOT NULL,   -- 답변수
+
+     hit NUMBER DEFAULT 0,              -- 조회수
+     logtime DATE DEFAULT SYSDATE
+ );
+ -------------------------------------------------------------
+ --시퀀스 생성(QnA)
+ create sequence seq_boardQna  nocache nocycle;
+ 
+ --테이블 작성(QnA테이블)
+ CREATE TABLE boardQna(
+     seq NUMBER NOT NULL,               -- 글번호
+     category VARCHAR2(20) NOT NULL,    -- 분류(카테고리)
+     subject VARCHAR2(255) NOT NULL,    -- 제목
+     id VARCHAR2(20) NOT NULL,          -- 아이디
+     name VARCHAR2(40) NOT NULL,        -- 이름
+     content VARCHAR2(4000) NOT NULL,   -- 내용
+     answer VARCHAR2(30) DEFAULT NULL,  -- 답변
+
+     ref NUMBER NOT NULL,               -- 그룹번호
+     lev NUMBER DEFAULT 0 NOT NULL,     -- 단계
+     step NUMBER DEFAULT 0 NOT NULL,    -- 글순서
+     pseq NUMBER DEFAULT 0 NOT NULL,    -- 원글번호
+     reply NUMBER DEFAULT 0 NOT NULL,   -- 답변수
+     logtime DATE DEFAULT SYSDATE
+ );
+ 

@@ -1,0 +1,23 @@
+@CHARSET "UTF-8";
+#currentPaging {
+	cursor:pointer;
+	color:red;
+	text-decoration: underline;
+	font-size: 1.3em;
+}
+#paging {
+	cursor:pointer;
+	color:black;
+	text-decoration: none;
+	font-size: 1.3em;
+}
+
+#img{
+	height:10px;
+	width:10px;
+}
+
+#subjectA:link {color:black; text-decoration: none;}
+#subjectA:visited {color:black; text-decoration: none;}
+#subjectA:hover {color:black; text-decoration: underline;}
+#subjectA:active {color:black; text-decoration: none;}
