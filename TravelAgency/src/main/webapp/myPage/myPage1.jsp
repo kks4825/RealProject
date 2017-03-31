@@ -122,7 +122,6 @@ function reviewWriteForm(pack_no,date_arriv){
 											</c:if>
 										</td>
 										<td>
-											<input type="text" value="${reserveList.reviewSEQ }" id="review_seq${varStatus.index }" class="review_seq"/>
 											<input type="hidden" value="${productList.pack_depart }" id="depart_date${varStatus.index }"/>
 											<input type="hidden" value="${reserveList.list_SEQ }" id="cancel_seq${varStatus.index }"/>
 											<input type="hidden" value="${reserveList.reviewSEQ }" id="review_seq${varStatus.index }"/>

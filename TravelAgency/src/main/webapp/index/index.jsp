@@ -1,14 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE HTML>
 <html>
 <head>
 <title>TravelAgency</title>
 <meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta http-equiv="X-UA-Compatible" content="IE=8" />
+<meta http-equiv='imagetoolbar' content='no'>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
 <link rel="stylesheet" type="text/css" href="css/board/ext-all.css">
 <link rel="stylesheet" type="text/css" href="css/board/common.css">
+<link rel="stylesheet" type="text/css" href="css/board/reset.css" /> 
+<link rel="stylesheet" type="text/css" href="css/board/skin.css" />
+
 <script type="text/javascript" src="js/board/jquery.min.js"></script>
 <script type="text/javascript" src="js/board/ext-jquery-adapter.js"></script>
 <script type="text/javascript" src="js/board/ext-all-3.js"></script>
@@ -24,12 +33,8 @@
 <script type="text/javascript" src="js/board/nav.js"></script> 
 <script type="text/javascript" src="js/board/keydown.js"></script>
 <script type="text/javascript" src="js/board/bookmark.js"></script>
-<link rel="stylesheet" type="text/css" href="css/board/reset.css" /> 
-<link rel="stylesheet" type="text/css" href="css/board/skin.css" />
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-1.9.1.min.js"></script> 
-<script src="js/board/jquery.bxslider.min.js"></script>
-<!-- <link href="css/board/jquery.bxslider.css" rel="stylesheet" /> -->
 
 <script>
 $(document).ready(function() {

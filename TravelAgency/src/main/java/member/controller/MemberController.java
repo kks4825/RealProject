@@ -234,11 +234,12 @@ public class MemberController {
 	@RequestMapping(value = "/reserveCancelForm.do")
 	public ModelAndView reserveCancelForm(@RequestParam int seq, int remain_date, int refund_percent, int review_seq) {
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("seq",seq);
-		mav.addObject("remain_date",remain_date);
+		mav.addObject("seq", seq);
+		mav.addObject("remain_date", remain_date);
 		mav.addObject("refund_percent", refund_percent);
 		mav.addObject("review_seq",review_seq);
 		mav.setViewName("/myPage/reserveCancel");
+		
 		return mav;
 	}
 	// 예약취소
