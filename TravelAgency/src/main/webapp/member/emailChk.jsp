@@ -8,7 +8,8 @@
 <script>
 window.onload = function() {
 	var emailExist = '${emailExist}';
-	if(emailExist=='1'){
+	
+	if(emailExist=='1') {
 		alert("이미 가입된 메일입니다.");
 		window.close();
 	}else if(emailExist=='0'){
@@ -19,7 +20,7 @@ window.onload = function() {
 
 function emailCheck(){
 	var form = document.emailChk;
-	var joinCode=${sessionScope.joinCode};
+	var joinCode = ${sessionScope.joinCode};
 	
 	if(!form.joincodeChk.value){
 		alert("인증번호를 입력하세요");

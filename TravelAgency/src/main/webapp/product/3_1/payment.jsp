@@ -54,8 +54,8 @@ window.onload =function(){
 	<h1>결제하기</h1>
 	<form name="paymentForm" method="post" action="/TravelAgency/paymentChecking.do">
 	<input type="hidden" name="pack_no" value="${productDTO.pack_no }">
-	<input type="hidden" name="adults" value="${adults }">
-	<input type="hidden" name="kids" value="${kids }">
+	<input type="hidden" name="adults" value="${adults}">
+	<input type="hidden" name="kids" value="${kids}">
 	<input type="hidden" id="totalPayHidden" name="totalPay" value="">
 	<!-- 회원id가져갈 hidden 인풋 있어야함. -->
 	<div class="perchase_info">

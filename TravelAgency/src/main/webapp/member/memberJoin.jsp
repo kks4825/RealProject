@@ -1,76 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<script src="http://code.jquery.com/jquery-1.3.2.min.js"></script>
-<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.0/jquery.validate.min.js"></script>
 
-<script type="text/javascript">
-	$(document).ready(function() {
-		$('.memberJoin').validate({
-			rules : {
-				memId : {
-					required : true,
-					minlength : 3
-				},
-				memPwd : {
-					required : true
-				},
-				memPwdChk : {
-					required : true,
-					equalTo : '#memPwd'
-				},
-				memName : {
-					required : true
-				},
-				memEmail : {
-					email : true
-				},
-				memAddr2 : {
-					required : true
-				},
-				mailCheck : {
-					equalTo : '#mailReCheck'
-				}
-			},
-			messages : {
-				memId : {
-					required : "아이디를 입력해주세요.",
-					minlength : jQuery.format("아이디는 {0}자 이상 입력해주세요!")
-				},
-				memPwd : "암호를 입력해주세요.",
-				memPwdChk : {
-					required : "암호를 다시 한번 입력해주세요.",
-					qualTo : "암호가 일치하지 않습니다."
-				},
-				memName : "이름을 입력해주세요.",
-				memEmail : {
-					email : "이메일 형식이 틀립니다."
-				},
-				memAddr2 : "주소를 입력해주세요.",
-				mailCheck : {
-					equalTo : "이메일 인증이 필요합니다."
-				}
-			},
-			errorPlacement : function(error, element) {
-				// do nothing
-			},
-			invalidHandler : function(form, validator) {
-				var errors = validator.numberOfInvalids();
-				if (errors) {
-					alert(validator.errorList[0].message);
-					validator.errorList[0].element.focus();
-				}
-			},
-			submitHandler : function(form) {
-				form.submit();
-			}
-		});
-	});
-
-	function zipcodeSearch() {
-		window.open("/TravelAgency/checkPost.do", "",
-				"width=450 height=400 scrollbars=yes");
-	}
-</script>
 <script src="http://code.jquery.com/jquery-1.3.2.min.js" ></script>
 <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.0/jquery.validate.min.js" ></script>
 <script type="text/javascript">
@@ -130,13 +60,11 @@ function idCheck(){
 
 function checkEmail(){
 	var sEmail = document.memberJoin.memEmail.value;
-	alert(sEmail);
 	if(sEmail==""){
 		alert("먼저 이메일을 입력하세요");
 	}else{
 		window.open("/TravelAgency/emailChk.do?memEmail="+sEmail,"","width=320 height=100");
 	}
-	
 }
 </script>
 
@@ -242,4 +170,4 @@ function checkEmail(){
 	</div>
 	</div>
 	</div>
-	</div>
+</div>
