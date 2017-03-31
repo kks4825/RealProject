@@ -96,7 +96,7 @@ function searchReserveListPaging(pg){
 											</c:if>
 										</td>
 										<td>
-											<input type="button" value="취소" onclick="location='reserveCancel.do?seq=${reserveList.list_SEQ}'"/>
+											<input type="button" value="취소" onclick="location='reserveCancelForm.do?seq=${reserveList.list_SEQ}'"/>
 										</td>				
 								</c:forEach>
 								</tr>

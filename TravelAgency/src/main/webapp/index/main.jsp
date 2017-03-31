@@ -1,7 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<script src="js/board/jquery.bxslider.min.js"></script>
+<link href="css/board/jquery.bxslider.css" rel="stylesheet" />
+<script>
+$(document).ready(function(){ 
+  $('#mainSlideBnr').bxSlider({
+	  auto: true,
+	  mode: 'fade',
+	  captions: true
+	});
+});
+</script>
 
-<!DOCTYPE html>
 <div id="content">
 	<div class="main_visual blind">
 		<div style="text-align: center;">
@@ -11,12 +21,12 @@
 		<div id="main_banner_slide">
 			<h2 class="blind">메인 슬라이드 배너</h2>
 			<ul id="mainSlideBnr">
-				<li><a href="/about/about"><img
-						src="images/main/TravelAgency3.png" /></a></li>
-				<li><a href="/about/about"><img
-						src="images/main/TravelAgency.png" /></a></li>
-				<li><a href="/about/about"><img
-						src="images/main/TravelAgency4.png" /></a></li>
+				<li><a href="/about/about">
+					<img src="images/main/TravelAgency3.png" /></a></li>
+				<li><a href="/about/about">
+					<img src="images/main/TravelAgency.png" /></a></li>
+				<li><a href="/about/about">
+					<img src="images/main/TravelAgency4.png" /></a></li>
 			</ul>
 
 			<h2 class="blind">링크 배너</h2>
