@@ -91,8 +91,8 @@ $(document).ready(function() {
 					<ul class="lnb_nav">
 						<li><a href="#">PACKAGES</a></li>
 						<li><a href="#">CUSTOMER&nbsp;CENTER</a></li>
-						<li><input type="text" value="" id="searchBar" style="width:200pt; height:18pt;" /> 
-							<input type="button" id="searchBtn" value="검색" style="width:40pt; height:20pt;"/>
+						<li><input type="text" value="" id="searchBar" style="width:200pt; height:18pt; border-radius:1em;" /> 
+							<input type="button" id="searchBtn" value="search" style="background-color:#ffffff; width:40pt; height:20pt; border-radius:1em;"/>
 						</li>
 					</ul>
 				</div>

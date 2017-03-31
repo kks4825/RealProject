@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 
-<link rel="stylesheet" href="css/myPage/myBasicInfo.css?ver=1">
+<link rel="stylesheet" href="css/myPage/myBasicInfo.css">
 
 <script type="text/javascript">
 	function zipcodeSearch() {

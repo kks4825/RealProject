@@ -2,11 +2,11 @@
 
 #body{margin:0px; padding:0px;}/*상위 스타일에 대한 원점 처리를 해 줍니다.*/
 
-.t-wrap{margin:0 auto; width:1200px; height:1200px;border:1px solid red;}/*가상의 홈페이지 공간*/
+.t-wrap{margin:0 auto; width:1200px; height:1200px;}/*가상의 홈페이지 공간*/
 
-.tu{width:1200px; height:1200px; margin:auto; border:1px solid red; position:relative;}/*가상의 바디*/
+.tu{width:1200px; height:1200px; margin:auto;  position:relative;}/*가상의 바디*/
 
-.tba,.tbb,.tbc,.tbd,.tca,.tcb1,.tcb2,.tcb3,.tcb4,.tcb5{border:1px solid red; text-align:center;layout:fixed;}
+.tba,.tbb,.tbc,.tbd,.tca,.tcb1,.tcb2,.tcb3,.tcb4,.tcb5{ text-align:center;layout:fixed;}
 
 .tbb li a{text-decoration:none;}
 
@@ -22,7 +22,7 @@
 
 .tbb>ul{background-color:none;width:100px; height:30px; margin:0px; border-radius:0.1em; display:block; position:relative;left:-200;top:100px;border:1px solid #34a435;}
 
-.tbb>ul>.tca{background-color:none;width:110px; height:30px; margin:0px; border-radius:0.2em; border:1px solid red; display:inline-block; }
+.tbb>ul>.tca{background-color:none;width:110px; height:30px; margin:0px; border-radius:0.2em;  display:inline-block; }
 
 .tbb>ul>li:hover ul{width:85px; height:30px; margin-left:40px; border-radius:0.2em; display:block; position:absolute;}
 

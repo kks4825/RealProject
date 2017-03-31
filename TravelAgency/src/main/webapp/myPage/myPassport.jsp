@@ -3,9 +3,10 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<link rel="stylesheet" href="css/myPage/myPassport_visa.css?ver=1">
+<link rel="stylesheet" href="css/myPage/myPassport_visa.css">
 
-<script type="text/javascript">
+
+<script type="text/javascript"> 	
 	function mySubmit(index) {
 		if (index == 1) {
 			document.passport_visa.action = '/TravelAgency/passport_information.do';
@@ -26,35 +27,28 @@
 		<form name="passport_visa" method="post">
 			<div class="passport_visa">
 				<div class="passport_infomation">
-					<h3>여권 정보</h3>
-					<table>
+					<h2 style="font-size:25px; color:#333333; font-weight:600; padding-bottom:10px; text-align: center;">여권 정보</h2>
+					<table class="board_css" style="text-box:50;">
 						<tr>
-							<td colspan="5" width="700" bgcolor="cccccc"></td>
-						</tr>
-						<tr height="30">
 							<td width="120" style="text-align: center;">&nbsp;영문이름</td>
-							<td bgcolor="cccccc"></td>
-							<td>&nbsp;&nbsp; <input type="text" name="lastName"
-								value="${memberDTO.lastName }">(성) &nbsp; <input
-								type="text" name="firstName" value="${memberDTO.firstName }">(이름)
+							
+							<td >&nbsp;&nbsp; <input type="text" name="lastName"
+								value="${memberDTO.lastName  }">&nbsp;(성) &nbsp; <input
+								type="text" name="firstName" value="${memberDTO.firstName }">&nbsp;(이름)&nbsp;
 							</td>
 						</tr>
-						<tr>
-							<td colspan="5" bgcolor="cccccc"></td>
-						</tr>
-						<tr height="30">
+						
+						<tr >
 							<td width="120" style="text-align: center;">&nbsp;여권번호</td>
-							<td bgcolor="cccccc"></td>
+							
 							<td>&nbsp;&nbsp; <input type="text" name="passportNumber"
 								value="${memberDTO.passportNumber }">
 							</td>
 						</tr>
+						
 						<tr>
-							<td colspan="5" bgcolor="cccccc"></td>
-						</tr>
-						<tr height="30">
 							<td width="120" style="text-align: center;">&nbsp;여권발급일</td>
-							<td bgcolor="cccccc"></td>
+							
 							<td>&nbsp;&nbsp; <input type="text" size="4"
 								name="passportStartYear" value="${memberDTO.passportStartYear }">&nbsp;년&nbsp;
 								<input type="text" size="2" name="passportStartMonth"
@@ -63,12 +57,10 @@
 								value="${memberDTO.passportStartDay }">&nbsp;일
 							</td>
 						</tr>
+					
 						<tr>
-							<td colspan="5" bgcolor="cccccc"></td>
-						</tr>
-						<tr height="30">
 							<td width="120" style="text-align: center;">&nbsp;여권만료일</td>
-							<td bgcolor="cccccc"></td>
+						
 							<td>&nbsp;&nbsp; <input type="text" size="4"
 								name="passportEndYear" value="${memberDTO.passportEndYear }">&nbsp;년&nbsp;
 								<input type="text" size="2" name="passportEndMonth"
@@ -77,13 +69,11 @@
 								value="${memberDTO.passportEndDay }">&nbsp;일
 							</td>
 						</tr>
-						<tr>
-							<td colspan="5" bgcolor="cccccc"></td>
-						</tr>
+			
 					</table>
-					<div class="passport_infomation_save">
+					<div class="btn_center">
 						<input type="button" value="저장" onclick="javascript:mySubmit(1)"
-							style="width: 80px; height: 30px;">
+							style="border: none; font-size:15px; font-weight:bold; width: 100pt; height: 30pt; background-color: #1e70dd; color: #FFFFFF;">
 					</div>
 				</div>
 		</form>

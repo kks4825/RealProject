@@ -50,7 +50,7 @@
 							<img src="image/board/write2_button.png"
 								onclick="checkBoardWrite()" style="width: 100px; height: 40px">
 							<a href="#" class="btn white" onclick="history.back();"
-								style="width: 100px; height: 41px;">취소</a>
+								style="vertical-align:middle; width: 100px; height: 40px;"><span style="line-height:40px;">취소</span></a>
 						</div>
 						<!--btn_center-->
 					</div>

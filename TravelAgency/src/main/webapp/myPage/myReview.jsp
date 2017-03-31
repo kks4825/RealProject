@@ -3,7 +3,7 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<link rel="stylesheet" href="css/myPage/myReview.css?ver=1">
+<link rel="stylesheet" href="css/myPage/myReview.css">
 
 <div class="t-wrap">
 	<div class="tu">
