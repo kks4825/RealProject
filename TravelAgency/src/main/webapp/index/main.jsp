@@ -11,12 +11,9 @@
 		<div id="main_banner_slide">
 			<h2 class="blind">메인 슬라이드 배너</h2>
 			<ul id="mainSlideBnr">
-				<li><a href="/about/about"><img
-						src="images/main/TravelAgency3.png" /></a></li>
-				<li><a href="/about/about"><img
-						src="images/main/TravelAgency.png" /></a></li>
-				<li><a href="/about/about"><img
-						src="images/main/TravelAgency4.png" /></a></li>
+				<li><img src="images/main/TravelAgency3.png" /></li>
+				<li><img src="images/main/TravelAgency.png" /></li>
+				<li><img src="images/main/TravelAgency4.png" /></li>
 			</ul>
 
 
