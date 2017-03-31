@@ -7,7 +7,6 @@
 <title>Insert title here</title>
 </head>
 <script>
-
 function check(){
 	var email = document.reSearchId.memEmail;
 		
@@ -22,7 +21,7 @@ function check(){
 <form method="post" name="reSearchId" action="/TravelAgency/sendMail/id.do">
 <div class="header" style="text-align:center;">
 	<font size=6 face="Comic Sans MS" style="background-color:#DBDBDB;"><strong>아이디 찾기</strong></font><br><br>
-	<font size=3 face="Comic Sans MS" color="#5D5D5D"><b>아이디가 기억나지 않으세요?  이메일 입력을 통해 아이디를 확인하실수 있습니다.</b></font>
+	<font size=3 face="Comic Sans MS" color="#5D5D5D"><b>아이디가 기억나지 않으세요? 이메일 입력을 통해 아이디를 확인하실수 있습니다.</b></font>
 </div><br><br>
 
 <div class="title" style="background-color:#F6F6F6; border-top:2px solid black; text-align:center;"><br>

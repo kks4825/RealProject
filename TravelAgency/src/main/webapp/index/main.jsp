@@ -16,7 +16,6 @@
 				<li><img src="images/main/TravelAgency4.png" /></li>
 			</ul>
 
-
 			<h2 class="blind">링크 배너</h2>
 		</div>
 		<ul id="subBnrWrap">
