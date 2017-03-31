@@ -35,7 +35,6 @@ public class MailController {
 		ModelAndView mav = new ModelAndView();
 		
 		int emailExist = memberDAO.EmailCheck(memEmail);
-		
 		mav.addObject("memEmail", memEmail);
 		mav.addObject("emailExist",emailExist);
 		mav.setViewName("/member/emailExist");
@@ -47,15 +46,12 @@ public class MailController {
 	 public ModelAndView emailChk(HttpSession session, @RequestParam String memEmail){
 		ModelAndView mav = new ModelAndView();
 		
-		System.out.println("jsp에서 param으로 받은 "+memEmail);
-		
 		int emailExist = memberDAO.EmailCheck(memEmail);
-		System.out.println(emailExist);
-		
+		System.out.println("controller에서 emailExist"+emailExist);
 		if(emailExist==1){
-			mav.addObject("emailExist",emailExist);
-			
+			mav.addObject("emailExist",emailExist);			
 			mav.setViewName("/member/emailChk");
+			return mav;
 		}else{
 		    int ran = new Random().nextInt(100000) + 10000; // 10000 ~ 99999
 		    String joinCode = String.valueOf(ran);
@@ -64,10 +60,10 @@ public class MailController {
 		    mav.addObject("emailExist",emailExist);
 			mav.addObject("memEmail", memEmail);
 			
-			mav.setViewName("/member/emailChk");			
+			mav.setViewName("/member/emailChk");	
+			return mav;
 		}
 		
-		return mav;
 	}
     
     // 회원가입 인증 이메일 전송

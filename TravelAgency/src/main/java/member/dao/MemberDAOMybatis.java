@@ -187,9 +187,7 @@ public class MemberDAOMybatis implements MemberDAO {
 
 	public int EmailCheck(String memEmail) {
 		System.out.println("batis에 들어온 이메일"+memEmail);
-		Map<String,String> emailMap = new HashMap<String,String>();
-		emailMap.put("memEmail", memEmail);
-		int emailExist = sqlSession.selectOne("memberSQL.isEmailExist",emailMap);
+		int emailExist = sqlSession.selectOne("memberSQL.isEmailExist",memEmail);
 		System.out.println(emailExist);
 		return emailExist;
 	}
