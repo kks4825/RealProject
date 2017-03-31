@@ -39,11 +39,13 @@ function reviewWriteForm(pack_no,date_arriv){
 #currentPaging{
 	cursor:pointer;
 	color:red;
+	font-size:1.1em;
 }
 #paging{
 	cursor:pointer;
 	color:black;
 	text-decoration: none;
+	font-size:1.1em;
 }
 span{font-size:15px;}
 span:link {color:black; text-decoration:none;}
