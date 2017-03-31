@@ -3,6 +3,8 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+
+<link rel="stylesheet" type="text/css" href="css/board/ext-all.css">
 <link rel="stylesheet" href="/TravelAgency/css/myPage/myPage1.css?ver=1">
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"></link>
 <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
@@ -27,41 +29,53 @@ function searchReserveListPaging(pg){
 			<jsp:include page="sideMenuBar.jsp" />
 			<div class="tbc">
 				<div class="tcb1">
-					<font size=5 style="line-height: 40px;">&nbsp; &nbsp; <b>예약 확인</b></font>
-					<div class="tcb1a">
-						<pre>[안내]  
-1. 예약코드를 클릭하시면 예약상세 페이지 확인이 가능하시며, 개별상품별 결제가 가능합니다. 
-2. 여행만들기 예약의 경우, 통합예약코드 클릭 후 출발 확정된 전체 상품의 통합결제가 가능합니다.
-3. 예약 후 마이페이지에서 확인되지 않는 예약코드는 우측 [예약불러오기] 버튼을 통하여 직접 연동 가능합니다.예약불러오기
-4. 글로벌항공사이트 예약은 http://globalflight.hanatour.com my booking 에서 확인하실 수 있습니다.
+					<font size=5 color=blue style="line-height: 50px;">&nbsp; &nbsp; <b>예약 확인</b></font>
+						
+					<div>	
+					<div class="tcb1a" >
+						<pre ><font color=blue size=4> 안내 </font>   
+<font size=2>
+   1.  예약코드를 클릭하시면 예약상세 페이지 확인이 가능하시며, 개별상품별 결제가 가능합니다. 
+   2.  여행만들기 예약의 경우, 통합예약코드 클릭 후 출발 확정된 전체 상품의 통합결제가 가능합니다.
+   3.  예약 후 마이페이지에서 확인되지 않는 예약코드는 우측 [예약불러오기] 버튼을 통하여 직접 연동 가능합니다.
+   4.  글로벌항공사이트 예약은 http://globalflight.hanatour.com my booking 에서 확인하실 수 있습니다.
+   </font>
 						</pre>	
 					</div>
+					
 				</div>
-
+<br>
+<br>
+<br>
 				<div class="tcb2">
 					<div class="tcb2a">
 						<table>
 							<tr>
-								<td width="944px" height="47px" style="border: 1px solid red;">
-									도시 검색: &nbsp; 
-								<input type="text" name="citySearch" size="15" id="citySearch" />
-								<input type="button" id="SearchButton" value="&nbsp;&nbsp;검색&nbsp;&nbsp;" onclick="search()">&nbsp;&nbsp;
+								<td width="944px" height="47px" >
+								<font color=blue size=4> 도시검색 </font>  
+								<br>
+								<br>
+								
+								<input type="text" name="citySearch" id="citySearch" style="width:230px; height:25px; autocorrect="off" autocomplete="off" autocapitalize="off"  name="query"  class="sinput" value="" maxlength="255" 
+            					/>
+								<input type="button" id="SearchButton" style="height:28px; width:100px; background-color: #1e70dd; color: #FFFFFF;" value="&nbsp;&nbsp;search&nbsp;&nbsp;" onclick="search()">&nbsp;&nbsp;
 									*최대 1년 단위 검색 가능
+								
 								</td>
 							</tr>
 						</table>
 					</div>
 				</div>
 				<div class="tcb3">
-					<font style="line-height: 40px;"><b>예약 내역</b></font>
-					<table border="1">
+					<font style="font-size:15pt; line-height: 60px; background-color: #606060; color: #FFFFFF;"><b>&nbsp;&nbsp;&nbsp;&nbsp;예약 내역</b></font>
+					<table border="1" style="font-size:10pt; background-color: #606060; color: #FFFFFF;">
 						<tr>
 							<td colspan="8" bgcolor="#607d8b"></td>
 						</tr>
 						<tr>
 							<td width="300" style="text-align:center;">상품명</td>
 							<td width="130" style="text-align:center;">출발일/귀국일</td>
-							<td width="130" height="40" style="text-align:center;">예약시간/<br>예약번호</td>
+							<td width="130" height="40" style="text-align:center;">예약시간/예약번호</td>
 							<td width="130" style="text-align:center;">총 결제금액</td>
 							<td width="100" style="text-align:center;">인원</td>							
 							<td width="100" style="text-align:center;">결제상태</td>
@@ -111,27 +125,6 @@ function searchReserveListPaging(pg){
 					</table>
 				</div>
 				${ReserveListPaging.pagingHTML }<br>
-				<div class="tcb4">
-					<div class="tcb4a">
-						<table>
-							<tr style="border: 1px solid red;">
-								<td width="130" style="border: 1px solid red;"></td>
-								<td width="736">
-									<pre><h4>· 투어닷컴 예약의 경우 상품을 직접 예약한 고객에게만 예약내역이 노출됩니다.
-									
-· 상품평 작성을 원하는 동반 고객은 우측에 있는 '상품평 작성'버튼을 클릭해 주세요. 
-											
-· 작성하신 글은  마이페이지 > 참여내역 > 여행후기 에서 확인 및 수정이 가능합니다.
-										</h4>
-									</pre>
-								</td>
-								<td width="130" style="border: 1px solid red;">
-									<input type="button" value="♡상품평 작성">
-								</td>
-							</tr>
-						</table>
-					</div>
-				</div>
 			</div>
 			<div class="tbd"></div>
 		</div>
