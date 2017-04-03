@@ -144,6 +144,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<insert id="reservePack" parameterType="java.util.Map">
+		begin
+		update packages set purchase_cnt=purchase_cnt+1 where pack_no=#{pack_no};
+		
 		insert into reserveList(pack_no
 								,memId
 								,reservetime
@@ -159,7 +162,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		                 ,#{totalPay}
 		                 ,#{paymentState}
 		                 ,#{numOfPerson}
-		                 ,list_seq.NEXTVAL) 
+		                 ,list_seq.NEXTVAL);
+		 end;
 	</insert>
 	<select id="reserveList" parameterType="java.util.Map" resultType="reserveList">
 		<![CDATA[
@@ -219,13 +223,3 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select count(*) from member where mememail = #{memEmail}
 	</select>
 </mapper>
-
-
-
-
-
-
-
-
-
-
