@@ -1,0 +1,58 @@
+@CHARSET "UTF-8";
+
+#body{margin:0px; padding:0px;}/*상위 스타일에 대한 원점 처리를 해 줍니다.*/
+
+.t-wrap{margin:0 auto; width:1200px; height:680px;}/*가상의 홈페이지 공간*/
+
+.tu{width:1200px; height:500px; margin:auto;  position:relative;}/*가상의 바디*/
+
+.tba,.tbb,.tbc,.tbd,.tca,.tcb1,.tcb2,.tcb3,.tcb4,.tcb5{ layout:fixed;}
+
+.tbb li a{text-decoration:none;}
+
+.tbb li li a{text-decoration:none;}
+
+.tba{background-color:none;vertical-align:middle;width:198px; height:200px;margin-bottom:0px; position:relative;}
+
+.tbb{background-color:none;width:200px; height:400px; float:left; font-size:15px; text-align:center; }
+
+.tbc{background-color:none;width:996px; height:400px; display:inline-block;}
+
+.tbd{background-color:none;width:1198px; height:200px; float:left; clear:both;margin-top:0px; }/*가로폭이 340픽셀 이상인 기기에서는 바디부의 우측으로 배열이 될수 있기 때문에  clear:both;속성을 줍니다.*/
+
+.tbb>ul{background-color:none;width:200px; height:30px; margin:0px; border-radius:0.1em; display:block; position:relative;left:-200;top:100px;}
+
+.tbb>ul>.tca{background-color:none;width:150px; height:30px; margin:0px; border-radius:0.2em; border:3px solid black; display:inline-block; }
+
+.tbb>ul>li:hover ul{width:150px; height:30px; margin-left:40px; border-radius:0.2em; display:block; position:absolute;}
+
+.tbb>ul>.tca a{background-color:none;width:150px; height:30px; margin:0px; border-radius:0.2em; display:block;}
+
+.tbb ul ul{display:none;}
+
+.tbb ul{list-style:none;}
+
+.tbb li li a{display:none; background-color:none;width:150px; height:30px; margin:0px; border-radius:0.2em; display:block;}
+
+.tbb li li a:hover{background-color:white; color:blue; width:150px; height:30px; margin:0px; border-radius:0.2em; display:block;}
+
+.tcb1{background-color:none;width:996px; height:189px; padding-top:10px; layout:fixed; margin-bottom:20px; text-align:justify; margin-left:50px;}
+
+.tcb1a{background-color:#eee; width:800px; height:130px; padding-top:0px; layout:fixed; line-height:150%; layout:fixed;position:relative; left : 23px; top:0px;}
+
+.tcb2{background-color:none;width:996px; height:75px; padding-top:0px; layout:fixed; margin-bottom:20px;}
+
+.tcb2a{width:946px; height:49px; padding-top:0px; layout:fixed; text-align:left;layout:fixed;position:relative; left : 23px; top:13px;}
+
+.tcb3{background-color: #777777; color: #FFFFFF;width:996px; height:100px; padding-top:10px; layout:fixed; margin-bottom:20px; margin-left:20px;}
+
+.tcb4{background-color:none;width:996px; height:155px; padding-top:0px; layout:fixed; margin-bottom:20px;}
+
+.tcb4a{width:946px; height:125px; padding-top:0px; layout:fixed; text-align:justify;layout:fixed;position:relative; left : 23px; top:15px;}
+
+.tcb5{background-color:none;width:996px; height:230px; padding-top:10px; layout:fixed; margin-bottom:0px;}
+
+<<<<<<< HEAD
+.page{background-color:blue; text-align:center;}
+=======
+>>>>>>> 66ac0596d3b6455eb3da48e2aba0c49efeead3de

@@ -1,0 +1,39 @@
+@CHARSET "UTF-8";
+
+#body{margin:0px; padding:0px;}/*상위 스타일에 대한 원점 처리를 해 줍니다.*/
+
+.t-wrap{margin:0 auto; width:1200px; height:1200px;}/*가상의 홈페이지 공간*/
+
+.tu{width:1200px; height:1200px; margin:auto;  position:relative;}/*가상의 바디*/
+
+.tba,.tbb,.tbc,.tbd,.tca,.tcb1,.tcb2,.tcb3,.tcb4,.tcb5{ text-align:center;layout:fixed;}
+
+.tbb li a{text-decoration:none;}
+
+.tbb li li a{text-decoration:none;}
+
+.tba{background-color:none;vertical-align:middle;width:198px; height:200px;margin-bottom:0px; position:relative;}
+
+.tbb{background-color:none;width:200px; height:1000px; float:left; }
+
+.tbc{background-color:none;width:996px; height:1000px; display:inline-block;}
+
+.tbd{background-color:none;width:1198px; height:200px; float:left; clear:both;margin-top:0px; }/*가로폭이 340픽셀 이상인 기기에서는 바디부의 우측으로 배열이 될수 있기 때문에  clear:both;속성을 줍니다.*/
+
+.tbb>ul{background-color:none;width:100px; height:30px; margin:0px; border-radius:0.1em; display:block; position:relative;left:-200;top:100px;border:1px solid #34a435;}
+
+.tbb>ul>.tca{background-color:none;width:110px; height:30px; margin:0px; border-radius:0.2em;  display:inline-block; }
+
+.tbb>ul>li:hover ul{width:85px; height:30px; margin-left:40px; border-radius:0.2em; display:block; position:absolute;}
+
+.tbb>ul>.tca a{background-color:none;width:110px; height:30px; margin:0px; border-radius:0.2em; display:block;}
+
+.tbb ul ul{display:none;}
+
+.tbb ul{list-style:none;}
+
+.tbb li li a{border:2px solid gray;display:none; background-color:none;width:85px; height:30px; margin:0px; border-radius:0.2em; display:block;}
+
+.tbb li li a:hover{background-color:black;width:110px; height:30px; margin:0px; border-radius:0.2em; display:block;}
+
+.tcb5{background-color:none;width:996px; height:230px; padding-top:10px; layout:fixed; margin-bottom:0px;}
